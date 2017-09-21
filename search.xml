@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[记一次npm i 运行错误]]></title>
+    <url>%2F2017%2F09%2F%E8%AE%B0%E4%B8%80%E6%AC%A1npm-i-%E8%BF%90%E8%A1%8C%E9%94%99%E8%AF%AF%2F</url>
+    <content type="text"><![CDATA[执行npm i出错: 1234npm ERR! code EINTEGRITYnpm ERR! sha1-eCA6TRwyiuHYbcpkYONptX9AVa4= integrity checksum failed when using sha1: wanted sha1-eCA6TRwyiuHYbcpkYONptX9AVa4= but got sha1-tURkGu3SzDOsTOBkGT5fXZCH7as=. (26893 bytes)npm ERR! A complete log of this run can be found in: 解决方法：npm cache clean –force 强制清除npm 的 cache或者重新执行 npm i]]></content>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux 安装node&npm]]></title>
+    <url>%2F2017%2F09%2Flinux-%E5%AE%89%E8%A3%85node-npm%2F</url>
+    <content type="text"><![CDATA[官网地址node官网 安装步骤12345sudo yum install gcc-c++ makecurl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -sudo yum -y install nodejs 说明：sudo bash 作为超级用户运行”bash” 查看版本123node -vnpm -v]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2017%2F09%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
