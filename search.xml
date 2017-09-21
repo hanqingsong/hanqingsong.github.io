@@ -1,124 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[记一次npm i 运行错误]]></title>
-      <url>/2017/09/%E8%AE%B0%E4%B8%80%E6%AC%A1npm-i-%E8%BF%90%E8%A1%8C%E9%94%99%E8%AF%AF/</url>
-      <content type="html"><![CDATA[<p>执行npm i出错:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm ERR! code EINTEGRITY</div><div class="line">npm ERR! sha1-eCA6TRwyiuHYbcpkYONptX9AVa4= integrity checksum failed when using sha1: wanted sha1-eCA6TRwyiuHYbcpkYONptX9AVa4= but got sha1-tURkGu3SzDOsTOBkGT5fXZCH7as=. (26893 bytes)</div><div class="line"></div><div class="line">npm ERR! A complete log of this run can be found in:</div></pre></td></tr></table></figure>
-<p>解决方法：npm cache clean –force  强制清除npm 的 cache<br>或者重新执行 npm i</p>
-]]></content>
-      
-        <categories>
-            
-            <category> node </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> node </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[linux 安装node&npm]]></title>
-      <url>/2017/09/linux-%E5%AE%89%E8%A3%85node-npm/</url>
-      <content type="html"><![CDATA[<h2 id="官网地址"><a href="#官网地址" class="headerlink" title="官网地址"></a>官网地址</h2><p><a href="https://nodejs.org/zh-cn/download/" target="_blank" rel="external">node官网</a></p>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo yum install gcc-c++ make</div><div class="line"></div><div class="line">curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -</div><div class="line"></div><div class="line">sudo yum -y install nodejs</div></pre></td></tr></table></figure>
-<p>说明：sudo bash 作为超级用户运行”bash”</p>
-<h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">node -v</div><div class="line"></div><div class="line">npm -v</div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> node </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> node </tag>
-            
-            <tag> npm </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/2017/09/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> hexo </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Netty学习]]></title>
-      <url>/2017/09/Netty%E5%AD%A6%E4%B9%A0/</url>
-      <content type="html"></content>
-      
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[开始自己的个人博客]]></title>
-      <url>/2016/12/%E5%BC%80%E5%A7%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-      <content type="html"><![CDATA[<pre><code>使用hexo开始自己的博客。开篇先记录下hexo的使用。
-</code></pre><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装特别简单，安装<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">官网</a>的步骤来很快搞定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div><div class="line">hexo init blog</div><div class="line">cd blog</div><div class="line">npm install</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><p><code>$ hexo init [folder]</code><br>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</p>
-<h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><p><code>$ hexo new [layout] &lt;title&gt;</code><br>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
-<h3 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h3><p><code>$ hexo generate</code><br>生成静态文件。</p>
-<p>选项  描述<br>-d, –deploy    文件生成后立即部署网站<br>-w, –watch 监视文件变动</p>
-<h3 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h3><p><code>$ hexo publish [layout] &lt;filename&gt;</code><br>发表草稿。</p>
-<h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><p><code>$ hexo server</code><br>启动服务器。默认情况下，访问网址为： <a href="http://localhost:4000/。" target="_blank" rel="external">http://localhost:4000/。</a></p>
-<p>选项  描述<br>-p, –port  重设端口<br>-s, –static    只使用静态文件<br>-l, –log   启动日记记录，使用覆盖记录格式</p>
-<h3 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h3><p><code>$ hexo deploy</code><br>部署网站。</p>
-<p>参数  描述<br>-g, –generate  部署之前预先生成静态文件</p>
-<h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><p><code>$ hexo render &lt;file1&gt; [file2] ...</code><br>渲染文件。</p>
-<p>参数  描述<br>-o, –output    设置输出路径</p>
-<h3 id="migrate"><a href="#migrate" class="headerlink" title="migrate"></a>migrate</h3><p><code>$ hexo migrate &lt;type&gt;</code><br>从其他博客系统 迁移内容。</p>
-<h3 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h3><p><code>$ hexo clean</code><br>清除缓存文件 (db.json) 和已生成的静态文件 (public)。</p>
-<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><p><code>$ hexo list &lt;type&gt;</code><br>列出网站资料。</p>
-<h3 id="version"><a href="#version" class="headerlink" title="version"></a>version</h3><p><code>$ hexo version</code><br>显示 Hexo 版本。</p>
-<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><h3 id="安全模式"><a href="#安全模式" class="headerlink" title="安全模式"></a>安全模式</h3><p><code>$ hexo --safe</code><br>在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。</p>
-<h3 id="调试模式"><a href="#调试模式" class="headerlink" title="调试模式"></a>调试模式</h3><p><code>$ hexo --debug</code><br>在终端中显示调试信息并记录到 debug.log。当您碰到问题时，可以尝试用调试模式重新执行一次，并 提交调试信息到 GitHub。</p>
-<h3 id="简洁模式"><a href="#简洁模式" class="headerlink" title="简洁模式"></a>简洁模式</h3><p><code>$ hexo --silent</code><br>隐藏终端信息。</p>
-<h3 id="自定义配置文件的路径"><a href="#自定义配置文件的路径" class="headerlink" title="自定义配置文件的路径"></a>自定义配置文件的路径</h3><p><code>$ hexo --config custom.yml</code><br>自定义配置文件的路径，执行后将不再使用 _config.yml。</p>
-<h3 id="显示草稿"><a href="#显示草稿" class="headerlink" title="显示草稿"></a>显示草稿</h3><p><code>$ hexo --draft</code><br>显示 source/_drafts 文件夹中的草稿文章。</p>
-<h3 id="自定义-CWD"><a href="#自定义-CWD" class="headerlink" title="自定义 CWD"></a>自定义 CWD</h3><p><code>$ hexo --cwd /path/to/cwd</code><br>自定义当前工作目录（Current working directory）的路径。</p>
-]]></content>
-      
-        
-    </entry>
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[记一次npm i 运行错误]]></title>
+    <url>%2F2017%2F09%2F%E8%AE%B0%E4%B8%80%E6%AC%A1npm-i-%E8%BF%90%E8%A1%8C%E9%94%99%E8%AF%AF%2F</url>
+    <content type="text"><![CDATA[执行npm i出错: 1234npm ERR! code EINTEGRITYnpm ERR! sha1-eCA6TRwyiuHYbcpkYONptX9AVa4= integrity checksum failed when using sha1: wanted sha1-eCA6TRwyiuHYbcpkYONptX9AVa4= but got sha1-tURkGu3SzDOsTOBkGT5fXZCH7as=. (26893 bytes)npm ERR! A complete log of this run can be found in: 解决方法：npm cache clean –force 强制清除npm 的 cache或者重新执行 npm i]]></content>
+      <categories>
+        <category>node</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux 安装node&npm]]></title>
+    <url>%2F2017%2F09%2Flinux-%E5%AE%89%E8%A3%85node-npm%2F</url>
+    <content type="text"><![CDATA[官网地址node官网 安装步骤12345sudo yum install gcc-c++ makecurl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -sudo yum -y install nodejs 说明：sudo bash 作为超级用户运行”bash” 查看版本123node -vnpm -v]]></content>
+      <categories>
+        <category>node</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F09%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Netty学习]]></title>
+    <url>%2F2017%2F09%2FNetty%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[开始自己的个人博客]]></title>
+    <url>%2F2016%2F12%2F%E5%BC%80%E5%A7%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[使用hexo开始自己的博客。开篇先记录下hexo的使用。 安装安装特别简单，安装官网的步骤来很快搞定。12345npm install hexo-cli -ghexo init blogcd blognpm installhexo server 常用命令init$ hexo init [folder]新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。 new$ hexo new [layout] &lt;title&gt;新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。 generate$ hexo generate生成静态文件。 选项 描述-d, –deploy 文件生成后立即部署网站-w, –watch 监视文件变动 publish$ hexo publish [layout] &lt;filename&gt;发表草稿。 server$ hexo server启动服务器。默认情况下，访问网址为： http://localhost:4000/。 选项 描述-p, –port 重设端口-s, –static 只使用静态文件-l, –log 启动日记记录，使用覆盖记录格式 deploy$ hexo deploy部署网站。 参数 描述-g, –generate 部署之前预先生成静态文件 render$ hexo render &lt;file1&gt; [file2] ...渲染文件。 参数 描述-o, –output 设置输出路径 migrate$ hexo migrate &lt;type&gt;从其他博客系统 迁移内容。 clean$ hexo clean清除缓存文件 (db.json) 和已生成的静态文件 (public)。 list$ hexo list &lt;type&gt;列出网站资料。 version$ hexo version显示 Hexo 版本。 选项安全模式$ hexo --safe在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。 调试模式$ hexo --debug在终端中显示调试信息并记录到 debug.log。当您碰到问题时，可以尝试用调试模式重新执行一次，并 提交调试信息到 GitHub。 简洁模式$ hexo --silent隐藏终端信息。 自定义配置文件的路径$ hexo --config custom.yml自定义配置文件的路径，执行后将不再使用 _config.yml。 显示草稿$ hexo --draft显示 source/_drafts 文件夹中的草稿文章。 自定义 CWD$ hexo --cwd /path/to/cwd自定义当前工作目录（Current working directory）的路径。]]></content>
+  </entry>
 </search>
