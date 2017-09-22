@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[PlanTasks使用-sublime待办插件]]></title>
+    <url>%2F2017%2F09%2FPlanTasks%E4%BD%BF%E7%94%A8-sublime%E5%BE%85%E5%8A%9E%E6%8F%92%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[PlanTasksPlanTasks插件可以在我们的sublime编辑器里记录待办事，很方便，页面也很简单美观。 效果图创建todo文件以下类型文件会被识别为todo文件 12345TODO*.todo*.todolist*.taskpaper*.tasks 常用操作 创建project：输入一行文字在后方加上英文冒号就可以被识别为project，project是可以被折叠的，比如在任何地方输入Projects: 创建task：⌘+enter或者⌘+i 完成task：⌘+d，两次⌘+d取消 打标签：在行尾添加@ ，前边有空格 上下行互换位置：⌘+control+up/down 归档:归档文件所有完成的任务⌘+shift+A,已完成的任务移动至文档结尾; 分割线：— ✄ ——，输入–，按tab键 设置优先级：行尾加@critical、@high、@low、@today 时间标记： 输入s,两次tab键 @started(13-10-25 15:20) 状态切换输入tg,两次tab键 @toggle(13-10-25 15:20) 创建输入cr,两次tab键 @created(13-10-25 15:20) 预期输入d,两次tab键 @due()]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>sublime</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SSH 连接中断Write failed: Broken pipe]]></title>
+    <url>%2F2017%2F09%2FSSH-%E8%BF%9E%E6%8E%A5%E4%B8%AD%E6%96%ADWrite-failed-Broken-pipe%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[vim使用]]></title>
+    <url>%2F2017%2F09%2Fvim%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[vim 分屏]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>vim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tmux使用]]></title>
+    <url>%2F2017%2F09%2Ftmux%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[tmuxtmux是linux中一种管理窗口的程序。tmux提供了一个窗体组随时存储和恢复的功能。 tmux的基本概念tmux是一个终端复用器(terminal multiplexer).tmux有三个概念：会话(Session)，窗口(Window)，面板(Pane)。当你输入tmux后, tmux实际做的事是首先创建一个会话(Session), 然后在这个会话中创建一个窗口, 你可以继续创建多个窗口(Window), 每个窗口初始只包含一个面板, 继续分屏后, 会出现多个面板(Pane) 你在其中看到的终端实际上都属于tmux的某个面板。 命令行 tmux new[-session] -s name -d 新建会话(-d 是否在后台) tmux new -s name -n windowname 新建会话及窗口 tmux at[tach] -t session 重新连接(-t 后接会话名称) tmux ls 显示保存的会话 tmux kill-session -t session 删除会话 常用操作所有快捷键执行方式：1control+b 告诉Tmux我要用Tmux的快捷键。 C-b ? 列出所有快捷键, 按q或Esc返回 C-b d detach当前会话,可暂时返回Shell界面，输入tmux attach能够重新进入之前会话 C-b s 选择并切换会话；在同时开启了多个会话时使用 快捷键sesson tmux new -s session_name creates a new tmux session named session_name tmux attach -t session_name attaches to an existing tmux session named session_name tmux switch -t session_name switches to an existing session named session_name tmux list-sessions lists existing tmux sessions tmux detach (prefix + d) detach the currently attached session C-b $ 改变会话的名字 1234567# 创建一个新的session$ tmux new -s &lt;name-of-my-session&gt;# 在当前session中创建一个新的Session, 并保证之前session依然存在# C-b : 然后输入下面命令new -s &lt;name-of-my-new-session&gt;# 进入名为test的session$ tmux attach -t test window C-b c 创建一个新窗口 C-b &amp; 关闭当前窗口 C-b w 列出所有的窗口选择 C-b p 切换到上一个窗口 C-b n 切换到下一个窗口 C-b 窗口号 使用窗口号切换窗口(例如窗口号为1的, 则C-b 1) C-b , 重命名当前窗口，便于识别各个窗口 pane C-b % 横向分Terminal C-b “ 纵向分Terminal C-b 方向键 则会在自由选择各面板 C-b x 关闭当前pane C-b q 显示面板编号 C-b o 选择当前窗口中下一个面板 C-b 数字 选择指定窗口 C-b z 暂时把一个窗体放到最大 开启批量执行C-b后输入:set synchronize-panes ，输入:set sync [TAB]键可自动补齐 设置鼠标滚动C-b : 进入命令行 123setw mode-mouse on #单个窗口启用鼠标滚轮来卷动窗口内容setw -g mode-mouse on #所有窗口启用鼠标滚轮来卷动窗口内容 或者在配置文件里设置~/.tmux.conf：1set-window-option -g mode-mouse on 参考http://cenalulu.github.io/linux/tmux/http://guoqiao.me/post/2016/tmux]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>tmux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[记一次npm i 运行错误]]></title>
     <url>%2F2017%2F09%2F%E8%AE%B0%E4%B8%80%E6%AC%A1npm-i-%E8%BF%90%E8%A1%8C%E9%94%99%E8%AF%AF%2F</url>
     <content type="text"><![CDATA[执行npm i出错: 1234npm ERR! code EINTEGRITYnpm ERR! sha1-eCA6TRwyiuHYbcpkYONptX9AVa4= integrity checksum failed when using sha1: wanted sha1-eCA6TRwyiuHYbcpkYONptX9AVa4= but got sha1-tURkGu3SzDOsTOBkGT5fXZCH7as=. (26893 bytes)npm ERR! A complete log of this run can be found in: 解决方法：npm cache clean –force 强制清除npm 的 cache或者重新执行 npm i]]></content>
@@ -43,5 +82,8 @@
     <title><![CDATA[开始自己的个人博客]]></title>
     <url>%2F2016%2F12%2F%E5%BC%80%E5%A7%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%2F</url>
     <content type="text"><![CDATA[使用hexo开始自己的博客。开篇先记录下hexo的使用。 安装安装特别简单，安装官网的步骤来很快搞定。12345npm install hexo-cli -ghexo init blogcd blognpm installhexo server 常用命令init$ hexo init [folder]新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。 new$ hexo new [layout] &lt;title&gt;新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。 generate$ hexo generate生成静态文件。 选项 描述-d, –deploy 文件生成后立即部署网站-w, –watch 监视文件变动 publish$ hexo publish [layout] &lt;filename&gt;发表草稿。 server$ hexo server启动服务器。默认情况下，访问网址为： http://localhost:4000/。 选项 描述-p, –port 重设端口-s, –static 只使用静态文件-l, –log 启动日记记录，使用覆盖记录格式 deploy$ hexo deploy部署网站。 参数 描述-g, –generate 部署之前预先生成静态文件 render$ hexo render &lt;file1&gt; [file2] ...渲染文件。 参数 描述-o, –output 设置输出路径 migrate$ hexo migrate &lt;type&gt;从其他博客系统 迁移内容。 clean$ hexo clean清除缓存文件 (db.json) 和已生成的静态文件 (public)。 list$ hexo list &lt;type&gt;列出网站资料。 version$ hexo version显示 Hexo 版本。 选项安全模式$ hexo --safe在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。 调试模式$ hexo --debug在终端中显示调试信息并记录到 debug.log。当您碰到问题时，可以尝试用调试模式重新执行一次，并 提交调试信息到 GitHub。 简洁模式$ hexo --silent隐藏终端信息。 自定义配置文件的路径$ hexo --config custom.yml自定义配置文件的路径，执行后将不再使用 _config.yml。 显示草稿$ hexo --draft显示 source/_drafts 文件夹中的草稿文章。 自定义 CWD$ hexo --cwd /path/to/cwd自定义当前工作目录（Current working directory）的路径。]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
 </search>
