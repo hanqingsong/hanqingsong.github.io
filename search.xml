@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mysql 备份mysqldump]]></title>
+    <url>%2F2017%2F09%2Fmysql-%E5%A4%87%E4%BB%BDmysqldump%2F</url>
+    <content type="text"><![CDATA[备份数据库的某表数据1mysqldump -u root -p database_name table_name table_name2 &gt; database_dump.txt 备份整个数据库的数据1mysqldump -u root -p database_name &gt; database_dump.txt 备份所有数据库1mysqldump -u root -p --all-databases &gt; database_dump.txt]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>备份数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mysql 流程控制语句if/case]]></title>
+    <url>%2F2017%2F09%2Fmysql-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5if-case%2F</url>
+    <content type="text"><![CDATA[if表达式 IF(expr1,expr2,expr3) 1select if(v=1,&apos;男&apos;,&apos;女&apos;) from t1 ; 如果条件笔记多可以替换使用case when then。 case&gt;CASE &lt;单值表达式&gt; WHEN &lt;表达式值&gt; THEN WHEN &lt;表达式值&gt; THEN WHEN &lt;表达式值&gt; THEN ELSE END 简单Case函数写法12345select case v when 1 then &apos;男&apos; when 0 then &apos;女&apos; end from t1 ; Case搜索函数写法12345select case when v=1 then &apos;男&apos; when v=0 then &apos;女&apos; end from t1 ; 参考http://www.cnblogs.com/martinzhang/p/3220595.html]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[oh-my-zsh使用]]></title>
+    <url>%2F2017%2F09%2Foh-my-zsh%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[PlanTasks使用-sublime待办插件]]></title>
     <url>%2F2017%2F09%2FPlanTasks%E4%BD%BF%E7%94%A8-sublime%E5%BE%85%E5%8A%9E%E6%8F%92%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[PlanTasksPlanTasks插件可以在我们的sublime编辑器里记录待办事，很方便，页面也很简单美观。 效果图创建todo文件以下类型文件会被识别为todo文件 12345TODO*.todo*.todolist*.taskpaper*.tasks 常用操作 创建project：输入一行文字在后方加上英文冒号就可以被识别为project，project是可以被折叠的，比如在任何地方输入Projects: 创建task：⌘+enter或者⌘+i 完成task：⌘+d，两次⌘+d取消 打标签：在行尾添加@ ，前边有空格 上下行互换位置：⌘+control+up/down 归档:归档文件所有完成的任务⌘+shift+A,已完成的任务移动至文档结尾; 分割线：— ✄ ——，输入–，按tab键 设置优先级：行尾加@critical、@high、@low、@today 时间标记： 输入s,两次tab键 @started(13-10-25 15:20) 状态切换输入tg,两次tab键 @toggle(13-10-25 15:20) 创建输入cr,两次tab键 @created(13-10-25 15:20) 预期输入d,两次tab键 @due()]]></content>
@@ -31,7 +60,7 @@
   <entry>
     <title><![CDATA[tmux使用]]></title>
     <url>%2F2017%2F09%2Ftmux%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[tmuxtmux是linux中一种管理窗口的程序。tmux提供了一个窗体组随时存储和恢复的功能。 tmux的基本概念tmux是一个终端复用器(terminal multiplexer).tmux有三个概念：会话(Session)，窗口(Window)，面板(Pane)。当你输入tmux后, tmux实际做的事是首先创建一个会话(Session), 然后在这个会话中创建一个窗口, 你可以继续创建多个窗口(Window), 每个窗口初始只包含一个面板, 继续分屏后, 会出现多个面板(Pane) 你在其中看到的终端实际上都属于tmux的某个面板。 命令行 tmux new[-session] -s name -d 新建会话(-d 是否在后台) tmux new -s name -n windowname 新建会话及窗口 tmux at[tach] -t session 重新连接(-t 后接会话名称) tmux ls 显示保存的会话 tmux kill-session -t session 删除会话 常用操作所有快捷键执行方式：1control+b 告诉Tmux我要用Tmux的快捷键。 C-b ? 列出所有快捷键, 按q或Esc返回 C-b d detach当前会话,可暂时返回Shell界面，输入tmux attach能够重新进入之前会话 C-b s 选择并切换会话；在同时开启了多个会话时使用 快捷键sesson tmux new -s session_name creates a new tmux session named session_name tmux attach -t session_name attaches to an existing tmux session named session_name tmux switch -t session_name switches to an existing session named session_name tmux list-sessions lists existing tmux sessions tmux detach (prefix + d) detach the currently attached session C-b $ 改变会话的名字 1234567# 创建一个新的session$ tmux new -s &lt;name-of-my-session&gt;# 在当前session中创建一个新的Session, 并保证之前session依然存在# C-b : 然后输入下面命令new -s &lt;name-of-my-new-session&gt;# 进入名为test的session$ tmux attach -t test window C-b c 创建一个新窗口 C-b &amp; 关闭当前窗口 C-b w 列出所有的窗口选择 C-b p 切换到上一个窗口 C-b n 切换到下一个窗口 C-b 窗口号 使用窗口号切换窗口(例如窗口号为1的, 则C-b 1) C-b , 重命名当前窗口，便于识别各个窗口 pane C-b % 横向分Terminal C-b “ 纵向分Terminal C-b 方向键 则会在自由选择各面板 C-b x 关闭当前pane C-b q 显示面板编号 C-b o 选择当前窗口中下一个面板 C-b 数字 选择指定窗口 C-b z 暂时把一个窗体放到最大 开启批量执行C-b后输入:set synchronize-panes ，输入:set sync [TAB]键可自动补齐 设置鼠标滚动C-b : 进入命令行 123setw mode-mouse on #单个窗口启用鼠标滚轮来卷动窗口内容setw -g mode-mouse on #所有窗口启用鼠标滚轮来卷动窗口内容 或者在配置文件里设置~/.tmux.conf：1set-window-option -g mode-mouse on 参考http://cenalulu.github.io/linux/tmux/http://guoqiao.me/post/2016/tmux]]></content>
+    <content type="text"><![CDATA[tmuxtmux是linux中一种管理窗口的程序。tmux提供了一个窗体组随时存储和恢复的功能。 tmux的基本概念tmux是一个终端复用器(terminal multiplexer).tmux有三个概念：会话(Session)，窗口(Window)，面板(Pane)。当你输入tmux后, tmux实际做的事是首先创建一个会话(Session), 然后在这个会话中创建一个窗口, 你可以继续创建多个窗口(Window), 每个窗口初始只包含一个面板, 继续分屏后, 会出现多个面板(Pane) 你在其中看到的终端实际上都属于tmux的某个面板。 命令行 tmux new[-session] -s name -d 新建会话(-d 是否在后台) tmux new -s name -n windowname 新建会话及窗口 tmux at[tach] -t session 重新连接(-t 后接会话名称) tmux ls 显示保存的会话 tmux kill-session -t session 删除会话 常用操作所有快捷键执行方式：1control+b 告诉Tmux我要用Tmux的快捷键。 C-b ? 列出所有快捷键, 按q或Esc返回 C-b d detach当前会话,可暂时返回Shell界面，输入tmux attach能够重新进入之前会话 C-b s 选择并切换会话；在同时开启了多个会话时使用 快捷键sesson tmux new -s session_name creates a new tmux session named session_name tmux attach -t session_name attaches to an existing tmux session named session_name tmux switch -t session_name switches to an existing session named session_name tmux list-sessions lists existing tmux sessions tmux detach (prefix + d) detach the currently attached session C-b $ 改变会话的名字 1234567# 创建一个新的session$ tmux new -s &lt;name-of-my-session&gt;# 在当前session中创建一个新的Session, 并保证之前session依然存在# C-b : 然后输入下面命令new -s &lt;name-of-my-new-session&gt;# 进入名为test的session$ tmux attach -t test window C-b c 创建一个新窗口 C-b &amp; 关闭当前窗口 C-b w 列出所有的窗口选择 C-b p 切换到上一个窗口 C-b n 切换到下一个窗口 C-b 窗口号 使用窗口号切换窗口(例如窗口号为1的, 则C-b 1) C-b , 重命名当前窗口，便于识别各个窗口 pane C-b % 横向分Terminal C-b “ 纵向分Terminal C-b 方向键 则会在自由选择各面板 C-b x 关闭当前pane C-b q 显示面板编号 C-b o 选择当前窗口中下一个面板 C-b 数字 选择指定窗口 C-b z 暂时把一个窗体放到最大 开启批量执行C-b后输入:set synchronize-panes ，输入:set sync [TAB]键可自动补齐 设置鼠标C-b : 进入命令行 123setw mode-mouse on #单个窗口启用鼠标滚轮来卷动窗口内容setw -g mode-mouse on #所有窗口启用鼠标滚轮来卷动窗口内容 或者在配置文件里设置~/.tmux.conf：1234setw -g mouse-resize-pane on #开启用鼠标拖动调节pane的大小setw -g mouse-select-pane on #开启用鼠标点击pane来激活该panesetw -g mouse-select-window on #开启用鼠标点击来切换活动window 状态栏的窗口名称setw -g mode-mouse on #开启所有窗口启用鼠标滚轮来卷动窗口内容 配置之后进入命令行，输入 source-file ~/.tmux.conf，使配置生效。 参考http://cenalulu.github.io/linux/tmux/http://guoqiao.me/post/2016/tmux]]></content>
       <categories>
         <category>工具</category>
       </categories>
