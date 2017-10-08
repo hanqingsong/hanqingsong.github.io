@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[idea初始化设置]]></title>
     <url>%2F2017%2F09%2Fidea%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[字体设置选用 Courier new 15字体，行距1.2 去除大小写敏感 Editor –&gt; Code Completion，设置Case sensitive completion为none。 显示行号Editor -&gt; General -&gt; Appearance，勾选show line numbers。 设置编辑器和控制台的字体]]></content>
+    <content type="text"><![CDATA[编程字体设置根据个人喜好选择喜欢的编程字体editor–&gt;font–&gt;font选用 Monospace 15字体，行距1.2（个人喜欢）或选用 Courier new 15字体，行距1. 去除大小写敏感 Editor –&gt; Code Completion，设置Case sensitive completion为none。 显示行号Editor -&gt; General -&gt; Appearance，勾选show line numbers。 设置编辑器和控制台的字体Appearence–&gt;override default fonts by设置为consolasCourier 修改文件默认签名Editor-&gt;File and Code Templates-&gt;Includes-&gt;File Header 123/** * Created by $&#123;USER&#125; on $&#123;DATE&#125;. */ 添加自定义代码补全Live TemplatesEditor -&gt; Live Templates 设置护眼色]]></content>
       <categories>
         <category>工具</category>
       </categories>
