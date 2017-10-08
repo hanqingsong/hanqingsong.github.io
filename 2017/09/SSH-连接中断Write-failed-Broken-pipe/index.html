@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="SSH," />
 
 
 
@@ -94,14 +94,18 @@
 
 
 
+<meta name="description" content="ssh连接服务器后,一段时间不操作，再次操作时会出现Write failed: Broken pipe。解决方法：1、客户端设置：~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置：ServerAliveInterval 602、在服务器的 /etc/ssh/sshd_config 中添加如下的配置：ClientAliveInterval 603、在登录命令添加参数：ssh -o">
+<meta name="keywords" content="SSH">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSH 连接中断Write failed: Broken pipe">
 <meta property="og:url" content="http://www.codr.top/2017/09/SSH-连接中断Write-failed-Broken-pipe/index.html">
 <meta property="og:site_name" content="青松的博客">
+<meta property="og:description" content="ssh连接服务器后,一段时间不操作，再次操作时会出现Write failed: Broken pipe。解决方法：1、客户端设置：~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置：ServerAliveInterval 602、在服务器的 /etc/ssh/sshd_config 中添加如下的配置：ClientAliveInterval 603、在登录命令添加参数：ssh -o">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-21T05:47:37.000Z">
+<meta property="og:updated_time" content="2017-09-26T03:48:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH 连接中断Write failed: Broken pipe">
+<meta name="twitter:description" content="ssh连接服务器后,一段时间不操作，再次操作时会出现Write failed: Broken pipe。解决方法：1、客户端设置：~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置：ServerAliveInterval 602、在服务器的 /etc/ssh/sshd_config 中添加如下的配置：ClientAliveInterval 603、在登录命令添加参数：ssh -o">
 
 
 
@@ -353,6 +357,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/问题/" itemprop="url" rel="index">
+                    <span itemprop="name">问题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -380,7 +406,9 @@
       
 
       
-        
+        <p>ssh连接服务器后,一段时间不操作，再次操作时会出现Write failed: Broken pipe。<br>解决方法：<br>1、客户端设置：~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置：ServerAliveInterval 60<br>2、在服务器的 /etc/ssh/sshd_config 中添加如下的配置：ClientAliveInterval 60<br>3、在登录命令添加参数：ssh -o ServerAliveInterval=60 user@sshserver</p>
+<p>参考：<br><a href="http://blog.csdn.net/bbirdsky/article/details/21703555" target="_blank" rel="external">http://blog.csdn.net/bbirdsky/article/details/21703555</a></p>
+
       
     </div>
     
@@ -394,6 +422,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SSH/" rel="tag"># SSH</a>
+          
+        </div>
       
 
       
@@ -484,7 +518,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -495,7 +529,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -506,7 +540,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
