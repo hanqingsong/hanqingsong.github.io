@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="青松的博客">
 <meta property="og:description" content="tmuxtmux是linux中一种管理窗口的程序。tmux提供了一个窗体组随时存储和恢复的功能。 tmux的基本概念tmux是一个终端复用器(terminal multiplexer).tmux有三个概念：会话(Session)，窗口(Window)，面板(Pane)。当你输入tmux后, tmux实际做的事是首先创建一个会话(Session), 然后在这个会话中创建一个窗口, 你可以继续创建多个">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-25T03:27:30.000Z">
+<meta property="og:updated_time" content="2017-10-10T09:12:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tmux使用">
 <meta name="twitter:description" content="tmuxtmux是linux中一种管理窗口的程序。tmux提供了一个窗体组随时存储和恢复的功能。 tmux的基本概念tmux是一个终端复用器(terminal multiplexer).tmux有三个概念：会话(Session)，窗口(Window)，面板(Pane)。当你输入tmux后, tmux实际做的事是首先创建一个会话(Session), 然后在这个会话中创建一个窗口, 你可以继续创建多个">
@@ -382,6 +382,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/tmux使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/tmux使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -408,6 +419,7 @@
       
         <h2 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h2><p>tmux是linux中一种管理窗口的程序。tmux提供了一个窗体组随时存储和恢复的功能。</p>
 <h2 id="tmux的基本概念"><a href="#tmux的基本概念" class="headerlink" title="tmux的基本概念"></a>tmux的基本概念</h2><p>tmux是一个终端复用器(terminal multiplexer).<br>tmux有三个概念：会话(Session)，窗口(Window)，面板(Pane)。<br>当你输入tmux后, tmux实际做的事是首先创建一个会话(Session), 然后在这个会话中创建一个窗口, 你可以继续创建多个窗口(Window), 每个窗口初始只包含一个面板, 继续分屏后, 会出现多个面板(Pane) 你在其中看到的终端实际上都属于tmux的某个面板。</p>
+<h2 id="tmux安装"><a href="#tmux安装" class="headerlink" title="tmux安装"></a>tmux安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@VM_1_49_centos ~]# yum install tmux</div></pre></td></tr></table></figure>
 <h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><ul>
 <li>tmux new[-session] -s name -d   新建会话(-d 是否在后台)</li>
 <li>tmux new -s name -n windowname  新建会话及窗口</li>
@@ -453,7 +465,7 @@
 <h2 id="设置鼠标"><a href="#设置鼠标" class="headerlink" title="设置鼠标"></a>设置鼠标</h2><p>C-b : 进入命令行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setw mode-mouse on #单个窗口启用鼠标滚轮来卷动窗口内容</div><div class="line"></div><div class="line">setw -g mode-mouse on #所有窗口启用鼠标滚轮来卷动窗口内容</div></pre></td></tr></table></figure>
 <p>或者在配置文件里设置~/.tmux.conf：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">setw -g mouse-resize-pane on #开启用鼠标拖动调节pane的大小</div><div class="line">setw -g mouse-select-pane on #开启用鼠标点击pane来激活该pane</div><div class="line">setw -g mouse-select-window on #开启用鼠标点击来切换活动window 状态栏的窗口名称</div><div class="line">setw -g mode-mouse on #开启所有窗口启用鼠标滚轮来卷动窗口内容</div></pre></td></tr></table></figure></p>
-<p>配置之后进入命令行，输入 source-file ~/.tmux.conf，使配置生效。</p>
+<p>配置之后进入命令行，输入 tmux source  ~/.tmux.conf，使配置生效。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://cenalulu.github.io/linux/tmux/" target="_blank" rel="external">http://cenalulu.github.io/linux/tmux/</a><br><a href="http://guoqiao.me/post/2016/tmux" target="_blank" rel="external">http://guoqiao.me/post/2016/tmux</a></p>
 
       
@@ -527,6 +539,13 @@
           
   <div class="comments" id="comments">
     
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
   </div>
 
 
@@ -574,7 +593,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -585,7 +604,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -596,7 +615,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -631,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tmux"><span class="nav-number">1.</span> <span class="nav-text">tmux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tmux的基本概念"><span class="nav-number">2.</span> <span class="nav-text">tmux的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行"><span class="nav-number">3.</span> <span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用操作"><span class="nav-number">4.</span> <span class="nav-text">常用操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">5.</span> <span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sesson"><span class="nav-number">5.1.</span> <span class="nav-text">sesson</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window"><span class="nav-number">5.2.</span> <span class="nav-text">window</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pane"><span class="nav-number">5.3.</span> <span class="nav-text">pane</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启批量执行"><span class="nav-number">6.</span> <span class="nav-text">开启批量执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置鼠标"><span class="nav-number">7.</span> <span class="nav-text">设置鼠标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tmux"><span class="nav-number">1.</span> <span class="nav-text">tmux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tmux的基本概念"><span class="nav-number">2.</span> <span class="nav-text">tmux的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tmux安装"><span class="nav-number">3.</span> <span class="nav-text">tmux安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行"><span class="nav-number">4.</span> <span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用操作"><span class="nav-number">5.</span> <span class="nav-text">常用操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">6.</span> <span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sesson"><span class="nav-number">6.1.</span> <span class="nav-text">sesson</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window"><span class="nav-number">6.2.</span> <span class="nav-text">window</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pane"><span class="nav-number">6.3.</span> <span class="nav-text">pane</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启批量执行"><span class="nav-number">7.</span> <span class="nav-text">开启批量执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置鼠标"><span class="nav-number">8.</span> <span class="nav-text">设置鼠标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -774,6 +793,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://http-codr-top.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.codr.top/2017/09/tmux使用/';
+          this.page.identifier = '2017/09/tmux使用/';
+          this.page.title = 'tmux使用';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://http-codr-top.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -786,10 +825,6 @@
   
 
 
-
-
-
-  
 
 
 

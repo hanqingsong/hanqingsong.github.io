@@ -1,9 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[docker-part5:Stacks]]></title>
+    <url>%2F2017%2F10%2Fdocker-part5-Stacks%2F</url>
+    <content type="text"><![CDATA[新增一个服务（service）visualizer修改docker-compose.yml123456789101112131415161718192021222324252627282930version: &quot;3&quot;services: web: # replace username/repo:tag with your name and image details image: username/repo:tag deploy: replicas: 5 restart_policy: condition: on-failure resources: limits: cpus: &quot;0.1&quot; memory: 50M ports: - &quot;80:80&quot; networks: - webnet visualizer: image: dockersamples/visualizer:stable ports: - &quot;8080:8080&quot; volumes: - &quot;/var/run/docker.sock:/var/run/docker.sock&quot; deploy: placement: constraints: [node.role == manager] networks: - webnetnetworks: webnet: 更新服务123456789➜ docker-test docker stack deploy -c docker-compose.yml getstartedlabCreating network getstartedlab_webnetCreating service getstartedlab_webCreating service getstartedlab_visualizer➜ docker-test docker-machine lsNAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORSmyvm1 * virtualbox Running tcp://192.168.99.100:2376 v17.09.0-cemyvm2 - virtualbox Running tcp://192.168.99.101:2376 v17.09.0-ce 访问 http://192.168.99.100:8080/ 持久化redis数据服务修改docker-compose.yml123456789101112131415161718192021222324252627282930313233343536373839404142version: &quot;3&quot;services: web: # replace username/repo:tag with your name and image details image: 842071912/start-docker1:hellopy deploy: replicas: 5 resources: limits: cpus: &quot;0.1&quot; memory: 50M restart_policy: condition: on-failure ports: - &quot;80:80&quot; networks: - webnet visualizer: image: dockersamples/visualizer:stable ports: - &quot;8080:8080&quot; volumes: - &quot;/var/run/docker.sock:/var/run/docker.sock&quot; deploy: placement: constraints: [node.role == manager] networks: - webnet redis: image: redis ports: - &quot;6379:6379&quot; volumes: - /home/docker/data:/data deploy: placement: constraints: [node.role == manager] command: redis-server --appendonly yes networks: - webnetnetworks: webnet: 创建./data文件夹123456789101112➜ docker-test docker-machine ssh myvm1 &quot;mkdir ./data&quot;➜ docker-test docker stack deploy -c docker-compose.yml getstartedlabUpdating service getstartedlab_web (id: p3yof4klife0ulvn7fqwjrhkm)Updating service getstartedlab_visualizer (id: s550x4sifn20ab391fsywu0l2)Updating service getstartedlab_redis (id: a2eh1a3c3di608fsa00l7uvj8)➜ docker-test docker service lsID NAME MODE REPLICAS IMAGE PORTSa2eh1a3c3di6 getstartedlab_redis replicated 1/1 redis:latest *:6379-&gt;6379/tcps550x4sifn20 getstartedlab_visualizer replicated 1/1 dockersamples/visualizer:stable *:8080-&gt;8080/tcpp3yof4klife0 getstartedlab_web replicated 5/5 842071912/start-docker1:hellopy *:80-&gt;80/tcp 访问 http://192.168.99.100:8080/]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[docker-part4:swarms]]></title>
+    <url>%2F2017%2F10%2Fdocker-part4-swarms%2F</url>
+    <content type="text"><![CDATA[设置swarmmac系统下需要安装 install Oracle VirtualBox 创建集群使用docker-machine创建VMs,创建有可能会失败多执行几次123456789101112131415161718192021222324252627282930313233➜ docker-test docker-machine lsNAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORS➜ docker-test docker-machine create --driver virtualbox myvm1Running pre-create checks...(myvm1) No default Boot2Docker ISO found locally, downloading the latest release...(myvm1) Latest release for github.com/boot2docker/boot2docker is v17.09.0-ce(myvm1) Downloading /Users/hanqingsong/.docker/machine/cache/boot2docker.iso from https://github.com/boot2docker/boot2docker/releases/download/v17.09.0-ce/boot2docker.iso...(myvm1) 0%....10%....20%....30%....40%....50%....60%....70%....80%....90%....100%Creating machine...(myvm1) Copying /Users/hanqingsong/.docker/machine/cache/boot2docker.iso to /Users/hanqingsong/.docker/machine/machines/myvm1/boot2docker.iso...(myvm1) Creating VirtualBox VM...(myvm1) Creating SSH key...(myvm1) Starting the VM...(myvm1) Check network to re-create if needed...(myvm1) Found a new host-only adapter: &quot;vboxnet0&quot;(myvm1) Waiting for an IP...Waiting for machine to be running, this may take a few minutes...Detecting operating system of created instance...Waiting for SSH to be available...Detecting the provisioner...Provisioning with boot2docker...Copying certs to the local machine directory...Copying certs to the remote machine...Setting Docker configuration on the remote daemon...Checking connection to Docker...Docker is up and running!To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm1➜ docker-test docker-machine lsNAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORSmyvm1 - virtualbox Running tcp://192.168.99.100:2376 v17.09.0-cemyvm2 - virtualbox Running tcp://192.168.99.101:2376 v17.09.0-ce 初始化swarm添加节点设置myvm1为swarm管理者12345678➜ docker-test docker-machine ssh myvm1 &quot;docker swarm init --advertise-addr 192.168.99.100&quot; Swarm initialized: current node (mwshg3zvljp17muqpuua5l3d1) is now a manager.To add a worker to this swarm, run the following command: docker swarm join --token SWMTKN-1-26jjkt2i3rul2qp7hwdp2m3ek1vegmumr6mk07ba8orc886ix2-c41i1zkhtnjqartdv6l75ms8h 192.168.99.100:2377To add a manager to this swarm, run &apos;docker swarm join-token manager&apos; and follow the instructions. myvm2添加为worker12➜ docker-test docker-machine ssh myvm2 &quot;docker swarm join --token SWMTKN-1-26jjkt2i3rul2qp7hwdp2m3ek1vegmumr6mk07ba8orc886ix2-c41i1zkhtnjqartdv6l75ms8h 192.168.99.100:2377&quot;This node joined a swarm as a worker. 查看swarm节点1234➜ docker-test docker-machine ssh myvm1 &quot;docker node ls&quot;ID HOSTNAME STATUS AVAILABILITY MANAGER STATUSmwshg3zvljp17muqpuua5l3d1 * myvm1 Ready Active Leaderurdtegb3yanqi0d98vzm49tof myvm2 Ready Active 在swarm集群部署应用设置myvm1为激活状态1234567891011121314➜ docker-test docker-machine env myvm1export DOCKER_TLS_VERIFY=&quot;1&quot;export DOCKER_HOST=&quot;tcp://192.168.99.100:2376&quot;export DOCKER_CERT_PATH=&quot;/Users/hanqingsong/.docker/machine/machines/myvm1&quot;export DOCKER_MACHINE_NAME=&quot;myvm1&quot;# Run this command to configure your shell:# eval $(docker-machine env myvm1)➜ docker-test eval $(docker-machine env myvm1)➜ docker-test docker-machine lsNAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORSmyvm1 * virtualbox Running tcp://192.168.99.100:2376 v17.09.0-cemyvm2 - virtualbox Running tcp://192.168.99.101:2376 v17.09.0-ce 在swarm manager部署应用123➜ docker-test docker stack deploy -c docker-compose.yml getstartedlabCreating network getstartedlab_webnetCreating service getstartedlab_web 查看服务部署信息1234567➜ docker-test docker stack ps getstartedlabID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTSqvs0h0pqgsou getstartedlab_web.1 842071912/start-docker1:hellopy myvm1 Running Preparing about a minute agojtlfqsejqnmo getstartedlab_web.2 842071912/start-docker1:hellopy myvm2 Running Running 24 seconds agowauh0t4cybvn getstartedlab_web.3 842071912/start-docker1:hellopy myvm1 Running Preparing about a minute agofeyi52iwjpa2 getstartedlab_web.4 842071912/start-docker1:hellopy myvm2 Running Running 24 seconds agom7mz2kevh15r getstartedlab_web.5 842071912/start-docker1:hellopy myvm2 Running Running 24 seconds ago 清除和重启 tear down the stack 123 ➜ docker-test docker stack rm getstartedlabRemoving service getstartedlab_webRemoving network getstartedlab_webnet Keep the swarm or remove it?At some point later, you can remove this swarm if you want to with docker-machine ssh myvm2 “docker swarm leave” on the worker and docker-machine ssh myvm1 “docker swarm leave –force” on the manager, but you’ll need this swarm for part 5, so please keep it around for now. 123456789101112➜ docker-test eval $(docker-machine env -u)➜ docker-test docker-machine stop $(docker-machine ls -q)Stopping &quot;myvm2&quot;...Stopping &quot;myvm1&quot;...Machine &quot;myvm2&quot; was stopped.Machine &quot;myvm1&quot; was stopped.➜ docker-test docker-machine lsNAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORSmyvm1 - virtualbox Stopped Unknownmyvm2 - virtualbox Stopped Unknown 命令1234567891011121314docker-machine create --driver virtualbox myvm1 # Create a VM (Mac, Win7, Linux)docker-machine create -d hyperv --hyperv-virtual-switch &quot;myswitch&quot; myvm1 # Win10docker-machine env myvm1 # View basic information about your nodedocker-machine ssh myvm1 &quot;docker node ls&quot; # List the nodes in your swarmdocker-machine ssh myvm1 &quot;docker node inspect &lt;node ID&gt;&quot; # Inspect a nodedocker-machine ssh myvm1 &quot;docker swarm join-token -q worker&quot; # View join tokendocker-machine ssh myvm1 # Open an SSH session with the VM; type &quot;exit&quot; to enddocker-machine ssh myvm2 &quot;docker swarm leave&quot; # Make the worker leave the swarmdocker-machine ssh myvm1 &quot;docker swarm leave -f&quot; # Make master leave, kill swarmdocker-machine start myvm1 # Start a VM that is currently not runningdocker-machine stop $(docker-machine ls -q) # Stop all running VMsdocker-machine rm $(docker-machine ls -q) # Delete all VMs and their disk imagesdocker-machine scp docker-compose.yml myvm1:~ # Copy file to node&apos;s home dirdocker-machine ssh myvm1 &quot;docker stack deploy -c &lt;file&gt; &lt;app&gt;&quot; # Deploy an app]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[docker-part3:services]]></title>
+    <url>%2F2017%2F10%2Fdocker-part3-services%2F</url>
+    <content type="text"><![CDATA[docker-compose.ymldocker-compose.yml定义了容器的行为。 12345678910111213141516171819version: &quot;3&quot;services: web: # replace username/repo:tag with your name and image details image: username/repo:tag deploy: replicas: 5 resources: limits: cpus: &quot;0.1&quot; memory: 50M restart_policy: condition: on-failure ports: - &quot;80:80&quot; networks: - webnetnetworks: webnet: 运行负载均衡应用123456789101112131415161718192021222324252627282930313233343536373839404142434445464748➜ docker-test docker swarm initSwarm initialized: current node (scxmr99cp0d6zjpajrckdktmk) is now a manager.To add a worker to this swarm, run the following command: docker swarm join --token SWMTKN-1-19wb8qe3cws960d8famp2lix8t1d6wza4eg9fw7geklefqjrvh-82wzkvoszligqto4eoe2ufail 192.168.65.2:2377To add a manager to this swarm, run &apos;docker swarm join-token manager&apos; and follow the instructions.➜ docker-test docker stack deploy -c docker-compose.yml getstartedlabCreating network getstartedlab_webnetCreating service getstartedlab_web➜ docker-test docker service lsID NAME MODE REPLICAS IMAGE PORTSlrd7bsarm31c getstartedlab_web replicated 5/5 842071912/start-docker1:hellopy *:80-&gt;80/tcp➜ docker-test docker stack lsNAME SERVICESgetstartedlab 1➜ docker-test docker service ps lrd7bsarm31cID NAME IMAGE NODE DESIRED STATE CURRENT STATE ERROR PORTSpv0xalnz0jub getstartedlab_web.1 842071912/start-docker1:hellopy moby Running Running 2 minutes agoqrkj0dctgukn getstartedlab_web.2 842071912/start-docker1:hellopy moby Running Running 2 minutes agoxq97vphe37h5 getstartedlab_web.3 842071912/start-docker1:hellopy moby Running Running 2 minutes agokc0kj4tdzlpz getstartedlab_web.4 842071912/start-docker1:hellopy moby Running Running 2 minutes ago5roeqr1o8le3 getstartedlab_web.5 842071912/start-docker1:hellopy moby Running Running 2 minutes ago➜ docker-test docker container ls -q3b010bc1ba11e9c89868d2ee34cc4a84736ab697e352c20592db487d0025➜ docker-test docker stack rm getstartedlabRemoving service getstartedlab_webRemoving network getstartedlab_webnet➜ docker-test docker node lsID HOSTNAME STATUS AVAILABILITY MANAGER STATUSscxmr99cp0d6zjpajrckdktmk * moby Ready Active Leader➜ docker-test docker swarm leave --forceNode left the swarm.➜ docker-test docker node lsError response from daemon: This node is not a swarm manager. Use &quot;docker swarm init&quot; or &quot;docker swarm join&quot; to connect this node to swarm and try again. 命令集12345678docker swarm initdocker stack ls # List stacks or appsdocker stack deploy -c &lt;composefile&gt; &lt;appname&gt; # Run the specified Compose filedocker service ls # List running services associated with an appdocker service ps &lt;service&gt; # List tasks associated with an appdocker inspect &lt;task or container&gt; # Inspect task or containerdocker container ls -q # List container IDsdocker stack rm &lt;appname&gt; # Tear down an application]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[二进制数组转十六进制]]></title>
+    <url>%2F2017%2F10%2F%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E7%BB%84%E8%BD%AC%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%2F</url>
+    <content type="text"><![CDATA[二进制数组转十六进制1234567891011121314private static String byte2hex(byte [] buffer)&#123; String h = &quot;&quot;; for(int i = 0; i &lt; buffer.length; i++)&#123; String temp = Integer.toHexString(buffer[i] &amp; 0xFF); if(temp.length() == 1)&#123; temp = &quot;0&quot; + temp; &#125; h = h + &quot; &quot;+ temp; &#125; return h;&#125; 二进制输出二进制字符串1234567891011private static String byte2Str(byte [] buffer)&#123; String h = &quot;&quot;; for(int i = 0; i &lt; buffer.length; i++)&#123; String temp = Integer.toBinaryString(buffer[i]); h = h + &quot; &quot;+ temp; &#125; return h;&#125;]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>byte</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[idea免费激活方法]]></title>
+    <url>%2F2017%2F10%2Fidea%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[获取注册码http://idea.lanyus.com/http://www.98key.com/idea 填入license serverhttp://intellij.mandroid.cn/http://idea.imsxm.com/http://idea.iteblog.com/key.php]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>idea</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mac 安装使用Docker]]></title>
+    <url>%2F2017%2F10%2Fmac-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8Docker%2F</url>
+    <content type="text"><![CDATA[docker安装与启动docker官网地址,下载dmg安装。12345678910111213$ docker run hello-worldHello from Docker!This message shows that your installation appears to be working correctly.To generate this message, Docker took the following steps: 1. The Docker client contacted the Docker daemon. 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub. 3. The Docker daemon created a new container from that image which runs the executable that produces the output you are currently reading. 4. The Docker daemon streamed that output to the Docker client, which sent it to your terminal.$ docker --version 构建第一个app官网文档 Build app 1234567891011121314$ lsDockerfile app.py requirements.txt$ docker build -t friendlyhello .Sending build context to Docker daemon 4.608kBStep 1/7 : FROM python:2.7-slim2.7-slim: Pulling from library/python$ docker imagesREPOSITORY TAG IMAGE IDfriendlyhello latest 326387cea398$ docker run -p 4000:80 friendlyhello 或 docker run -d -p 4000:80 friendlyhello #-d 后台运行 访问http://localhost:4000。CTRL+C退出 后台运行退出时12$ docker container ls #获取短CONTAINER ID$ docker stop id 分享image123456789docker logindocker tag image username/repository:tag #Tag the image比如：docker tag friendlyhello john/get-started:part2docker imagesdocker push username/repository:tag #Publish the imagedocker run -p 4000:80 username/repository:tag #Pull and run the image from the remote repository 容器&amp;镜像命令列表12345678910111213141516docker build -t friendlyname . # Create image using this directory&apos;s Dockerfiledocker run -p 4000:80 friendlyname # Run &quot;friendlyname&quot; mapping port 4000 to 80docker run -d -p 4000:80 friendlyname # Same thing, but in detached modedocker container ls # List all running containersdocker container ls -a # List all containers, even those not runningdocker container stop &lt;hash&gt; # Gracefully stop the specified containerdocker container kill &lt;hash&gt; # Force shutdown of the specified containerdocker container rm &lt;hash&gt; # Remove specified container from this machinedocker container rm $(docker container ls -a -q) # Remove all containersdocker image ls -a # List all images on this machinedocker image rm &lt;image id&gt; # Remove specified image from this machinedocker image rm $(docker image ls -a -q) # Remove all images from this machinedocker login # Log in this CLI session using your Docker credentialsdocker tag &lt;image&gt; username/repository:tag # Tag &lt;image&gt; for upload to registrydocker push username/repository:tag # Upload tagged image to registrydocker run username/repository:tag # Run image from a registry 镜像的获取12345678# 搜索镜像docker search &lt;image&gt; # 在docker index中搜索image# 下载镜像docker pull &lt;image&gt; # 从docker registry server 中下拉image# 查看镜像 docker images： # 列出imagesdocker images -a # 列出所有的images（包含历史）docker rmi &lt;image ID&gt;： # 删除一个或多个image 容器的使用12345678910111213141516# 查看容器 docker ps ：列出当前所有正在运行的container docker ps -l ：列出最近一次启动的container docker ps -a ：列出所有的container（包含历史，即运行过的container） docker ps -q ：列出最近一次运行的container ID# 再次启动容器 docker start/stop/restart &lt;container&gt; #：开启/停止/重启container docker start [container_id] #：再次运行某个container （包括历史container）#进入正在运行的docker容器 docker exec -it [container_id] /bin/bash docker run -i -t -p &lt;host_port:contain_port&gt; #：映射 HOST 端口到容器，方便外部访问容器内服务，host_port 可以省略，省略表示把 container_port 映射到一个动态端口。# 删除容器 docker rm &lt;container...&gt; #：删除一个或多个container docker rm `docker ps -a -q` #：删除所有的container docker ps -a -q | xargs docker rm #：同上, 删除所有的container]]></content>
+      <categories>
+        <category>工具</category>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[jvm 工具]]></title>
+    <url>%2F2017%2F10%2Fjvm-%E5%B7%A5%E5%85%B7%2F</url>
+    <content type="text"><![CDATA[常用工具jmap：生成堆快照jstat: 显示进程中的类装载、内存、垃圾收集、JIT编译等运行数据jhat：html形式显示对象占用内存大小以及引用情况jconsole（图形工具）jvisualvm（图形工具）MAT （第三方图形工具） jmap jmap -heap :当前堆内存分布信息，如From space, To Space等占用内存大小jmap -histo : 当前堆中对象占用内存大小情况，柱状图数据结构组织。可以简单得定位下当前占用内存最大的几个对象jmap -histo:live:先触发一次gc , 再统计对象占用内存情况。可以简单得定位下当前占用内存最大的几个对象以及对象是否可以被gc回收jmap -dump:format=b,file=heapDump: 导出堆详细使用信息，b表示二进制文件，之后采用其他工具分析，如jhat,mat.非常详细，可分析到对象之间的引用关系等。 jstat显示进程中的类装载、内存、垃圾收集、JIT编译等运行数据目前感觉用上的都是gc记录查看，实际还没太用过 jstat -gc 3331 250 20: 查询进程2764的垃圾收集情况，每250毫秒查询一次，一共查询20次。jstat- gcause jhat可用来分析 jmap dump生成的堆信息二进制文件。html形式显示对象占用内存大小以及引用情况，但显示得并不友好。感觉比较鸡肋。 jhat file jconsole（图形工具）Jconsole（Java Monitoring and Management Console）从java5开始，在JDK中自带的java监控和管理控制台，用于对JVM中内存，线程和类等的监控 jvisualvm（图形工具）用于查看 Java 虚拟机 (Java Virtual Machine, JVM) 上运行的基于 Java 技术的应用程序（Java 应用程序）的详细信息。 MATMAT(Memory Analyzer Tool)，一个基于Eclipse的内存分析工具，是一个快速、功能丰富的Java heap分析工具，它可以帮助我们查找内存泄漏和减少内存消耗。 资料http://www.jianshu.com/p/6bbab921102bhttp://www.ityouknow.com/]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jvm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Netty 学习]]></title>
+    <url>%2F2017%2F10%2FNetty-%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[idea初始化设置]]></title>
     <url>%2F2017%2F09%2Fidea%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[编程字体设置根据个人喜好选择喜欢的编程字体editor–&gt;font–&gt;font选用 Monospace 15字体，行距1.2（个人喜欢）或选用 Courier new 15字体，行距1. 去除大小写敏感 Editor –&gt; Code Completion，设置Case sensitive completion为none。 显示行号Editor -&gt; General -&gt; Appearance，勾选show line numbers。 设置编辑器和控制台的字体Appearence–&gt;override default fonts by设置为consolasCourier 修改文件默认签名Editor-&gt;File and Code Templates-&gt;Includes-&gt;File Header 123/** * Created by $&#123;USER&#125; on $&#123;DATE&#125;. */ 添加自定义代码补全Live TemplatesEditor -&gt; Live Templates 设置护眼色]]></content>
+    <content type="text"><![CDATA[编程字体设置根据个人喜好选择喜欢的编程字体editor–&gt;font–&gt;font选用 Monospace 14字体，行距1.1（个人喜欢）或选用 Courier new 15字体，行距1. 去除大小写敏感 Editor –&gt; Code Completion，设置Case sensitive completion为none。 显示行号Editor -&gt; General -&gt; Appearance，勾选show line numbers。 设置编辑器和控制台的字体Appearence–&gt;override default fonts by设置为consolasCourier 修改文件默认签名Editor-&gt;File and Code Templates-&gt;Includes-&gt;File Header 123/** * Created by $&#123;USER&#125; on $&#123;DATE&#125;. */ 添加自定义代码补全Live TemplatesEditor -&gt; Live Templates 设置护眼色Editor-&gt; Color Schemebackground 设置为 C7EDCC]]></content>
       <categories>
         <category>工具</category>
       </categories>
@@ -15,7 +98,7 @@
   <entry>
     <title><![CDATA[mac 安装java9]]></title>
     <url>%2F2017%2F09%2Fmac-%E5%AE%89%E8%A3%85java9%2F</url>
-    <content type="text"><![CDATA[官网下载jdk9官网地址 修改配置mac环境修改配置文件vim .bash_profile12export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/export PATH=$PATH:$JAVA_HOME/bin 使配置文件生效source .bash_profile]]></content>
+    <content type="text"><![CDATA[官网下载jdk9官网地址 修改配置mac环境修改配置文件vim .bash_profile 12export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/export PATH=$PATH:$JAVA_HOME/bin 使配置文件生效source .bash_profile]]></content>
       <categories>
         <category>java</category>
       </categories>
@@ -26,7 +109,13 @@
   <entry>
     <title><![CDATA[Jenkins 入门使用]]></title>
     <url>%2F2017%2F09%2FJenkins-%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[用Jenkins来做节点控制、版本管理、流程设置、触发Job，用Docker来搭建编译部署环境。]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[mysql 备份mysqldump]]></title>
@@ -83,7 +172,7 @@
   <entry>
     <title><![CDATA[vim使用]]></title>
     <url>%2F2017%2F09%2Fvim%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[vim 分屏]]></content>
+    <content type="text"><![CDATA[vim编辑粘贴代码格式化vim粘贴代码会有代码代码错乱的问题 在粘贴前先设置进入粘贴插入模式，即不会自动缩进和连续注释set paste然后再进入插入模式粘贴在粘贴插入模式下代码是不会自动按格式缩进的，需要使用nopaste设置回来set nopaste也可以在.vimrc中设置切换的快捷键，比如设置F9，则可以在.vimrc中加入：set pastetoggle=这样直接在插入模式按F9就会在“– 插入 –”模式和“– 插入（粘贴） –”模式中切换 vim 分屏]]></content>
       <categories>
         <category>工具</category>
       </categories>
@@ -94,7 +183,7 @@
   <entry>
     <title><![CDATA[tmux使用]]></title>
     <url>%2F2017%2F09%2Ftmux%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[tmuxtmux是linux中一种管理窗口的程序。tmux提供了一个窗体组随时存储和恢复的功能。 tmux的基本概念tmux是一个终端复用器(terminal multiplexer).tmux有三个概念：会话(Session)，窗口(Window)，面板(Pane)。当你输入tmux后, tmux实际做的事是首先创建一个会话(Session), 然后在这个会话中创建一个窗口, 你可以继续创建多个窗口(Window), 每个窗口初始只包含一个面板, 继续分屏后, 会出现多个面板(Pane) 你在其中看到的终端实际上都属于tmux的某个面板。 命令行 tmux new[-session] -s name -d 新建会话(-d 是否在后台) tmux new -s name -n windowname 新建会话及窗口 tmux at[tach] -t session 重新连接(-t 后接会话名称) tmux ls 显示保存的会话 tmux kill-session -t session 删除会话 常用操作所有快捷键执行方式：1control+b 告诉Tmux我要用Tmux的快捷键。 C-b ? 列出所有快捷键, 按q或Esc返回 C-b d detach当前会话,可暂时返回Shell界面，输入tmux attach能够重新进入之前会话 C-b s 选择并切换会话；在同时开启了多个会话时使用 快捷键sesson tmux new -s session_name creates a new tmux session named session_name tmux attach -t session_name attaches to an existing tmux session named session_name tmux switch -t session_name switches to an existing session named session_name tmux list-sessions lists existing tmux sessions tmux detach (prefix + d) detach the currently attached session C-b $ 改变会话的名字 1234567# 创建一个新的session$ tmux new -s &lt;name-of-my-session&gt;# 在当前session中创建一个新的Session, 并保证之前session依然存在# C-b : 然后输入下面命令new -s &lt;name-of-my-new-session&gt;# 进入名为test的session$ tmux attach -t test window C-b c 创建一个新窗口 C-b &amp; 关闭当前窗口 C-b w 列出所有的窗口选择 C-b p 切换到上一个窗口 C-b n 切换到下一个窗口 C-b 窗口号 使用窗口号切换窗口(例如窗口号为1的, 则C-b 1) C-b , 重命名当前窗口，便于识别各个窗口 pane C-b % 横向分Terminal C-b “ 纵向分Terminal C-b 方向键 则会在自由选择各面板 C-b x 关闭当前pane C-b q 显示面板编号 C-b o 选择当前窗口中下一个面板 C-b 数字 选择指定窗口 C-b z 暂时把一个窗体放到最大 开启批量执行C-b后输入:set synchronize-panes ，输入:set sync [TAB]键可自动补齐 设置鼠标C-b : 进入命令行 123setw mode-mouse on #单个窗口启用鼠标滚轮来卷动窗口内容setw -g mode-mouse on #所有窗口启用鼠标滚轮来卷动窗口内容 或者在配置文件里设置~/.tmux.conf：1234setw -g mouse-resize-pane on #开启用鼠标拖动调节pane的大小setw -g mouse-select-pane on #开启用鼠标点击pane来激活该panesetw -g mouse-select-window on #开启用鼠标点击来切换活动window 状态栏的窗口名称setw -g mode-mouse on #开启所有窗口启用鼠标滚轮来卷动窗口内容 配置之后进入命令行，输入 source-file ~/.tmux.conf，使配置生效。 参考http://cenalulu.github.io/linux/tmux/http://guoqiao.me/post/2016/tmux]]></content>
+    <content type="text"><![CDATA[tmuxtmux是linux中一种管理窗口的程序。tmux提供了一个窗体组随时存储和恢复的功能。 tmux的基本概念tmux是一个终端复用器(terminal multiplexer).tmux有三个概念：会话(Session)，窗口(Window)，面板(Pane)。当你输入tmux后, tmux实际做的事是首先创建一个会话(Session), 然后在这个会话中创建一个窗口, 你可以继续创建多个窗口(Window), 每个窗口初始只包含一个面板, 继续分屏后, 会出现多个面板(Pane) 你在其中看到的终端实际上都属于tmux的某个面板。 tmux安装1[root@VM_1_49_centos ~]# yum install tmux 命令行 tmux new[-session] -s name -d 新建会话(-d 是否在后台) tmux new -s name -n windowname 新建会话及窗口 tmux at[tach] -t session 重新连接(-t 后接会话名称) tmux ls 显示保存的会话 tmux kill-session -t session 删除会话 常用操作所有快捷键执行方式：1control+b 告诉Tmux我要用Tmux的快捷键。 C-b ? 列出所有快捷键, 按q或Esc返回 C-b d detach当前会话,可暂时返回Shell界面，输入tmux attach能够重新进入之前会话 C-b s 选择并切换会话；在同时开启了多个会话时使用 快捷键sesson tmux new -s session_name creates a new tmux session named session_name tmux attach -t session_name attaches to an existing tmux session named session_name tmux switch -t session_name switches to an existing session named session_name tmux list-sessions lists existing tmux sessions tmux detach (prefix + d) detach the currently attached session C-b $ 改变会话的名字 1234567# 创建一个新的session$ tmux new -s &lt;name-of-my-session&gt;# 在当前session中创建一个新的Session, 并保证之前session依然存在# C-b : 然后输入下面命令new -s &lt;name-of-my-new-session&gt;# 进入名为test的session$ tmux attach -t test window C-b c 创建一个新窗口 C-b &amp; 关闭当前窗口 C-b w 列出所有的窗口选择 C-b p 切换到上一个窗口 C-b n 切换到下一个窗口 C-b 窗口号 使用窗口号切换窗口(例如窗口号为1的, 则C-b 1) C-b , 重命名当前窗口，便于识别各个窗口 pane C-b % 横向分Terminal C-b “ 纵向分Terminal C-b 方向键 则会在自由选择各面板 C-b x 关闭当前pane C-b q 显示面板编号 C-b o 选择当前窗口中下一个面板 C-b 数字 选择指定窗口 C-b z 暂时把一个窗体放到最大 开启批量执行C-b后输入:set synchronize-panes ，输入:set sync [TAB]键可自动补齐 设置鼠标C-b : 进入命令行 123setw mode-mouse on #单个窗口启用鼠标滚轮来卷动窗口内容setw -g mode-mouse on #所有窗口启用鼠标滚轮来卷动窗口内容 或者在配置文件里设置~/.tmux.conf：1234setw -g mouse-resize-pane on #开启用鼠标拖动调节pane的大小setw -g mouse-select-pane on #开启用鼠标点击pane来激活该panesetw -g mouse-select-window on #开启用鼠标点击来切换活动window 状态栏的窗口名称setw -g mode-mouse on #开启所有窗口启用鼠标滚轮来卷动窗口内容 配置之后进入命令行，输入 tmux source ~/.tmux.conf，使配置生效。 参考http://cenalulu.github.io/linux/tmux/http://guoqiao.me/post/2016/tmux]]></content>
       <categories>
         <category>工具</category>
       </categories>
@@ -135,11 +224,6 @@
       <tags>
         <tag>hexo</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Netty学习]]></title>
-    <url>%2F2017%2F09%2FNetty%E5%AD%A6%E4%B9%A0%2F</url>
-    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[开始自己的个人博客]]></title>
