@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux 命令: 运行远程命令]]></title>
+    <url>%2F2017%2F10%2FLinux-%E5%91%BD%E4%BB%A4-%E8%BF%90%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[运行远程命令123➜ ~ ssh root@dev &quot;ls /mydata&quot;appsdevelop]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux 命令：查看文件夹下文件大小]]></title>
+    <url>%2F2017%2F10%2FLinux-%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%2F</url>
+    <content type="text"><![CDATA[查看文件夹下文件大小du [-abcDhHklmsSx] [-L &lt;符号连接&gt;][-X &lt;文件&gt;][–block-size][–exclude=&lt;目录或文件&gt;] [–max-depth=&lt;目录层数&gt;][–help][–version][目录或文件] 1du -h --max-depth=1 /mydata/]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[docker-part5:Stacks]]></title>
     <url>%2F2017%2F10%2Fdocker-part5-Stacks%2F</url>
     <content type="text"><![CDATA[新增一个服务（service）visualizer修改docker-compose.yml123456789101112131415161718192021222324252627282930version: &quot;3&quot;services: web: # replace username/repo:tag with your name and image details image: username/repo:tag deploy: replicas: 5 restart_policy: condition: on-failure resources: limits: cpus: &quot;0.1&quot; memory: 50M ports: - &quot;80:80&quot; networks: - webnet visualizer: image: dockersamples/visualizer:stable ports: - &quot;8080:8080&quot; volumes: - &quot;/var/run/docker.sock:/var/run/docker.sock&quot; deploy: placement: constraints: [node.role == manager] networks: - webnetnetworks: webnet: 更新服务123456789➜ docker-test docker stack deploy -c docker-compose.yml getstartedlabCreating network getstartedlab_webnetCreating service getstartedlab_webCreating service getstartedlab_visualizer➜ docker-test docker-machine lsNAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORSmyvm1 * virtualbox Running tcp://192.168.99.100:2376 v17.09.0-cemyvm2 - virtualbox Running tcp://192.168.99.101:2376 v17.09.0-ce 访问 http://192.168.99.100:8080/ 持久化redis数据服务修改docker-compose.yml123456789101112131415161718192021222324252627282930313233343536373839404142version: &quot;3&quot;services: web: # replace username/repo:tag with your name and image details image: 842071912/start-docker1:hellopy deploy: replicas: 5 resources: limits: cpus: &quot;0.1&quot; memory: 50M restart_policy: condition: on-failure ports: - &quot;80:80&quot; networks: - webnet visualizer: image: dockersamples/visualizer:stable ports: - &quot;8080:8080&quot; volumes: - &quot;/var/run/docker.sock:/var/run/docker.sock&quot; deploy: placement: constraints: [node.role == manager] networks: - webnet redis: image: redis ports: - &quot;6379:6379&quot; volumes: - /home/docker/data:/data deploy: placement: constraints: [node.role == manager] command: redis-server --appendonly yes networks: - webnetnetworks: webnet: 创建./data文件夹123456789101112➜ docker-test docker-machine ssh myvm1 &quot;mkdir ./data&quot;➜ docker-test docker stack deploy -c docker-compose.yml getstartedlabUpdating service getstartedlab_web (id: p3yof4klife0ulvn7fqwjrhkm)Updating service getstartedlab_visualizer (id: s550x4sifn20ab391fsywu0l2)Updating service getstartedlab_redis (id: a2eh1a3c3di608fsa00l7uvj8)➜ docker-test docker service lsID NAME MODE REPLICAS IMAGE PORTSa2eh1a3c3di6 getstartedlab_redis replicated 1/1 redis:latest *:6379-&gt;6379/tcps550x4sifn20 getstartedlab_visualizer replicated 1/1 dockersamples/visualizer:stable *:8080-&gt;8080/tcpp3yof4klife0 getstartedlab_web replicated 5/5 842071912/start-docker1:hellopy *:80-&gt;80/tcp 访问 http://192.168.99.100:8080/]]></content>
@@ -109,7 +131,7 @@
   <entry>
     <title><![CDATA[Jenkins 入门使用]]></title>
     <url>%2F2017%2F09%2FJenkins-%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[下载官网下载 jenkins.war或者 brew install jenkins 启动和停止启动12345678设置开机自启动：sudo launchctl load -w /Library/LaunchDaemons/org.jenkins-ci.plist取消开机自启动：sudo launchctl unload -w /Library/LaunchDaemons/org.jenkins-ci.plist手动启动：Java -jar jenkins.war后台启动(默认端口)：nohup java -jar jenkins.war &amp;后台启动(指定端口)：nohup java -jar jenkins.war -httpPort=88 &amp;后台启动(HTTPS)：nohup java -jar jenkins.war -httpsPort=88 &amp;sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist 停止1sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist]]></content>
+    <content type="text"><![CDATA[下载官网下载 jenkins.war或者 brew install jenkins 启动和停止启动12345678设置开机自启动：sudo launchctl load -w /Library/LaunchDaemons/org.jenkins-ci.plist取消开机自启动：sudo launchctl unload -w /Library/LaunchDaemons/org.jenkins-ci.plist手动启动：Java -jar jenkins.war后台启动(默认端口)：nohup java -jar jenkins.war &amp;后台启动(指定端口)：nohup java -jar jenkins.war -httpPort=88 &amp;后台启动(HTTPS)：nohup java -jar jenkins.war -httpsPort=88 &amp;sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist 停止1sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist 运行远程脚本安装Jenkins SSH plugin插件在系统配置里配置Publish over SSH增加构建步骤send files or ececute commands over SSH12345SSH Server Name：选个一个你在系统设置里配置的名字Transfer Set Source files：需要上传的文件（注意：相对于工作区的路径。看后面的配置可以填写多个，默认用,分隔）Remove prefix：移除目录（只能指定Transfer Set Source files中的目录，这里移除了target目录表示只将FinServer.war传到目标服务器，否则会在目标服务器创建target目录）Remote directory：远程目录（根据你的需求填写，这里没有填写默认会继承系统配置，即/mnt）Exec command：把你要执行的命令写在里面(这里的命令是在目标服务器上执行的) 只需要配置Exec command就可以这种远程执行脚本的方式，属于非交互式Shell，不会触发诸如~/.bash_profile之类文件的载入,需要 export设置环境变量或者source]]></content>
       <categories>
         <category>工具</category>
       </categories>
