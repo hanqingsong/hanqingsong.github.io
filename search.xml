@@ -24,17 +24,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[nginx添加日志分割logrotate]]></title>
-    <url>%2F2017%2F10%2Fnginx%E6%B7%BB%E5%8A%A0%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2%2F</url>
-    <content type="text"><![CDATA[logrotate简介logrotate 是Linux系统日志文件管理工具。用来把旧的日志文件删除，并创建新的日志文件，我们把它叫做“转储”。可以根据日志文件的大小，也可以根据其天数来转储，这个过程一般通过 cron 程序来执行。logrotate 程序还可以用于压缩日志文件，以及发送日志到指定的E-mail。默认的logrotate被加入cron的/etc/cron.daily中作为每日任务执行。/etc/logrotate.d/* 为/etc/logrotate.conf默认包含目录其中文件也会被logrotate读取。指明每个日志文件的特定规则。/var/lib/logrotate/status中默认记录logrotate上次轮换日志文件的时间。 logrotate安装centos是默认有安装yum install logrotate安装完成之后在，在/etc/logrotate.d/有以下脚本12345678$ ll /etc/logrotate.d/total 24drwxr-xr-x. 2 root root 4096 Mar 3 2016 2016-03-03-rw-r--r--. 1 root root 103 Jul 14 2015 dracut-rw-r--r-- 1 root root 217 Oct 31 2016 nginx-rw-r--r--. 1 root root 329 Jul 17 2012 psacct-rw-r--r--. 1 root root 265 Mar 3 2016 syslog-rw-r--r--. 1 root root 100 Feb 22 2013 yum 运行机制crontab会每天定时执行/etc/cron.daily目录下的脚本，在这个目录有个logrotate脚本，脚本内容为12345678#!/bin/sh/usr/sbin/logrotate /etc/logrotate.conf &gt;/dev/null 2&gt;&amp;1EXITVALUE=$?if [ $EXITVALUE != 0 ]; then /usr/bin/logger -t logrotate &quot;ALERT exited abnormally with [$EXITVALUE]&quot;fiexit 0 每天执行一次/usr/sbin/logrotate /etc/logrotate.conf，logrotate.conf中include /etc/logrotate.d nginx脚本1234567891011/var/log/nginx/*log &#123; daily rotate 10 missingok notifempty compress sharedscripts postrotate /bin/kill -USR1 $(cat /var/run/nginx.pid 2&gt;/dev/null) 2&gt;/dev/null || : endscript&#125; 1234567891011121314151617181920212223compress 通过gzip压缩转储以后的日志nocompress 不压缩copytruncate 用于还在打开中的日志文件，把当前日志备份并截断nocopytruncate 备份日志文件但是不截断create mode owner group 转储文件，使用指定的文件模式创建新的日志文件nocreate 不建立新的日志文件delaycompress 和 compress 一起使用时，转储的日志文件到下一次转储时才压缩nodelaycompress 覆盖 delaycompress 选项，转储同时压缩。errors address 专储时的错误信息发送到指定的Email 地址ifempty 即使是空文件也转储，这个是 logrotate 的缺省选项。notifempty 如果是空文件的话，不转储mail address 把转储的日志文件发送到指定的E-mail 地址nomail 转储时不发送日志文件olddir directory 转储后的日志文件放入指定的目录，必须和当前日志文件在同一个文件系统noolddir 转储后的日志文件和当前日志文件放在同一个目录下prerotate/endscript 在转储以前需要执行的命令可以放入这个对，这两个关键字必须单独成行postrotate/endscript 在转储以后需要执行的命令可以放入这个对，这两个关键字必须单独成行daily 指定转储周期为每天weekly 指定转储周期为每周monthly 指定转储周期为每月rotate count 指定日志文件删除之前转储的次数，0 指没有备份，5 指保留5 个备份tabootext [+] list 让logrotate 不转储指定扩展名的文件，缺省的扩展名是：.rpm-orig, .rpmsave, v, 和 ~ size size 当日志文件到达指定的大小时才转储，bytes(缺省)及KB(sizek)或MB(sizem) 命令立刻执行分割：/usr/sbin/logrotate -vf /etc/logrotate.d/nginx查看执行状态 cat /var/lib/logrotate.status 添加定时任务1234crontab -e #添加以下代码， #每天凌晨定时执行脚本# crond-id-02:nginx_logs logroate0 0 * * * /usr/sbin/logrotate -vf /etc/logrotate.d/nginx &gt;/dev/null 2&gt;&amp;1]]></content>
-      <categories>
-        <category>nginx</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Linux 命令：压缩命令]]></title>
     <url>%2F2017%2F10%2FLinux-%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[tar命令 解包：tar zxvf FileName.tar 解包到指定文件夹：tar zxvf FileName.tar -C dirname 打包：tar czvf FileName.tar DirName gz命令 解压：gunzip FileName.gz 解压：gzip -d FileName.gz 压缩：gzip FileName tar.gz 解压：tar zxvf FileName.tar.gz 压缩：tar zcvf FileName.tar.gz DirName 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3 zip命令 解压：unzip FileName.zip 解压到指定目录：unzip -d /home/sunny myfile.zip 压缩：zip -r FileName.zip DirName]]></content>
@@ -43,6 +32,17 @@
       </categories>
       <tags>
         <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[nginx添加日志分割logrotate]]></title>
+    <url>%2F2017%2F10%2Fnginx%E6%B7%BB%E5%8A%A0%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2%2F</url>
+    <content type="text"><![CDATA[logrotate简介logrotate 是Linux系统日志文件管理工具。用来把旧的日志文件删除，并创建新的日志文件，我们把它叫做“转储”。可以根据日志文件的大小，也可以根据其天数来转储，这个过程一般通过 cron 程序来执行。logrotate 程序还可以用于压缩日志文件，以及发送日志到指定的E-mail。默认的logrotate被加入cron的/etc/cron.daily中作为每日任务执行。/etc/logrotate.d/* 为/etc/logrotate.conf默认包含目录其中文件也会被logrotate读取。指明每个日志文件的特定规则。/var/lib/logrotate/status中默认记录logrotate上次轮换日志文件的时间。 logrotate安装centos是默认有安装yum install logrotate安装完成之后在，在/etc/logrotate.d/有以下脚本12345678$ ll /etc/logrotate.d/total 24drwxr-xr-x. 2 root root 4096 Mar 3 2016 2016-03-03-rw-r--r--. 1 root root 103 Jul 14 2015 dracut-rw-r--r-- 1 root root 217 Oct 31 2016 nginx-rw-r--r--. 1 root root 329 Jul 17 2012 psacct-rw-r--r--. 1 root root 265 Mar 3 2016 syslog-rw-r--r--. 1 root root 100 Feb 22 2013 yum 运行机制crontab会每天定时执行/etc/cron.daily目录下的脚本，在这个目录有个logrotate脚本，脚本内容为12345678#!/bin/sh/usr/sbin/logrotate /etc/logrotate.conf &gt;/dev/null 2&gt;&amp;1EXITVALUE=$?if [ $EXITVALUE != 0 ]; then /usr/bin/logger -t logrotate &quot;ALERT exited abnormally with [$EXITVALUE]&quot;fiexit 0 每天执行一次/usr/sbin/logrotate /etc/logrotate.conf，logrotate.conf中include /etc/logrotate.d nginx脚本1234567891011/var/log/nginx/*log &#123; daily rotate 10 missingok notifempty compress sharedscripts postrotate /bin/kill -USR1 $(cat /var/run/nginx.pid 2&gt;/dev/null) 2&gt;/dev/null || : endscript&#125; 1234567891011121314151617181920212223compress 通过gzip压缩转储以后的日志nocompress 不压缩copytruncate 用于还在打开中的日志文件，把当前日志备份并截断nocopytruncate 备份日志文件但是不截断create mode owner group 转储文件，使用指定的文件模式创建新的日志文件nocreate 不建立新的日志文件delaycompress 和 compress 一起使用时，转储的日志文件到下一次转储时才压缩nodelaycompress 覆盖 delaycompress 选项，转储同时压缩。errors address 专储时的错误信息发送到指定的Email 地址ifempty 即使是空文件也转储，这个是 logrotate 的缺省选项。notifempty 如果是空文件的话，不转储mail address 把转储的日志文件发送到指定的E-mail 地址nomail 转储时不发送日志文件olddir directory 转储后的日志文件放入指定的目录，必须和当前日志文件在同一个文件系统noolddir 转储后的日志文件和当前日志文件放在同一个目录下prerotate/endscript 在转储以前需要执行的命令可以放入这个对，这两个关键字必须单独成行postrotate/endscript 在转储以后需要执行的命令可以放入这个对，这两个关键字必须单独成行daily 指定转储周期为每天weekly 指定转储周期为每周monthly 指定转储周期为每月rotate count 指定日志文件删除之前转储的次数，0 指没有备份，5 指保留5 个备份tabootext [+] list 让logrotate 不转储指定扩展名的文件，缺省的扩展名是：.rpm-orig, .rpmsave, v, 和 ~ size size 当日志文件到达指定的大小时才转储，bytes(缺省)及KB(sizek)或MB(sizem) 命令立刻执行分割：/usr/sbin/logrotate -vf /etc/logrotate.d/nginx查看执行状态 cat /var/lib/logrotate.status 添加定时任务1234crontab -e #添加以下代码， #每天凌晨定时执行脚本# crond-id-02:nginx_logs logroate0 0 * * * /usr/sbin/logrotate -vf /etc/logrotate.d/nginx &gt;/dev/null 2&gt;&amp;1]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
