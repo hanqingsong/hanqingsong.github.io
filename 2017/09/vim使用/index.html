@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="青松的博客">
 <meta property="og:description" content="vim编辑粘贴代码格式化vim粘贴代码会有代码代码错乱的问题  在粘贴前先设置进入粘贴插入模式，即不会自动缩进和连续注释set paste然后再进入插入模式粘贴在粘贴插入模式下代码是不会自动按格式缩进的，需要使用nopaste设置回来set nopaste也可以在.vimrc中设置切换的快捷键，比如设置F9，则可以在.vimrc中加入：set pastetoggle=这样直接在插入模式按F9就会在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-10T09:12:18.000Z">
+<meta property="og:updated_time" content="2017-10-27T01:44:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim使用">
 <meta name="twitter:description" content="vim编辑粘贴代码格式化vim粘贴代码会有代码代码错乱的问题  在粘贴前先设置进入粘贴插入模式，即不会自动缩进和连续注释set paste然后再进入插入模式粘贴在粘贴插入模式下代码是不会自动按格式缩进的，需要使用nopaste设置回来set nopaste也可以在.vimrc中设置切换的快捷键，比如设置F9，则可以在.vimrc中加入：set pastetoggle=这样直接在插入模式按F9就会在">
@@ -369,8 +369,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  158
+                  611
                 </span>
               
 
@@ -438,7 +438,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -463,6 +463,12 @@
 <blockquote>
 <p>在粘贴前先设置进入粘贴插入模式，即不会自动缩进和连续注释<br>set paste<br>然后再进入插入模式粘贴<br>在粘贴插入模式下代码是不会自动按格式缩进的，需要使用nopaste设置回来<br>set nopaste<br>也可以在.vimrc中设置切换的快捷键，比如设置F9，则可以在.vimrc中加入：<br>set pastetoggle=<f9><br>这样直接在插入模式按F9就会在“– 插入 –”模式和“– 插入（粘贴） –”模式中切换</f9></p>
 </blockquote>
+<h2 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">^                       移到当前行的第一个非空字符</div><div class="line">$                       移到当前行的最后一个字符</div><div class="line">G                       移到文件的最后一行</div><div class="line">gg                      移到文件的第一行</div></pre></td></tr></table></figure>
+<h2 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a>文本操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">:r file             读入文件 file 内容，并插在当前行后</div><div class="line">:nr file            读入文件 file 内容，并插在第 n 行后</div><div class="line">:r !pwd             插入当前路径</div><div class="line"></div><div class="line">yy     复制一行，此命令前可跟数字，标识复制多行，如6yy，表示从当前行开始复制6行</div><div class="line">yw     复制一个字</div><div class="line">y$     复制到行末</div><div class="line"></div><div class="line">]p     有缩进的粘贴，vim会自动调节代码的缩进</div><div class="line"></div><div class="line">格式化全文： gg=G</div></pre></td></tr></table></figure>
+<h2 id="替换与操作"><a href="#替换与操作" class="headerlink" title="替换与操作"></a>替换与操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">:g/text1/s/text2/text3        查找包含 text1 的行，用 text3 替换 text2</div><div class="line">:g/text/command               在所有包含 text 的行运行 command 所表示的命令</div><div class="line">:v/text/command               在所有不包含 text 的行运行 command 所表示的命令</div></pre></td></tr></table></figure>
+<h2 id="保存文本和退出"><a href="#保存文本和退出" class="headerlink" title="保存文本和退出"></a>保存文本和退出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">:w                    保存文件但不退出 vi</div><div class="line">:w file               将修改保存在 file 中但不退出 vi</div><div class="line">:wq 或 ZZ 或 :x        保存文件并退出 vi</div><div class="line">:q!                   不保存文件，退出 vi</div><div class="line">:e!                   放弃所有修改，从上次保存文件开始再编辑</div></pre></td></tr></table></figure>
+<h2 id="vi-中的选项"><a href="#vi-中的选项" class="headerlink" title="vi 中的选项"></a>vi 中的选项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">:set number           显示行数</div><div class="line">:set nonumber         取消显示行数</div></pre></td></tr></table></figure>
+<h2 id="vi-中的-shell-转义命令"><a href="#vi-中的-shell-转义命令" class="headerlink" title="vi 中的 shell 转义命令"></a>vi 中的 shell 转义命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">:!command             执行 shell 的 command 命令，如 :!ls</div><div class="line">:!!                         执行前一个 shell 命令</div><div class="line">:r!command            读取 command 命令的输入并插入，如 :r!ls 会先执行 ls，然后读入内容</div><div class="line">:w!command            将当前已编辑文件作为 command 命令的标准输入并执行 command 命令，如 :w!grep all</div><div class="line">:cd directory         将当前工作目录更改为 directory 所表示的目录</div><div class="line">:sh                   将启动一个子 shell，使用 ^d(ctrl+d) 返回 vi</div><div class="line">:so file              在 shell 程序 file 中读入和执行命令</div></pre></td></tr></table></figure>
 <h2 id="vim-分屏"><a href="#vim-分屏" class="headerlink" title="vim 分屏"></a>vim 分屏</h2>
       
     </div>
@@ -600,7 +606,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -611,7 +617,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -646,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim编辑粘贴代码格式化"><span class="nav-number">1.</span> <span class="nav-text">vim编辑粘贴代码格式化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-分屏"><span class="nav-number">2.</span> <span class="nav-text">vim 分屏</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim编辑粘贴代码格式化"><span class="nav-number">1.</span> <span class="nav-text">vim编辑粘贴代码格式化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动"><span class="nav-number">2.</span> <span class="nav-text">移动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本操作"><span class="nav-number">3.</span> <span class="nav-text">文本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换与操作"><span class="nav-number">4.</span> <span class="nav-text">替换与操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存文本和退出"><span class="nav-number">5.</span> <span class="nav-text">保存文本和退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vi-中的选项"><span class="nav-number">6.</span> <span class="nav-text">vi 中的选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vi-中的-shell-转义命令"><span class="nav-number">7.</span> <span class="nav-text">vi 中的 shell 转义命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-分屏"><span class="nav-number">8.</span> <span class="nav-text">vim 分屏</span></a></li></ol></div>
             
 
           </div>
