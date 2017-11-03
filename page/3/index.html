@@ -421,7 +421,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  422
+                  445
                 </span>
               
 
@@ -462,7 +462,7 @@
           
             <h2 id="PlanTasks"><a href="#PlanTasks" class="headerlink" title="PlanTasks"></a>PlanTasks</h2><p>PlanTasks插件可以在我们的sublime编辑器里记录待办事，很方便，页面也很简单美观。</p>
 <h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="plantask.png" alt="png -w200"></p>
-<h2 id="安装package-control组件"><a href="#安装package-control组件" class="headerlink" title="安装package control组件"></a>安装package control组件</h2><p>Ctrl+ ` 调出console<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &apos;wb&apos;).write(urllib.request.urlopen( &apos;http://sublime.wbond.net/&apos; + pf.replace(&apos; &apos;,&apos;%20&apos;)).read())</div></pre></td></tr></table></figure></p>
+<h2 id="安装package-control组件"><a href="#安装package-control组件" class="headerlink" title="安装package control组件"></a>安装package control组件</h2><p>没有安装过插件的需要先安装package control组件才能安装插件<br>Ctrl+ ` 调出console<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &apos;wb&apos;).write(urllib.request.urlopen( &apos;http://sublime.wbond.net/&apos; + pf.replace(&apos; &apos;,&apos;%20&apos;)).read())</div></pre></td></tr></table></figure></p>
 <h2 id="创建todo文件"><a href="#创建todo文件" class="headerlink" title="创建todo文件"></a>创建todo文件</h2><p>以下类型文件会被识别为todo文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">TODO</div><div class="line">*.todo</div><div class="line">*.todolist</div><div class="line">*.taskpaper</div><div class="line">*.tasks</div></pre></td></tr></table></figure>
 <h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><ol>
