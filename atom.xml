@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codr.top/"/>
-  <updated>2017-10-19T11:19:00.000Z</updated>
+  <updated>2017-11-15T06:17:11.000Z</updated>
   <id>http://www.codr.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git使用记录</title>
+    <link href="http://www.codr.top/2017/11/git%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+    <id>http://www.codr.top/2017/11/git使用记录/</id>
+    <published>2017-11-15T03:27:06.000Z</published>
+    <updated>2017-11-15T06:17:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">工作区 ---&gt;  暂存区 ----&gt;  （历史）本地分支  ---&gt;   远程分支  </div><div class="line">      add         commit                  push</div></pre></td></tr></table></figure><h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">工作区：在电脑里能看到的目录</div><div class="line">版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</div><div class="line">版本库里最重要的就是称为stage（或者叫index）的暂存区，(add操作)，</div><div class="line">还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD，（commit操作）。</div></pre></td></tr></table></figure><h2 id="分支创建与切换"><a href="#分支创建与切换" class="headerlink" title="分支创建与切换"></a>分支创建与切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git checkout -b dev #git checkout命令加上-b参数表示创建并切换</div><div class="line">相当于</div><div class="line">git branch dev #创建分支</div><div class="line">git checkout dev #切换分支</div><div class="line"></div><div class="line">git branch #查看分支</div></pre></td></tr></table></figure><h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d dev</div></pre></td></tr></table></figure><h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>fast-forward 快速合并不产生合并节点，看不出来曾经做过合并<br>no-ff 合并生成合并节点</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git merge dev #git merge命令用于合并指定分支到当前分支</div><div class="line"></div><div class="line">git merge --no-ff -m &quot;merge with no-ff&quot; dev #合并生成合并节点</div></pre></td></tr></table></figure><h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git log #查看日志</div><div class="line">git log --graph --pretty=oneline --abbrev-commit #图形查看日志</div></pre></td></tr></table></figure><h2 id="版本回退和恢复"><a href="#版本回退和恢复" class="headerlink" title="版本回退和恢复"></a>版本回退和恢复</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">回退工作区修改文件</div><div class="line">git checkout -- &lt;file&gt; </div><div class="line"></div><div class="line">回退暂存区修改文件（add操作）</div><div class="line">git reset HEAD &lt;file&gt;</div><div class="line">git checkout -- &lt;file&gt; </div><div class="line"></div><div class="line">回退本地分支修改文件 （add commit操作）</div><div class="line">git reset --hard HEAD^ #git reset HEAD~2</div><div class="line"></div><div class="line">恢复git reflog </div><div class="line">git reflog </div><div class="line">git reset --hard 0a1f420</div></pre></td></tr></table></figure><h2 id="暂时储藏修改"><a href="#暂时储藏修改" class="headerlink" title="暂时储藏修改"></a>暂时储藏修改</h2><p>当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash  #储藏代码</div><div class="line">git stash list #查看列表</div><div class="line">git stash pop #回到工作现场</div></pre></td></tr></table></figure></p><h2 id="Reset、Checkout、Revert-的选择"><a href="#Reset、Checkout、Revert-的选择" class="headerlink" title="Reset、Checkout、Revert 的选择"></a>Reset、Checkout、Revert 的选择</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">reset 将一个分支的末端指向另一个提交。</div><div class="line">--soft – 缓存区和工作目录都不会被改变</div><div class="line">--mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响</div><div class="line">--hard – 缓存区和工作目录都同步到你指定的提交</div><div class="line"></div><div class="line">checkout 除了分支之外，你还可以传入提交的引用来 checkout 到任意的提交。</div><div class="line">git checkout HEAD~2</div><div class="line"></div><div class="line">Revert 撤销一个提交的同时会创建一个新的提交,相比 git reset，它不会改变现在的提交历史。因此，git revert 可以用在公共分支上，git reset 应该用在私有分支上。你也可以把 git revert 当作撤销已经提交的更改，而 git reset HEAD 用来撤销没有提交的更改。</div></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a><br><a href="https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9" target="_blank" rel="external">https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9</a><br><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">https://github.com/geeeeeeeeek/git-recipes/wiki</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;流程&quot;&gt;&lt;a href=&quot;#流程&quot; class=&quot;headerlink&quot; title=&quot;流程&quot;&gt;&lt;/a&gt;流程&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div c
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="http://www.codr.top/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="git" scheme="http://www.codr.top/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux 命令：统计命令</title>
@@ -492,30 +517,6 @@
       <category term="mysql" scheme="http://www.codr.top/tags/mysql/"/>
     
       <category term="sql" scheme="http://www.codr.top/tags/sql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>oh-my-zsh使用</title>
-    <link href="http://www.codr.top/2017/09/oh-my-zsh%E4%BD%BF%E7%94%A8/"/>
-    <id>http://www.codr.top/2017/09/oh-my-zsh使用/</id>
-    <published>2017-09-22T07:15:46.000Z</published>
-    <updated>2017-09-26T04:21:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><p>查看当前的shell</p><blockquote><p>cat /etc/shells</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># List of acceptable shells for chpass(1).</div><div class="line"># Ftpd will not allow users to connect who are not using</div><div class="line"># one of these shells.</div><div class="line"></div><div class="line">/bin/bash</div><div class="line">/bin/csh</div><div class="line">/bin/ksh</div><div class="line">/bin/sh</div><div class="line">/bin/tcsh</div></pre></td></tr></table></figure><h2 id="zsh-安装"><a href="#zsh-安装" class="headerlink" title="zsh 安装"></a>zsh 安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CentOS 安装：sudo yum install -y zsh</div><div class="line">mac 安装：brew install zsh</div></pre></td></tr></table></figure><p>zsh设置成系统默认shell，以代替bash</p><blockquote><p>chsh -s /bin/zsh</p></blockquote><h2 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h2><p>oh-my-zsh 是 zsh 的一个配置工具。<br>安装</p><blockquote><p>wget <a href="https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh</a> -O - | sh</p></blockquote><h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><blockquote><p>vim .zshrc</p></blockquote><p>修改 plugins=(git) 为 plugins=(git autojump)<br>使配置生效 source ~/.zshrc</p><h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>.zshrc 中修改ZSH_THEME=’’</p><h2 id="打开sublime配置"><a href="#打开sublime配置" class="headerlink" title="打开sublime配置"></a>打开sublime配置</h2><blockquote><p>alias st=’open -a “Sublime Text”‘</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;shell&quot;&gt;&lt;a href=&quot;#shell&quot; class=&quot;headerlink&quot; title=&quot;shell&quot;&gt;&lt;/a&gt;shell&lt;/h2&gt;&lt;p&gt;查看当前的shell&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;cat /etc/shells&lt;/p&gt;
-&lt;/block
-      
-    
-    </summary>
-    
     
   </entry>
   
