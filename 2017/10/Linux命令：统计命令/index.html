@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="青松的博客">
 <meta property="og:description" content="一些实用的Linux文本操作命令，包括wc(统计)、cut(切分)、sort(排序)、uniq(去重)、grep(查找)、sed(替换、插入、删除)、awk(文本分析)。 wc(统计)12345# wc [-lwm]选项与参数：-l  ：仅列出行；-w  ：仅列出多少字(英文单字)；-m  ：多少字符； cut(切分)1234567891011cut  [-bn] [file] 或 cut [-c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T11:19:00.000Z">
+<meta property="og:updated_time" content="2018-01-11T07:54:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 命令：统计命令">
 <meta name="twitter:description" content="一些实用的Linux文本操作命令，包括wc(统计)、cut(切分)、sort(排序)、uniq(去重)、grep(查找)、sed(替换、插入、删除)、awk(文本分析)。 wc(统计)12345# wc [-lwm]选项与参数：-l  ：仅列出行；-w  ：仅列出多少字(英文单字)；-m  ：多少字符； cut(切分)1234567891011cut  [-bn] [file] 或 cut [-c">
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,654
+                  1,819
                 </span>
               
 
@@ -440,7 +440,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  6
+                  7
                 </span>
               
             </div>
@@ -468,6 +468,9 @@
 <h2 id="uniq-去重"><a href="#uniq-去重" class="headerlink" title="uniq(去重)"></a>uniq(去重)</h2><p>uniq命令可以去除排序过的文件中的重复行，因此uniq经常和sort合用。也就是说，为了使uniq起作用，所有的重复行必须是相邻的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># uniq [-icu]</div><div class="line">选项与参数：</div><div class="line">-i   ：忽略大小写字符的不同；</div><div class="line">-c  ：进行计数</div><div class="line">-u  ：只显示唯一的行</div></pre></td></tr></table></figure></p>
 <h2 id="grep-查找"><a href="#grep-查找" class="headerlink" title="grep(查找)"></a>grep(查找)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。</div><div class="line"></div><div class="line">grep [options]</div><div class="line">　　主要参数</div><div class="line">　　[options]主要参数：</div><div class="line">　　－c：只输出匹配行的计数。</div><div class="line">　　－I：不区分大 小写(只适用于单字符)。</div><div class="line">　　－h：查询多文件时不显示文件名。</div><div class="line">　　－l：查询多文件时只输出包含匹配字符的文件名。</div><div class="line">　　－n：显示匹配行及 行号。</div><div class="line">　　－s：不显示不存在或无匹配文本的错误信息。</div><div class="line">　　－v：显示不包含匹配文本的所有行。</div><div class="line">    -E：使用正则</div><div class="line">　　pattern正则表达式主要参数：</div><div class="line">　　\： 忽略正则表达式中特殊字符的原有含义。</div><div class="line">　　^：匹配正则表达式的开始行。</div><div class="line">　　$: 匹配正则表达式的结束行。</div><div class="line">　　\&lt;：从匹配正则表达 式的行开始。</div><div class="line">　　\&gt;：到匹配正则表达式的行结束。</div><div class="line">　　[ ]：单个字符，如[A]即A符合要求 。</div><div class="line">　　[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。</div><div class="line">　　。：所有的单个字符。</div><div class="line">　　* ：有字符，长度可以为0。</div></pre></td></tr></table></figure>
 <h2 id="sed-替换、插入、删除"><a href="#sed-替换、插入、删除" class="headerlink" title="sed(替换、插入、删除)"></a>sed(替换、插入、删除)</h2><p>sed是一个很好的文件处理工具，本身是一个管道命令，主要是以行为单位进行处理，可以将数据行进行替换、删除、新增、选取等特定工作，下面先了解一下sed的用法。sed命令行格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">sed [-nefri] ‘command’ 输入文本 </div><div class="line">　　常用选项：</div><div class="line">　　  -n∶使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。</div><div class="line">        -e∶直接在指令列模式上进行 sed 的动作编辑；</div><div class="line">        -f∶直接将 sed 的动作写在一个档案内， -f filename 则可以执行 filename 内的sed 动作；</div><div class="line">        -r∶sed 的动作支援的是延伸型正规表示法的语法。(预设是基础正规表示法语法)</div><div class="line">        -i∶直接修改读取的档案内容，而不是由萤幕输出。       </div><div class="line"></div><div class="line">　　常用命令：</div><div class="line">        a   ∶新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～</div><div class="line">        c   ∶取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！</div><div class="line">        d   ∶删除，因为是删除啊，所以 d 后面通常不接任何咚咚；</div><div class="line">　　   i   ∶插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；</div><div class="line">　　  p  ∶列印，亦即将某个选择的资料印出。通常 p 会与参数 sed -n 一起运作～</div><div class="line">　　  s  ∶取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！</div></pre></td></tr></table></figure></p>
+<h3 id="sed-提取匹配的字符串内容"><a href="#sed-提取匹配的字符串内容" class="headerlink" title="sed 提取匹配的字符串内容"></a>sed 提取匹配的字符串内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># STR=&quot;MAIL FROM(CCC) TO(DDD)&quot;</div><div class="line"># echo $STR | sed &apos;s/^.*FROM(\(.*\)).*TO(\(.*\)).*$/\1-\2/g&apos;</div><div class="line">CCC-DDD</div></pre></td></tr></table></figure>
+<p>s表示替换，组匹配信息(.*),第一个为\1,第二个\2以此类推</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&quot;09/Jan/2018:00:02:58 +0800&quot;,&quot;210.22.172.146&quot;,&quot;-&quot;,&quot;-&quot;,&quot;-&quot;,&quot;api.fastschool.cn&quot;,&quot;ded92c009aaa4582a6cf9b644fa62aa6&quot;,&quot;GET /clog/a.gif?action=FS_UploadLog&amp;clientIp=%28null%29&amp;clientVersion=3.8.7&amp;debugInfo=20180108__NumOfLine_117_&amp;logType=debug&amp;logVersion=1.0&amp;netType=wifi&amp;osName=iPad&amp;osVersion=10.3&amp;platform=iOS&amp;tag=FSUploadLog&amp;ts=2018-01-09%2000%3A02%3A56.784&amp;userLid=a91e0cffbe474635b8ec4861a58b1a97&amp;userToken=ded92c009aaa4582a6cf9b644fa62aa6&amp;wifiName=TP-LINK_BF2AF0 HTTP/1.1&quot;,&quot;-&quot;,&quot;-&quot;,&quot;prod:stu_cli, channel:AppStore, os:iOS, osVer:10.3.3, mobile:iPad, vName:3.8.7, env:RE&quot;,&quot;200&quot;,&quot;0.000&quot;,&quot;0&quot;,&quot;-&quot;,&quot;-&quot;,&quot;*/*&quot;,&quot;nginx-111&quot;,&quot;-&quot;</div><div class="line"></div><div class="line"># less loginfo.txt |awk -F&apos;&quot;,&quot;&apos; &apos;&#123;print $8&#125;&apos; |sed &apos;s/^.*\(action=[a-zA-Z_]*\).*\(platform=[a-zA-Z_]*\).*$/\1  \2/g&apos;</div><div class="line"></div><div class="line">action=FS_StartUploadLog_ToCOS  platform=iOS</div></pre></td></tr></table></figure>
 <h2 id="awk-文本分析"><a href="#awk-文本分析" class="headerlink" title="awk(文本分析)"></a>awk(文本分析)</h2><p>awk是一个强大的文本分析工具，相对于grep的查找，sed的编辑，awk在其对数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;&#123;pattern + action&#125;&apos; &#123;filenames&#125;</div></pre></td></tr></table></figure></p>
 <p>尽管操作可能会很复杂，但语法总是这样，其中 pattern 表示 AWK 在数据中查找的内容，而 action 是在找到匹配内容时所执行的一系列命令。花括号（{}）不需要在程序中始终出现，但它们用于根据特定的模式对一系列指令进行分组。 pattern就是要表示的正则表达式，用斜杠括起来。</p>
 <p>　　awk语言的最基本功能是在文件或者字符串中基于指定规则浏览和抽取信息，awk抽取信息后，才能进行其他文本操作。完整的awk脚本通常用来格式化文本文件中的信息。</p>
@@ -644,7 +647,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -708,7 +711,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#wc-统计"><span class="nav-number">1.</span> <span class="nav-text">wc(统计)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cut-切分"><span class="nav-number">2.</span> <span class="nav-text">cut(切分)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort-排序"><span class="nav-number">3.</span> <span class="nav-text">sort(排序)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uniq-去重"><span class="nav-number">4.</span> <span class="nav-text">uniq(去重)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep-查找"><span class="nav-number">5.</span> <span class="nav-text">grep(查找)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sed-替换、插入、删除"><span class="nav-number">6.</span> <span class="nav-text">sed(替换、插入、删除)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk-文本分析"><span class="nav-number">7.</span> <span class="nav-text">awk(文本分析)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#wc-统计"><span class="nav-number">1.</span> <span class="nav-text">wc(统计)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cut-切分"><span class="nav-number">2.</span> <span class="nav-text">cut(切分)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort-排序"><span class="nav-number">3.</span> <span class="nav-text">sort(排序)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uniq-去重"><span class="nav-number">4.</span> <span class="nav-text">uniq(去重)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep-查找"><span class="nav-number">5.</span> <span class="nav-text">grep(查找)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sed-替换、插入、删除"><span class="nav-number">6.</span> <span class="nav-text">sed(替换、插入、删除)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sed-提取匹配的字符串内容"><span class="nav-number">6.1.</span> <span class="nav-text">sed 提取匹配的字符串内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk-文本分析"><span class="nav-number">7.</span> <span class="nav-text">awk(文本分析)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -733,7 +736,7 @@
 <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

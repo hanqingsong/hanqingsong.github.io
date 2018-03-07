@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="青松的博客">
 <meta property="og:description" content="tmuxtmux是linux中一种管理窗口的程序。tmux提供了一个窗体组随时存储和恢复的功能。 tmux的基本概念tmux是一个终端复用器(terminal multiplexer).tmux有三个概念：会话(Session)，窗口(Window)，面板(Pane)。当你输入tmux后, tmux实际做的事是首先创建一个会话(Session), 然后在这个会话中创建一个窗口, 你可以继续创建多个">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T06:15:34.000Z">
+<meta property="og:updated_time" content="2017-11-22T01:53:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tmux使用">
 <meta name="twitter:description" content="tmuxtmux是linux中一种管理窗口的程序。tmux提供了一个窗体组随时存储和恢复的功能。 tmux的基本概念tmux是一个终端复用器(terminal multiplexer).tmux有三个概念：会话(Session)，窗口(Window)，面板(Pane)。当你输入tmux后, tmux实际做的事是首先创建一个会话(Session), 然后在这个会话中创建一个窗口, 你可以继续创建多个">
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  858
+                  897
                 </span>
               
 
@@ -510,6 +510,7 @@
 <h2 id="设置鼠标"><a href="#设置鼠标" class="headerlink" title="设置鼠标"></a>设置鼠标</h2><p>C-b : 进入命令行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setw mode-mouse on #单个窗口启用鼠标滚轮来卷动窗口内容</div><div class="line"></div><div class="line">setw -g mode-mouse on #所有窗口启用鼠标滚轮来卷动窗口内容</div></pre></td></tr></table></figure>
 <p>或者在配置文件里设置~/.tmux.conf：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">setw -g mouse-resize-pane on #开启用鼠标拖动调节pane的大小</div><div class="line">setw -g mouse-select-pane on #开启用鼠标点击pane来激活该pane</div><div class="line">setw -g mouse-select-window on #开启用鼠标点击来切换活动window 状态栏的窗口名称</div><div class="line">setw -g mode-mouse on #开启所有窗口启用鼠标滚轮来卷动窗口内容</div></pre></td></tr></table></figure></p>
+<p>新版本设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set-option -g mouse on</div><div class="line"># 将window的起始设置为1</div><div class="line"> set -g base-index 1</div><div class="line"># 将pane的起始下标设为1</div><div class="line"> set -g pane-base-index 1</div></pre></td></tr></table></figure></p>
 <p>配置之后进入命令行，输入 tmux source  ~/.tmux.conf，使配置生效。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://cenalulu.github.io/linux/tmux/" target="_blank" rel="external">http://cenalulu.github.io/linux/tmux/</a><br><a href="http://guoqiao.me/post/2016/tmux" target="_blank" rel="external">http://guoqiao.me/post/2016/tmux</a></p>
 
@@ -683,7 +684,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -772,7 +773,7 @@
 <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
