@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codr.top/"/>
-  <updated>2018-03-07T06:37:45.000Z</updated>
+  <updated>2018-03-07T06:45:48.000Z</updated>
   <id>http://www.codr.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>joda-time工具类</title>
+    <link href="http://www.codr.top/2017/12/joda-time%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    <id>http://www.codr.top/2017/12/joda-time工具类/</id>
+    <published>2017-12-04T01:38:00.000Z</published>
+    <updated>2018-03-07T06:45:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<!-- MarkdownTOC --><ul><li><a href="#%E6%95%B0%E6%8D%AE%E5%88%9D%E5%A7%8B%E5%8C%96">数据初始化</a></li><li><a href="#%E6%97%A5%E6%9C%9F%E5%B7%AE">日期差</a></li><li><a href="#%E6%A0%BC%E5%BC%8F%E5%8C%96">格式化</a></li><li><a href="#%E6%97%A5%E6%9C%9F%E8%AE%A1%E7%AE%97-plusminus">日期计算 plus/minus</a></li><li><a href="#%E6%97%B6%E9%97%B4%E6%AF%94%E8%BE%83-isbeforeisafter">时间比较 isBefore/isAfter</a></li><li><a href="#%E5%AE%98%E7%BD%91">官网</a></li></ul><!-- /MarkdownTOC --><h2 id="数据初始化"><a href="#数据初始化" class="headerlink" title="数据初始化"></a>数据初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DateTime dateTimeNow = new DateTime();</div><div class="line">DateTime dateTimeNow = new DateTime(date);//java日期转DateTime</div><div class="line">DateTime recent = DateTime.parse(&quot;2017-05-18 17:40:00&quot;, DateTimeFormat.forPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;)); //字符串转日期</div><div class="line">DateTime dateTime2 = new DateTime(2017,2,14,0,0,0);//年月日时分秒</div><div class="line">DateTime dateTime = DateTimeFormat.forPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;).parseDateTime(&quot;2016-06-03 23:59:59&quot;);</div></pre></td></tr></table></figure><h2 id="日期差"><a href="#日期差" class="headerlink" title="日期差"></a>日期差</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">DateTime dt1 = new DateTime();</div><div class="line">DateTime dt2 = new DateTime().plus();</div><div class="line">System.out.print(&quot;时间相差：&quot;);</div><div class="line">System.out.print(Days.daysBetween(dt1, dt2).getDays() + &quot; 天 &quot;);</div><div class="line">System.out.print(Hours.hoursBetween(dt1, dt2).getHours() % 24 + &quot; 小时 &quot;);</div><div class="line">System.out.print(Minutes.minutesBetween(dt1, dt2).getMinutes() % 60 + &quot; 分钟 &quot;);</div><div class="line">System.out.print(Seconds.secondsBetween(dt1, dt2).getSeconds() % 60+ &quot; 秒.&quot;);</div></pre></td></tr></table></figure><h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String s = new DateTime().toString(DateTimeFormat.forPattern(&quot;yyyy-MM-dd&quot;));</div><div class="line">String s2 = new DateTime().toString(&quot;yyyy-MM-dd&quot;)</div></pre></td></tr></table></figure><h2 id="日期计算-plus-minus"><a href="#日期计算-plus-minus" class="headerlink" title="日期计算 plus/minus"></a>日期计算 plus/minus</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DateTime now = new DateTime();//当前时间</div><div class="line">DateTime tomorrowDt = now.plusDays(1);//明天</div><div class="line"></div><div class="line">int days = Days.daysBetween(now, tomorrowDt).getDays();</div><div class="line">System.out.println(days);//1</div></pre></td></tr></table></figure><h2 id="时间比较-isBefore-isAfter"><a href="#时间比较-isBefore-isAfter" class="headerlink" title="时间比较 isBefore/isAfter"></a>时间比较 isBefore/isAfter</h2><p>时间轴</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">现在 isbefore 明天 true</div><div class="line">boolean before = new DateTime().isBefore(new DateTime().plus(1));</div></pre></td></tr></table></figure><p>##官网<br><a href="http://www.joda.org/joda-time/userguide.html" target="_blank" rel="external">http://www.joda.org/joda-time/userguide.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- MarkdownTOC --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E6%95%B0%E6%8D%AE%E5%88%9D%E5%A7%8B%E5%8C%96&quot;&gt;数据初始化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E6%97%A5%E6%9C%9F%E5%B7
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://www.codr.top/categories/java/"/>
+    
+    
+      <category term="joda" scheme="http://www.codr.top/tags/joda/"/>
+    
+      <category term="java" scheme="http://www.codr.top/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>git使用记录</title>
@@ -38,6 +68,119 @@
     
     
       <category term="git" scheme="http://www.codr.top/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux命令常用记录</title>
+    <link href="http://www.codr.top/2017/10/Linux%E5%91%BD%E4%BB%A4%E5%B8%B8%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+    <id>http://www.codr.top/2017/10/Linux命令常用记录/</id>
+    <published>2017-10-25T06:40:06.000Z</published>
+    <updated>2018-03-07T06:48:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>创建多级文件夹 mkdir -p test1/test2/test3</li><li>修改权限包含子目录 chown -R </li><li>创建软连接 ln [参数][源文件或目录][目标文件或目录] ln -s xx.log xxf.log</li><li>递归拷贝这些及其子文件夹下的文件 cp -ri</li><li>查看文件夹下文件大小 du -h –max-depth=1 /mydata/ </li><li>清屏 clear</li><li>查看shell cat /etc/shells</li><li>查看使用的shell echo $SHELL</li><li>查看本地端口 netstat -ntlp</li><li></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;创建多级文件夹 mkdir -p test1/test2/test3&lt;/li&gt;
+&lt;li&gt;修改权限包含子目录 chown -R &lt;/li&gt;
+&lt;li&gt;创建软连接 ln [参数][源文件或目录][目标文件或目录] ln -s xx.log xxf.log&lt;/li&gt;
+&lt;
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
+    
+    
+      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux命令:Http请求get和post</title>
+    <link href="http://www.codr.top/2017/10/Linux%E5%91%BD%E4%BB%A4-Http%E8%AF%B7%E6%B1%82get%E5%92%8Cpost/"/>
+    <id>http://www.codr.top/2017/10/Linux命令-Http请求get和post/</id>
+    <published>2017-10-24T11:40:19.000Z</published>
+    <updated>2018-03-07T06:46:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、get请求："><a href="#一、get请求：" class="headerlink" title="一、get请求："></a>一、get请求：</h2><p>　　1、使用curl命令：<br>　　curl “<a href="http://www.baidu.com”" target="_blank" rel="external">http://www.baidu.com”</a> 如果这里的URL指向的是一个文件或者一幅图都可以直接下载到本地<br>　　curl -i “<a href="http://www.baidu.com”" target="_blank" rel="external">http://www.baidu.com”</a> 显示全部信息<br>　　curl -l “<a href="http://www.baidu.com”" target="_blank" rel="external">http://www.baidu.com”</a> 只显示头部信息<br>　　curl -v “<a href="http://www.baidu.com”" target="_blank" rel="external">http://www.baidu.com”</a> 显示get请求全过程解析<br>　　2、使用wget命令：<br>　　wget “<a href="http://www.baidu.com”也可以" target="_blank" rel="external">http://www.baidu.com”也可以</a></p><h2 id="二、post请求"><a href="#二、post请求" class="headerlink" title="二、post请求"></a>二、post请求</h2><p>　　1、使用curl命令（通过-d参数，把访问参数放在里面）：<br>　　curl -d “param1=value1¶m2=value2” “<a href="http://www.baidu.com”" target="_blank" rel="external">http://www.baidu.com”</a><br>　　2、使用wget命令：（–post-data参数来实现）<br>　　wget –post-data ‘user=foo&amp;password=bar’ <a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a><br>　　以上就是Linux模拟Http的get或post请求的方法了，这样一来Linux系统也能向远程服务器发送消息了。  </p><pre><code>示例：wget --post-data=&quot;&quot;  http://mcs-inner.99bill.com/mcs-gateway/mcs/task/clear</code></pre><h2 id="三、curl-可直接发送格式化请求例如json"><a href="#三、curl-可直接发送格式化请求例如json" class="headerlink" title="三、curl (可直接发送格式化请求例如json)"></a>三、curl (可直接发送格式化请求例如json)</h2><pre><code>示例：目标url:http://fsc-inner.99bill.com/acs/deposit/{srcRef}命令：curl -H &quot;Content-type: application/json&quot; -X POST -d &apos;{&quot;srcRef&quot;:&quot;1002&quot;}&apos;http://fsc-inner.99bill.com/acs/deposit/1002</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://blog.csdn.net/ai2000ai/article/details/56290142" target="_blank" rel="external">http://blog.csdn.net/ai2000ai/article/details/56290142</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;一、get请求：&quot;&gt;&lt;a href=&quot;#一、get请求：&quot; class=&quot;headerlink&quot; title=&quot;一、get请求：&quot;&gt;&lt;/a&gt;一、get请求：&lt;/h2&gt;&lt;p&gt;　　1、使用curl命令：&lt;br&gt;　　curl “&lt;a href=&quot;http://www.b
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
+    
+    
+      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>升级jdk1.8报错：sun.security.validator.ValidatorException: Certificate signature algorithm disabled</title>
+    <link href="http://www.codr.top/2017/10/%E5%8D%87%E7%BA%A7jdk1-8%E6%8A%A5%E9%94%99%EF%BC%9Asun-security-validator-ValidatorException-Certificate-signature/"/>
+    <id>http://www.codr.top/2017/10/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/</id>
+    <published>2017-10-24T06:09:20.000Z</published>
+    <updated>2018-03-07T06:48:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="升级jdk1-8项目出错"><a href="#升级jdk1-8项目出错" class="headerlink" title="升级jdk1.8项目出错"></a>升级jdk1.8项目出错</h3><p>sun.security.validator.ValidatorException: Certificate signature algorithm disabled</p><p>报错原因是JDK8对SSL证书的算法安全要求提高，可以对比下7和8的区别<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">less /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;</div><div class="line">jdk.certpath.disabledAlgorithms=MD2, RSA keySize &lt; 1024</div><div class="line">jdk.tls.disabledAlgorithms=SSLv3</div><div class="line"></div><div class="line">less /Library/Java/JavaVirtualMachines/jdk1.8.0_*/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;</div><div class="line">jdk.certpath.disabledAlgorithms=MD2, MD5, SHA1 jdkCA &amp; usage TLSServer, \</div><div class="line">jdk.jar.disabledAlgorithms=MD2, MD5, RSA keySize &lt; 1024</div><div class="line">jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize &lt; 768, \</div></pre></td></tr></table></figure></p><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol><li>简单做法是直接注释掉jdk.certpath.disabledAlgorithms</li><li>继承新的抽象类：X509ExtendedTrustManager<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">In the Java SE 7 release, the X509ExtendedTrustManager class is an abstract implementation of the X509TrustManager interface. It adds methods for connection-sensitive trust management. In addition, it enables endpoint verification at the TLS layer.</div><div class="line">...</div><div class="line">Besides TLS 1.2 support, the X509ExtendedTrustManager class also support algorithm constraints and SSL layer hostname verification.</div></pre></td></tr></table></figure></li></ol><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.cnblogs.com/flyingeagle/articles/7508207.html" target="_blank" rel="external">http://www.cnblogs.com/flyingeagle/articles/7508207.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;升级jdk1-8项目出错&quot;&gt;&lt;a href=&quot;#升级jdk1-8项目出错&quot; class=&quot;headerlink&quot; title=&quot;升级jdk1.8项目出错&quot;&gt;&lt;/a&gt;升级jdk1.8项目出错&lt;/h3&gt;&lt;p&gt;sun.security.validator.Validat
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://www.codr.top/categories/java/"/>
+    
+    
+      <category term="jdk" scheme="http://www.codr.top/tags/jdk/"/>
+    
+      <category term="问题" scheme="http://www.codr.top/tags/%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EFK-从零搭建日志系统</title>
+    <link href="http://www.codr.top/2017/10/EFK-%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://www.codr.top/2017/10/EFK-从零搭建日志系统/</id>
+    <published>2017-10-19T10:57:32.000Z</published>
+    <updated>2018-03-07T06:47:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>日志需要包含字段：</p><ol><li>time</li><li>level</li><li>app_id</li><li>instance_id<br>日志从产生到消费，主要经历以下几个阶段：采集-&gt;传输-&gt;切分-&gt;检索。</li></ol><h2 id="区分实例-instance-id"><a href="#区分实例-instance-id" class="headerlink" title="区分实例 instance_id"></a>区分实例 instance_id</h2><p>通过设置filebeat</p><h2 id="系统搭建"><a href="#系统搭建" class="headerlink" title="系统搭建"></a>系统搭建</h2><h3 id="Filebeat-安装"><a href="#Filebeat-安装" class="headerlink" title="Filebeat 安装"></a>Filebeat 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.0.2-x86_64.rpm</div><div class="line">rpm -vi filebeat-5.0.2-x86_64.rpm</div><div class="line"></div><div class="line">vim /etc/filebeat/filebeat.yml</div><div class="line">修改 output.elasticsearch hosts </div><div class="line">添加模板</div><div class="line">output.elasticsearch:</div><div class="line">  hosts: [&quot;localhost:9200&quot;]</div><div class="line">  template.name: &quot;filebeat&quot;</div><div class="line">  template.path: &quot;filebeat.template.json&quot;</div><div class="line">  template.overwrite: false</div><div class="line">启动</div><div class="line">/etc/init.d/filebeat start</div><div class="line">service filebeat start</div></pre></td></tr></table></figure><h3 id="elasticsearch-安装"><a href="#elasticsearch-安装" class="headerlink" title="elasticsearch 安装"></a>elasticsearch 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.rpm</div><div class="line">sha1sum elasticsearch-5.6.3.rpm </div><div class="line">sudo rpm --install elasticsearch-5.6.3.rpm</div><div class="line"></div><div class="line">### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using chkconfig</div><div class="line"> sudo chkconfig --add elasticsearch</div><div class="line">### You can start elasticsearch service by executing</div><div class="line"> sudo service elasticsearch start</div><div class="line"></div><div class="line">service elasticsearch start</div></pre></td></tr></table></figure><p>启动异常：Starting elasticsearch: Elasticsearch requires at least Java 8 but your Java version from /usr/bin/java does not meet this requirement 原因是java8安装，java版本管理工具没有更改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ll /usr/bin/java</div><div class="line">/usr/bin/java -&gt; /etc/alternatives/java</div><div class="line"></div><div class="line">update-alternatives --config java</div><div class="line"></div><div class="line">update-alternatives --install /usr/bin/java java /usr/local/java/jdk/jdk1.8.0_112/bin/java 300</div><div class="line">update-alternatives --install /usr/bin/javac javac /usr/local/java/jdk/jdk1.8.0_112/bin/javac 300</div></pre></td></tr></table></figure></p><p>验证是否成功 curl <a href="http://localhost:9200/" target="_blank" rel="external">http://localhost:9200/</a></p><h3 id="安装Kibana"><a href="#安装Kibana" class="headerlink" title="安装Kibana"></a>安装Kibana</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">wget https://artifacts.elastic.co/downloads/kibana/kibana-5.6.3-i686.rpm</div><div class="line">sha1sum kibana-5.6.3-i686.rpm </div><div class="line">sudo rpm --install kibana-5.6.3-i686.rpm</div><div class="line"></div><div class="line">service kibana start</div><div class="line">service kibana stop</div><div class="line"></div><div class="line">访问 http://localhost:5601</div></pre></td></tr></table></figure><h3 id="修改日志收集路径"><a href="#修改日志收集路径" class="headerlink" title="修改日志收集路径"></a>修改日志收集路径</h3><p>vim /etc/elasticsearch/elasticsearch.yml<br>设置<br>path.data: /mydata/elk/elasticsearch/data<br>path.logs: /mydata/elk/elasticsearch/logs<br>如果重启会报错<br>detected index data in default.path.data [/var/lib/elasticsearch/nodes/0/indices] where there should not be any<br>需要把/var/lib/elasticsearch/下的文件夹移动到/mydata/elk/elasticsearch/下，<em>删除</em>/var/lib/elasticsearch/</p><h3 id="kibana使用"><a href="#kibana使用" class="headerlink" title="kibana使用"></a>kibana使用</h3><h4 id="Lucene-query-syntax"><a href="#Lucene-query-syntax" class="headerlink" title="Lucene query syntax"></a>Lucene query syntax</h4><ul><li>简单的文本搜索，直接输入文本字符串。比如，如果你在搜索网站服务器日志，你可以输入 safari 来搜索各字段中的 safari 单词。</li><li>要搜索特定字段中的值，则在值前加上字段名。比如，你可以输入 status:200 来限制搜索结果都是在 status 字段里有 200 内容。</li><li>要搜索一个值的范围，你可以用范围查询语法，[START_VALUE TO END_VALUE]。比如，要查找 4xx 的状态码，你可以输入 status:[400 TO 499]。</li><li>要指定更复杂的搜索标准，你可以用布尔操作符 AND, OR, 和 NOT。比如，要查找 4xx 的状态码，还是 php 或 html 结尾的数据，你可以输入 status:[400 TO 499] AND (extension:php OR extension:html)。</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEg" target="_blank" rel="external">https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEg</a><br>ELKstack 中文指南：<a href="https://kibana.logstash.es/content/kibana/v5/discover.html" target="_blank" rel="external">https://kibana.logstash.es/content/kibana/v5/discover.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot; class=&quot;headerlink&quot; title=&quot;分析&quot;&gt;&lt;/a&gt;分析&lt;/h2&gt;&lt;p&gt;日志需要包含字段：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;time&lt;/li&gt;
+&lt;li&gt;level&lt;/li&gt;
+&lt;li&gt;app_id&lt;/li&gt;
+&lt;li&gt;in
+      
+    
+    </summary>
+    
+      <category term="ELK" scheme="http://www.codr.top/categories/ELK/"/>
+    
+    
+      <category term="日志系统" scheme="http://www.codr.top/tags/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="ELK" scheme="http://www.codr.top/tags/ELK/"/>
     
   </entry>
   
@@ -110,6 +253,31 @@
         &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;tar命令&lt;br&gt;　　解包：tar zxvf FileName.tar&lt;br&gt; 解包到指定文件夹：tar zxvf FileName.tar -C dirname&lt;br&gt;　　打包：tar czvf FileName.tar DirName&lt;/p&gt;
 &lt;/li
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
+    
+    
+      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 命令：统计分析日志</title>
+    <link href="http://www.codr.top/2017/10/Linux-%E5%91%BD%E4%BB%A4%EF%BC%9A%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%97%A5%E5%BF%97/"/>
+    <id>http://www.codr.top/2017/10/Linux-命令：统计分析日志/</id>
+    <published>2017-10-14T01:45:11.000Z</published>
+    <updated>2018-03-07T06:47:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>liunx服务器上生成的日志文件进行分析，文件格式如下：<br>id               time<br>1001,2011-08-19 00:00:00<br>1002,2011-08-19 01:00:00<br>1001,2011-08-19 02:00:00<br>1003,2011-08-19 03:00:00</p><h2 id="linux命令如下："><a href="#linux命令如下：" class="headerlink" title="linux命令如下："></a>linux命令如下：</h2><p>排重后id个数</p><pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | wc -l</code></pre><p>按id出现次数排序</p><pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | sort -k 1 -n -r | wc -l</code></pre><p>将结果导入文件</p><pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | sort -k 1 -n -r | wc -l &gt; result.txt</code></pre><h2 id="命令解析："><a href="#命令解析：" class="headerlink" title="命令解析："></a>命令解析：</h2><p>sort：表示前面输入的结果文件中的内容进行排序。sort命令是对于每一行的内容根据字典序（ASCII码）进行排序，这样可以保证重复的记录时相邻的。</p><p>awk ‘{print $1}’ ：日志记录中的第一个字段。</p><p>uniq –c：表示合并相邻的重复记录，并统计重复数。因为uniq -c 只会合并相邻的记录，所以在使用该命令之前需要先排序。</p><p>sort –k 1 -n -r|wc –l：经过uniq -c 处理之后的数据格式形如”2 data”，第一个字段是数字，表示重复的记录数；第二个字段为记录的内容。我们将对此内容进行排序。<br>sort -k 1表示对于每行的第一个字段进行排序，这里即指代表重复记录数的那个字段。因为sort命令的默认排序是按照ASCII，这就会导致按从大到小进行排序时，数值2会排在数值11的前面，所以需要使用-n 参数指定sort命令按照数值大小进行排序。-r 表示逆序，即按照从大到小的顺序进行排序。</p><p>wc命令</p><p>wc命令的功能为统计指定文件中的字节数、字数、行数, 并将统计结果显示输出。</p><p>语法：wc [选项] 文件…</p><p>说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。</p><p>该命令各选项含义如下：</p><p>　　- c 统计字节数。</p><p>　　- l 统计行数。</p><p>　　- w 统计字数</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/" target="_blank" rel="external">http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;liunx服务器上生成的日志文件进行分析，文件格式如下：&lt;br&gt;id               time&lt;br&gt;1001,2011-08-19 00:00:00&lt;br&gt;1002,2011-08-19 01:00:00&lt;br&gt;1001,2011-08-19 02:00:00
       
     
     </summary>
@@ -368,155 +536,6 @@
     
     
       <category term="jvm" scheme="http://www.codr.top/tags/jvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Netty 学习</title>
-    <link href="http://www.codr.top/2017/10/Netty-%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://www.codr.top/2017/10/Netty-学习/</id>
-    <published>2017-10-08T14:09:28.000Z</published>
-    <updated>2017-10-08T14:09:28.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>idea初始化设置</title>
-    <link href="http://www.codr.top/2017/09/idea%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E7%BD%AE/"/>
-    <id>http://www.codr.top/2017/09/idea初始化设置/</id>
-    <published>2017-09-28T01:25:40.000Z</published>
-    <updated>2017-10-10T06:22:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="编程字体设置"><a href="#编程字体设置" class="headerlink" title="编程字体设置"></a>编程字体设置</h2><p>根据个人喜好选择喜欢的编程字体<br>editor–&gt;font–&gt;font<br>选用 Monospace 14字体，行距1.1（个人喜欢）<br>或选用 Courier new 15字体，行距1.</p><h2 id="去除大小写敏感"><a href="#去除大小写敏感" class="headerlink" title="去除大小写敏感"></a>去除大小写敏感</h2><p> Editor –&gt; Code Completion，设置Case sensitive completion为none。</p><h2 id="显示行号"><a href="#显示行号" class="headerlink" title="显示行号"></a>显示行号</h2><p>Editor -&gt; General -&gt; Appearance，勾选show line numbers。</p><h2 id="设置编辑器和控制台的字体"><a href="#设置编辑器和控制台的字体" class="headerlink" title="设置编辑器和控制台的字体"></a>设置编辑器和控制台的字体</h2><p>Appearence–&gt;override default fonts by<br>设置为<br>consolas<br>Courier</p><h2 id="修改文件默认签名"><a href="#修改文件默认签名" class="headerlink" title="修改文件默认签名"></a>修改文件默认签名</h2><p>Editor-&gt;File and Code Templates-&gt;Includes-&gt;File Header</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/** </div><div class="line"> * Created by $&#123;USER&#125; on $&#123;DATE&#125;. </div><div class="line"> */</div></pre></td></tr></table></figure><h2 id="添加自定义代码补全Live-Templates"><a href="#添加自定义代码补全Live-Templates" class="headerlink" title="添加自定义代码补全Live Templates"></a>添加自定义代码补全Live Templates</h2><p>Editor -&gt; Live Templates</p><h2 id="设置护眼色"><a href="#设置护眼色" class="headerlink" title="设置护眼色"></a>设置护眼色</h2><p>Editor-&gt; Color Scheme<br>background 设置为 C7EDCC</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;编程字体设置&quot;&gt;&lt;a href=&quot;#编程字体设置&quot; class=&quot;headerlink&quot; title=&quot;编程字体设置&quot;&gt;&lt;/a&gt;编程字体设置&lt;/h2&gt;&lt;p&gt;根据个人喜好选择喜欢的编程字体&lt;br&gt;editor–&amp;gt;font–&amp;gt;font&lt;br&gt;选用 Mono
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="http://www.codr.top/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="idea" scheme="http://www.codr.top/tags/idea/"/>
-    
-      <category term="工具" scheme="http://www.codr.top/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mac 安装java9</title>
-    <link href="http://www.codr.top/2017/09/mac-%E5%AE%89%E8%A3%85java9/"/>
-    <id>http://www.codr.top/2017/09/mac-安装java9/</id>
-    <published>2017-09-27T01:51:38.000Z</published>
-    <updated>2017-10-08T14:02:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="官网下载"><a href="#官网下载" class="headerlink" title="官网下载"></a>官网下载</h2><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html" target="_blank" rel="external">jdk9官网地址</a></p><h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><p>mac环境修改配置文件<br>vim .bash_profile</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/</div><div class="line">export PATH=$PATH:$JAVA_HOME/bin</div></pre></td></tr></table></figure><p>使配置文件生效<br>source .bash_profile</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;官网下载&quot;&gt;&lt;a href=&quot;#官网下载&quot; class=&quot;headerlink&quot; title=&quot;官网下载&quot;&gt;&lt;/a&gt;官网下载&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/downloa
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://www.codr.top/categories/java/"/>
-    
-    
-      <category term="java" scheme="http://www.codr.top/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jenkins 入门使用</title>
-    <link href="http://www.codr.top/2017/09/Jenkins-%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/"/>
-    <id>http://www.codr.top/2017/09/Jenkins-入门使用/</id>
-    <published>2017-09-26T07:19:13.000Z</published>
-    <updated>2017-10-13T12:15:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>官网下载 jenkins.war<br>或者 brew install jenkins</p><h2 id="启动和停止"><a href="#启动和停止" class="headerlink" title="启动和停止"></a>启动和停止</h2><p>启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">设置开机自启动：sudo launchctl load -w /Library/LaunchDaemons/org.jenkins-ci.plist</div><div class="line">取消开机自启动：sudo launchctl unload -w /Library/LaunchDaemons/org.jenkins-ci.plist</div><div class="line">手动启动：Java -jar jenkins.war</div><div class="line">后台启动(默认端口)：nohup java -jar jenkins.war &amp;</div><div class="line">后台启动(指定端口)：nohup java -jar jenkins.war -httpPort=88 &amp;</div><div class="line">后台启动(HTTPS)：nohup java -jar jenkins.war -httpsPort=88 &amp;</div><div class="line"></div><div class="line">sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist</div></pre></td></tr></table></figure></p><p>停止<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist</div></pre></td></tr></table></figure></p><h2 id="运行远程脚本"><a href="#运行远程脚本" class="headerlink" title="运行远程脚本"></a>运行远程脚本</h2><p>安装Jenkins SSH plugin插件<br>在系统配置里配置Publish over SSH<br>增加构建步骤send files or ececute commands over SSH<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SSH  Server Name：选个一个你在系统设置里配置的名字</div><div class="line">Transfer Set Source files：需要上传的文件（注意：相对于工作区的路径。看后面的配置可以填写多个，默认用,分隔）</div><div class="line">Remove prefix：移除目录（只能指定Transfer Set Source files中的目录，这里移除了target目录表示只将FinServer.war传到目标服务器，否则会在目标服务器创建target目录）</div><div class="line">Remote directory：远程目录（根据你的需求填写，这里没有填写默认会继承系统配置，即/mnt）</div><div class="line">Exec command：把你要执行的命令写在里面(这里的命令是在目标服务器上执行的)</div></pre></td></tr></table></figure></p><p>只需要配置Exec command就可以<br>这种远程执行脚本的方式，属于非交互式Shell，不会触发诸如~/.bash_profile之类文件的载入,需要 export设置环境变量或者source <profile></profile></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h2&gt;&lt;p&gt;官网下载 jenkins.war&lt;br&gt;或者 brew install jenkins&lt;/p&gt;
-&lt;h2 id=&quot;启动和停止&quot;&gt;&lt;a href
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="http://www.codr.top/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="jenkins" scheme="http://www.codr.top/tags/jenkins/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mysql 备份mysqldump</title>
-    <link href="http://www.codr.top/2017/09/mysql-%E5%A4%87%E4%BB%BDmysqldump/"/>
-    <id>http://www.codr.top/2017/09/mysql-备份mysqldump/</id>
-    <published>2017-09-25T04:08:35.000Z</published>
-    <updated>2017-09-26T03:38:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="备份数据库的某表数据"><a href="#备份数据库的某表数据" class="headerlink" title="备份数据库的某表数据"></a>备份数据库的某表数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p database_name  table_name table_name2 &gt; database_dump.txt</div></pre></td></tr></table></figure><h2 id="备份整个数据库的数据"><a href="#备份整个数据库的数据" class="headerlink" title="备份整个数据库的数据"></a>备份整个数据库的数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p database_name &gt; database_dump.txt</div></pre></td></tr></table></figure><h2 id="备份所有数据库"><a href="#备份所有数据库" class="headerlink" title="备份所有数据库"></a>备份所有数据库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p --all-databases &gt; database_dump.txt</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;备份数据库的某表数据&quot;&gt;&lt;a href=&quot;#备份数据库的某表数据&quot; class=&quot;headerlink&quot; title=&quot;备份数据库的某表数据&quot;&gt;&lt;/a&gt;备份数据库的某表数据&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;t
-      
-    
-    </summary>
-    
-      <category term="mysql" scheme="http://www.codr.top/categories/mysql/"/>
-    
-    
-      <category term="mysql" scheme="http://www.codr.top/tags/mysql/"/>
-    
-      <category term="备份数据库" scheme="http://www.codr.top/tags/%E5%A4%87%E4%BB%BD%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mysql 流程控制语句if/case</title>
-    <link href="http://www.codr.top/2017/09/mysql-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5if-case/"/>
-    <id>http://www.codr.top/2017/09/mysql-流程控制语句if-case/</id>
-    <published>2017-09-25T03:50:43.000Z</published>
-    <updated>2017-09-26T03:48:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="if表达式"><a href="#if表达式" class="headerlink" title="if表达式"></a>if表达式</h2><blockquote><p>IF(expr1,expr2,expr3)</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select if(v=1,&apos;男&apos;,&apos;女&apos;) from t1 ;</div></pre></td></tr></table></figure><p>如果条件判断多可以使用case when then。</p><h2 id="case"><a href="#case" class="headerlink" title="case"></a>case</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CASE   &lt;单值表达式&gt;</div><div class="line">        WHEN &lt;表达式值&gt; THEN &lt;SQL语句或者返回值&gt;</div><div class="line">        WHEN &lt;表达式值&gt; THEN &lt;SQL语句或者返回值&gt;</div><div class="line">        WHEN &lt;表达式值&gt; THEN &lt;SQL语句或者返回值&gt;</div><div class="line">        ELSE &lt;SQL语句或者返回值&gt;</div><div class="line"> END</div></pre></td></tr></table></figure><h3 id="简单Case函数写法"><a href="#简单Case函数写法" class="headerlink" title="简单Case函数写法"></a>简单Case函数写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">select case v </div><div class="line">    when 1 then &apos;男&apos;</div><div class="line">    when 0 then &apos;女&apos;</div><div class="line">    end</div><div class="line"> from t1 ;</div></pre></td></tr></table></figure><h3 id="Case搜索函数写法"><a href="#Case搜索函数写法" class="headerlink" title="Case搜索函数写法"></a>Case搜索函数写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">select case  </div><div class="line">    when v=1 then &apos;男&apos;</div><div class="line">    when v=0 then &apos;女&apos;</div><div class="line">    end</div><div class="line"> from t1 ;</div></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.cnblogs.com/martinzhang/p/3220595.html" target="_blank" rel="external">http://www.cnblogs.com/martinzhang/p/3220595.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;if表达式&quot;&gt;&lt;a href=&quot;#if表达式&quot; class=&quot;headerlink&quot; title=&quot;if表达式&quot;&gt;&lt;/a&gt;if表达式&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;IF(expr1,expr2,expr3)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figu
-      
-    
-    </summary>
-    
-      <category term="mysql" scheme="http://www.codr.top/categories/mysql/"/>
-    
-    
-      <category term="mysql" scheme="http://www.codr.top/tags/mysql/"/>
-    
-      <category term="sql" scheme="http://www.codr.top/tags/sql/"/>
     
   </entry>
   

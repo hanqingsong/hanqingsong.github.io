@@ -316,6 +316,1203 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/nginx添加日志分割/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/nginx添加日志分割/" itemprop="url">nginx添加日志分割logrotate</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T09:45:11+08:00">
+                2017-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/nginx添加日志分割/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/nginx添加日志分割/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/nginx添加日志分割/" class="leancloud_visitors" data-flag-title="nginx添加日志分割logrotate">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  912
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="logrotate简介"><a href="#logrotate简介" class="headerlink" title="logrotate简介"></a>logrotate简介</h2><p>logrotate 是Linux系统日志文件管理工具。用来把旧的日志文件删除，并创建新的日志文件，我们把它叫做“转储”。可以根据日志文件的大小，也可以根据其天数来转储，这个过程一般通过 cron 程序来执行。<br>logrotate 程序还可以用于压缩日志文件，以及发送日志到指定的E-mail。<br>默认的logrotate被加入cron的/etc/cron.daily中作为每日任务执行。<br>/etc/logrotate.d/* 为/etc/logrotate.conf默认包含目录其中文件也会被logrotate读取。指明每个日志文件的特定规则。<br>/var/lib/logrotate/status中默认记录logrotate上次轮换日志文件的时间。</p>
+<h2 id="logrotate安装"><a href="#logrotate安装" class="headerlink" title="logrotate安装"></a>logrotate安装</h2><p>centos是默认有安装<br>yum install logrotate<br>安装完成之后在，在/etc/logrotate.d/有以下脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ ll /etc/logrotate.d/</div><div class="line">total 24</div><div class="line">drwxr-xr-x. 2 root root 4096 Mar  3  2016 2016-03-03</div><div class="line">-rw-r--r--. 1 root root  103 Jul 14  2015 dracut</div><div class="line">-rw-r--r--  1 root root  217 Oct 31  2016 nginx</div><div class="line">-rw-r--r--. 1 root root  329 Jul 17  2012 psacct</div><div class="line">-rw-r--r--. 1 root root  265 Mar  3  2016 syslog</div><div class="line">-rw-r--r--. 1 root root  100 Feb 22  2013 yum</div></pre></td></tr></table></figure></p>
+<h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><p>crontab会每天定时执行/etc/cron.daily目录下的脚本，在这个目录有个logrotate脚本，脚本内容为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">/usr/sbin/logrotate /etc/logrotate.conf &gt;/dev/null 2&gt;&amp;1</div><div class="line">EXITVALUE=$?</div><div class="line">if [ $EXITVALUE != 0 ]; then</div><div class="line">    /usr/bin/logger -t logrotate &quot;ALERT exited abnormally with [$EXITVALUE]&quot;</div><div class="line">fi</div><div class="line">exit 0</div></pre></td></tr></table></figure></p>
+<p>每天执行一次/usr/sbin/logrotate /etc/logrotate.conf，logrotate.conf中<code>include /etc/logrotate.d</code> </p>
+<h2 id="nginx脚本"><a href="#nginx脚本" class="headerlink" title="nginx脚本"></a>nginx脚本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/var/log/nginx/*log &#123;</div><div class="line">    daily</div><div class="line">    rotate 10</div><div class="line">    missingok</div><div class="line">    notifempty</div><div class="line">    compress</div><div class="line">    sharedscripts</div><div class="line">    postrotate</div><div class="line">        /bin/kill -USR1 $(cat /var/run/nginx.pid 2&gt;/dev/null) 2&gt;/dev/null || :</div><div class="line">    endscript</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">compress                        通过gzip压缩转储以后的日志</div><div class="line">nocompress                      不压缩</div><div class="line">copytruncate                    用于还在打开中的日志文件，把当前日志备份并截断</div><div class="line">nocopytruncate                  备份日志文件但是不截断</div><div class="line">create mode owner group         转储文件，使用指定的文件模式创建新的日志文件</div><div class="line">nocreate                        不建立新的日志文件</div><div class="line">delaycompress 和 compress        一起使用时，转储的日志文件到下一次转储时才压缩</div><div class="line">nodelaycompress                 覆盖 delaycompress 选项，转储同时压缩。</div><div class="line">errors address                   专储时的错误信息发送到指定的Email 地址</div><div class="line">ifempty                         即使是空文件也转储，这个是 logrotate 的缺省选项。</div><div class="line">notifempty                      如果是空文件的话，不转储</div><div class="line">mail address                    把转储的日志文件发送到指定的E-mail 地址</div><div class="line">nomail                          转储时不发送日志文件</div><div class="line">olddir directory                转储后的日志文件放入指定的目录，必须和当前日志文件在同一个文件系统</div><div class="line">noolddir                        转储后的日志文件和当前日志文件放在同一个目录下</div><div class="line">prerotate/endscript             在转储以前需要执行的命令可以放入这个对，这两个关键字必须单独成行</div><div class="line">postrotate/endscript            在转储以后需要执行的命令可以放入这个对，这两个关键字必须单独成行</div><div class="line">daily                           指定转储周期为每天</div><div class="line">weekly                          指定转储周期为每周</div><div class="line">monthly                         指定转储周期为每月</div><div class="line">rotate count                    指定日志文件删除之前转储的次数，0 指没有备份，5 指保留5 个备份</div><div class="line">tabootext [+] list 让logrotate   不转储指定扩展名的文件，缺省的扩展名是：.rpm-orig, .rpmsave, v, 和 ~ </div><div class="line">size size                       当日志文件到达指定的大小时才转储，bytes(缺省)及KB(sizek)或MB(sizem)</div></pre></td></tr></table></figure>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>立刻执行分割：/usr/sbin/logrotate -vf  /etc/logrotate.d/nginx<br>查看执行状态 cat /var/lib/logrotate.status</p>
+<h2 id="添加定时任务"><a href="#添加定时任务" class="headerlink" title="添加定时任务"></a>添加定时任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">crontab -e </div><div class="line">#添加以下代码， #每天凌晨定时执行脚本</div><div class="line"># crond-id-02:nginx_logs logroate</div><div class="line">0 0 * * * /usr/sbin/logrotate -vf /etc/logrotate.d/nginx &gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Linux-命令-运行远程命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/Linux-命令-运行远程命令/" itemprop="url">Linux 命令: 运行远程命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T17:58:34+08:00">
+                2017-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/Linux-命令-运行远程命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/Linux-命令-运行远程命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/Linux-命令-运行远程命令/" class="leancloud_visitors" data-flag-title="Linux 命令: 运行远程命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  13
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="运行远程命令"><a href="#运行远程命令" class="headerlink" title="运行远程命令"></a>运行远程命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">➜ ~ ssh root@dev &quot;ls /mydata&quot;</div><div class="line">apps</div><div class="line">develop</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Linux-命令：查看文件夹下文件大小/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/Linux-命令：查看文件夹下文件大小/" itemprop="url">Linux 命令：查看文件夹下文件大小</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T15:48:34+08:00">
+                2017-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/Linux-命令：查看文件夹下文件大小/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/Linux-命令：查看文件夹下文件大小/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/Linux-命令：查看文件夹下文件大小/" class="leancloud_visitors" data-flag-title="Linux 命令：查看文件夹下文件大小">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  48
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="查看文件夹下文件大小"><a href="#查看文件夹下文件大小" class="headerlink" title="查看文件夹下文件大小"></a>查看文件夹下文件大小</h2><p>du [-abcDhHklmsSx] [-L &lt;符号连接&gt;][-X &lt;文件&gt;][–block-size][–exclude=&lt;目录或文件&gt;] [–max-depth=&lt;目录层数&gt;][–help][–version][目录或文件]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -h --max-depth=1 /mydata/</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/docker-part5-Stacks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/docker-part5-Stacks/" itemprop="url">docker-part5:Stacks</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T13:46:28+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/docker-part5-Stacks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/docker-part5-Stacks/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/docker-part5-Stacks/" class="leancloud_visitors" data-flag-title="docker-part5:Stacks">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  331
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="新增一个服务（service）visualizer"><a href="#新增一个服务（service）visualizer" class="headerlink" title="新增一个服务（service）visualizer"></a>新增一个服务（service）visualizer</h2><p>修改docker-compose.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">version: &quot;3&quot;</div><div class="line">services:</div><div class="line">  web:</div><div class="line">    # replace username/repo:tag with your name and image details</div><div class="line">    image: username/repo:tag</div><div class="line">    deploy:</div><div class="line">      replicas: 5</div><div class="line">      restart_policy:</div><div class="line">        condition: on-failure</div><div class="line">      resources:</div><div class="line">        limits:</div><div class="line">          cpus: &quot;0.1&quot;</div><div class="line">          memory: 50M</div><div class="line">    ports:</div><div class="line">      - &quot;80:80&quot;</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">  visualizer:</div><div class="line">    image: dockersamples/visualizer:stable</div><div class="line">    ports:</div><div class="line">      - &quot;8080:8080&quot;</div><div class="line">    volumes:</div><div class="line">      - &quot;/var/run/docker.sock:/var/run/docker.sock&quot;</div><div class="line">    deploy:</div><div class="line">      placement:</div><div class="line">        constraints: [node.role == manager]</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">networks:</div><div class="line">  webnet:</div></pre></td></tr></table></figure></p>
+<p>更新服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker stack deploy -c docker-compose.yml getstartedlab</div><div class="line">Creating network getstartedlab_webnet</div><div class="line">Creating service getstartedlab_web</div><div class="line">Creating service getstartedlab_visualizer</div><div class="line"></div><div class="line">➜  docker-test docker-machine ls</div><div class="line">NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS</div><div class="line">myvm1   *        virtualbox   Running   tcp://192.168.99.100:2376           v17.09.0-ce</div><div class="line">myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v17.09.0-ce</div></pre></td></tr></table></figure></p>
+<p>访问 <a href="http://192.168.99.100:8080/" target="_blank" rel="external">http://192.168.99.100:8080/</a></p>
+<h2 id="持久化redis数据服务"><a href="#持久化redis数据服务" class="headerlink" title="持久化redis数据服务"></a>持久化redis数据服务</h2><p>修改docker-compose.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">version: &quot;3&quot;</div><div class="line">services:</div><div class="line">  web:</div><div class="line">    # replace username/repo:tag with your name and image details</div><div class="line">    image: 842071912/start-docker1:hellopy</div><div class="line">    deploy:</div><div class="line">      replicas: 5</div><div class="line">      resources:</div><div class="line">        limits:</div><div class="line">          cpus: &quot;0.1&quot;</div><div class="line">          memory: 50M</div><div class="line">      restart_policy:</div><div class="line">        condition: on-failure</div><div class="line">    ports:</div><div class="line">      - &quot;80:80&quot;</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">  visualizer:</div><div class="line">    image: dockersamples/visualizer:stable</div><div class="line">    ports:</div><div class="line">      - &quot;8080:8080&quot;</div><div class="line">    volumes:</div><div class="line">      - &quot;/var/run/docker.sock:/var/run/docker.sock&quot;</div><div class="line">    deploy:</div><div class="line">      placement:</div><div class="line">        constraints: [node.role == manager]</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">  redis:</div><div class="line">    image: redis</div><div class="line">    ports:</div><div class="line">      - &quot;6379:6379&quot;</div><div class="line">    volumes:</div><div class="line">      - /home/docker/data:/data</div><div class="line">    deploy:</div><div class="line">      placement:</div><div class="line">        constraints: [node.role == manager]</div><div class="line">    command: redis-server --appendonly yes</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">networks:</div><div class="line">  webnet:</div></pre></td></tr></table></figure></p>
+<p>创建./data文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine ssh myvm1 &quot;mkdir ./data&quot;</div><div class="line"></div><div class="line">➜  docker-test docker stack deploy -c docker-compose.yml getstartedlab</div><div class="line">Updating service getstartedlab_web (id: p3yof4klife0ulvn7fqwjrhkm)</div><div class="line">Updating service getstartedlab_visualizer (id: s550x4sifn20ab391fsywu0l2)</div><div class="line">Updating service getstartedlab_redis (id: a2eh1a3c3di608fsa00l7uvj8)</div><div class="line"></div><div class="line">➜  docker-test docker service ls</div><div class="line">ID                  NAME                       MODE                REPLICAS            IMAGE                             PORTS</div><div class="line">a2eh1a3c3di6        getstartedlab_redis        replicated          1/1                 redis:latest                      *:6379-&gt;6379/tcp</div><div class="line">s550x4sifn20        getstartedlab_visualizer   replicated          1/1                 dockersamples/visualizer:stable   *:8080-&gt;8080/tcp</div><div class="line">p3yof4klife0        getstartedlab_web          replicated          5/5                 842071912/start-docker1:hellopy   *:80-&gt;80/tcp</div></pre></td></tr></table></figure></p>
+<p>访问 <a href="http://192.168.99.100:8080/" target="_blank" rel="external">http://192.168.99.100:8080/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/docker-part4-swarms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/docker-part4-swarms/" itemprop="url">docker-part4:swarms</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T10:16:18+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/docker-part4-swarms/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/docker-part4-swarms/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/docker-part4-swarms/" class="leancloud_visitors" data-flag-title="docker-part4:swarms">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  929
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="设置swarm"><a href="#设置swarm" class="headerlink" title="设置swarm"></a>设置swarm</h2><p>mac系统下需要安装 <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">install Oracle VirtualBox</a> </p>
+<h3 id="创建集群"><a href="#创建集群" class="headerlink" title="创建集群"></a>创建集群</h3><p>使用docker-machine创建VMs,创建有可能会失败多执行几次<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine ls</div><div class="line">NAME   ACTIVE   DRIVER   STATE   URL   SWARM   DOCKER   ERRORS</div><div class="line"></div><div class="line">➜  docker-test docker-machine create --driver virtualbox myvm1</div><div class="line">Running pre-create checks...</div><div class="line">(myvm1) No default Boot2Docker ISO found locally, downloading the latest release...</div><div class="line">(myvm1) Latest release for github.com/boot2docker/boot2docker is v17.09.0-ce</div><div class="line">(myvm1) Downloading /Users/hanqingsong/.docker/machine/cache/boot2docker.iso from https://github.com/boot2docker/boot2docker/releases/download/v17.09.0-ce/boot2docker.iso...</div><div class="line">(myvm1) 0%....10%....20%....30%....40%....50%....60%....70%....80%....90%....100%</div><div class="line">Creating machine...</div><div class="line">(myvm1) Copying /Users/hanqingsong/.docker/machine/cache/boot2docker.iso to /Users/hanqingsong/.docker/machine/machines/myvm1/boot2docker.iso...</div><div class="line">(myvm1) Creating VirtualBox VM...</div><div class="line">(myvm1) Creating SSH key...</div><div class="line">(myvm1) Starting the VM...</div><div class="line">(myvm1) Check network to re-create if needed...</div><div class="line">(myvm1) Found a new host-only adapter: &quot;vboxnet0&quot;</div><div class="line">(myvm1) Waiting for an IP...</div><div class="line">Waiting for machine to be running, this may take a few minutes...</div><div class="line">Detecting operating system of created instance...</div><div class="line">Waiting for SSH to be available...</div><div class="line">Detecting the provisioner...</div><div class="line">Provisioning with boot2docker...</div><div class="line">Copying certs to the local machine directory...</div><div class="line">Copying certs to the remote machine...</div><div class="line">Setting Docker configuration on the remote daemon...</div><div class="line">Checking connection to Docker...</div><div class="line">Docker is up and running!</div><div class="line">To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm1</div><div class="line"></div><div class="line">➜  docker-test docker-machine ls</div><div class="line">NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS</div><div class="line">myvm1   -        virtualbox   Running   tcp://192.168.99.100:2376           v17.09.0-ce</div><div class="line">myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v17.09.0-ce</div></pre></td></tr></table></figure></p>
+<h3 id="初始化swarm添加节点"><a href="#初始化swarm添加节点" class="headerlink" title="初始化swarm添加节点"></a>初始化swarm添加节点</h3><p>设置myvm1为swarm管理者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine ssh myvm1 &quot;docker swarm init --advertise-addr 192.168.99.100&quot; </div><div class="line">Swarm initialized: current node (mwshg3zvljp17muqpuua5l3d1) is now a manager.</div><div class="line"></div><div class="line">To add a worker to this swarm, run the following command:</div><div class="line"></div><div class="line">    docker swarm join --token SWMTKN-1-26jjkt2i3rul2qp7hwdp2m3ek1vegmumr6mk07ba8orc886ix2-c41i1zkhtnjqartdv6l75ms8h 192.168.99.100:2377</div><div class="line"></div><div class="line">To add a manager to this swarm, run &apos;docker swarm join-token manager&apos; and follow the instructions.</div></pre></td></tr></table></figure></p>
+<p>myvm2添加为worker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine ssh myvm2  &quot;docker swarm join --token SWMTKN-1-26jjkt2i3rul2qp7hwdp2m3ek1vegmumr6mk07ba8orc886ix2-c41i1zkhtnjqartdv6l75ms8h 192.168.99.100:2377&quot;</div><div class="line">This node joined a swarm as a worker.</div></pre></td></tr></table></figure></p>
+<h3 id="查看swarm节点"><a href="#查看swarm节点" class="headerlink" title="查看swarm节点"></a>查看swarm节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine ssh myvm1 &quot;docker node ls&quot;</div><div class="line">ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS</div><div class="line">mwshg3zvljp17muqpuua5l3d1 *   myvm1               Ready               Active              Leader</div><div class="line">urdtegb3yanqi0d98vzm49tof     myvm2               Ready               Active</div></pre></td></tr></table></figure>
+<h2 id="在swarm集群部署应用"><a href="#在swarm集群部署应用" class="headerlink" title="在swarm集群部署应用"></a>在swarm集群部署应用</h2><p>设置myvm1为激活状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine env myvm1</div><div class="line">export DOCKER_TLS_VERIFY=&quot;1&quot;</div><div class="line">export DOCKER_HOST=&quot;tcp://192.168.99.100:2376&quot;</div><div class="line">export DOCKER_CERT_PATH=&quot;/Users/hanqingsong/.docker/machine/machines/myvm1&quot;</div><div class="line">export DOCKER_MACHINE_NAME=&quot;myvm1&quot;</div><div class="line"># Run this command to configure your shell:</div><div class="line"># eval $(docker-machine env myvm1)</div><div class="line"></div><div class="line">➜  docker-test eval $(docker-machine env myvm1)</div><div class="line"></div><div class="line">➜  docker-test docker-machine ls</div><div class="line">NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS</div><div class="line">myvm1   *        virtualbox   Running   tcp://192.168.99.100:2376           v17.09.0-ce</div><div class="line">myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v17.09.0-ce</div></pre></td></tr></table></figure></p>
+<p>在swarm manager部署应用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker stack deploy -c docker-compose.yml getstartedlab</div><div class="line">Creating network getstartedlab_webnet</div><div class="line">Creating service getstartedlab_web</div></pre></td></tr></table></figure></p>
+<p>查看服务部署信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker stack ps getstartedlab</div><div class="line">ID                  NAME                  IMAGE                             NODE                DESIRED STATE       CURRENT STATE                  ERROR               PORTS</div><div class="line">qvs0h0pqgsou        getstartedlab_web.1   842071912/start-docker1:hellopy   myvm1               Running             Preparing about a minute ago</div><div class="line">jtlfqsejqnmo        getstartedlab_web.2   842071912/start-docker1:hellopy   myvm2               Running             Running 24 seconds ago</div><div class="line">wauh0t4cybvn        getstartedlab_web.3   842071912/start-docker1:hellopy   myvm1               Running             Preparing about a minute ago</div><div class="line">feyi52iwjpa2        getstartedlab_web.4   842071912/start-docker1:hellopy   myvm2               Running             Running 24 seconds ago</div><div class="line">m7mz2kevh15r        getstartedlab_web.5   842071912/start-docker1:hellopy   myvm2               Running             Running 24 seconds ago</div></pre></td></tr></table></figure></p>
+<h2 id="清除和重启"><a href="#清除和重启" class="headerlink" title="清除和重启"></a>清除和重启</h2><p> tear down the stack<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> ➜  docker-test docker stack rm getstartedlab</div><div class="line">Removing service getstartedlab_web</div><div class="line">Removing network getstartedlab_webnet</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Keep the swarm or remove it?<br>At some point later, you can remove this swarm if you want to with docker-machine ssh myvm2 “docker swarm leave” on the worker and docker-machine ssh myvm1 “docker swarm leave –force” on the manager, but you’ll need this swarm for part 5, so please keep it around for now. </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">➜  docker-test eval $(docker-machine env -u)</div><div class="line"></div><div class="line"></div><div class="line">➜  docker-test docker-machine stop $(docker-machine ls -q)</div><div class="line">Stopping &quot;myvm2&quot;...</div><div class="line">Stopping &quot;myvm1&quot;...</div><div class="line">Machine &quot;myvm2&quot; was stopped.</div><div class="line">Machine &quot;myvm1&quot; was stopped.</div><div class="line">➜  docker-test docker-machine ls</div><div class="line">NAME    ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS</div><div class="line">myvm1   -        virtualbox   Stopped                 Unknown</div><div class="line">myvm2   -        virtualbox   Stopped                 Unknown</div></pre></td></tr></table></figure>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">docker-machine create --driver virtualbox myvm1 # Create a VM (Mac, Win7, Linux)</div><div class="line">docker-machine create -d hyperv --hyperv-virtual-switch &quot;myswitch&quot; myvm1 # Win10</div><div class="line">docker-machine env myvm1                # View basic information about your node</div><div class="line">docker-machine ssh myvm1 &quot;docker node ls&quot;         # List the nodes in your swarm</div><div class="line">docker-machine ssh myvm1 &quot;docker node inspect &lt;node ID&gt;&quot;        # Inspect a node</div><div class="line">docker-machine ssh myvm1 &quot;docker swarm join-token -q worker&quot;   # View join token</div><div class="line">docker-machine ssh myvm1   # Open an SSH session with the VM; type &quot;exit&quot; to end</div><div class="line">docker-machine ssh myvm2 &quot;docker swarm leave&quot;  # Make the worker leave the swarm</div><div class="line">docker-machine ssh myvm1 &quot;docker swarm leave -f&quot; # Make master leave, kill swarm</div><div class="line">docker-machine start myvm1            # Start a VM that is currently not running</div><div class="line">docker-machine stop $(docker-machine ls -q)               # Stop all running VMs</div><div class="line">docker-machine rm $(docker-machine ls -q) # Delete all VMs and their disk images</div><div class="line">docker-machine scp docker-compose.yml myvm1:~     # Copy file to node&apos;s home dir</div><div class="line">docker-machine ssh myvm1 &quot;docker stack deploy -c &lt;file&gt; &lt;app&gt;&quot;   # Deploy an app</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/docker-part3-services/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/docker-part3-services/" itemprop="url">docker-part3:services</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T09:45:11+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/docker-part3-services/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/docker-part3-services/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/docker-part3-services/" class="leancloud_visitors" data-flag-title="docker-part3:services">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  365
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h2><p>docker-compose.yml定义了容器的行为。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">version: &quot;3&quot;</div><div class="line">services:</div><div class="line">  web:</div><div class="line">    # replace username/repo:tag with your name and image details</div><div class="line">    image: username/repo:tag</div><div class="line">    deploy:</div><div class="line">      replicas: 5</div><div class="line">      resources:</div><div class="line">        limits:</div><div class="line">          cpus: &quot;0.1&quot;</div><div class="line">          memory: 50M</div><div class="line">      restart_policy:</div><div class="line">        condition: on-failure</div><div class="line">    ports:</div><div class="line">      - &quot;80:80&quot;</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">networks:</div><div class="line">  webnet:</div></pre></td></tr></table></figure>
+<h2 id="运行负载均衡应用"><a href="#运行负载均衡应用" class="headerlink" title="运行负载均衡应用"></a>运行负载均衡应用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker swarm init</div><div class="line">Swarm initialized: current node (scxmr99cp0d6zjpajrckdktmk) is now a manager.</div><div class="line"></div><div class="line">To add a worker to this swarm, run the following command:</div><div class="line"></div><div class="line">    docker swarm join --token SWMTKN-1-19wb8qe3cws960d8famp2lix8t1d6wza4eg9fw7geklefqjrvh-82wzkvoszligqto4eoe2ufail 192.168.65.2:2377</div><div class="line"></div><div class="line">To add a manager to this swarm, run &apos;docker swarm join-token manager&apos; and follow the instructions.</div><div class="line"></div><div class="line">➜  docker-test docker stack deploy -c docker-compose.yml getstartedlab</div><div class="line">Creating network getstartedlab_webnet</div><div class="line">Creating service getstartedlab_web</div><div class="line"></div><div class="line">➜  docker-test docker service ls</div><div class="line">ID                  NAME                MODE                REPLICAS            IMAGE                             PORTS</div><div class="line">lrd7bsarm31c        getstartedlab_web   replicated          5/5                 842071912/start-docker1:hellopy   *:80-&gt;80/tcp</div><div class="line"></div><div class="line">➜  docker-test docker stack ls</div><div class="line">NAME                SERVICES</div><div class="line">getstartedlab       1</div><div class="line"></div><div class="line">➜  docker-test docker service ps lrd7bsarm31c</div><div class="line">ID                  NAME                  IMAGE                             NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS</div><div class="line">pv0xalnz0jub        getstartedlab_web.1   842071912/start-docker1:hellopy   moby                Running             Running 2 minutes ago</div><div class="line">qrkj0dctgukn        getstartedlab_web.2   842071912/start-docker1:hellopy   moby                Running             Running 2 minutes ago</div><div class="line">xq97vphe37h5        getstartedlab_web.3   842071912/start-docker1:hellopy   moby                Running             Running 2 minutes ago</div><div class="line">kc0kj4tdzlpz        getstartedlab_web.4   842071912/start-docker1:hellopy   moby                Running             Running 2 minutes ago</div><div class="line">5roeqr1o8le3        getstartedlab_web.5   842071912/start-docker1:hellopy   moby                Running             Running 2 minutes ago</div><div class="line"></div><div class="line">➜  docker-test docker container ls -q</div><div class="line">3b010bc1ba11</div><div class="line">e9c89868d2ee</div><div class="line">34cc4a84736a</div><div class="line">b697e352c205</div><div class="line">92db487d0025</div><div class="line"></div><div class="line">➜  docker-test docker stack rm getstartedlab</div><div class="line">Removing service getstartedlab_web</div><div class="line">Removing network getstartedlab_webnet</div><div class="line"></div><div class="line">➜  docker-test docker node ls</div><div class="line">ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS</div><div class="line">scxmr99cp0d6zjpajrckdktmk *   moby                Ready               Active              Leader</div><div class="line"></div><div class="line">➜  docker-test docker swarm leave --force</div><div class="line">Node left the swarm.</div><div class="line">➜  docker-test docker node ls</div><div class="line">Error response from daemon: This node is not a swarm manager. Use &quot;docker swarm init&quot; or &quot;docker swarm join&quot; to connect this node to swarm and try again.</div></pre></td></tr></table></figure>
+<h2 id="命令集"><a href="#命令集" class="headerlink" title="命令集"></a>命令集</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">docker swarm init</div><div class="line">docker stack ls                                            # List stacks or apps</div><div class="line">docker stack deploy -c &lt;composefile&gt; &lt;appname&gt;  # Run the specified Compose file</div><div class="line">docker service ls                 # List running services associated with an app</div><div class="line">docker service ps &lt;service&gt;                  # List tasks associated with an app</div><div class="line">docker inspect &lt;task or container&gt;                   # Inspect task or container</div><div class="line">docker container ls -q                                      # List container IDs</div><div class="line">docker stack rm &lt;appname&gt;                             # Tear down an application</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/二进制数组转十六进制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1115,1181 +2312,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Netty-学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/Netty-学习/" itemprop="url">Netty 学习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T22:09:28+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/Netty-学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/Netty-学习/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/Netty-学习/" class="leancloud_visitors" data-flag-title="Netty 学习">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  0
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/idea初始化设置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/idea初始化设置/" itemprop="url">idea初始化设置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-28T09:25:40+08:00">
-                2017-09-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/idea初始化设置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/idea初始化设置/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/idea初始化设置/" class="leancloud_visitors" data-flag-title="idea初始化设置">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  148
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="编程字体设置"><a href="#编程字体设置" class="headerlink" title="编程字体设置"></a>编程字体设置</h2><p>根据个人喜好选择喜欢的编程字体<br>editor–&gt;font–&gt;font<br>选用 Monospace 14字体，行距1.1（个人喜欢）<br>或选用 Courier new 15字体，行距1.</p>
-<h2 id="去除大小写敏感"><a href="#去除大小写敏感" class="headerlink" title="去除大小写敏感"></a>去除大小写敏感</h2><p> Editor –&gt; Code Completion，设置Case sensitive completion为none。</p>
-<h2 id="显示行号"><a href="#显示行号" class="headerlink" title="显示行号"></a>显示行号</h2><p>Editor -&gt; General -&gt; Appearance，勾选show line numbers。</p>
-<h2 id="设置编辑器和控制台的字体"><a href="#设置编辑器和控制台的字体" class="headerlink" title="设置编辑器和控制台的字体"></a>设置编辑器和控制台的字体</h2><p>Appearence–&gt;override default fonts by<br>设置为<br>consolas<br>Courier</p>
-<h2 id="修改文件默认签名"><a href="#修改文件默认签名" class="headerlink" title="修改文件默认签名"></a>修改文件默认签名</h2><p>Editor-&gt;File and Code Templates-&gt;Includes-&gt;File Header</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/** </div><div class="line"> * Created by $&#123;USER&#125; on $&#123;DATE&#125;. </div><div class="line"> */</div></pre></td></tr></table></figure>
-<h2 id="添加自定义代码补全Live-Templates"><a href="#添加自定义代码补全Live-Templates" class="headerlink" title="添加自定义代码补全Live Templates"></a>添加自定义代码补全Live Templates</h2><p>Editor -&gt; Live Templates</p>
-<h2 id="设置护眼色"><a href="#设置护眼色" class="headerlink" title="设置护眼色"></a>设置护眼色</h2><p>Editor-&gt; Color Scheme<br>background 设置为 C7EDCC</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/mac-安装java9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/mac-安装java9/" itemprop="url">mac 安装java9</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-27T09:51:38+08:00">
-                2017-09-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/mac-安装java9/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/mac-安装java9/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/mac-安装java9/" class="leancloud_visitors" data-flag-title="mac 安装java9">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  49
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="官网下载"><a href="#官网下载" class="headerlink" title="官网下载"></a>官网下载</h2><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html" target="_blank" rel="external">jdk9官网地址</a></p>
-<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><p>mac环境修改配置文件<br>vim .bash_profile</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/</div><div class="line">export PATH=$PATH:$JAVA_HOME/bin</div></pre></td></tr></table></figure>
-<p>使配置文件生效<br>source .bash_profile</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/Jenkins-入门使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/Jenkins-入门使用/" itemprop="url">Jenkins 入门使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-26T15:19:13+08:00">
-                2017-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/Jenkins-入门使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/Jenkins-入门使用/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/Jenkins-入门使用/" class="leancloud_visitors" data-flag-title="Jenkins 入门使用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  386
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>官网下载 jenkins.war<br>或者 brew install jenkins</p>
-<h2 id="启动和停止"><a href="#启动和停止" class="headerlink" title="启动和停止"></a>启动和停止</h2><p>启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">设置开机自启动：sudo launchctl load -w /Library/LaunchDaemons/org.jenkins-ci.plist</div><div class="line">取消开机自启动：sudo launchctl unload -w /Library/LaunchDaemons/org.jenkins-ci.plist</div><div class="line">手动启动：Java -jar jenkins.war</div><div class="line">后台启动(默认端口)：nohup java -jar jenkins.war &amp;</div><div class="line">后台启动(指定端口)：nohup java -jar jenkins.war -httpPort=88 &amp;</div><div class="line">后台启动(HTTPS)：nohup java -jar jenkins.war -httpsPort=88 &amp;</div><div class="line"></div><div class="line">sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist</div></pre></td></tr></table></figure></p>
-<p>停止<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist</div></pre></td></tr></table></figure></p>
-<h2 id="运行远程脚本"><a href="#运行远程脚本" class="headerlink" title="运行远程脚本"></a>运行远程脚本</h2><p>安装Jenkins SSH plugin插件<br>在系统配置里配置Publish over SSH<br>增加构建步骤send files or ececute commands over SSH<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SSH  Server Name：选个一个你在系统设置里配置的名字</div><div class="line">Transfer Set Source files：需要上传的文件（注意：相对于工作区的路径。看后面的配置可以填写多个，默认用,分隔）</div><div class="line">Remove prefix：移除目录（只能指定Transfer Set Source files中的目录，这里移除了target目录表示只将FinServer.war传到目标服务器，否则会在目标服务器创建target目录）</div><div class="line">Remote directory：远程目录（根据你的需求填写，这里没有填写默认会继承系统配置，即/mnt）</div><div class="line">Exec command：把你要执行的命令写在里面(这里的命令是在目标服务器上执行的)</div></pre></td></tr></table></figure></p>
-<p>只需要配置Exec command就可以<br>这种远程执行脚本的方式，属于非交互式Shell，不会触发诸如~/.bash_profile之类文件的载入,需要 export设置环境变量或者source <profile></profile></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/mysql-备份mysqldump/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/mysql-备份mysqldump/" itemprop="url">mysql 备份mysqldump</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-25T12:08:35+08:00">
-                2017-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">mysql</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/mysql-备份mysqldump/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/mysql-备份mysqldump/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/mysql-备份mysqldump/" class="leancloud_visitors" data-flag-title="mysql 备份mysqldump">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  54
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="备份数据库的某表数据"><a href="#备份数据库的某表数据" class="headerlink" title="备份数据库的某表数据"></a>备份数据库的某表数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p database_name  table_name table_name2 &gt; database_dump.txt</div></pre></td></tr></table></figure>
-<h2 id="备份整个数据库的数据"><a href="#备份整个数据库的数据" class="headerlink" title="备份整个数据库的数据"></a>备份整个数据库的数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p database_name &gt; database_dump.txt</div></pre></td></tr></table></figure>
-<h2 id="备份所有数据库"><a href="#备份所有数据库" class="headerlink" title="备份所有数据库"></a>备份所有数据库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p --all-databases &gt; database_dump.txt</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/mysql-流程控制语句if-case/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/mysql-流程控制语句if-case/" itemprop="url">mysql 流程控制语句if/case</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-25T11:50:43+08:00">
-                2017-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">mysql</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/mysql-流程控制语句if-case/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/mysql-流程控制语句if-case/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/mysql-流程控制语句if-case/" class="leancloud_visitors" data-flag-title="mysql 流程控制语句if/case">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  146
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="if表达式"><a href="#if表达式" class="headerlink" title="if表达式"></a>if表达式</h2><blockquote>
-<p>IF(expr1,expr2,expr3)</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select if(v=1,&apos;男&apos;,&apos;女&apos;) from t1 ;</div></pre></td></tr></table></figure>
-<p>如果条件判断多可以使用case when then。</p>
-<h2 id="case"><a href="#case" class="headerlink" title="case"></a>case</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CASE   &lt;单值表达式&gt;</div><div class="line">        WHEN &lt;表达式值&gt; THEN &lt;SQL语句或者返回值&gt;</div><div class="line">        WHEN &lt;表达式值&gt; THEN &lt;SQL语句或者返回值&gt;</div><div class="line">        WHEN &lt;表达式值&gt; THEN &lt;SQL语句或者返回值&gt;</div><div class="line">        ELSE &lt;SQL语句或者返回值&gt;</div><div class="line"> END</div></pre></td></tr></table></figure>
-<h3 id="简单Case函数写法"><a href="#简单Case函数写法" class="headerlink" title="简单Case函数写法"></a>简单Case函数写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">select case v </div><div class="line">    when 1 then &apos;男&apos;</div><div class="line">    when 0 then &apos;女&apos;</div><div class="line">    end</div><div class="line"> from t1 ;</div></pre></td></tr></table></figure>
-<h3 id="Case搜索函数写法"><a href="#Case搜索函数写法" class="headerlink" title="Case搜索函数写法"></a>Case搜索函数写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">select case  </div><div class="line">    when v=1 then &apos;男&apos;</div><div class="line">    when v=0 then &apos;女&apos;</div><div class="line">    end</div><div class="line"> from t1 ;</div></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.cnblogs.com/martinzhang/p/3220595.html" target="_blank" rel="external">http://www.cnblogs.com/martinzhang/p/3220595.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2335,7 +2362,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

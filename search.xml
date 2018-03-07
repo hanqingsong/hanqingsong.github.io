@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[joda-time工具类]]></title>
+    <url>%2F2017%2F12%2Fjoda-time%E5%B7%A5%E5%85%B7%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[数据初始化 日期差 格式化 日期计算 plus/minus 时间比较 isBefore/isAfter 官网 数据初始化12345DateTime dateTimeNow = new DateTime();DateTime dateTimeNow = new DateTime(date);//java日期转DateTimeDateTime recent = DateTime.parse(&quot;2017-05-18 17:40:00&quot;, DateTimeFormat.forPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;)); //字符串转日期DateTime dateTime2 = new DateTime(2017,2,14,0,0,0);//年月日时分秒DateTime dateTime = DateTimeFormat.forPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;).parseDateTime(&quot;2016-06-03 23:59:59&quot;); 日期差1234567DateTime dt1 = new DateTime();DateTime dt2 = new DateTime().plus();System.out.print(&quot;时间相差：&quot;);System.out.print(Days.daysBetween(dt1, dt2).getDays() + &quot; 天 &quot;);System.out.print(Hours.hoursBetween(dt1, dt2).getHours() % 24 + &quot; 小时 &quot;);System.out.print(Minutes.minutesBetween(dt1, dt2).getMinutes() % 60 + &quot; 分钟 &quot;);System.out.print(Seconds.secondsBetween(dt1, dt2).getSeconds() % 60+ &quot; 秒.&quot;); 格式化12String s = new DateTime().toString(DateTimeFormat.forPattern(&quot;yyyy-MM-dd&quot;));String s2 = new DateTime().toString(&quot;yyyy-MM-dd&quot;) 日期计算 plus/minus12345DateTime now = new DateTime();//当前时间DateTime tomorrowDt = now.plusDays(1);//明天int days = Days.daysBetween(now, tomorrowDt).getDays();System.out.println(days);//1 时间比较 isBefore/isAfter时间轴 12现在 isbefore 明天 trueboolean before = new DateTime().isBefore(new DateTime().plus(1)); ##官网http://www.joda.org/joda-time/userguide.html]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>joda</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[git使用记录]]></title>
     <url>%2F2017%2F11%2Fgit%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[流程12工作区 ---&gt; 暂存区 ----&gt; （历史）本地分支 ---&gt; 远程分支 add commit push 工作区和暂存区1234工作区：在电脑里能看到的目录版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。版本库里最重要的就是称为stage（或者叫index）的暂存区，(add操作)，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD，（commit操作）。 分支创建与切换123456git checkout -b dev #git checkout命令加上-b参数表示创建并切换相当于git branch dev #创建分支git checkout dev #切换分支git branch #查看分支 删除分支1git branch -d dev 合并分支fast-forward 快速合并不产生合并节点，看不出来曾经做过合并no-ff 合并生成合并节点 123git merge dev #git merge命令用于合并指定分支到当前分支git merge --no-ff -m &quot;merge with no-ff&quot; dev #合并生成合并节点 查看日志12git log #查看日志git log --graph --pretty=oneline --abbrev-commit #图形查看日志 版本回退和恢复12345678910111213回退工作区修改文件git checkout -- &lt;file&gt; 回退暂存区修改文件（add操作）git reset HEAD &lt;file&gt;git checkout -- &lt;file&gt; 回退本地分支修改文件 （add commit操作）git reset --hard HEAD^ #git reset HEAD~2恢复git reflog git reflog git reset --hard 0a1f420 暂时储藏修改当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场123git stash #储藏代码git stash list #查看列表git stash pop #回到工作现场 Reset、Checkout、Revert 的选择123456789reset 将一个分支的末端指向另一个提交。--soft – 缓存区和工作目录都不会被改变--mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响--hard – 缓存区和工作目录都同步到你指定的提交checkout 除了分支之外，你还可以传入提交的引用来 checkout 到任意的提交。git checkout HEAD~2Revert 撤销一个提交的同时会创建一个新的提交,相比 git reset，它不会改变现在的提交历史。因此，git revert 可以用在公共分支上，git reset 应该用在私有分支上。你也可以把 git revert 当作撤销已经提交的更改，而 git reset HEAD 用来撤销没有提交的更改。 git修改远程仓库地址方法有三种：查看远程地址git remote -v 修改命令 1git remote set-url origin [url] 先删后加 12git remote rm origingit remote add origin [url] 直接修改config文件 参考https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9https://github.com/geeeeeeeeek/git-recipes/wiki]]></content>
@@ -9,6 +21,52 @@
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux命令常用记录]]></title>
+    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4%E5%B8%B8%E7%94%A8%E8%AE%B0%E5%BD%95%2F</url>
+    <content type="text"><![CDATA[创建多级文件夹 mkdir -p test1/test2/test3 修改权限包含子目录 chown -R 创建软连接 ln [参数][源文件或目录][目标文件或目录] ln -s xx.log xxf.log 递归拷贝这些及其子文件夹下的文件 cp -ri 查看文件夹下文件大小 du -h –max-depth=1 /mydata/ 清屏 clear 查看shell cat /etc/shells 查看使用的shell echo $SHELL 查看本地端口 netstat -ntlp]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux命令:Http请求get和post]]></title>
+    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4-Http%E8%AF%B7%E6%B1%82get%E5%92%8Cpost%2F</url>
+    <content type="text"><![CDATA[一、get请求： 1、使用curl命令： curl “http://www.baidu.com” 如果这里的URL指向的是一个文件或者一幅图都可以直接下载到本地 curl -i “http://www.baidu.com” 显示全部信息 curl -l “http://www.baidu.com” 只显示头部信息 curl -v “http://www.baidu.com” 显示get请求全过程解析 2、使用wget命令： wget “http://www.baidu.com”也可以 二、post请求 1、使用curl命令（通过-d参数，把访问参数放在里面）： curl -d “param1=value1¶m2=value2” “http://www.baidu.com” 2、使用wget命令：（–post-data参数来实现） wget –post-data ‘user=foo&amp;password=bar’ http://www.baidu.com 以上就是Linux模拟Http的get或post请求的方法了，这样一来Linux系统也能向远程服务器发送消息了。 示例：wget --post-data=&quot;&quot; http://mcs-inner.99bill.com/mcs-gateway/mcs/task/clear 三、curl (可直接发送格式化请求例如json)示例：目标url:http://fsc-inner.99bill.com/acs/deposit/{srcRef} 命令：curl -H &quot;Content-type: application/json&quot; -X POST -d &apos;{&quot;srcRef&quot;:&quot;1002&quot;}&apos;http://fsc-inner.99bill.com/acs/deposit/1002 参考http://blog.csdn.net/ai2000ai/article/details/56290142]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[升级jdk1.8报错：sun.security.validator.ValidatorException: Certificate signature algorithm disabled]]></title>
+    <url>%2F2017%2F10%2F%E5%8D%87%E7%BA%A7jdk1-8%E6%8A%A5%E9%94%99%EF%BC%9Asun-security-validator-ValidatorException-Certificate-signature%2F</url>
+    <content type="text"><![CDATA[升级jdk1.8项目出错sun.security.validator.ValidatorException: Certificate signature algorithm disabled 报错原因是JDK8对SSL证书的算法安全要求提高，可以对比下7和8的区别12345678less /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;jdk.certpath.disabledAlgorithms=MD2, RSA keySize &lt; 1024jdk.tls.disabledAlgorithms=SSLv3less /Library/Java/JavaVirtualMachines/jdk1.8.0_*/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;jdk.certpath.disabledAlgorithms=MD2, MD5, SHA1 jdkCA &amp; usage TLSServer, \jdk.jar.disabledAlgorithms=MD2, MD5, RSA keySize &lt; 1024jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize &lt; 768, \ 解决方法 简单做法是直接注释掉jdk.certpath.disabledAlgorithms 继承新的抽象类：X509ExtendedTrustManager123In the Java SE 7 release, the X509ExtendedTrustManager class is an abstract implementation of the X509TrustManager interface. It adds methods for connection-sensitive trust management. In addition, it enables endpoint verification at the TLS layer....Besides TLS 1.2 support, the X509ExtendedTrustManager class also support algorithm constraints and SSL layer hostname verification. 参考http://www.cnblogs.com/flyingeagle/articles/7508207.html]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jdk</tag>
+        <tag>问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[EFK-从零搭建日志系统]]></title>
+    <url>%2F2017%2F10%2FEFK-%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%2F</url>
+    <content type="text"><![CDATA[分析日志需要包含字段： time level app_id instance_id日志从产生到消费，主要经历以下几个阶段：采集-&gt;传输-&gt;切分-&gt;检索。 区分实例 instance_id通过设置filebeat 系统搭建Filebeat 安装1234567891011121314curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.0.2-x86_64.rpmrpm -vi filebeat-5.0.2-x86_64.rpmvim /etc/filebeat/filebeat.yml修改 output.elasticsearch hosts 添加模板output.elasticsearch: hosts: [&quot;localhost:9200&quot;] template.name: &quot;filebeat&quot; template.path: &quot;filebeat.template.json&quot; template.overwrite: false启动/etc/init.d/filebeat startservice filebeat start elasticsearch 安装12345678910wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.rpmsha1sum elasticsearch-5.6.3.rpm sudo rpm --install elasticsearch-5.6.3.rpm### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using chkconfig sudo chkconfig --add elasticsearch### You can start elasticsearch service by executing sudo service elasticsearch startservice elasticsearch start 启动异常：Starting elasticsearch: Elasticsearch requires at least Java 8 but your Java version from /usr/bin/java does not meet this requirement 原因是java8安装，java版本管理工具没有更改1234567ll /usr/bin/java/usr/bin/java -&gt; /etc/alternatives/javaupdate-alternatives --config javaupdate-alternatives --install /usr/bin/java java /usr/local/java/jdk/jdk1.8.0_112/bin/java 300update-alternatives --install /usr/bin/javac javac /usr/local/java/jdk/jdk1.8.0_112/bin/javac 300 验证是否成功 curl http://localhost:9200/ 安装Kibana12345678wget https://artifacts.elastic.co/downloads/kibana/kibana-5.6.3-i686.rpmsha1sum kibana-5.6.3-i686.rpm sudo rpm --install kibana-5.6.3-i686.rpmservice kibana startservice kibana stop访问 http://localhost:5601 修改日志收集路径vim /etc/elasticsearch/elasticsearch.yml设置path.data: /mydata/elk/elasticsearch/datapath.logs: /mydata/elk/elasticsearch/logs如果重启会报错detected index data in default.path.data [/var/lib/elasticsearch/nodes/0/indices] where there should not be any需要把/var/lib/elasticsearch/下的文件夹移动到/mydata/elk/elasticsearch/下，删除/var/lib/elasticsearch/ kibana使用Lucene query syntax 简单的文本搜索，直接输入文本字符串。比如，如果你在搜索网站服务器日志，你可以输入 safari 来搜索各字段中的 safari 单词。 要搜索特定字段中的值，则在值前加上字段名。比如，你可以输入 status:200 来限制搜索结果都是在 status 字段里有 200 内容。 要搜索一个值的范围，你可以用范围查询语法，[START_VALUE TO END_VALUE]。比如，要查找 4xx 的状态码，你可以输入 status:[400 TO 499]。 要指定更复杂的搜索标准，你可以用布尔操作符 AND, OR, 和 NOT。比如，要查找 4xx 的状态码，还是 php 或 html 结尾的数据，你可以输入 status:[400 TO 499] AND (extension:php OR extension:html)。 参考https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEgELKstack 中文指南：https://kibana.logstash.es/content/kibana/v5/discover.html]]></content>
+      <categories>
+        <category>ELK</category>
+      </categories>
+      <tags>
+        <tag>日志系统</tag>
+        <tag>ELK</tag>
       </tags>
   </entry>
   <entry>
@@ -38,6 +96,17 @@
     <title><![CDATA[Linux 命令：压缩命令]]></title>
     <url>%2F2017%2F10%2FLinux-%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[tar命令 解包：tar zxvf FileName.tar 解包到指定文件夹：tar zxvf FileName.tar -C dirname 打包：tar czvf FileName.tar DirName gz命令 解压：gunzip FileName.gz 解压：gzip -d FileName.gz 压缩：gzip FileName tar.gz 解压：tar zxvf FileName.tar.gz 压缩：tar zcvf FileName.tar.gz DirName 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3 zip命令 解压：unzip FileName.zip 解压到指定目录：unzip -d /home/sunny myfile.zip 压缩：zip -r FileName.zip DirName]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux 命令：统计分析日志]]></title>
+    <url>%2F2017%2F10%2FLinux-%E5%91%BD%E4%BB%A4%EF%BC%9A%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%97%A5%E5%BF%97%2F</url>
+    <content type="text"><![CDATA[liunx服务器上生成的日志文件进行分析，文件格式如下：id time1001,2011-08-19 00:00:001002,2011-08-19 01:00:001001,2011-08-19 02:00:001003,2011-08-19 03:00:00 linux命令如下：排重后id个数 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | wc -l 按id出现次数排序 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | sort -k 1 -n -r | wc -l 将结果导入文件 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | sort -k 1 -n -r | wc -l &gt; result.txt 命令解析：sort：表示前面输入的结果文件中的内容进行排序。sort命令是对于每一行的内容根据字典序（ASCII码）进行排序，这样可以保证重复的记录时相邻的。 awk ‘{print $1}’ ：日志记录中的第一个字段。 uniq –c：表示合并相邻的重复记录，并统计重复数。因为uniq -c 只会合并相邻的记录，所以在使用该命令之前需要先排序。 sort –k 1 -n -r|wc –l：经过uniq -c 处理之后的数据格式形如”2 data”，第一个字段是数字，表示重复的记录数；第二个字段为记录的内容。我们将对此内容进行排序。sort -k 1表示对于每行的第一个字段进行排序，这里即指代表重复记录数的那个字段。因为sort命令的默认排序是按照ASCII，这就会导致按从大到小进行排序时，数值2会排在数值11的前面，所以需要使用-n 参数指定sort命令按照数值大小进行排序。-r 表示逆序，即按照从大到小的顺序进行排序。 wc命令 wc命令的功能为统计指定文件中的字节数、字数、行数, 并将统计结果显示输出。 语法：wc [选项] 文件… 说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。 该命令各选项含义如下： - c 统计字节数。 - l 统计行数。 - w 统计字数 参考http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/]]></content>
       <categories>
         <category>Linux</category>
       </categories>
