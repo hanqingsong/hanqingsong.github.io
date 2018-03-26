@@ -238,33 +238,6 @@
   </entry>
   
   <entry>
-    <title>Linux 命令：压缩命令</title>
-    <link href="http://www.codr.top/2017/10/Linux-%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4/"/>
-    <id>http://www.codr.top/2017/10/Linux-命令：压缩命令/</id>
-    <published>2017-10-14T01:45:11.000Z</published>
-    <updated>2017-10-18T11:38:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li><p>tar命令<br>　　解包：tar zxvf FileName.tar<br> 解包到指定文件夹：tar zxvf FileName.tar -C dirname<br>　　打包：tar czvf FileName.tar DirName</p></li><li><p>gz命令<br>　　解压：gunzip FileName.gz<br>　　解压：gzip -d FileName.gz<br> 压缩：gzip FileName</p></li><li><p>tar.gz<br> 解压：tar zxvf FileName.tar.gz<br>　　 压缩：tar zcvf FileName.tar.gz DirName<br> 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3</p></li><li><p>zip命令<br>　　解压：unzip FileName.zip<br> 解压到指定目录：unzip -d /home/sunny myfile.zip<br>　　压缩：zip -r FileName.zip DirName</p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;tar命令&lt;br&gt;　　解包：tar zxvf FileName.tar&lt;br&gt; 解包到指定文件夹：tar zxvf FileName.tar -C dirname&lt;br&gt;　　打包：tar czvf FileName.tar DirName&lt;/p&gt;
-&lt;/li
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
-    
-    
-      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Linux 命令：统计分析日志</title>
     <link href="http://www.codr.top/2017/10/Linux-%E5%91%BD%E4%BB%A4%EF%BC%9A%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%97%A5%E5%BF%97/"/>
     <id>http://www.codr.top/2017/10/Linux-命令：统计分析日志/</id>
@@ -311,6 +284,33 @@
     
     
       <category term="nginx" scheme="http://www.codr.top/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 命令：压缩命令</title>
+    <link href="http://www.codr.top/2017/10/Linux-%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4/"/>
+    <id>http://www.codr.top/2017/10/Linux-命令：压缩命令/</id>
+    <published>2017-10-14T01:45:11.000Z</published>
+    <updated>2017-10-18T11:38:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>tar命令<br>　　解包：tar zxvf FileName.tar<br> 解包到指定文件夹：tar zxvf FileName.tar -C dirname<br>　　打包：tar czvf FileName.tar DirName</p></li><li><p>gz命令<br>　　解压：gunzip FileName.gz<br>　　解压：gzip -d FileName.gz<br> 压缩：gzip FileName</p></li><li><p>tar.gz<br> 解压：tar zxvf FileName.tar.gz<br>　　 压缩：tar zcvf FileName.tar.gz DirName<br> 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3</p></li><li><p>zip命令<br>　　解压：unzip FileName.zip<br> 解压到指定目录：unzip -d /home/sunny myfile.zip<br>　　压缩：zip -r FileName.zip DirName</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;tar命令&lt;br&gt;　　解包：tar zxvf FileName.tar&lt;br&gt; 解包到指定文件夹：tar zxvf FileName.tar -C dirname&lt;br&gt;　　打包：tar czvf FileName.tar DirName&lt;/p&gt;
+&lt;/li
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
+    
+    
+      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   
