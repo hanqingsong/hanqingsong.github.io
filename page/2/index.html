@@ -180,7 +180,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">学习、记录、分享</p>
       
   </div>
 
@@ -470,6 +470,424 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">compress                        通过gzip压缩转储以后的日志</div><div class="line">nocompress                      不压缩</div><div class="line">copytruncate                    用于还在打开中的日志文件，把当前日志备份并截断</div><div class="line">nocopytruncate                  备份日志文件但是不截断</div><div class="line">create mode owner group         转储文件，使用指定的文件模式创建新的日志文件</div><div class="line">nocreate                        不建立新的日志文件</div><div class="line">delaycompress 和 compress        一起使用时，转储的日志文件到下一次转储时才压缩</div><div class="line">nodelaycompress                 覆盖 delaycompress 选项，转储同时压缩。</div><div class="line">errors address                   专储时的错误信息发送到指定的Email 地址</div><div class="line">ifempty                         即使是空文件也转储，这个是 logrotate 的缺省选项。</div><div class="line">notifempty                      如果是空文件的话，不转储</div><div class="line">mail address                    把转储的日志文件发送到指定的E-mail 地址</div><div class="line">nomail                          转储时不发送日志文件</div><div class="line">olddir directory                转储后的日志文件放入指定的目录，必须和当前日志文件在同一个文件系统</div><div class="line">noolddir                        转储后的日志文件和当前日志文件放在同一个目录下</div><div class="line">prerotate/endscript             在转储以前需要执行的命令可以放入这个对，这两个关键字必须单独成行</div><div class="line">postrotate/endscript            在转储以后需要执行的命令可以放入这个对，这两个关键字必须单独成行</div><div class="line">daily                           指定转储周期为每天</div><div class="line">weekly                          指定转储周期为每周</div><div class="line">monthly                         指定转储周期为每月</div><div class="line">rotate count                    指定日志文件删除之前转储的次数，0 指没有备份，5 指保留5 个备份</div><div class="line">tabootext [+] list 让logrotate   不转储指定扩展名的文件，缺省的扩展名是：.rpm-orig, .rpmsave, v, 和 ~ </div><div class="line">size size                       当日志文件到达指定的大小时才转储，bytes(缺省)及KB(sizek)或MB(sizem)</div></pre></td></tr></table></figure>
 <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>立刻执行分割：/usr/sbin/logrotate -vf  /etc/logrotate.d/nginx<br>查看执行状态 cat /var/lib/logrotate.status</p>
 <h2 id="添加定时任务"><a href="#添加定时任务" class="headerlink" title="添加定时任务"></a>添加定时任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">crontab -e </div><div class="line">#添加以下代码， #每天凌晨定时执行脚本</div><div class="line"># crond-id-02:nginx_logs logroate</div><div class="line">0 0 * * * /usr/sbin/logrotate -vf /etc/logrotate.d/nginx &gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Linux-命令：压缩命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/Linux-命令：压缩命令/" itemprop="url">Linux 命令：压缩命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T09:45:11+08:00">
+                2017-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/Linux-命令：压缩命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/Linux-命令：压缩命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/Linux-命令：压缩命令/" class="leancloud_visitors" data-flag-title="Linux 命令：压缩命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  111
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>tar命令<br>　　解包：tar zxvf FileName.tar<br> 解包到指定文件夹：tar zxvf FileName.tar -C dirname<br>　　打包：tar czvf FileName.tar DirName</p>
+</li>
+<li><p>gz命令<br>　　解压：gunzip FileName.gz<br>　　解压：gzip -d FileName.gz<br> 压缩：gzip FileName</p>
+</li>
+<li><p>tar.gz<br> 解压：tar zxvf FileName.tar.gz<br>　　 压缩：tar zcvf FileName.tar.gz DirName<br> 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3</p>
+</li>
+<li><p>zip命令<br>　　解压：unzip FileName.zip<br> 解压到指定目录：unzip -d /home/sunny myfile.zip<br>　　压缩：zip -r FileName.zip DirName</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Linux-命令：统计分析日志/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/Linux-命令：统计分析日志/" itemprop="url">Linux 命令：统计分析日志</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T09:45:11+08:00">
+                2017-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/Linux-命令：统计分析日志/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/Linux-命令：统计分析日志/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/Linux-命令：统计分析日志/" class="leancloud_visitors" data-flag-title="Linux 命令：统计分析日志">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  570
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>liunx服务器上生成的日志文件进行分析，文件格式如下：<br>id               time<br>1001,2011-08-19 00:00:00<br>1002,2011-08-19 01:00:00<br>1001,2011-08-19 02:00:00<br>1003,2011-08-19 03:00:00</p>
+<h2 id="linux命令如下："><a href="#linux命令如下：" class="headerlink" title="linux命令如下："></a>linux命令如下：</h2><p>排重后id个数</p>
+<pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | wc -l
+</code></pre><p>按id出现次数排序</p>
+<pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | sort -k 1 -n -r | wc -l
+</code></pre><p>将结果导入文件</p>
+<pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | sort -k 1 -n -r | wc -l &gt; result.txt
+</code></pre><h2 id="命令解析："><a href="#命令解析：" class="headerlink" title="命令解析："></a>命令解析：</h2><p>sort：表示前面输入的结果文件中的内容进行排序。sort命令是对于每一行的内容根据字典序（ASCII码）进行排序，这样可以保证重复的记录时相邻的。</p>
+<p>awk ‘{print $1}’ ：日志记录中的第一个字段。</p>
+<p>uniq –c：表示合并相邻的重复记录，并统计重复数。因为uniq -c 只会合并相邻的记录，所以在使用该命令之前需要先排序。</p>
+<p>sort –k 1 -n -r|wc –l：经过uniq -c 处理之后的数据格式形如”2 data”，第一个字段是数字，表示重复的记录数；第二个字段为记录的内容。我们将对此内容进行排序。<br>sort -k 1表示对于每行的第一个字段进行排序，这里即指代表重复记录数的那个字段。因为sort命令的默认排序是按照ASCII，这就会导致按从大到小进行排序时，数值2会排在数值11的前面，所以需要使用-n 参数指定sort命令按照数值大小进行排序。-r 表示逆序，即按照从大到小的顺序进行排序。</p>
+<p>wc命令</p>
+<p>wc命令的功能为统计指定文件中的字节数、字数、行数, 并将统计结果显示输出。</p>
+<p>语法：wc [选项] 文件…</p>
+<p>说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。</p>
+<p>该命令各选项含义如下：</p>
+<p>　　- c 统计字节数。</p>
+<p>　　- l 统计行数。</p>
+<p>　　- w 统计字数</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/" target="_blank" rel="external">http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/</a></p>
 
           
         
@@ -1891,427 +2309,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/mac-安装使用Docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/mac-安装使用Docker/" itemprop="url">mac 安装使用Docker</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T14:28:36+08:00">
-                2017-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/mac-安装使用Docker/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/mac-安装使用Docker/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/mac-安装使用Docker/" class="leancloud_visitors" data-flag-title="mac 安装使用Docker">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  691
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="docker安装与启动"><a href="#docker安装与启动" class="headerlink" title="docker安装与启动"></a>docker安装与启动</h2><p><a href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="external">docker官网地址</a>,下载dmg安装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ docker run hello-world</div><div class="line">Hello from Docker!</div><div class="line">This message shows that your installation appears to be working correctly.</div><div class="line"></div><div class="line">To generate this message, Docker took the following steps:</div><div class="line"> 1. The Docker client contacted the Docker daemon.</div><div class="line"> 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.</div><div class="line"> 3. The Docker daemon created a new container from that image which runs the</div><div class="line">    executable that produces the output you are currently reading.</div><div class="line"> 4. The Docker daemon streamed that output to the Docker client, which sent it</div><div class="line">    to your terminal.</div><div class="line"></div><div class="line">$ docker --version</div></pre></td></tr></table></figure></p>
-<h2 id="构建第一个app"><a href="#构建第一个app" class="headerlink" title="构建第一个app"></a>构建第一个app</h2><p><a href="https://docs.docker.com/get-started/part2/#apppy" target="_blank" rel="external">官网文档 Build app</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ ls</div><div class="line">Dockerfile      app.py          requirements.txt</div><div class="line"></div><div class="line">$ docker build -t friendlyhello .</div><div class="line">Sending build context to Docker daemon  4.608kB</div><div class="line">Step 1/7 : FROM python:2.7-slim</div><div class="line">2.7-slim: Pulling from library/python</div><div class="line"></div><div class="line">$ docker images</div><div class="line">REPOSITORY            TAG                 IMAGE ID</div><div class="line">friendlyhello         latest              326387cea398</div><div class="line"></div><div class="line">$ docker run -p 4000:80 friendlyhello </div><div class="line">或 docker run -d -p 4000:80 friendlyhello #-d 后台运行</div></pre></td></tr></table></figure>
-<p>访问<a href="http://localhost:4000。" target="_blank" rel="external">http://localhost:4000。</a><br>CTRL+C退出</p>
-<p>后台运行退出时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ docker container ls #获取短CONTAINER ID</div><div class="line">$ docker stop id</div></pre></td></tr></table></figure></p>
-<h2 id="分享image"><a href="#分享image" class="headerlink" title="分享image"></a>分享image</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">docker login</div><div class="line">docker tag image username/repository:tag #Tag the image</div><div class="line">比如：docker tag friendlyhello john/get-started:part2</div><div class="line"></div><div class="line">docker images</div><div class="line"></div><div class="line">docker push username/repository:tag #Publish the image</div><div class="line"></div><div class="line">docker run -p 4000:80 username/repository:tag #Pull and run the image from the remote repository</div></pre></td></tr></table></figure>
-<h2 id="容器-amp-镜像命令列表"><a href="#容器-amp-镜像命令列表" class="headerlink" title="容器&amp;镜像命令列表"></a>容器&amp;镜像命令列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">docker build -t friendlyname .  # Create image using this directory&apos;s Dockerfile</div><div class="line">docker run -p 4000:80 friendlyname  # Run &quot;friendlyname&quot; mapping port 4000 to 80</div><div class="line">docker run -d -p 4000:80 friendlyname         # Same thing, but in detached mode</div><div class="line">docker container ls                                # List all running containers</div><div class="line">docker container ls -a             # List all containers, even those not running</div><div class="line">docker container stop &lt;hash&gt;           # Gracefully stop the specified container</div><div class="line">docker container kill &lt;hash&gt;         # Force shutdown of the specified container</div><div class="line">docker container rm &lt;hash&gt;        # Remove specified container from this machine</div><div class="line">docker container rm $(docker container ls -a -q)         # Remove all containers</div><div class="line">docker image ls -a                             # List all images on this machine</div><div class="line">docker image rm &lt;image id&gt;            # Remove specified image from this machine</div><div class="line">docker image rm $(docker image ls -a -q)   # Remove all images from this machine</div><div class="line">docker login             # Log in this CLI session using your Docker credentials</div><div class="line">docker tag &lt;image&gt; username/repository:tag  # Tag &lt;image&gt; for upload to registry</div><div class="line">docker push username/repository:tag            # Upload tagged image to registry</div><div class="line">docker run username/repository:tag                   # Run image from a registry</div></pre></td></tr></table></figure>
-<h2 id="镜像的获取"><a href="#镜像的获取" class="headerlink" title="镜像的获取"></a>镜像的获取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 搜索镜像</div><div class="line">docker search &lt;image&gt; # 在docker index中搜索image</div><div class="line"># 下载镜像</div><div class="line">docker pull &lt;image&gt;  # 从docker registry server 中下拉image</div><div class="line"># 查看镜像 </div><div class="line">docker images： # 列出images</div><div class="line">docker images -a # 列出所有的images（包含历史）</div><div class="line">docker rmi  &lt;image ID&gt;： # 删除一个或多个image</div></pre></td></tr></table></figure>
-<h2 id="容器的使用"><a href="#容器的使用" class="headerlink" title="容器的使用"></a>容器的使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># 查看容器</div><div class="line">    docker ps ：列出当前所有正在运行的container</div><div class="line">    docker ps -l ：列出最近一次启动的container</div><div class="line">    docker ps -a ：列出所有的container（包含历史，即运行过的container）</div><div class="line">    docker ps -q ：列出最近一次运行的container ID</div><div class="line"># 再次启动容器</div><div class="line">    docker start/stop/restart &lt;container&gt; #：开启/停止/重启container</div><div class="line">    docker start [container_id] #：再次运行某个container （包括历史container）</div><div class="line">#进入正在运行的docker容器</div><div class="line">    docker exec -it [container_id] /bin/bash</div><div class="line">    docker run -i -t -p &lt;host_port:contain_port&gt; #：映射 HOST 端口到容器，方便外部访问容器内服务，host_port 可以省略，省略表示把 container_port 映射到一个动态端口。</div><div class="line"></div><div class="line"># 删除容器</div><div class="line">    docker rm &lt;container...&gt; #：删除一个或多个container</div><div class="line">    docker rm `docker ps -a -q` #：删除所有的container</div><div class="line">    docker ps -a -q | xargs docker rm #：同上, 删除所有的container</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/jvm-工具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/jvm-工具/" itemprop="url">jvm 工具</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T10:34:46+08:00">
-                2017-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/jvm-工具/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/jvm-工具/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/jvm-工具/" class="leancloud_visitors" data-flag-title="jvm 工具">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  885
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h2><p>jps：主要用来输出JVM中运行的进程状态信息 (Java Virtual Machine Process Status Tool)、<br>jstack：主要用来查看某个Java进程内的线程堆栈信息<br>jmap：生成堆快照<br>jstat: 显示进程中的类装载、内存、垃圾收集、JIT编译等运行数据<br>jhat：html形式显示对象占用内存大小以及引用情况<br>jconsole（图形工具）<br>jvisualvm（图形工具）<br>MAT （第三方图形工具）</p>
-<h2 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h2><p>jps主要用来输出JVM中运行的进程状态信息。语法格式如下：</p>
-<blockquote>
-<p>jps [options] [hostid]<br>-q 不输出类名、Jar名和传入main方法的参数<br>-m 输出传入main方法的参数<br>-l 输出main类或Jar的全限名<br>-v 输出传入JVM的参数</p>
-</blockquote>
-<h2 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h2><p>jstack主要用来查看某个Java进程内的线程堆栈信息。语法格式如下：</p>
-<blockquote>
-<p>jstack [option] pid<br>jstack [option] executable core<br>jstack [option] [server-id@]remote-hostname-or-ip<br>-l long listings，会打印出额外的锁信息，在发生死锁时可以用jstack -l pid来观察锁持有情况<br>-m mixed mode，不仅会输出Java堆栈信息，还会输出C/C++堆栈信息（比如Native方法）</p>
-</blockquote>
-<h2 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a>jmap</h2><blockquote>
-<p>jmap -heap :当前堆内存分布信息，如From space, To Space等占用内存大小<br>jmap -histo : 当前堆中对象占用内存大小情况，柱状图数据结构组织。可以简单得定位下当前占用内存最大的几个对象<br>jmap -histo:live:先触发一次gc , 再统计对象占用内存情况。可以简单得定位下当前占用内存最大的几个对象以及对象是否可以被gc回收<br>jmap -dump:format=b,file=heapDump: 导出堆详细使用信息，b表示二进制文件，之后采用其他工具分析，如jhat,mat.非常详细，可分析到对象之间的引用关系等。</p>
-</blockquote>
-<h2 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h2><p>显示进程中的类装载、内存、垃圾收集、JIT编译等运行数据<br>目前感觉用上的都是gc记录查看，实际还没太用过</p>
-<blockquote>
-<p>jstat -gc 3331 250 20: 查询进程2764的垃圾收集情况，每250毫秒查询一次，一共查询20次。<br>jstat- gcause</p>
-<p>S0C : survivor0区的总容量<br>S1C : survivor1区的总容量<br>S0U : survivor0区已使用的容量<br>S1U : survivor1区已使用的容量<br>EC : Eden区的总容量<br>EU : Eden区已使用的容量<br>OC : Old区的总容量<br>OU : Old区已使用的容量<br>PC  当前perm的容量 (KB)<br>PU  perm的使用 (KB)<br>YGC : 新生代垃圾回收次数<br>YGCT : 新生代垃圾回收时间<br>FGC : 老年代垃圾回收次数<br>FGCT : 老年代垃圾回收时间<br>GCT : 垃圾回收总消耗时间</p>
-</blockquote>
-<h2 id="jhat"><a href="#jhat" class="headerlink" title="jhat"></a>jhat</h2><p>可用来分析 jmap dump生成的堆信息二进制文件。html形式显示对象占用内存大小以及引用情况，但显示得并不友好。感觉比较鸡肋。</p>
-<blockquote>
-<p>jhat file</p>
-</blockquote>
-<h2 id="jconsole（图形工具）"><a href="#jconsole（图形工具）" class="headerlink" title="jconsole（图形工具）"></a>jconsole（图形工具）</h2><p>Jconsole（Java Monitoring and Management Console）从java5开始，在JDK中自带的java监控和管理控制台，用于对JVM中内存，线程和类等的监控</p>
-<h2 id="jvisualvm（图形工具）"><a href="#jvisualvm（图形工具）" class="headerlink" title="jvisualvm（图形工具）"></a>jvisualvm（图形工具）</h2><p>用于查看 Java 虚拟机 (Java Virtual Machine, JVM) 上运行的基于 Java 技术的应用程序（Java 应用程序）的详细信息。</p>
-<h2 id="MAT"><a href="#MAT" class="headerlink" title="MAT"></a>MAT</h2><p>MAT(Memory Analyzer Tool)，一个基于Eclipse的内存分析工具，是一个快速、功能丰富的Java heap分析工具，它可以帮助我们查找内存泄漏和减少内存消耗。</p>
-<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="https://my.oschina.net/feichexia/blog/196575" target="_blank" rel="external">https://my.oschina.net/feichexia/blog/196575</a><br><a href="http://www.jianshu.com/p/6bbab921102b" target="_blank" rel="external">http://www.jianshu.com/p/6bbab921102b</a><br><a href="http://www.ityouknow.com/" target="_blank" rel="external">http://www.ityouknow.com/</a> </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2362,7 +2359,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2384,7 +2381,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
