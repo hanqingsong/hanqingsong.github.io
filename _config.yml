@@ -4,7 +4,7 @@
 
 # Site
 title: 青松的博客 
-subtitle:
+subtitle: 学习、记录、分享
 description:
 author: qingsong
 language: zh-Hans
@@ -39,7 +39,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: true 
+post_asset_folder: false 
 relative_link: false
 future: true
 highlight:
