@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux命令：密钥创建]]></title>
+    <url>%2F2018%2F05%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%AF%86%E9%92%A5%E5%88%9B%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[ssh-keygenssh-keygen命令用于为“ssh”生成、管理和转换认证密钥，它支持RSA和DSA两种认证密钥。 12345678910111213语法ssh-keygen选项-b：指定密钥长度；-e：读取openssh的私钥或者公钥文件；-C：添加注释；-f：指定用来保存密钥的文件名；-i：读取未加密的ssh-v2兼容的私钥/公钥文件，然后在标准输出设备上显示openssh兼容的私钥/公钥；-l：显示公钥文件的指纹数据；-N：提供一个新密语；-P：提供（旧）密语；-q：静默模式；-t：指定要创建的密钥类型。 使用1ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[git命令设置不提交更改文件]]></title>
+    <url>%2F2018%2F04%2Fgit%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%92%8C%E8%AE%BE%E7%BD%AE%E4%B8%8D%E6%8F%90%E4%BA%A4%E5%B7%B2%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[git rm需要删除暂存区或分支上的文件, 同时工作区也不需要这个文件了1git rm file_path git rm –cache需要删除暂存区或分支上的文件, 但本地又需要使用, 只是不希望这个文件被版本控制,1git rm --cached file_path 删除之后加入.gitignoreps：.gitignore 只会对未加入版本控制的文件有效，如果已经加入过，需要从版本控制中移出 git update-index已经将这个文件提交到git库中,希望之后修改不再提交。 12345执行命令将file_path加入不提交队列git update-index --assume-unchanged file_path执行命令将xxx/xxx取消加入不提交队列git update-index --no-assume-unchanged file_path]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux命令：crontab定时任务]]></title>
     <url>%2F2018%2F04%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9Acrontab%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%2F</url>
     <content type="text"><![CDATA[Croncron其实是一个存放在/etc/init.d/下的一个脚本crond，随着系统开机自动启动，可以由service命令调度控制开启和关闭。 12345678[root@VM_152_30_centos ~]# ll /etc/init.d/total 236-rwxr-xr-x 1 root root 1818 Feb 17 2016 acpid-rwxr-xr-x 1 root root 2062 Feb 20 2015 atd-rwxr-xr-x 1 root root 3580 May 11 2016 auditd-r-xr-xr-x 1 root root 1343 Aug 24 2016 blk-availability-rw-r--r--. 1 root root 460 Dec 25 2014 bootlocal-rwxr-xr-x 1 root root 2826 Aug 24 2016 crond Step1首先，cron会搜索/var/spool/cron/文件夹，这个文件夹下有多个以用户名命名的文件，每个文件就是属于各个用户的独立的cron配置文件。123456[root@VM_152_30_centos ~]# cat /var/spool/cron/root#secu-tcs-agent monitor, install at Fri Apr 1 15:51:35 CST 2016* * * * * /usr/local/sa/agent/secu-tcs-agent-mon-safe.sh &gt; /dev/null 2&gt;&amp;1*/20 * * * * /usr/sbin/ntpdate ntpupdate.tencentyun.com &gt;/dev/null &amp;0 0 * * * /usr/sbin/logrotate -vf /etc/logrotate.d/nginx*/1 * * * * /usr/local/qcloud/stargate/admin/start.sh &gt; /dev/null 2&gt;&amp;1 &amp; Step2然后，cron会去搜索/etc/crontab文件，并且解析里面的cron配置12345678910111213141516[root@VM_152_30_centos ~]# cat /etc/crontabSHELL=/bin/bashPATH=/sbin:/bin:/usr/sbin:/usr/binMAILTO=rootHOME=/# For details see man 4 crontabs# Example of job definition:# .---------------- minute (0 - 59)# | .------------- hour (0 - 23)# | | .---------- day of month (1 - 31)# | | | .------- month (1 - 12) OR jan,feb,mar,apr ...# | | | | .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat# | | | | |# * * * * * user-name command to be executed Step3最后，cron会去执行/etc/cron.d/这个文件夹下的东西，不过我们通常不建议在这里进行修改，虽然这个文件夹下的变化也会被监视，但是我们更习惯将这种不通用的定时任务配置在/etc/crontab/里。 Crontabcrontab其实是方便用户来维护crontab配置文件的工具,通过crontab -l可以显示属于当前用户的/var/spool/cron/文件夹下的配置。通过crontab -e可以安全的进行编辑，如果语法不对他会进行提示，保证安全。同时，crontab还提供了两个配置文件来控制用户的权限–/etc/cron.allow跟/etc/cron.deny。只有用户名在白名单里的用户才能使用crontab命令，用户名在黑名单里的用户是无法使用crontab命令的。显然，原则上这两个配置文件不能同时存在，如果同时存在，那么出于保守原则考虑，只有白名单有效，黑名单无效。如果这两个配置不存在，那么根据linux版本的不同，有的系统默认所有用户都有权限，有的系统默认只有root才有权限。 配置选择固定用户的定时任务我们就可以使用crontab -e命令去修改位于/var/spool/cron/下的属于当前用户的配置文件。这样就能够非常方便的区分不同用户的配置，保护了数据的安全。 固定时间的定时任务很多情况下，作为系统管理员，我们需求的任务模式大都是每小时触发，每日触发，每周触发，每月触发之类的。那么这时我们就可以不用配置cron项，只需要把脚本放在对应的/etc/cron.daily,/etc/cron.hourly之类的文件夹下即可，方便省事。而且事实上，很多系统自身需要的定时任务就是这么办的。这种方式也是我们最推荐的方式，因为我们只要把需要定时执行的脚本放在规定的路径下即可，无需配置cron，毕竟cron配置文件用起来还是比shell脚本麻烦很多。 固定程序的定时任务有时候，某些处理特定任务的进程也希望能够创建定时任务，比如我们编写或者安装的第三方任务。这些任务不希望依附于某一个用户，而希望拥有独立的配置文件，方便修改和卸载等等。这时候我们就可以新建一个cron配置文件，放置于/etc/cron.d/文件夹下，进行统一管理。像csf,lfd这类的进程就是这么做的，通过这样的配置保证服务定时重启。 资料http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html]]></content>
@@ -59,7 +81,7 @@
   </entry>
   <entry>
     <title><![CDATA[Linux命令:Http请求get和post]]></title>
-    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4-Http%E8%AF%B7%E6%B1%82get%E5%92%8Cpost%2F</url>
+    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9AHttp%E8%AF%B7%E6%B1%82get%E5%92%8Cpost%2F</url>
     <content type="text"><![CDATA[一、get请求： 1、使用curl命令： curl “http://www.baidu.com” 如果这里的URL指向的是一个文件或者一幅图都可以直接下载到本地 curl -i “http://www.baidu.com” 显示全部信息 curl -l “http://www.baidu.com” 只显示头部信息 curl -v “http://www.baidu.com” 显示get请求全过程解析 2、使用wget命令： wget “http://www.baidu.com”也可以 二、post请求 1、使用curl命令（通过-d参数，把访问参数放在里面）： curl -d “param1=value1¶m2=value2” “http://www.baidu.com” 2、使用wget命令：（–post-data参数来实现） wget –post-data ‘user=foo&amp;password=bar’ http://www.baidu.com 以上就是Linux模拟Http的get或post请求的方法了，这样一来Linux系统也能向远程服务器发送消息了。 示例：wget --post-data=&quot;&quot; http://mcs-inner.99bill.com/mcs-gateway/mcs/task/clear 三、curl (可直接发送格式化请求例如json)示例：目标url:http://fsc-inner.99bill.com/acs/deposit/{srcRef} 命令：curl -H &quot;Content-type: application/json&quot; -X POST -d &apos;{&quot;srcRef&quot;:&quot;1002&quot;}&apos;http://fsc-inner.99bill.com/acs/deposit/1002 参考http://blog.csdn.net/ai2000ai/article/details/56290142]]></content>
       <categories>
         <category>Linux</category>
@@ -127,19 +149,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Linux 命令：压缩命令]]></title>
-    <url>%2F2017%2F10%2FLinux-%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[tar命令 解包：tar zxvf FileName.tar 解包到指定文件夹：tar zxvf FileName.tar -C dirname 打包：tar czvf FileName.tar DirName gz命令 解压：gunzip FileName.gz 解压：gzip -d FileName.gz 压缩：gzip FileName tar.gz 解压：tar zxvf FileName.tar.gz 压缩：tar zcvf FileName.tar.gz DirName 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3 zip命令 解压：unzip FileName.zip 解压到指定目录：unzip -d /home/sunny myfile.zip 压缩：zip -r FileName.zip DirName]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Linux 命令：统计分析日志]]></title>
-    <url>%2F2017%2F10%2FLinux-%E5%91%BD%E4%BB%A4%EF%BC%9A%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%97%A5%E5%BF%97%2F</url>
+    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9A%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%97%A5%E5%BF%97%2F</url>
     <content type="text"><![CDATA[liunx服务器上生成的日志文件进行分析，文件格式如下：id time1001,2011-08-19 00:00:001002,2011-08-19 01:00:001001,2011-08-19 02:00:001003,2011-08-19 03:00:00 linux命令如下：排重后id个数 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | wc -l 按id出现次数排序 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | sort -k 1 -n -r | wc -l 将结果导入文件 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | sort -k 1 -n -r | wc -l &gt; result.txt 命令解析：sort：表示前面输入的结果文件中的内容进行排序。sort命令是对于每一行的内容根据字典序（ASCII码）进行排序，这样可以保证重复的记录时相邻的。 awk ‘{print $1}’ ：日志记录中的第一个字段。 uniq –c：表示合并相邻的重复记录，并统计重复数。因为uniq -c 只会合并相邻的记录，所以在使用该命令之前需要先排序。 sort –k 1 -n -r|wc –l：经过uniq -c 处理之后的数据格式形如”2 data”，第一个字段是数字，表示重复的记录数；第二个字段为记录的内容。我们将对此内容进行排序。sort -k 1表示对于每行的第一个字段进行排序，这里即指代表重复记录数的那个字段。因为sort命令的默认排序是按照ASCII，这就会导致按从大到小进行排序时，数值2会排在数值11的前面，所以需要使用-n 参数指定sort命令按照数值大小进行排序。-r 表示逆序，即按照从大到小的顺序进行排序。 wc命令 wc命令的功能为统计指定文件中的字节数、字数、行数, 并将统计结果显示输出。 语法：wc [选项] 文件… 说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。 该命令各选项含义如下： - c 统计字节数。 - l 统计行数。 - w 统计字数 参考http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/]]></content>
       <categories>
         <category>Linux</category>
@@ -149,8 +160,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Linux 命令：压缩命令]]></title>
+    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[tar命令 解包：tar zxvf FileName.tar 解包到指定文件夹：tar zxvf FileName.tar -C dirname 打包：tar czvf FileName.tar DirName gz命令 解压：gunzip FileName.gz 解压：gzip -d FileName.gz 压缩：gzip FileName tar.gz 解压：tar zxvf FileName.tar.gz 压缩：tar zcvf FileName.tar.gz DirName 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3 zip命令 解压：unzip FileName.zip 解压到指定目录：unzip -d /home/sunny myfile.zip 压缩：zip -r FileName.zip DirName]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux 命令: 运行远程命令]]></title>
-    <url>%2F2017%2F10%2FLinux-%E5%91%BD%E4%BB%A4-%E8%BF%90%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%2F</url>
+    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9A%E8%BF%90%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[运行远程命令123➜ ~ ssh root@dev &quot;ls /mydata&quot;appsdevelop]]></content>
       <categories>
         <category>Linux</category>
@@ -161,7 +183,7 @@
   </entry>
   <entry>
     <title><![CDATA[Linux 命令：查看文件夹下文件大小]]></title>
-    <url>%2F2017%2F10%2FLinux-%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%2F</url>
+    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%2F</url>
     <content type="text"><![CDATA[查看文件夹下文件大小du [-abcDhHklmsSx] [-L &lt;符号连接&gt;][-X &lt;文件&gt;][–block-size][–exclude=&lt;目录或文件&gt;] [–max-depth=&lt;目录层数&gt;][–help][–version][目录或文件] 1du -h --max-depth=1 /mydata/]]></content>
       <categories>
         <category>Linux</category>
