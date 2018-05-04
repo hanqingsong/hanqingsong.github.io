@@ -1,9 +1,10 @@
 ---
 title: 常用的 JavaScript 库 CDN 加速服务
-date: 2018-03-24 10:38:39
 categories: 前端
 tags: JavaScript
+date: 2018-03-24 10:38:39
 ---
+
 ## 国内的公共库
 
 - 百度CDN公共库：http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs

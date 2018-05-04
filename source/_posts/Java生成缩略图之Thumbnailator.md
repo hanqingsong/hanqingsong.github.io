@@ -1,9 +1,10 @@
 ---
 title: Java生成缩略图之Thumbnailator
-date: 2018-04-08 18:47:22
 categories: java
 tags: java
+date: 2018-04-08 18:47:22
 ---
+
 ## 介绍
 Thumbnailator是个开源的Java 项目，它提供了非常简单流畅的 API 来对图片进行缩放、旋转、批量处理图片以及加水印的处理。
 

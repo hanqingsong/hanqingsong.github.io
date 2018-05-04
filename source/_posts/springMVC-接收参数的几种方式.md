@@ -1,12 +1,13 @@
 ---
 title: springMVC 接收参数的几种方式
-date: 2018-03-28 10:42:05
-categories: 
-    - 后端
+categories:
+  - 后端
 tags:
-    - springMVC
-    - spring
+  - springMVC
+  - spring
+date: 2018-03-28 10:42:05
 ---
+
 ## 注解
 
 ```

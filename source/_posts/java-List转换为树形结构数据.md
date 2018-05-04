@@ -1,9 +1,10 @@
 ---
 title: java List转换为树形结构数据
-date: 2018-03-27 14:20:47
 categories: java
 tags: list
+date: 2018-03-27 14:20:47
 ---
+
 
 ```
     /**
