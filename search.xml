@@ -34,6 +34,29 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Java生成缩略图之Thumbnailator]]></title>
+    <url>%2F2018%2F04%2FJava%E7%94%9F%E6%88%90%E7%BC%A9%E7%95%A5%E5%9B%BE%E4%B9%8BThumbnailator%2F</url>
+    <content type="text"><![CDATA[介绍Thumbnailator是个开源的Java 项目，它提供了非常简单流畅的 API 来对图片进行缩放、旋转、批量处理图片以及加水印的处理。 使用123Thumbnails.of(file.getInputStream()).scale(1.0).rotate(0) .outputQuality(0.5D).imageType(BufferedImage.TYPE_INT_ARGB) .toOutputStream(outputStream); 资料https://item.congci.com/-/content/thumbnailator-tupian-suofang-xuanzhuan-jia-shuiyin]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[springMVC 接收参数的几种方式]]></title>
+    <url>%2F2018%2F03%2FspringMVC-%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[注解1234A、处理requet uri 部分（这里指uri template中variable，不含queryString部分）的注解： @PathVariable;B、处理request header部分的注解： @RequestHeader, @CookieValue;C、处理request body部分的注解：@RequestParam, @RequestBody;D、处理attribute类型是注解： @SessionAttributes, @ModelAttribute; 接收Request uri中参数: @PathVariable 123@RequestMapping(&quot;/books/&#123;bookId&#125;&quot;) public void findPet(@PathVariable String userId, @PathVariable String bookId) &#123; &#125; 接收request header部分的注解: @RequestHeader,@CookieValue; 1234567891011@RequestMapping(&quot;/displayHeaderInfo.do&quot;) public void displayHeaderInfo(@RequestHeader(&quot;Accept-Encoding&quot;) String encoding, @RequestHeader(&quot;Keep-Alive&quot;) long keepAlive) &#123; &#125;@RequestMapping(&quot;/displayHeaderInfo.do&quot;) public void displayHeaderInfo(@CookieValue(&quot;JSESSIONID&quot;) String cookie) &#123; &#125; 接收request body部分的注解：@RequestParam,@RequestBody;@RequestParam使用场景：A)常用来处理简单类型的绑定，通过Reqeust.getParameter()获取的String可以直接转化为简单类型的情况；因为使用request.getParameter()方式获取参数，所以可以处理get方式中queryString的值，也可以获取Post方式中body data的值；B)用来处理Content-Type:为application/x-www-form-urlencoded编码的内容，提交方式GET、POST；C)该注解有两个属性：value、required;value用来指定要传入值得id名称，required用来指示参数是否必须绑定； @RequestBody作用：该注解常用来处理Content-Type:不是 application/x-www-form-urlencoded编码的内容，例如application/json,application/xml等； 它是通过HandlerAdapter配置的HttpMessageConverters来解析post data body，然后绑定到相应的bean上。 因为配置有FormHttpMessageConverter,所以也可以用来处理Application/x-www-form-urlencoded的内容，处理完的结果放在一个MultiValueMap里，这种情况特殊需求下使用，详情查看FormHttpMessageConverter api; 接收attribute类型的注解：@SessionAttributes,@ModelAttribute;@SessionAttributes:该注解用来绑定HttpSession中的attribute对象的值，便于在方法中的参数中使用。该注解有value、types两个属性，可以通过名字和类型指定要使用的attribute对象；123456@Controller @RequestMapping(&quot;/editPet.do&quot;) @SessionAttributes(&quot;pet&quot;) public class EditPetForm &#123; // ... &#125; @ModelAttribute该注解有两个用法：通常用来处理@RequestMapping之前，为请求绑定需要从后台查询的model；用于参数上时：用来通过名称对应，将相应名称的值绑定到注解的参数bean上；要绑定的值来源于：A)@SessionAttribute启用的attribute对象上；B)@ModelAttribute用于方法上时指定的model对象；C)上述两种情况都没有时，new一个需要绑定的bean对象，然后将request中按名称对应的方式把值绑定到bean中1234@ModelAttribute public Account addAccount(@RequestParam String number) &#123; return accountManager.findAccount(number); &#125; 这种方式实际的效果就是在调用@RequestMapping的方法之前，为request对象的model里put(“account”,Account); 用在参数上的@ModelAttribute示例代码：1234@RequestMapping(value=&quot;/owners/&#123;ownerId&#125;/pets/&#123;petId&#125;/edit&quot;, method = RequestMethod.POST) public String processSubmit(@ModelAttribute Pet pet) &#123; &#125; 首先查询@SessionAttributes有无绑定的Pet对象，若没有则查询@ModelAttribute方法层面上是否绑定了Pet对象，若没有则URI template中的值按对应的名称绑定到Pet对象的各属性上。 form表单提交 直接参数名接收直接通过参数名接收，添加注解@RequestParam, 不添加注解时，参数名要和表单name一致，否则接收不到。 实体bean接收bean的属性要和表单name一致，可以不添加任何注解，也可以添加注解 @ModelAttribute,括号里的别名可以任意取，也可以不填 相同参数名可以用数组接收 123456@RequestMapping(value=&quot;/array/form/post/or/get&quot;,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;) public void formPost(String[] userName,String testParam)&#123; logger.info(&quot;form表单提交，用数组接收相同参数名&quot;); logger.info(&quot;userName:&quot;+Arrays.toString(userName)); logger.info(&quot;testParam:&quot;+testParam); &#125; 链接请求 使用@PathVariable注解 使用@RequestParam注解这里和表单get请求一样 实体bean接收同表单提交一样 ajax请求 ajax请求,参数为json字符串,get请求用参数名获取json字符串，然后后台对json字符串做处理JSON.parseObject(json,class) ajax请求,参数为json字符串,post请求必须添加@RequestBody注解，利用spring框架将json串转成java bean,属性名称要和json字符串一致 ajax请求,post请求 json字符串直接用参数名获取注解@RequestBody，然后用String接收到整个json字符串 ajax发送数组格式的字符串数组格式的字符串，需要手动转换成数组对象 1234567891011121314/** * ajax发送数组格式的字符串， * 实际是数组格式的字符串，需要手动转换成数组对象 * @param params * @return */ @RequestMapping(value=&quot;/ajax/post/arr&quot;,method=RequestMethod.POST) public String ajaxPostArr(@RequestBody String params)&#123; logger.info(&quot;ajax传递数组格式的字符串&quot;); logger.info(&quot;params:&quot;+params); String[] arr = JSON.parseObject(params, String[].class); logger.info(Arrays.toString(arr)); return &quot;success&quot;; &#125; ajax直接传递数组对象，同时还可以传递其他参数 1234567891011121314151617/** * ajax直接传递数组对象，同时还可以传递其他参数， * 类似表单提交，注意要设置： * traditional：true * contentType:默认 * * @param params * @return */ @RequestMapping(value=&quot;/ajax/post/arr2&quot;,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;) public String ajaxPostArr2(String[] params,String name)&#123; logger.info(&quot;ajax传递数组对象&quot;); logger.info(Arrays.toString(params)); logger.info(&quot;name:&quot;+name); return &quot;success&quot;; &#125; 后端POST方法接收参数实体bean接收，不添加任何注解,地址参数 ajax 请求,Content type’application/x-www-form-urlencoded;charset=UTF-8’,POST 实体bean接收，不添加任何注解,body x-www-form-urlencoded 传参 ajax 请求,Content type’application/x-www-form-urlencoded;charset=UTF-8’,POST 实体bean接收，使用@RequestBody注解 ajax 请求,Content type’application/json;charset=UTF-8’,POST 实体bean接收，使用@RequestBody注解 ajax 请求,Content type’application/json;charset=UTF-8’,POST, json.stringify 参考资料https://www.jianshu.com/p/b4b2c38d31eehttps://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/https://blog.csdn.net/MyNoteBlog/article/details/72519295]]></content>
+      <categories>
+        <category>后端</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+        <tag>springMVC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[shiro简介]]></title>
     <url>%2F2018%2F03%2Fshiro%E7%AE%80%E4%BB%8B%2F</url>
     <content type="text"><![CDATA[什么是Apache Shiro？Apache Shiro 是一个强大易用的Java安全框架，提供了认证、授权、加密和会话管理功能，可为任何应用提供安全保障 - 从命令行应用、移动应用到大型网络及企业应用。 Shiro能做的事情 登录验证 访问控制，如： 判断用户是否拥有角色admin 判断用户是否拥有访问的权限 在任何环境下使用 Session API 可以使用多个用户数据源。例如一个是oracle用户库，另外一个是mysql用户库 单点登录（SSO）功能 “Remember Me”服务 ，类似购物车的功能，shiro官方建议开启 可以直接使用annotation对所使用的方法做权限控制 可以在jsp中通过shiro标签方便的做到细粒度的权限控制 四大API Authentication —— 认证，用户身份识别，常被称为用户“登录”，who are you? Authorization —— 授权，访问控制过程，决定“谁”访问“什么”，who can do what? Session Management —— 会话管理，用户session管理器，用户相关的时间敏感的状态 Cryptography —— 密码加密，把JDK中复杂的密码加密方式进行封装，保护或隐藏数据防止被偷窥]]></content>
@@ -41,8 +64,41 @@
         <category>后端</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>shiro</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java List转换为树形结构数据]]></title>
+    <url>%2F2018%2F03%2Fjava-List%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%2F</url>
+    <content type="text"><![CDATA[12345678910111213141516171819202122232425262728293031/** * 转换为树形结构数据 * * @param authMenuVOList 列表数据 * @return 树形列表数据 */private List&lt;AuthMenuVO&gt; transListToTreeList(List&lt;AuthMenuVO&gt; authMenuVOList) &#123; List&lt;AuthMenuVO&gt; rootMenuList = Lists.newArrayList(); Map&lt;Long, AuthMenuVO&gt; menuNodeMap = Maps.newHashMap(); for (AuthMenuVO authMenuVO : authMenuVOList) &#123; menuNodeMap.put(authMenuVO.getId(), authMenuVO); &#125; //遍历列表数据，添加到父节点下，如果是根节点存入根节点列表中，如果不是根节点添加到父节点下 for (AuthMenuVO authMenuVO : authMenuVOList) &#123; Long pid = authMenuVO.getPid(); //判断是否是跟节点 if (pid == 0) &#123; rootMenuList.add(authMenuVO); &#125; else &#123; AuthMenuVO parentMenu = menuNodeMap.get(pid); List&lt;AuthMenuVO&gt; childrenList = parentMenu.getChildren(); if (childrenList == null) &#123; childrenList = Lists.newArrayList(); parentMenu.setChildren(childrenList); &#125; childrenList.add(authMenuVO); &#125; &#125; return rootMenuList;&#125;]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>list</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[vscode使用笔记]]></title>
+    <url>%2F2018%2F03%2Fvscode%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[打开终端有三种方法可以唤出终端： 通过菜单 View | Toggle Integrated Terminal； 通过 Ctrl + Shift + P 从命令面板使用 View:Toggle Integrated Terminal； 快捷键 Ctrl+` 常用编辑器与窗口管理打开一个新窗口： Ctrl+Shift+N关闭窗口： Ctrl+Shift+W 文件新建文件 Ctrl+N历史打开文件之间切换 Ctrl+Tab，Alt+Left，Alt+Right切出一个新的编辑器（最多3个）Ctrl+\，也可以按住Ctrl鼠标点击Explorer里的文件名左中右3个编辑器的快捷键Ctrl+1 Ctrl+2 Ctrl+33个编辑器之间循环切换 Ctrl+`编辑器换位置，Ctrl+k然后按Left或Right 代码编辑代码行缩进Ctrl+[， Ctrl+]折叠打开代码块 Ctrl+Shift+[， Ctrl+Shift+]Ctrl+C Ctrl+V如果不选中，默认复制或剪切一整行代码格式化：Shift+Alt+F，或Ctrl+Shift+P后输入format code修剪空格Ctrl+Shift+X上下移动一行： Alt+Up 或 Alt+Down向上向下复制一行： Shift+Alt+Up或Shift+Alt+Down在当前行下边插入一行Ctrl+Enter在当前行上方插入一行Ctrl+Shift+Enter 光标相关移动到行首：Home移动到行尾：End移动到文件结尾：Ctrl+End移动到文件开头：Ctrl+Home移动到后半个括号 Ctrl+Shift+]选中当前行Ctrl+i（双击）选择从光标到行尾Shift+End选择从行首到光标处Shift+Home删除光标右侧的所有字Ctrl+DeleteShrink/expand selection： Shift+Alt+Left和Shift+Alt+RightMulti-Cursor：可以连续选择多处，然后一起修改，Alt+Click添加cursor或者Ctrl+Alt+Down 或 Ctrl+Alt+Up同时选中所有匹配的Ctrl+Shift+LCtrl+D下一个匹配的也被选中(被我自定义成删除当前行了，见下边Ctrl+Shift+K)回退上一个光标操作Ctrl+U 重构代码跳转到定义处：F12定义处缩略图：只看一眼而不跳转过去Alt+F12列出所有的引用：Shift+F12同时修改本文件中所有匹配的：Ctrl+F12重命名：比如要修改一个方法名，可以选中后按F2，输入新的名字，回车，会发现所有的文件都修改过了。跳转到下一个Error或Warning：当有多个错误时可以按F8逐个跳转查看diff 在explorer里选择文件右键 Set file to compare，然后需要对比的文件上右键选择Compare with ‘file_name_you_chose’. 查找替换查找 Ctrl+F查找替换 Ctrl+H整个文件夹中查找 Ctrl+Shift+F 显示相关全屏：F11zoomIn/zoomOut：Ctrl + =/Ctrl + -侧边栏显/隐：Ctrl+B预览markdown Ctrl+Shift+V]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[常用的 JavaScript 库 CDN 加速服务]]></title>
+    <url>%2F2018%2F03%2F%E5%B8%B8%E7%94%A8%E7%9A%84JavaScript%E5%BA%93CDN%E5%8A%A0%E9%80%9F%E6%9C%8D%E5%8A%A1%2F</url>
+    <content type="text"><![CDATA[国内的公共库 百度CDN公共库：http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs 百度静态资源公共库：http://cdn.code.baidu.com/ 新浪云计算CDN公共库：http://lib.sinaapp.com BootCDN公共库：http://www.bootcdn.cn 360公共库：http://libs.useso.com 七牛云存储 开放静态文件CDN：http://www.staticfile.org 又拍云JS库CDN服务：http://jscdn.upai.com 国外的公共库 CDNJS：http://www.cdnjs.com Google Hosted Libraries：https://developers.google.com/speed/libraries/ Microsoft ASP.net CDN：http://www.asp.net/ajaxlibrary/cdn.ashx jsDelivr：http://www.jsdelivr.com/]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -66,6 +122,18 @@
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[idea常用快捷键mac版]]></title>
+    <url>%2F2017%2F11%2Fidea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AEmac%E7%89%88%2F</url>
+    <content type="text"><![CDATA[编辑ctrl + j 快速查看文档⌘⇧↩ 自动结束代码，行末自动添加分号⌘⌥T 包围代码（使用if..else, try..catch, for, synchronized等包围选中的代码）alt+cmd+[ / ] 跳转到代码开头结尾处ctrl + O overide 方法ctrl + I 实现接口方法 alt+shift+u 驼峰和下划线转换 需要安装CamelCase 各种格式转换]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>idea</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -149,9 +217,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Linux 命令：统计分析日志]]></title>
-    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9A%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%97%A5%E5%BF%97%2F</url>
-    <content type="text"><![CDATA[liunx服务器上生成的日志文件进行分析，文件格式如下：id time1001,2011-08-19 00:00:001002,2011-08-19 01:00:001001,2011-08-19 02:00:001003,2011-08-19 03:00:00 linux命令如下：排重后id个数 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | wc -l 按id出现次数排序 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | sort -k 1 -n -r | wc -l 将结果导入文件 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | sort -k 1 -n -r | wc -l &gt; result.txt 命令解析：sort：表示前面输入的结果文件中的内容进行排序。sort命令是对于每一行的内容根据字典序（ASCII码）进行排序，这样可以保证重复的记录时相邻的。 awk ‘{print $1}’ ：日志记录中的第一个字段。 uniq –c：表示合并相邻的重复记录，并统计重复数。因为uniq -c 只会合并相邻的记录，所以在使用该命令之前需要先排序。 sort –k 1 -n -r|wc –l：经过uniq -c 处理之后的数据格式形如”2 data”，第一个字段是数字，表示重复的记录数；第二个字段为记录的内容。我们将对此内容进行排序。sort -k 1表示对于每行的第一个字段进行排序，这里即指代表重复记录数的那个字段。因为sort命令的默认排序是按照ASCII，这就会导致按从大到小进行排序时，数值2会排在数值11的前面，所以需要使用-n 参数指定sort命令按照数值大小进行排序。-r 表示逆序，即按照从大到小的顺序进行排序。 wc命令 wc命令的功能为统计指定文件中的字节数、字数、行数, 并将统计结果显示输出。 语法：wc [选项] 文件… 说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。 该命令各选项含义如下： - c 统计字节数。 - l 统计行数。 - w 统计字数 参考http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/]]></content>
+    <title><![CDATA[Linux 命令：压缩命令]]></title>
+    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[tar命令 解包：tar zxvf FileName.tar 解包到指定文件夹：tar zxvf FileName.tar -C dirname 打包：tar czvf FileName.tar DirName gz命令 解压：gunzip FileName.gz 解压：gzip -d FileName.gz 压缩：gzip FileName tar.gz 解压：tar zxvf FileName.tar.gz 压缩：tar zcvf FileName.tar.gz DirName 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3 zip命令 解压：unzip FileName.zip 解压到指定目录：unzip -d /home/sunny myfile.zip 压缩：zip -r FileName.zip DirName]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -160,9 +228,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Linux 命令：压缩命令]]></title>
-    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[tar命令 解包：tar zxvf FileName.tar 解包到指定文件夹：tar zxvf FileName.tar -C dirname 打包：tar czvf FileName.tar DirName gz命令 解压：gunzip FileName.gz 解压：gzip -d FileName.gz 压缩：gzip FileName tar.gz 解压：tar zxvf FileName.tar.gz 压缩：tar zcvf FileName.tar.gz DirName 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3 zip命令 解压：unzip FileName.zip 解压到指定目录：unzip -d /home/sunny myfile.zip 压缩：zip -r FileName.zip DirName]]></content>
+    <title><![CDATA[Linux 命令：统计分析日志]]></title>
+    <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9A%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%97%A5%E5%BF%97%2F</url>
+    <content type="text"><![CDATA[liunx服务器上生成的日志文件进行分析，文件格式如下：id time1001,2011-08-19 00:00:001002,2011-08-19 01:00:001001,2011-08-19 02:00:001003,2011-08-19 03:00:00 linux命令如下：排重后id个数 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | wc -l 按id出现次数排序 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | sort -k 1 -n -r | wc -l 将结果导入文件 cat ****.txt | awk &apos;{print $1}&apos; | sort | uniq -c | sort -k 1 -n -r | wc -l &gt; result.txt 命令解析：sort：表示前面输入的结果文件中的内容进行排序。sort命令是对于每一行的内容根据字典序（ASCII码）进行排序，这样可以保证重复的记录时相邻的。 awk ‘{print $1}’ ：日志记录中的第一个字段。 uniq –c：表示合并相邻的重复记录，并统计重复数。因为uniq -c 只会合并相邻的记录，所以在使用该命令之前需要先排序。 sort –k 1 -n -r|wc –l：经过uniq -c 处理之后的数据格式形如”2 data”，第一个字段是数字，表示重复的记录数；第二个字段为记录的内容。我们将对此内容进行排序。sort -k 1表示对于每行的第一个字段进行排序，这里即指代表重复记录数的那个字段。因为sort命令的默认排序是按照ASCII，这就会导致按从大到小进行排序时，数值2会排在数值11的前面，所以需要使用-n 参数指定sort命令按照数值大小进行排序。-r 表示逆序，即按照从大到小的顺序进行排序。 wc命令 wc命令的功能为统计指定文件中的字节数、字数、行数, 并将统计结果显示输出。 语法：wc [选项] 文件… 说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。 该命令各选项含义如下： - c 统计字节数。 - l 统计行数。 - w 统计字数 参考http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/]]></content>
       <categories>
         <category>Linux</category>
       </categories>

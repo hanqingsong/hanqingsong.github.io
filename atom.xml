@@ -92,6 +92,58 @@
   </entry>
   
   <entry>
+    <title>Java生成缩略图之Thumbnailator</title>
+    <link href="http://www.codr.top/2018/04/Java%E7%94%9F%E6%88%90%E7%BC%A9%E7%95%A5%E5%9B%BE%E4%B9%8BThumbnailator/"/>
+    <id>http://www.codr.top/2018/04/Java生成缩略图之Thumbnailator/</id>
+    <published>2018-04-08T10:47:22.000Z</published>
+    <updated>2018-05-04T00:18:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Thumbnailator是个开源的Java 项目，它提供了非常简单流畅的 API 来对图片进行缩放、旋转、批量处理图片以及加水印的处理。</p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Thumbnails.of(file.getInputStream()).scale(1.0).rotate(0)</div><div class="line">                    .outputQuality(0.5D).imageType(BufferedImage.TYPE_INT_ARGB)</div><div class="line">                    .toOutputStream(outputStream);</div></pre></td></tr></table></figure><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="https://item.congci.com/-/content/thumbnailator-tupian-suofang-xuanzhuan-jia-shuiyin" target="_blank" rel="external">https://item.congci.com/-/content/thumbnailator-tupian-suofang-xuanzhuan-jia-shuiyin</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;Thumbnailator是个开源的Java 项目，它提供了非常简单流畅的 API 来对图片进行缩放、旋转、批量处理图片以及加水印的处理。&lt;
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://www.codr.top/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://www.codr.top/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>springMVC 接收参数的几种方式</title>
+    <link href="http://www.codr.top/2018/03/springMVC-%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>http://www.codr.top/2018/03/springMVC-接收参数的几种方式/</id>
+    <published>2018-03-28T02:42:05.000Z</published>
+    <updated>2018-05-04T00:23:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A、处理requet uri 部分（这里指uri template中variable，不含queryString部分）的注解： @PathVariable;</div><div class="line">B、处理request header部分的注解： @RequestHeader, @CookieValue;</div><div class="line">C、处理request body部分的注解：@RequestParam,  @RequestBody;</div><div class="line">D、处理attribute类型是注解： @SessionAttributes, @ModelAttribute;</div></pre></td></tr></table></figure><ol><li>接收Request uri中参数: @PathVariable </li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(&quot;/books/&#123;bookId&#125;&quot;)  </div><div class="line"> public void findPet(@PathVariable String userId, @PathVariable String bookId) &#123;      </div><div class="line"> &#125;</div></pre></td></tr></table></figure><ol><li>接收request header部分的注解: @RequestHeader,@CookieValue;</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(&quot;/displayHeaderInfo.do&quot;)  </div><div class="line">public void displayHeaderInfo(@RequestHeader(&quot;Accept-Encoding&quot;) String encoding,  </div><div class="line">                              @RequestHeader(&quot;Keep-Alive&quot;) long keepAlive)  &#123;  </div><div class="line">  </div><div class="line">  </div><div class="line">&#125;</div><div class="line"></div><div class="line">@RequestMapping(&quot;/displayHeaderInfo.do&quot;)  </div><div class="line">public void displayHeaderInfo(@CookieValue(&quot;JSESSIONID&quot;) String cookie)  &#123;  </div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure><ol><li>接收request body部分的注解：@RequestParam,@RequestBody;<br>@RequestParam使用场景：<br>A)常用来处理简单类型的绑定，通过Reqeust.getParameter()获取的String可以直接转化为简单类型的情况；因为使用request.getParameter()方式获取参数，所以可以处理get方式中queryString的值，也可以获取Post方式中body data的值；<br>B)用来处理Content-Type:为application/x-www-form-urlencoded编码的内容，提交方式GET、POST；<br>C)该注解有两个属性：value、required;value用来指定要传入值得id名称，required用来指示参数是否必须绑定；</li></ol><p>@RequestBody作用：<br>该注解常用来处理Content-Type:不是 application/x-www-form-urlencoded编码的内容，例如application/json,application/xml等； 它是通过HandlerAdapter配置的HttpMessageConverters来解析post data body，然后绑定到相应的bean上。 因为配置有FormHttpMessageConverter,所以也可以用来处理Application/x-www-form-urlencoded的内容，处理完的结果放在一个MultiValueMap<string,string>里，这种情况特殊需求下使用，详情查看FormHttpMessageConverter api;</string,string></p><ol><li>接收attribute类型的注解：@SessionAttributes,@ModelAttribute;<br>@SessionAttributes:<br>该注解用来绑定HttpSession中的attribute对象的值，便于在方法中的参数中使用。<br>该注解有value、types两个属性，可以通过名字和类型指定要使用的attribute对象；<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Controller  </div><div class="line">@RequestMapping(&quot;/editPet.do&quot;)  </div><div class="line">@SessionAttributes(&quot;pet&quot;)  </div><div class="line">public class EditPetForm &#123;  </div><div class="line">    // ...  </div><div class="line">&#125;</div></pre></td></tr></table></figure></li></ol><p>@ModelAttribute<br>该注解有两个用法：通常用来处理@RequestMapping之前，为请求绑定需要从后台查询的model；<br>用于参数上时：用来通过名称对应，将相应名称的值绑定到注解的参数bean上；要绑定的值来源于：<br>A)@SessionAttribute启用的attribute对象上；<br>B)@ModelAttribute用于方法上时指定的model对象；<br>C)上述两种情况都没有时，new一个需要绑定的bean对象，然后将request中按名称对应的方式把值绑定到bean中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@ModelAttribute  </div><div class="line">public Account addAccount(@RequestParam String number) &#123;  </div><div class="line">    return accountManager.findAccount(number);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>这种方式实际的效果就是在调用@RequestMapping的方法之前，为request对象的model里put(“account”,Account);</p><p>用在参数上的@ModelAttribute示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(value=&quot;/owners/&#123;ownerId&#125;/pets/&#123;petId&#125;/edit&quot;, method = RequestMethod.POST)  </div><div class="line">public String processSubmit(@ModelAttribute Pet pet) &#123;  </div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>首先查询@SessionAttributes有无绑定的Pet对象，若没有则查询@ModelAttribute方法层面上是否绑定了Pet对象，若没有则URI template中的值按对应的名称绑定到Pet对象的各属性上。</p><h2 id="form表单提交"><a href="#form表单提交" class="headerlink" title="form表单提交"></a>form表单提交</h2><ol><li><p>直接参数名接收<br>直接通过参数名接收，添加注解@RequestParam, 不添加注解时，参数名要和表单name一致，否则接收不到。</p></li><li><p>实体bean接收<br>bean的属性要和表单name一致，可以不添加任何注解，也可以添加注解 @ModelAttribute,括号里的别名可以任意取，也可以不填 </p></li><li><p>相同参数名可以用数组接收</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(value=&quot;/array/form/post/or/get&quot;,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;)  </div><div class="line">public void formPost(String[] userName,String testParam)&#123;  </div><div class="line">    logger.info(&quot;form表单提交，用数组接收相同参数名&quot;);  </div><div class="line">    logger.info(&quot;userName:&quot;+Arrays.toString(userName));  </div><div class="line">    logger.info(&quot;testParam:&quot;+testParam);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></li></ol><h2 id="链接请求"><a href="#链接请求" class="headerlink" title="链接请求"></a>链接请求</h2><ol><li>使用@PathVariable注解</li><li>使用@RequestParam注解<br>这里和表单get请求一样 </li><li>实体bean接收<br>同表单提交一样</li></ol><h2 id="ajax请求"><a href="#ajax请求" class="headerlink" title="ajax请求"></a>ajax请求</h2><ol><li><p>ajax请求,参数为json字符串,get请求<br>用参数名获取json字符串，然后后台对json字符串做处理<code>JSON.parseObject(json,class)</code></p></li><li><p>ajax请求,参数为json字符串,post请求<br><code>必须添加</code>@RequestBody注解，利用spring框架将json串转成java bean,属性名称要和json字符串一致</p></li><li><p>ajax请求,post请求 json字符串直接用参数名获取<br>注解@RequestBody，然后用String接收到整个json字符串</p></li><li><p>ajax发送数组格式的字符串<br>数组格式的字符串，需要手动转换成数组对象</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/** </div><div class="line"> * ajax发送数组格式的字符串， </div><div class="line"> * 实际是数组格式的字符串，需要手动转换成数组对象 </div><div class="line"> * @param params </div><div class="line"> * @return </div><div class="line"> */  </div><div class="line">@RequestMapping(value=&quot;/ajax/post/arr&quot;,method=RequestMethod.POST)  </div><div class="line">public String ajaxPostArr(@RequestBody String params)&#123;  </div><div class="line">    logger.info(&quot;ajax传递数组格式的字符串&quot;);  </div><div class="line">    logger.info(&quot;params:&quot;+params);  </div><div class="line">    String[] arr = JSON.parseObject(params, String[].class);  </div><div class="line">    logger.info(Arrays.toString(arr));  </div><div class="line">    return &quot;success&quot;;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></li><li><p>ajax直接传递数组对象，同时还可以传递其他参数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/** </div><div class="line"> * ajax直接传递数组对象，同时还可以传递其他参数， </div><div class="line"> * 类似表单提交，注意要设置： </div><div class="line"> * traditional：true </div><div class="line"> * contentType:默认 </div><div class="line"> *  </div><div class="line"> * @param params </div><div class="line"> * @return </div><div class="line"> */  </div><div class="line">@RequestMapping(value=&quot;/ajax/post/arr2&quot;,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;)  </div><div class="line">public String ajaxPostArr2(String[] params,String name)&#123;  </div><div class="line">    logger.info(&quot;ajax传递数组对象&quot;);  </div><div class="line">    logger.info(Arrays.toString(params));  </div><div class="line">    logger.info(&quot;name:&quot;+name);  </div><div class="line">    return &quot;success&quot;;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></li></ol><h2 id="后端POST方法接收参数"><a href="#后端POST方法接收参数" class="headerlink" title="后端POST方法接收参数"></a>后端POST方法接收参数</h2><h3 id="实体bean接收，不添加任何注解-地址参数"><a href="#实体bean接收，不添加任何注解-地址参数" class="headerlink" title="实体bean接收，不添加任何注解,地址参数"></a>实体bean接收，不添加任何注解,地址参数</h3><ol><li>ajax 请求,Content type’application/x-www-form-urlencoded;charset=UTF-8’,POST</li></ol><h3 id="实体bean接收，不添加任何注解-body-x-www-form-urlencoded-传参"><a href="#实体bean接收，不添加任何注解-body-x-www-form-urlencoded-传参" class="headerlink" title="实体bean接收，不添加任何注解,body x-www-form-urlencoded 传参"></a>实体bean接收，不添加任何注解,body x-www-form-urlencoded 传参</h3><ol><li>ajax 请求,Content type’application/x-www-form-urlencoded;charset=UTF-8’,POST</li></ol><h3 id="实体bean接收，使用-RequestBody注解"><a href="#实体bean接收，使用-RequestBody注解" class="headerlink" title="实体bean接收，使用@RequestBody注解"></a>实体bean接收，使用@RequestBody注解</h3><ol><li>ajax 请求,Content type’application/json;charset=UTF-8’,POST</li></ol><h3 id="实体bean接收，使用-RequestBody注解-1"><a href="#实体bean接收，使用-RequestBody注解-1" class="headerlink" title="实体bean接收，使用@RequestBody注解"></a>实体bean接收，使用@RequestBody注解</h3><ol><li>ajax 请求,Content type’application/json;charset=UTF-8’,POST, json.stringify</li></ol><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.jianshu.com/p/b4b2c38d31ee" target="_blank" rel="external">https://www.jianshu.com/p/b4b2c38d31ee</a><br><a href="https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/" target="_blank" rel="external">https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/</a><br><a href="https://blog.csdn.net/MyNoteBlog/article/details/72519295" target="_blank" rel="external">https://blog.csdn.net/MyNoteBlog/article/details/72519295</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;注解&quot;&gt;&lt;a href=&quot;#注解&quot; class=&quot;headerlink&quot; title=&quot;注解&quot;&gt;&lt;/a&gt;注解&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div c
+      
+    
+    </summary>
+    
+      <category term="后端" scheme="http://www.codr.top/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="spring" scheme="http://www.codr.top/tags/spring/"/>
+    
+      <category term="springMVC" scheme="http://www.codr.top/tags/springMVC/"/>
+    
+  </entry>
+  
+  <entry>
     <title>shiro简介</title>
     <link href="http://www.codr.top/2018/03/shiro%E7%AE%80%E4%BB%8B/"/>
     <id>http://www.codr.top/2018/03/shiro简介/</id>
@@ -112,9 +164,87 @@
       <category term="后端" scheme="http://www.codr.top/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
+      <category term="shiro" scheme="http://www.codr.top/tags/shiro/"/>
+    
       <category term="java" scheme="http://www.codr.top/tags/java/"/>
     
-      <category term="shiro" scheme="http://www.codr.top/tags/shiro/"/>
+  </entry>
+  
+  <entry>
+    <title>java List转换为树形结构数据</title>
+    <link href="http://www.codr.top/2018/03/java-List%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE/"/>
+    <id>http://www.codr.top/2018/03/java-List转换为树形结构数据/</id>
+    <published>2018-03-27T06:20:47.000Z</published>
+    <updated>2018-05-04T00:19:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 转换为树形结构数据</div><div class="line"> *</div><div class="line"> * @param authMenuVOList 列表数据</div><div class="line"> * @return 树形列表数据</div><div class="line"> */</div><div class="line">private List&lt;AuthMenuVO&gt; transListToTreeList(List&lt;AuthMenuVO&gt; authMenuVOList) &#123;</div><div class="line">    List&lt;AuthMenuVO&gt; rootMenuList = Lists.newArrayList();</div><div class="line">    Map&lt;Long, AuthMenuVO&gt; menuNodeMap = Maps.newHashMap();</div><div class="line">    for (AuthMenuVO authMenuVO : authMenuVOList) &#123;</div><div class="line">        menuNodeMap.put(authMenuVO.getId(), authMenuVO);</div><div class="line">    &#125;</div><div class="line">    //遍历列表数据，添加到父节点下，如果是根节点存入根节点列表中，如果不是根节点添加到父节点下</div><div class="line">    for (AuthMenuVO authMenuVO : authMenuVOList) &#123;</div><div class="line">        Long pid = authMenuVO.getPid();</div><div class="line">        //判断是否是跟节点</div><div class="line">        if (pid == 0) &#123;</div><div class="line">            rootMenuList.add(authMenuVO);</div><div class="line">        &#125; else &#123;</div><div class="line">            AuthMenuVO parentMenu = menuNodeMap.get(pid);</div><div class="line">            List&lt;AuthMenuVO&gt; childrenList = parentMenu.getChildren();</div><div class="line">            if (childrenList == null) &#123;</div><div class="line">                childrenList = Lists.newArrayList();</div><div class="line">                parentMenu.setChildren(childrenList);</div><div class="line">            &#125;</div><div class="line">            childrenList.add(authMenuVO);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return rootMenuList;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/di
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://www.codr.top/categories/java/"/>
+    
+    
+      <category term="list" scheme="http://www.codr.top/tags/list/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vscode使用笔记</title>
+    <link href="http://www.codr.top/2018/03/vscode%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
+    <id>http://www.codr.top/2018/03/vscode使用笔记/</id>
+    <published>2018-03-26T03:31:51.000Z</published>
+    <updated>2018-05-04T00:22:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="打开终端"><a href="#打开终端" class="headerlink" title="打开终端"></a>打开终端</h2><p>有三种方法可以唤出终端：</p><ul><li>通过菜单 View | Toggle Integrated Terminal；</li><li>通过 Ctrl + Shift + P 从命令面板使用 View:Toggle Integrated Terminal；</li><li>快捷键 Ctrl+`</li></ul><h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><h3 id="编辑器与窗口管理"><a href="#编辑器与窗口管理" class="headerlink" title="编辑器与窗口管理"></a>编辑器与窗口管理</h3><p>打开一个新窗口： Ctrl+Shift+N<br>关闭窗口： Ctrl+Shift+W</p><h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>新建文件 Ctrl+N<br>历史打开文件之间切换 Ctrl+Tab，Alt+Left，Alt+Right<br>切出一个新的编辑器（最多3个）Ctrl+\，也可以按住Ctrl鼠标点击Explorer里的文件名<br>左中右3个编辑器的快捷键Ctrl+1 Ctrl+2 Ctrl+3<br>3个编辑器之间循环切换 Ctrl+`<br>编辑器换位置，Ctrl+k然后按Left或Right</p><h3 id="代码编辑"><a href="#代码编辑" class="headerlink" title="代码编辑"></a>代码编辑</h3><p>代码行缩进Ctrl+[， Ctrl+]<br>折叠打开代码块 Ctrl+Shift+[， Ctrl+Shift+]<br>Ctrl+C Ctrl+V如果不选中，默认复制或剪切一整行<br>代码格式化：Shift+Alt+F，或Ctrl+Shift+P后输入format code<br>修剪空格Ctrl+Shift+X<br>上下移动一行： Alt+Up 或 Alt+Down<br>向上向下复制一行： Shift+Alt+Up或Shift+Alt+Down<br>在当前行下边插入一行Ctrl+Enter<br>在当前行上方插入一行Ctrl+Shift+Enter</p><h3 id="光标相关"><a href="#光标相关" class="headerlink" title="光标相关"></a>光标相关</h3><p>移动到行首：Home<br>移动到行尾：End<br>移动到文件结尾：Ctrl+End<br>移动到文件开头：Ctrl+Home<br>移动到后半个括号 Ctrl+Shift+]<br>选中当前行Ctrl+i（双击）<br>选择从光标到行尾Shift+End<br>选择从行首到光标处Shift+Home<br>删除光标右侧的所有字Ctrl+Delete<br>Shrink/expand selection： Shift+Alt+Left和Shift+Alt+Right<br>Multi-Cursor：可以连续选择多处，然后一起修改，Alt+Click添加cursor或者Ctrl+Alt+Down 或 Ctrl+Alt+Up<br>同时选中所有匹配的Ctrl+Shift+L<br>Ctrl+D下一个匹配的也被选中(被我自定义成删除当前行了，见下边Ctrl+Shift+K)<br>回退上一个光标操作Ctrl+U</p><h3 id="重构代码"><a href="#重构代码" class="headerlink" title="重构代码"></a>重构代码</h3><p>跳转到定义处：F12<br>定义处缩略图：只看一眼而不跳转过去Alt+F12<br>列出所有的引用：Shift+F12<br>同时修改本文件中所有匹配的：Ctrl+F12<br>重命名：比如要修改一个方法名，可以选中后按F2，输入新的名字，回车，会发现所有的文件都修改过了。<br>跳转到下一个Error或Warning：当有多个错误时可以按F8逐个跳转<br>查看diff 在explorer里选择文件右键 Set file to compare，然后需要对比的文件上右键选择Compare with ‘file_name_you_chose’.</p><h3 id="查找替换"><a href="#查找替换" class="headerlink" title="查找替换"></a>查找替换</h3><p>查找 Ctrl+F<br>查找替换 Ctrl+H<br>整个文件夹中查找 Ctrl+Shift+F</p><h3 id="显示相关"><a href="#显示相关" class="headerlink" title="显示相关"></a>显示相关</h3><p>全屏：F11<br>zoomIn/zoomOut：Ctrl + =/Ctrl + -<br>侧边栏显/隐：Ctrl+B<br>预览markdown Ctrl+Shift+V</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;打开终端&quot;&gt;&lt;a href=&quot;#打开终端&quot; class=&quot;headerlink&quot; title=&quot;打开终端&quot;&gt;&lt;/a&gt;打开终端&lt;/h2&gt;&lt;p&gt;有三种方法可以唤出终端：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过菜单 View | Toggle Integrated Termin
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="http://www.codr.top/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="vscode" scheme="http://www.codr.top/tags/vscode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用的 JavaScript 库 CDN 加速服务</title>
+    <link href="http://www.codr.top/2018/03/%E5%B8%B8%E7%94%A8%E7%9A%84JavaScript%E5%BA%93CDN%E5%8A%A0%E9%80%9F%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://www.codr.top/2018/03/常用的JavaScript库CDN加速服务/</id>
+    <published>2018-03-24T02:38:39.000Z</published>
+    <updated>2018-05-04T00:17:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="国内的公共库"><a href="#国内的公共库" class="headerlink" title="国内的公共库"></a>国内的公共库</h2><ul><li>百度CDN公共库：<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs" target="_blank" rel="external">http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs</a></li><li>百度静态资源公共库：<a href="http://cdn.code.baidu.com/" target="_blank" rel="external">http://cdn.code.baidu.com/</a></li><li>新浪云计算CDN公共库：<a href="http://lib.sinaapp.com" target="_blank" rel="external">http://lib.sinaapp.com</a></li><li>BootCDN公共库：<a href="http://www.bootcdn.cn" target="_blank" rel="external">http://www.bootcdn.cn</a></li><li>360公共库：<a href="http://libs.useso.com" target="_blank" rel="external">http://libs.useso.com</a></li><li>七牛云存储 开放静态文件CDN：<a href="http://www.staticfile.org" target="_blank" rel="external">http://www.staticfile.org</a></li><li>又拍云JS库CDN服务：<a href="http://jscdn.upai.com" target="_blank" rel="external">http://jscdn.upai.com</a></li></ul><h2 id="国外的公共库"><a href="#国外的公共库" class="headerlink" title="国外的公共库"></a>国外的公共库</h2><ul><li>CDNJS：<a href="http://www.cdnjs.com" target="_blank" rel="external">http://www.cdnjs.com</a></li><li>Google Hosted Libraries：<a href="https://developers.google.com/speed/libraries/" target="_blank" rel="external">https://developers.google.com/speed/libraries/</a></li><li>Microsoft ASP.net CDN：<a href="http://www.asp.net/ajaxlibrary/cdn.ashx" target="_blank" rel="external">http://www.asp.net/ajaxlibrary/cdn.ashx</a></li><li>jsDelivr：<a href="http://www.jsdelivr.com/" target="_blank" rel="external">http://www.jsdelivr.com/</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;国内的公共库&quot;&gt;&lt;a href=&quot;#国内的公共库&quot; class=&quot;headerlink&quot; title=&quot;国内的公共库&quot;&gt;&lt;/a&gt;国内的公共库&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;百度CDN公共库：&lt;a href=&quot;http://developer.baidu.com/wik
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.codr.top/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="http://www.codr.top/tags/JavaScript/"/>
     
   </entry>
   
@@ -170,6 +300,33 @@
     
     
       <category term="git" scheme="http://www.codr.top/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>idea常用快捷键mac版</title>
+    <link href="http://www.codr.top/2017/11/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AEmac%E7%89%88/"/>
+    <id>http://www.codr.top/2017/11/idea常用快捷键mac版/</id>
+    <published>2017-11-13T07:45:18.000Z</published>
+    <updated>2018-05-04T00:18:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><p>ctrl + j 快速查看文档<br>⌘⇧↩ 自动结束代码，行末自动添加分号<br>⌘⌥T 包围代码（使用if..else, try..catch, for, synchronized等包围选中的代码）<br>alt+cmd+[ / ] 跳转到代码开头结尾处<br>ctrl + O    overide 方法<br>ctrl + I    实现接口方法</p><p>alt+shift+u 驼峰和下划线转换 需要安装CamelCase 各种格式转换</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;编辑&quot;&gt;&lt;a href=&quot;#编辑&quot; class=&quot;headerlink&quot; title=&quot;编辑&quot;&gt;&lt;/a&gt;编辑&lt;/h2&gt;&lt;p&gt;ctrl + j 快速查看文档&lt;br&gt;⌘⇧↩ 自动结束代码，行末自动添加分号&lt;br&gt;⌘⌥T 包围代码（使用if..else, try..ca
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="http://www.codr.top/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="idea" scheme="http://www.codr.top/tags/idea/"/>
+    
+      <category term="工具" scheme="http://www.codr.top/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -365,31 +522,6 @@
   </entry>
   
   <entry>
-    <title>Linux 命令：统计分析日志</title>
-    <link href="http://www.codr.top/2017/10/Linux%E5%91%BD%E4%BB%A4%EF%BC%9A%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%97%A5%E5%BF%97/"/>
-    <id>http://www.codr.top/2017/10/Linux命令：统计分析日志/</id>
-    <published>2017-10-14T01:45:11.000Z</published>
-    <updated>2018-03-07T06:47:07.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>liunx服务器上生成的日志文件进行分析，文件格式如下：<br>id               time<br>1001,2011-08-19 00:00:00<br>1002,2011-08-19 01:00:00<br>1001,2011-08-19 02:00:00<br>1003,2011-08-19 03:00:00</p><h2 id="linux命令如下："><a href="#linux命令如下：" class="headerlink" title="linux命令如下："></a>linux命令如下：</h2><p>排重后id个数</p><pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | wc -l</code></pre><p>按id出现次数排序</p><pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | sort -k 1 -n -r | wc -l</code></pre><p>将结果导入文件</p><pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | sort -k 1 -n -r | wc -l &gt; result.txt</code></pre><h2 id="命令解析："><a href="#命令解析：" class="headerlink" title="命令解析："></a>命令解析：</h2><p>sort：表示前面输入的结果文件中的内容进行排序。sort命令是对于每一行的内容根据字典序（ASCII码）进行排序，这样可以保证重复的记录时相邻的。</p><p>awk ‘{print $1}’ ：日志记录中的第一个字段。</p><p>uniq –c：表示合并相邻的重复记录，并统计重复数。因为uniq -c 只会合并相邻的记录，所以在使用该命令之前需要先排序。</p><p>sort –k 1 -n -r|wc –l：经过uniq -c 处理之后的数据格式形如”2 data”，第一个字段是数字，表示重复的记录数；第二个字段为记录的内容。我们将对此内容进行排序。<br>sort -k 1表示对于每行的第一个字段进行排序，这里即指代表重复记录数的那个字段。因为sort命令的默认排序是按照ASCII，这就会导致按从大到小进行排序时，数值2会排在数值11的前面，所以需要使用-n 参数指定sort命令按照数值大小进行排序。-r 表示逆序，即按照从大到小的顺序进行排序。</p><p>wc命令</p><p>wc命令的功能为统计指定文件中的字节数、字数、行数, 并将统计结果显示输出。</p><p>语法：wc [选项] 文件…</p><p>说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。</p><p>该命令各选项含义如下：</p><p>　　- c 统计字节数。</p><p>　　- l 统计行数。</p><p>　　- w 统计字数</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/" target="_blank" rel="external">http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;liunx服务器上生成的日志文件进行分析，文件格式如下：&lt;br&gt;id               time&lt;br&gt;1001,2011-08-19 00:00:00&lt;br&gt;1002,2011-08-19 01:00:00&lt;br&gt;1001,2011-08-19 02:00:00
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
-    
-    
-      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Linux 命令：压缩命令</title>
     <link href="http://www.codr.top/2017/10/Linux%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4/"/>
     <id>http://www.codr.top/2017/10/Linux命令：压缩命令/</id>
@@ -413,131 +545,6 @@
     
     
       <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 命令: 运行远程命令</title>
-    <link href="http://www.codr.top/2017/10/Linux%E5%91%BD%E4%BB%A4%EF%BC%9A%E8%BF%90%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4/"/>
-    <id>http://www.codr.top/2017/10/Linux命令：运行远程命令/</id>
-    <published>2017-10-13T09:58:34.000Z</published>
-    <updated>2017-10-14T02:49:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="运行远程命令"><a href="#运行远程命令" class="headerlink" title="运行远程命令"></a>运行远程命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">➜ ~ ssh root@dev &quot;ls /mydata&quot;</div><div class="line">apps</div><div class="line">develop</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;运行远程命令&quot;&gt;&lt;a href=&quot;#运行远程命令&quot; class=&quot;headerlink&quot; title=&quot;运行远程命令&quot;&gt;&lt;/a&gt;运行远程命令&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gut
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
-    
-    
-      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 命令：查看文件夹下文件大小</title>
-    <link href="http://www.codr.top/2017/10/Linux%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F/"/>
-    <id>http://www.codr.top/2017/10/Linux命令：查看文件夹下文件大小/</id>
-    <published>2017-10-13T07:48:34.000Z</published>
-    <updated>2017-10-14T02:49:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="查看文件夹下文件大小"><a href="#查看文件夹下文件大小" class="headerlink" title="查看文件夹下文件大小"></a>查看文件夹下文件大小</h2><p>du [-abcDhHklmsSx] [-L &lt;符号连接&gt;][-X &lt;文件&gt;][–block-size][–exclude=&lt;目录或文件&gt;] [–max-depth=&lt;目录层数&gt;][–help][–version][目录或文件]</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -h --max-depth=1 /mydata/</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;查看文件夹下文件大小&quot;&gt;&lt;a href=&quot;#查看文件夹下文件大小&quot; class=&quot;headerlink&quot; title=&quot;查看文件夹下文件大小&quot;&gt;&lt;/a&gt;查看文件夹下文件大小&lt;/h2&gt;&lt;p&gt;du [-abcDhHklmsSx] [-L &amp;lt;符号连接&amp;gt;][-
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
-    
-    
-      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker-part5:Stacks</title>
-    <link href="http://www.codr.top/2017/10/docker-part5-Stacks/"/>
-    <id>http://www.codr.top/2017/10/docker-part5-Stacks/</id>
-    <published>2017-10-11T05:46:28.000Z</published>
-    <updated>2017-10-11T06:21:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="新增一个服务（service）visualizer"><a href="#新增一个服务（service）visualizer" class="headerlink" title="新增一个服务（service）visualizer"></a>新增一个服务（service）visualizer</h2><p>修改docker-compose.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">version: &quot;3&quot;</div><div class="line">services:</div><div class="line">  web:</div><div class="line">    # replace username/repo:tag with your name and image details</div><div class="line">    image: username/repo:tag</div><div class="line">    deploy:</div><div class="line">      replicas: 5</div><div class="line">      restart_policy:</div><div class="line">        condition: on-failure</div><div class="line">      resources:</div><div class="line">        limits:</div><div class="line">          cpus: &quot;0.1&quot;</div><div class="line">          memory: 50M</div><div class="line">    ports:</div><div class="line">      - &quot;80:80&quot;</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">  visualizer:</div><div class="line">    image: dockersamples/visualizer:stable</div><div class="line">    ports:</div><div class="line">      - &quot;8080:8080&quot;</div><div class="line">    volumes:</div><div class="line">      - &quot;/var/run/docker.sock:/var/run/docker.sock&quot;</div><div class="line">    deploy:</div><div class="line">      placement:</div><div class="line">        constraints: [node.role == manager]</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">networks:</div><div class="line">  webnet:</div></pre></td></tr></table></figure></p><p>更新服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker stack deploy -c docker-compose.yml getstartedlab</div><div class="line">Creating network getstartedlab_webnet</div><div class="line">Creating service getstartedlab_web</div><div class="line">Creating service getstartedlab_visualizer</div><div class="line"></div><div class="line">➜  docker-test docker-machine ls</div><div class="line">NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS</div><div class="line">myvm1   *        virtualbox   Running   tcp://192.168.99.100:2376           v17.09.0-ce</div><div class="line">myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v17.09.0-ce</div></pre></td></tr></table></figure></p><p>访问 <a href="http://192.168.99.100:8080/" target="_blank" rel="external">http://192.168.99.100:8080/</a></p><h2 id="持久化redis数据服务"><a href="#持久化redis数据服务" class="headerlink" title="持久化redis数据服务"></a>持久化redis数据服务</h2><p>修改docker-compose.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">version: &quot;3&quot;</div><div class="line">services:</div><div class="line">  web:</div><div class="line">    # replace username/repo:tag with your name and image details</div><div class="line">    image: 842071912/start-docker1:hellopy</div><div class="line">    deploy:</div><div class="line">      replicas: 5</div><div class="line">      resources:</div><div class="line">        limits:</div><div class="line">          cpus: &quot;0.1&quot;</div><div class="line">          memory: 50M</div><div class="line">      restart_policy:</div><div class="line">        condition: on-failure</div><div class="line">    ports:</div><div class="line">      - &quot;80:80&quot;</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">  visualizer:</div><div class="line">    image: dockersamples/visualizer:stable</div><div class="line">    ports:</div><div class="line">      - &quot;8080:8080&quot;</div><div class="line">    volumes:</div><div class="line">      - &quot;/var/run/docker.sock:/var/run/docker.sock&quot;</div><div class="line">    deploy:</div><div class="line">      placement:</div><div class="line">        constraints: [node.role == manager]</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">  redis:</div><div class="line">    image: redis</div><div class="line">    ports:</div><div class="line">      - &quot;6379:6379&quot;</div><div class="line">    volumes:</div><div class="line">      - /home/docker/data:/data</div><div class="line">    deploy:</div><div class="line">      placement:</div><div class="line">        constraints: [node.role == manager]</div><div class="line">    command: redis-server --appendonly yes</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">networks:</div><div class="line">  webnet:</div></pre></td></tr></table></figure></p><p>创建./data文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine ssh myvm1 &quot;mkdir ./data&quot;</div><div class="line"></div><div class="line">➜  docker-test docker stack deploy -c docker-compose.yml getstartedlab</div><div class="line">Updating service getstartedlab_web (id: p3yof4klife0ulvn7fqwjrhkm)</div><div class="line">Updating service getstartedlab_visualizer (id: s550x4sifn20ab391fsywu0l2)</div><div class="line">Updating service getstartedlab_redis (id: a2eh1a3c3di608fsa00l7uvj8)</div><div class="line"></div><div class="line">➜  docker-test docker service ls</div><div class="line">ID                  NAME                       MODE                REPLICAS            IMAGE                             PORTS</div><div class="line">a2eh1a3c3di6        getstartedlab_redis        replicated          1/1                 redis:latest                      *:6379-&gt;6379/tcp</div><div class="line">s550x4sifn20        getstartedlab_visualizer   replicated          1/1                 dockersamples/visualizer:stable   *:8080-&gt;8080/tcp</div><div class="line">p3yof4klife0        getstartedlab_web          replicated          5/5                 842071912/start-docker1:hellopy   *:80-&gt;80/tcp</div></pre></td></tr></table></figure></p><p>访问 <a href="http://192.168.99.100:8080/" target="_blank" rel="external">http://192.168.99.100:8080/</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;新增一个服务（service）visualizer&quot;&gt;&lt;a href=&quot;#新增一个服务（service）visualizer&quot; class=&quot;headerlink&quot; title=&quot;新增一个服务（service）visualizer&quot;&gt;&lt;/a&gt;新增一个服务（serv
-      
-    
-    </summary>
-    
-      <category term="docker" scheme="http://www.codr.top/categories/docker/"/>
-    
-    
-      <category term="docker" scheme="http://www.codr.top/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker-part4:swarms</title>
-    <link href="http://www.codr.top/2017/10/docker-part4-swarms/"/>
-    <id>http://www.codr.top/2017/10/docker-part4-swarms/</id>
-    <published>2017-10-11T02:16:18.000Z</published>
-    <updated>2017-10-11T05:30:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="设置swarm"><a href="#设置swarm" class="headerlink" title="设置swarm"></a>设置swarm</h2><p>mac系统下需要安装 <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">install Oracle VirtualBox</a> </p><h3 id="创建集群"><a href="#创建集群" class="headerlink" title="创建集群"></a>创建集群</h3><p>使用docker-machine创建VMs,创建有可能会失败多执行几次<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine ls</div><div class="line">NAME   ACTIVE   DRIVER   STATE   URL   SWARM   DOCKER   ERRORS</div><div class="line"></div><div class="line">➜  docker-test docker-machine create --driver virtualbox myvm1</div><div class="line">Running pre-create checks...</div><div class="line">(myvm1) No default Boot2Docker ISO found locally, downloading the latest release...</div><div class="line">(myvm1) Latest release for github.com/boot2docker/boot2docker is v17.09.0-ce</div><div class="line">(myvm1) Downloading /Users/hanqingsong/.docker/machine/cache/boot2docker.iso from https://github.com/boot2docker/boot2docker/releases/download/v17.09.0-ce/boot2docker.iso...</div><div class="line">(myvm1) 0%....10%....20%....30%....40%....50%....60%....70%....80%....90%....100%</div><div class="line">Creating machine...</div><div class="line">(myvm1) Copying /Users/hanqingsong/.docker/machine/cache/boot2docker.iso to /Users/hanqingsong/.docker/machine/machines/myvm1/boot2docker.iso...</div><div class="line">(myvm1) Creating VirtualBox VM...</div><div class="line">(myvm1) Creating SSH key...</div><div class="line">(myvm1) Starting the VM...</div><div class="line">(myvm1) Check network to re-create if needed...</div><div class="line">(myvm1) Found a new host-only adapter: &quot;vboxnet0&quot;</div><div class="line">(myvm1) Waiting for an IP...</div><div class="line">Waiting for machine to be running, this may take a few minutes...</div><div class="line">Detecting operating system of created instance...</div><div class="line">Waiting for SSH to be available...</div><div class="line">Detecting the provisioner...</div><div class="line">Provisioning with boot2docker...</div><div class="line">Copying certs to the local machine directory...</div><div class="line">Copying certs to the remote machine...</div><div class="line">Setting Docker configuration on the remote daemon...</div><div class="line">Checking connection to Docker...</div><div class="line">Docker is up and running!</div><div class="line">To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm1</div><div class="line"></div><div class="line">➜  docker-test docker-machine ls</div><div class="line">NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS</div><div class="line">myvm1   -        virtualbox   Running   tcp://192.168.99.100:2376           v17.09.0-ce</div><div class="line">myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v17.09.0-ce</div></pre></td></tr></table></figure></p><h3 id="初始化swarm添加节点"><a href="#初始化swarm添加节点" class="headerlink" title="初始化swarm添加节点"></a>初始化swarm添加节点</h3><p>设置myvm1为swarm管理者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine ssh myvm1 &quot;docker swarm init --advertise-addr 192.168.99.100&quot; </div><div class="line">Swarm initialized: current node (mwshg3zvljp17muqpuua5l3d1) is now a manager.</div><div class="line"></div><div class="line">To add a worker to this swarm, run the following command:</div><div class="line"></div><div class="line">    docker swarm join --token SWMTKN-1-26jjkt2i3rul2qp7hwdp2m3ek1vegmumr6mk07ba8orc886ix2-c41i1zkhtnjqartdv6l75ms8h 192.168.99.100:2377</div><div class="line"></div><div class="line">To add a manager to this swarm, run &apos;docker swarm join-token manager&apos; and follow the instructions.</div></pre></td></tr></table></figure></p><p>myvm2添加为worker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine ssh myvm2  &quot;docker swarm join --token SWMTKN-1-26jjkt2i3rul2qp7hwdp2m3ek1vegmumr6mk07ba8orc886ix2-c41i1zkhtnjqartdv6l75ms8h 192.168.99.100:2377&quot;</div><div class="line">This node joined a swarm as a worker.</div></pre></td></tr></table></figure></p><h3 id="查看swarm节点"><a href="#查看swarm节点" class="headerlink" title="查看swarm节点"></a>查看swarm节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine ssh myvm1 &quot;docker node ls&quot;</div><div class="line">ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS</div><div class="line">mwshg3zvljp17muqpuua5l3d1 *   myvm1               Ready               Active              Leader</div><div class="line">urdtegb3yanqi0d98vzm49tof     myvm2               Ready               Active</div></pre></td></tr></table></figure><h2 id="在swarm集群部署应用"><a href="#在swarm集群部署应用" class="headerlink" title="在swarm集群部署应用"></a>在swarm集群部署应用</h2><p>设置myvm1为激活状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker-machine env myvm1</div><div class="line">export DOCKER_TLS_VERIFY=&quot;1&quot;</div><div class="line">export DOCKER_HOST=&quot;tcp://192.168.99.100:2376&quot;</div><div class="line">export DOCKER_CERT_PATH=&quot;/Users/hanqingsong/.docker/machine/machines/myvm1&quot;</div><div class="line">export DOCKER_MACHINE_NAME=&quot;myvm1&quot;</div><div class="line"># Run this command to configure your shell:</div><div class="line"># eval $(docker-machine env myvm1)</div><div class="line"></div><div class="line">➜  docker-test eval $(docker-machine env myvm1)</div><div class="line"></div><div class="line">➜  docker-test docker-machine ls</div><div class="line">NAME    ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS</div><div class="line">myvm1   *        virtualbox   Running   tcp://192.168.99.100:2376           v17.09.0-ce</div><div class="line">myvm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v17.09.0-ce</div></pre></td></tr></table></figure></p><p>在swarm manager部署应用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker stack deploy -c docker-compose.yml getstartedlab</div><div class="line">Creating network getstartedlab_webnet</div><div class="line">Creating service getstartedlab_web</div></pre></td></tr></table></figure></p><p>查看服务部署信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker stack ps getstartedlab</div><div class="line">ID                  NAME                  IMAGE                             NODE                DESIRED STATE       CURRENT STATE                  ERROR               PORTS</div><div class="line">qvs0h0pqgsou        getstartedlab_web.1   842071912/start-docker1:hellopy   myvm1               Running             Preparing about a minute ago</div><div class="line">jtlfqsejqnmo        getstartedlab_web.2   842071912/start-docker1:hellopy   myvm2               Running             Running 24 seconds ago</div><div class="line">wauh0t4cybvn        getstartedlab_web.3   842071912/start-docker1:hellopy   myvm1               Running             Preparing about a minute ago</div><div class="line">feyi52iwjpa2        getstartedlab_web.4   842071912/start-docker1:hellopy   myvm2               Running             Running 24 seconds ago</div><div class="line">m7mz2kevh15r        getstartedlab_web.5   842071912/start-docker1:hellopy   myvm2               Running             Running 24 seconds ago</div></pre></td></tr></table></figure></p><h2 id="清除和重启"><a href="#清除和重启" class="headerlink" title="清除和重启"></a>清除和重启</h2><p> tear down the stack<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> ➜  docker-test docker stack rm getstartedlab</div><div class="line">Removing service getstartedlab_web</div><div class="line">Removing network getstartedlab_webnet</div></pre></td></tr></table></figure></p><blockquote><p>Keep the swarm or remove it?<br>At some point later, you can remove this swarm if you want to with docker-machine ssh myvm2 “docker swarm leave” on the worker and docker-machine ssh myvm1 “docker swarm leave –force” on the manager, but you’ll need this swarm for part 5, so please keep it around for now. </p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">➜  docker-test eval $(docker-machine env -u)</div><div class="line"></div><div class="line"></div><div class="line">➜  docker-test docker-machine stop $(docker-machine ls -q)</div><div class="line">Stopping &quot;myvm2&quot;...</div><div class="line">Stopping &quot;myvm1&quot;...</div><div class="line">Machine &quot;myvm2&quot; was stopped.</div><div class="line">Machine &quot;myvm1&quot; was stopped.</div><div class="line">➜  docker-test docker-machine ls</div><div class="line">NAME    ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS</div><div class="line">myvm1   -        virtualbox   Stopped                 Unknown</div><div class="line">myvm2   -        virtualbox   Stopped                 Unknown</div></pre></td></tr></table></figure><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">docker-machine create --driver virtualbox myvm1 # Create a VM (Mac, Win7, Linux)</div><div class="line">docker-machine create -d hyperv --hyperv-virtual-switch &quot;myswitch&quot; myvm1 # Win10</div><div class="line">docker-machine env myvm1                # View basic information about your node</div><div class="line">docker-machine ssh myvm1 &quot;docker node ls&quot;         # List the nodes in your swarm</div><div class="line">docker-machine ssh myvm1 &quot;docker node inspect &lt;node ID&gt;&quot;        # Inspect a node</div><div class="line">docker-machine ssh myvm1 &quot;docker swarm join-token -q worker&quot;   # View join token</div><div class="line">docker-machine ssh myvm1   # Open an SSH session with the VM; type &quot;exit&quot; to end</div><div class="line">docker-machine ssh myvm2 &quot;docker swarm leave&quot;  # Make the worker leave the swarm</div><div class="line">docker-machine ssh myvm1 &quot;docker swarm leave -f&quot; # Make master leave, kill swarm</div><div class="line">docker-machine start myvm1            # Start a VM that is currently not running</div><div class="line">docker-machine stop $(docker-machine ls -q)               # Stop all running VMs</div><div class="line">docker-machine rm $(docker-machine ls -q) # Delete all VMs and their disk images</div><div class="line">docker-machine scp docker-compose.yml myvm1:~     # Copy file to node&apos;s home dir</div><div class="line">docker-machine ssh myvm1 &quot;docker stack deploy -c &lt;file&gt; &lt;app&gt;&quot;   # Deploy an app</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;设置swarm&quot;&gt;&lt;a href=&quot;#设置swarm&quot; class=&quot;headerlink&quot; title=&quot;设置swarm&quot;&gt;&lt;/a&gt;设置swarm&lt;/h2&gt;&lt;p&gt;mac系统下需要安装 &lt;a href=&quot;https://www.virtualbox.org/wik
-      
-    
-    </summary>
-    
-      <category term="docker" scheme="http://www.codr.top/categories/docker/"/>
-    
-    
-      <category term="docker" scheme="http://www.codr.top/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker-part3:services</title>
-    <link href="http://www.codr.top/2017/10/docker-part3-services/"/>
-    <id>http://www.codr.top/2017/10/docker-part3-services/</id>
-    <published>2017-10-11T01:45:11.000Z</published>
-    <updated>2017-10-11T02:13:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h2><p>docker-compose.yml定义了容器的行为。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">version: &quot;3&quot;</div><div class="line">services:</div><div class="line">  web:</div><div class="line">    # replace username/repo:tag with your name and image details</div><div class="line">    image: username/repo:tag</div><div class="line">    deploy:</div><div class="line">      replicas: 5</div><div class="line">      resources:</div><div class="line">        limits:</div><div class="line">          cpus: &quot;0.1&quot;</div><div class="line">          memory: 50M</div><div class="line">      restart_policy:</div><div class="line">        condition: on-failure</div><div class="line">    ports:</div><div class="line">      - &quot;80:80&quot;</div><div class="line">    networks:</div><div class="line">      - webnet</div><div class="line">networks:</div><div class="line">  webnet:</div></pre></td></tr></table></figure><h2 id="运行负载均衡应用"><a href="#运行负载均衡应用" class="headerlink" title="运行负载均衡应用"></a>运行负载均衡应用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">➜  docker-test docker swarm init</div><div class="line">Swarm initialized: current node (scxmr99cp0d6zjpajrckdktmk) is now a manager.</div><div class="line"></div><div class="line">To add a worker to this swarm, run the following command:</div><div class="line"></div><div class="line">    docker swarm join --token SWMTKN-1-19wb8qe3cws960d8famp2lix8t1d6wza4eg9fw7geklefqjrvh-82wzkvoszligqto4eoe2ufail 192.168.65.2:2377</div><div class="line"></div><div class="line">To add a manager to this swarm, run &apos;docker swarm join-token manager&apos; and follow the instructions.</div><div class="line"></div><div class="line">➜  docker-test docker stack deploy -c docker-compose.yml getstartedlab</div><div class="line">Creating network getstartedlab_webnet</div><div class="line">Creating service getstartedlab_web</div><div class="line"></div><div class="line">➜  docker-test docker service ls</div><div class="line">ID                  NAME                MODE                REPLICAS            IMAGE                             PORTS</div><div class="line">lrd7bsarm31c        getstartedlab_web   replicated          5/5                 842071912/start-docker1:hellopy   *:80-&gt;80/tcp</div><div class="line"></div><div class="line">➜  docker-test docker stack ls</div><div class="line">NAME                SERVICES</div><div class="line">getstartedlab       1</div><div class="line"></div><div class="line">➜  docker-test docker service ps lrd7bsarm31c</div><div class="line">ID                  NAME                  IMAGE                             NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS</div><div class="line">pv0xalnz0jub        getstartedlab_web.1   842071912/start-docker1:hellopy   moby                Running             Running 2 minutes ago</div><div class="line">qrkj0dctgukn        getstartedlab_web.2   842071912/start-docker1:hellopy   moby                Running             Running 2 minutes ago</div><div class="line">xq97vphe37h5        getstartedlab_web.3   842071912/start-docker1:hellopy   moby                Running             Running 2 minutes ago</div><div class="line">kc0kj4tdzlpz        getstartedlab_web.4   842071912/start-docker1:hellopy   moby                Running             Running 2 minutes ago</div><div class="line">5roeqr1o8le3        getstartedlab_web.5   842071912/start-docker1:hellopy   moby                Running             Running 2 minutes ago</div><div class="line"></div><div class="line">➜  docker-test docker container ls -q</div><div class="line">3b010bc1ba11</div><div class="line">e9c89868d2ee</div><div class="line">34cc4a84736a</div><div class="line">b697e352c205</div><div class="line">92db487d0025</div><div class="line"></div><div class="line">➜  docker-test docker stack rm getstartedlab</div><div class="line">Removing service getstartedlab_web</div><div class="line">Removing network getstartedlab_webnet</div><div class="line"></div><div class="line">➜  docker-test docker node ls</div><div class="line">ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS</div><div class="line">scxmr99cp0d6zjpajrckdktmk *   moby                Ready               Active              Leader</div><div class="line"></div><div class="line">➜  docker-test docker swarm leave --force</div><div class="line">Node left the swarm.</div><div class="line">➜  docker-test docker node ls</div><div class="line">Error response from daemon: This node is not a swarm manager. Use &quot;docker swarm init&quot; or &quot;docker swarm join&quot; to connect this node to swarm and try again.</div></pre></td></tr></table></figure><h2 id="命令集"><a href="#命令集" class="headerlink" title="命令集"></a>命令集</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">docker swarm init</div><div class="line">docker stack ls                                            # List stacks or apps</div><div class="line">docker stack deploy -c &lt;composefile&gt; &lt;appname&gt;  # Run the specified Compose file</div><div class="line">docker service ls                 # List running services associated with an app</div><div class="line">docker service ps &lt;service&gt;                  # List tasks associated with an app</div><div class="line">docker inspect &lt;task or container&gt;                   # Inspect task or container</div><div class="line">docker container ls -q                                      # List container IDs</div><div class="line">docker stack rm &lt;appname&gt;                             # Tear down an application</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;docker-compose-yml&quot;&gt;&lt;a href=&quot;#docker-compose-yml&quot; class=&quot;headerlink&quot; title=&quot;docker-compose.yml&quot;&gt;&lt;/a&gt;docker-compose.yml&lt;/h2&gt;&lt;p&gt;docker
-      
-    
-    </summary>
-    
-      <category term="docker" scheme="http://www.codr.top/categories/docker/"/>
-    
-    
-      <category term="docker" scheme="http://www.codr.top/tags/docker/"/>
     
   </entry>
   
