@@ -316,6 +316,1046 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/05/vim使用（2）编辑/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/vim使用（2）编辑/" itemprop="url">vim使用（2）编辑</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T23:44:13+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/vim使用（2）编辑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/05/vim使用（2）编辑/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/vim使用（2）编辑/" class="leancloud_visitors" data-flag-title="vim使用（2）编辑">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  934
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h2><ol>
+<li><p>创建窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">水平分割窗口</div><div class="line">:split             当前窗口一分为二，两个窗口显示相同内容。  </div><div class="line">:10split           新窗口的高度10行</div><div class="line">:split otherfile   新窗口中打开otherfile   </div><div class="line">:new               功能和split一样  </div><div class="line">:sp                split的缩写形式  </div><div class="line">ctrl+w+s           分割窗口的快捷方式</div><div class="line"></div><div class="line">垂直分割窗口</div><div class="line">:vsplit 以上所有命令都适用于打开垂直分割窗口，只要在前面加v(vetical)</div></pre></td></tr></table></figure>
+</li>
+<li><p>关闭窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">q  或 close   #关闭当前窗口</div><div class="line"> only      #保留当前窗口，关闭其它所有窗口</div><div class="line"> qall(qa)      #退出所有窗口</div><div class="line"> wall      #保存所有窗口</div></pre></td></tr></table></figure>
+</li>
+<li><p>窗口切换<br>:ctrl+w+j/k，通过j/k可以上下切换，或者:ctrl+w加上下左右键，还可以通过快速双击ctrl+w依次切换窗口。</p>
+</li>
+<li><p>窗口大小调整</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">纵向调整</div><div class="line">:ctrl+w + 纵向扩大（行数增加）</div><div class="line">:ctrl+w - 纵向缩小 （行数减少）</div><div class="line">:res(ize) num  例如：:res 5，显示行数调整为5行</div><div class="line">:res(ize)+num 把当前窗口高度增加num行</div><div class="line">:res(ize)-num 把当前窗口高度减少num行</div><div class="line">横向调整</div><div class="line">:vertical res(ize) num 指定当前窗口为num列</div><div class="line">:vertical res(ize)+num 把当前窗口增加num列</div><div class="line">:vertical res(ize)-num 把当前窗口减少num列</div></pre></td></tr></table></figure>
+</li>
+<li><p>窗口重命名<br>:f file</p>
+</li>
+<li><p>文件浏览</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">:Ex 开启目录浏览器，可以浏览当前目录下的所有文件，并可以选择</div><div class="line">:Sex 水平分割当前窗口，并在一个窗口中开启目录浏览器</div><div class="line">:ls 显示当前buffer情况</div></pre></td></tr></table></figure>
+</li>
+<li><p>vi与shell切换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">:shell 可以在不关闭vi的情况下切换到shell命令行</div><div class="line">:exit 从shell回到vi</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="页签"><a href="#页签" class="headerlink" title="页签"></a>页签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">:tabnew [++opt选项] ［＋cmd］ 文件            建立对指定文件新的tabta</div><div class="line">:tab &lt;文件&gt;  新页签打开指定文件</div><div class="line">:tabc       关闭当前的tab</div><div class="line">:tabo       关闭所有其他的tab</div><div class="line">:tabs       查看所有打开的tab</div><div class="line">:tabp      前一个</div><div class="line">:tabn      后一个</div><div class="line">标准模式下：</div><div class="line">gt , gT 可以直接在tab之间切换。</div><div class="line">ngt 切换到指定的窗口。</div><div class="line">更多可以查看帮助 :help table ， help -p</div></pre></td></tr></table></figure>
+<h2 id="编译运行"><a href="#编译运行" class="headerlink" title="编译运行"></a>编译运行</h2><p>vim 环境下，在命令模式中输入下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:!python %</div></pre></td></tr></table></figure></p>
+<h2 id="NERDTree命令"><a href="#NERDTree命令" class="headerlink" title="NERDTree命令"></a>NERDTree命令</h2><ol>
+<li>窗口切换<br> ctrl + w + h    光标 focus 左侧树形目录<br> ctrl + w + l    光标 focus 右侧文件显示窗口<br> ctrl + w + w    光标自动在左右侧窗口切换<br> ctrl + w + r    移动当前窗口的布局位置</li>
+<li>o 打开关闭文件或者目录，如果是文件的话，光标出现在打开的文件中<br>go 效果同上，不过光标保持在文件目录里，类似预览文件内容的功能<br>i和s可以水平分割或纵向分割窗口打开文件，前面加g类似go的功能</li>
+<li>t 在标签页中打开</li>
+<li>T 在后台标签页中打开</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">o       在已有窗口中打开文件、目录或书签，并跳到该窗口</div><div class="line">go      在已有窗口 中打开文件、目录或书签，但不跳到该窗口</div><div class="line">t       在新 Tab 中打开选中文件/书签，并跳到新 Tab</div><div class="line">T       在新 Tab 中打开选中文件/书签，但不跳到新 Tab</div><div class="line">i       split 一个新窗口打开选中文件，并跳到该窗口</div><div class="line">gi      split 一个新窗口打开选中文件，但不跳到该窗口</div><div class="line">s       vsplit 一个新窗口打开选中文件，并跳到该窗口</div><div class="line">gs      vsplit 一个新 窗口打开选中文件，但不跳到该窗口</div></pre></td></tr></table></figure>
+<ol>
+<li>p 到上层目录</li>
+<li>P 到根目录</li>
+<li>K 到同目录第一个节点</li>
+<li>J 到同目录最后一个节点</li>
+<li>m 显示文件系统菜单（添加、删除、移动操作）</li>
+<li>? 帮助</li>
+<li>q 关闭</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/05/python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别/" itemprop="url">python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-22T21:50:45+08:00">
+                2018-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/05/python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别/" class="leancloud_visitors" data-flag-title="python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  727
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="PyPI软件包不在标准库中："><a href="#PyPI软件包不在标准库中：" class="headerlink" title="PyPI软件包不在标准库中："></a>PyPI软件包不在标准库中：</h2><ul>
+<li>virtualenv是一个非常受欢迎的工具，为Python库创建了孤立的Python环境。 如果您不熟悉此工具，我强烈建议您学习它，因为它是非常有用的工具，我将在此答案的其余部分进行比较。</li>
+</ul>
+<p>它通过在目录（例如： env/ ）中安装一堆文件，然后修改PATH环境变量以将其前缀到自定义bin目录（例如： env/bin/ ）。 python或python3二进制文件的完整副本放置在此目录中，但Python被编程为首先在环境目录中查找相对于其路径的库。 它不是Python标准库的一部分，但是由PyPA（Python Packaging Authority）正式获得祝福。 激活后，您可以使用pip在虚拟环境中安装软件包。</p>
+<ul>
+<li><p>pyenv用于隔离Python版本。 例如，您可能希望根据Python 2.6,2.7,3.3,3.4和3.5测试代码，因此您需要一种在它们之间切换的方法。 一旦被激活，它将在PATH环境变量~/.pyenv/shims加上~/.pyenv/shims ，其中有与Python命令（ python ， pip ）匹配的特殊文件。 这些不是Python发出的命令的副本; 它们是基于PYENV_VERSION环境变量或.python-version文件或~/.pyenv/version文件运行的Python版本的特殊脚本。 pyenv也使得使用命令pyenv install更容易地下载和安装多个Python版本的过程。</p>
+</li>
+<li><p>pyenv-virtualenv是与pyenv相同的作者pyenv的插件，可以方便地同时使用pyenv和virtualenv 。 但是，如果您使用的是Python 3.3或更高版本， pyenv-virtualenv将尝试运行python -m venv如果可用），而不是virtualenv 。 如果您不想要方便的功能，您可以在不使用pyenv-virtualenv情况下使用virtualenv和pyenv 。</p>
+</li>
+<li><p>virtualenvwrapper是一组对virtualenv的扩展（请参阅docs ）。 它给你的命令像mkvirtualenv ， lssitepackages ，特别是在不同的virtualenv目录之间切换的工作。 如果您想要多个virtualenv目录，此工具特别有用。</p>
+</li>
+<li><p>pyenv-virtualenvwrapper是与pyenv相同的作者的pyenv ，方便地将virtualenvwrapper集成到pyenv 。</p>
+</li>
+<li><p>pipenv ，Kenneth Reitz（ requests的作者），是一个全新的（可能是实验性的）项目，旨在将Pipfile，pip和virtualenv组合成一个命令行命令。</p>
+</li>
+</ul>
+<h2 id="标准库："><a href="#标准库：" class="headerlink" title="标准库："></a>标准库：</h2><ul>
+<li><p>pyvenv是Python 3附带的一个脚本，但是在Python 3.6中已经弃用，因为它有问题（更不用说混淆的名字）。 在Python 3.6+中，完全相同的是python3 -m venv 。</p>
+</li>
+<li><p>venv是Python 3附带的软件包，您可以使用python3 -m venv运行（尽管某些原因有些发行版将其分离成独立的发行版包，如Ubuntu / Debian中的python3-venv ）。 它为virtualenv提供了类似的目的，并以非常类似的方式工作，但它不需要复制Python二进制文件（Windows除外）。 如果您不需要支持Python 2，请使用此功能。在撰写本文时，Python社区似乎对virtualenv感到满意，我没有听说过venv 。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/05/java中long型string型ip地址转换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/java中long型string型ip地址转换/" itemprop="url">java中long型string型ip地址转换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T09:52:23+08:00">
+                2018-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/java中long型string型ip地址转换/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/05/java中long型string型ip地址转换/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/java中long型string型ip地址转换/" class="leancloud_visitors" data-flag-title="java中long型string型ip地址转换">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  165
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">public class IPConvertor &#123;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * long转ip地址，大端（高位字节放在低地址端）</div><div class="line">     * @param ip</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static String numToIPBigEndian(long ip) &#123;</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        for (int i = 0; i &lt;= 3; i++) &#123;</div><div class="line">            sb.append((ip &gt;&gt;&gt; (i * 8)) &amp; 0x000000ff);</div><div class="line">            if (i != 3) &#123;</div><div class="line">                sb.append(&apos;.&apos;);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return sb.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * long转ip地址，小端（低位字节放在低地址端）</div><div class="line">     * @param ip</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static String numToIPLittleEndian(long ip) &#123;</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        for (int i = 3; i &gt;= 0; i--) &#123;</div><div class="line">            sb.append((ip &gt;&gt;&gt; (i * 8)) &amp; 0x000000ff);</div><div class="line">            if (i != 0) &#123;</div><div class="line">                sb.append(&apos;.&apos;);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return sb.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public static long ipToNumLittle(String ip) &#123;</div><div class="line">        long num = 0;</div><div class="line">        String[] sections = ip.split(&quot;\\.&quot;);</div><div class="line">        int i = 3;</div><div class="line">        for (String str : sections) &#123;</div><div class="line">            num += (Long.parseLong(str) &lt;&lt; (i * 8));</div><div class="line">            i--;</div><div class="line">        &#125;</div><div class="line">        return num;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // public static void main(String[] args) &#123;</div><div class="line">    //     long ip =571108042;</div><div class="line">    //     String numToIPBigEndian = numToIPBigEndian(ip);</div><div class="line">    //     System.out.println(numToIPBigEndian);</div><div class="line">    //     System.out.println(numToIPBigEndian(1338832698));</div><div class="line">    //     System.out.println(numToIPBigEndian(1624045370));</div><div class="line">    //     System.out.println(numToIPBigEndian(1725232954));</div><div class="line">    // &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/05/Linux：ssh登录后闲置时间过长而断开连接/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/Linux：ssh登录后闲置时间过长而断开连接/" itemprop="url">Linux：ssh登录后闲置时间过长而断开连接</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-04T14:19:47+08:00">
+                2018-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/Linux：ssh登录后闲置时间过长而断开连接/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/05/Linux：ssh登录后闲置时间过长而断开连接/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/Linux：ssh登录后闲置时间过长而断开连接/" class="leancloud_visitors" data-flag-title="Linux：ssh登录后闲置时间过长而断开连接">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  165
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ssh登录后闲置时间过长而断开连接"><a href="#ssh登录后闲置时间过长而断开连接" class="headerlink" title="ssh登录后闲置时间过长而断开连接"></a>ssh登录后闲置时间过长而断开连接</h2><p>终端ssh登录远程服务器长时间不操作服务器就会自动断开连接<br>解决此问题的方法：</p>
+<p>方法一：</p>
+<ol>
+<li>#vi /etc/ssh/sshd_config配置文件，修改为ClientAliveInterval 60，每分钟发送一次检测客户端是否连接 ，ClientAliveCountMax 3 服务器发出请求后客户端没有响应的次数达到一定值, 就自动断开</li>
+<li>修改完成并保存后，执行命令：#service sshd reload使配置立即生效！</li>
+</ol>
+<p>方法二：</p>
+<p>修改/etc/profile配置文件：#vi /etc/profile 增加：TMOUT=1800 这样30分钟没操作才自动LOGOUT</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/05/Linux命令：pushd和popd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/Linux命令：pushd和popd/" itemprop="url">Linux命令：pushd和popd</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-04T13:36:45+08:00">
+                2018-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/Linux命令：pushd和popd/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/05/Linux命令：pushd和popd/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/Linux命令：pushd和popd/" class="leancloud_visitors" data-flag-title="Linux命令：pushd和popd">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  53
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="pushd和popd"><a href="#pushd和popd" class="headerlink" title="pushd和popd"></a>pushd和popd</h2><p>pushd 常用于将目录加入到栈中，加入记录到目录栈顶部，并切换到该目录<br>popd 用于删除目录栈中的记录</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pushd /usr/local/xxxx &amp;&amp; git pull &amp;&amp; popd</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/05/Linux命令：密钥创建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1111,7 +2151,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/03/springMVC-接收参数的几种方式/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/04/mysql-cpu占用过高解决方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -1130,7 +2170,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/springMVC-接收参数的几种方式/" itemprop="url">springMVC 接收参数的几种方式</a></h1>
+                <a class="post-title-link" href="/2018/04/mysql-cpu占用过高解决方法/" itemprop="url">mysql-cpu占用过高解决方法</a></h1>
         
 
         <div class="post-meta">
@@ -1142,8 +2182,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T10:42:05+08:00">
-                2018-03-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T11:01:09+08:00">
+                2018-04-03
               </time>
             
 
@@ -1165,8 +2205,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
                   </a>
                 </span>
 
@@ -1183,9 +2223,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/springMVC-接收参数的几种方式/#comments" itemprop="discussionUrl">
+                <a href="/2018/04/mysql-cpu占用过高解决方法/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/03/springMVC-接收参数的几种方式/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/04/mysql-cpu占用过高解决方法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1193,7 +2233,7 @@
 
           
           
-             <span id="/2018/03/springMVC-接收参数的几种方式/" class="leancloud_visitors" data-flag-title="springMVC 接收参数的几种方式">
+             <span id="/2018/04/mysql-cpu占用过高解决方法/" class="leancloud_visitors" data-flag-title="mysql-cpu占用过高解决方法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1218,263 +2258,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,387
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A、处理requet uri 部分（这里指uri template中variable，不含queryString部分）的注解： @PathVariable;</div><div class="line">B、处理request header部分的注解： @RequestHeader, @CookieValue;</div><div class="line">C、处理request body部分的注解：@RequestParam,  @RequestBody;</div><div class="line">D、处理attribute类型是注解： @SessionAttributes, @ModelAttribute;</div></pre></td></tr></table></figure>
-<ol>
-<li>接收Request uri中参数: @PathVariable </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(&quot;/books/&#123;bookId&#125;&quot;)  </div><div class="line"> public void findPet(@PathVariable String userId, @PathVariable String bookId) &#123;      </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>接收request header部分的注解: @RequestHeader,@CookieValue;</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(&quot;/displayHeaderInfo.do&quot;)  </div><div class="line">public void displayHeaderInfo(@RequestHeader(&quot;Accept-Encoding&quot;) String encoding,  </div><div class="line">                              @RequestHeader(&quot;Keep-Alive&quot;) long keepAlive)  &#123;  </div><div class="line">  </div><div class="line">  </div><div class="line">&#125;</div><div class="line"></div><div class="line">@RequestMapping(&quot;/displayHeaderInfo.do&quot;)  </div><div class="line">public void displayHeaderInfo(@CookieValue(&quot;JSESSIONID&quot;) String cookie)  &#123;  </div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>接收request body部分的注解：@RequestParam,@RequestBody;<br>@RequestParam使用场景：<br>A)常用来处理简单类型的绑定，通过Reqeust.getParameter()获取的String可以直接转化为简单类型的情况；因为使用request.getParameter()方式获取参数，所以可以处理get方式中queryString的值，也可以获取Post方式中body data的值；<br>B)用来处理Content-Type:为application/x-www-form-urlencoded编码的内容，提交方式GET、POST；<br>C)该注解有两个属性：value、required;value用来指定要传入值得id名称，required用来指示参数是否必须绑定；</li>
-</ol>
-<p>@RequestBody作用：<br>该注解常用来处理Content-Type:不是 application/x-www-form-urlencoded编码的内容，例如application/json,application/xml等； 它是通过HandlerAdapter配置的HttpMessageConverters来解析post data body，然后绑定到相应的bean上。 因为配置有FormHttpMessageConverter,所以也可以用来处理Application/x-www-form-urlencoded的内容，处理完的结果放在一个MultiValueMap<string,string>里，这种情况特殊需求下使用，详情查看FormHttpMessageConverter api;</string,string></p>
-<ol>
-<li>接收attribute类型的注解：@SessionAttributes,@ModelAttribute;<br>@SessionAttributes:<br>该注解用来绑定HttpSession中的attribute对象的值，便于在方法中的参数中使用。<br>该注解有value、types两个属性，可以通过名字和类型指定要使用的attribute对象；<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Controller  </div><div class="line">@RequestMapping(&quot;/editPet.do&quot;)  </div><div class="line">@SessionAttributes(&quot;pet&quot;)  </div><div class="line">public class EditPetForm &#123;  </div><div class="line">    // ...  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>@ModelAttribute<br>该注解有两个用法：通常用来处理@RequestMapping之前，为请求绑定需要从后台查询的model；<br>用于参数上时：用来通过名称对应，将相应名称的值绑定到注解的参数bean上；要绑定的值来源于：<br>A)@SessionAttribute启用的attribute对象上；<br>B)@ModelAttribute用于方法上时指定的model对象；<br>C)上述两种情况都没有时，new一个需要绑定的bean对象，然后将request中按名称对应的方式把值绑定到bean中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@ModelAttribute  </div><div class="line">public Account addAccount(@RequestParam String number) &#123;  </div><div class="line">    return accountManager.findAccount(number);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这种方式实际的效果就是在调用@RequestMapping的方法之前，为request对象的model里put(“account”,Account);</p>
-<p>用在参数上的@ModelAttribute示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(value=&quot;/owners/&#123;ownerId&#125;/pets/&#123;petId&#125;/edit&quot;, method = RequestMethod.POST)  </div><div class="line">public String processSubmit(@ModelAttribute Pet pet) &#123;  </div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>首先查询@SessionAttributes有无绑定的Pet对象，若没有则查询@ModelAttribute方法层面上是否绑定了Pet对象，若没有则URI template中的值按对应的名称绑定到Pet对象的各属性上。</p>
-<h2 id="form表单提交"><a href="#form表单提交" class="headerlink" title="form表单提交"></a>form表单提交</h2><ol>
-<li><p>直接参数名接收<br>直接通过参数名接收，添加注解@RequestParam, 不添加注解时，参数名要和表单name一致，否则接收不到。</p>
-</li>
-<li><p>实体bean接收<br>bean的属性要和表单name一致，可以不添加任何注解，也可以添加注解 @ModelAttribute,括号里的别名可以任意取，也可以不填 </p>
-</li>
-<li><p>相同参数名可以用数组接收</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(value=&quot;/array/form/post/or/get&quot;,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;)  </div><div class="line">public void formPost(String[] userName,String testParam)&#123;  </div><div class="line">    logger.info(&quot;form表单提交，用数组接收相同参数名&quot;);  </div><div class="line">    logger.info(&quot;userName:&quot;+Arrays.toString(userName));  </div><div class="line">    logger.info(&quot;testParam:&quot;+testParam);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="链接请求"><a href="#链接请求" class="headerlink" title="链接请求"></a>链接请求</h2><ol>
-<li>使用@PathVariable注解</li>
-<li>使用@RequestParam注解<br>这里和表单get请求一样 </li>
-<li>实体bean接收<br>同表单提交一样</li>
-</ol>
-<h2 id="ajax请求"><a href="#ajax请求" class="headerlink" title="ajax请求"></a>ajax请求</h2><ol>
-<li><p>ajax请求,参数为json字符串,get请求<br>用参数名获取json字符串，然后后台对json字符串做处理<code>JSON.parseObject(json,class)</code></p>
-</li>
-<li><p>ajax请求,参数为json字符串,post请求<br><code>必须添加</code>@RequestBody注解，利用spring框架将json串转成java bean,属性名称要和json字符串一致</p>
-</li>
-<li><p>ajax请求,post请求 json字符串直接用参数名获取<br>注解@RequestBody，然后用String接收到整个json字符串</p>
-</li>
-<li><p>ajax发送数组格式的字符串<br>数组格式的字符串，需要手动转换成数组对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/** </div><div class="line"> * ajax发送数组格式的字符串， </div><div class="line"> * 实际是数组格式的字符串，需要手动转换成数组对象 </div><div class="line"> * @param params </div><div class="line"> * @return </div><div class="line"> */  </div><div class="line">@RequestMapping(value=&quot;/ajax/post/arr&quot;,method=RequestMethod.POST)  </div><div class="line">public String ajaxPostArr(@RequestBody String params)&#123;  </div><div class="line">    logger.info(&quot;ajax传递数组格式的字符串&quot;);  </div><div class="line">    logger.info(&quot;params:&quot;+params);  </div><div class="line">    String[] arr = JSON.parseObject(params, String[].class);  </div><div class="line">    logger.info(Arrays.toString(arr));  </div><div class="line">    return &quot;success&quot;;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>ajax直接传递数组对象，同时还可以传递其他参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/** </div><div class="line"> * ajax直接传递数组对象，同时还可以传递其他参数， </div><div class="line"> * 类似表单提交，注意要设置： </div><div class="line"> * traditional：true </div><div class="line"> * contentType:默认 </div><div class="line"> *  </div><div class="line"> * @param params </div><div class="line"> * @return </div><div class="line"> */  </div><div class="line">@RequestMapping(value=&quot;/ajax/post/arr2&quot;,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;)  </div><div class="line">public String ajaxPostArr2(String[] params,String name)&#123;  </div><div class="line">    logger.info(&quot;ajax传递数组对象&quot;);  </div><div class="line">    logger.info(Arrays.toString(params));  </div><div class="line">    logger.info(&quot;name:&quot;+name);  </div><div class="line">    return &quot;success&quot;;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="后端POST方法接收参数"><a href="#后端POST方法接收参数" class="headerlink" title="后端POST方法接收参数"></a>后端POST方法接收参数</h2><h3 id="实体bean接收，不添加任何注解-地址参数"><a href="#实体bean接收，不添加任何注解-地址参数" class="headerlink" title="实体bean接收，不添加任何注解,地址参数"></a>实体bean接收，不添加任何注解,地址参数</h3><ol>
-<li>ajax 请求,Content type’application/x-www-form-urlencoded;charset=UTF-8’,POST</li>
-</ol>
-<h3 id="实体bean接收，不添加任何注解-body-x-www-form-urlencoded-传参"><a href="#实体bean接收，不添加任何注解-body-x-www-form-urlencoded-传参" class="headerlink" title="实体bean接收，不添加任何注解,body x-www-form-urlencoded 传参"></a>实体bean接收，不添加任何注解,body x-www-form-urlencoded 传参</h3><ol>
-<li>ajax 请求,Content type’application/x-www-form-urlencoded;charset=UTF-8’,POST</li>
-</ol>
-<h3 id="实体bean接收，使用-RequestBody注解"><a href="#实体bean接收，使用-RequestBody注解" class="headerlink" title="实体bean接收，使用@RequestBody注解"></a>实体bean接收，使用@RequestBody注解</h3><ol>
-<li>ajax 请求,Content type’application/json;charset=UTF-8’,POST</li>
-</ol>
-<h3 id="实体bean接收，使用-RequestBody注解-1"><a href="#实体bean接收，使用-RequestBody注解-1" class="headerlink" title="实体bean接收，使用@RequestBody注解"></a>实体bean接收，使用@RequestBody注解</h3><ol>
-<li>ajax 请求,Content type’application/json;charset=UTF-8’,POST, json.stringify</li>
-</ol>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.jianshu.com/p/b4b2c38d31ee" target="_blank" rel="external">https://www.jianshu.com/p/b4b2c38d31ee</a><br><a href="https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/" target="_blank" rel="external">https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/</a><br><a href="https://blog.csdn.net/MyNoteBlog/article/details/72519295" target="_blank" rel="external">https://blog.csdn.net/MyNoteBlog/article/details/72519295</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/03/shiro简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/shiro简介/" itemprop="url">shiro简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T17:07:13+08:00">
-                2018-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/shiro简介/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/03/shiro简介/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/shiro简介/" class="leancloud_visitors" data-flag-title="shiro简介">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  313
+                  264
                 </span>
               
 
@@ -1513,849 +2297,13 @@
       
         
           
-            <h2 id="什么是Apache-Shiro？"><a href="#什么是Apache-Shiro？" class="headerlink" title="什么是Apache Shiro？"></a>什么是Apache Shiro？</h2><p>Apache Shiro 是一个强大易用的Java安全框架，提供了认证、授权、加密和会话管理功能，可为任何应用提供安全保障 - 从命令行应用、移动应用到大型网络及企业应用。</p>
-<h2 id="Shiro能做的事情"><a href="#Shiro能做的事情" class="headerlink" title="Shiro能做的事情"></a>Shiro能做的事情</h2><ul>
-<li>登录验证</li>
-<li>访问控制，如： <ul>
-<li>判断用户是否拥有角色admin</li>
-<li>判断用户是否拥有访问的权限</li>
-</ul>
-</li>
-<li>在任何环境下使用 Session API</li>
-<li>可以使用多个用户数据源。例如一个是oracle用户库，另外一个是mysql用户库</li>
-<li>单点登录（SSO）功能</li>
-<li>“Remember Me”服务 ，类似购物车的功能，shiro官方建议开启</li>
-<li>可以直接使用annotation对所使用的方法做权限控制</li>
-<li>可以在jsp中通过shiro标签方便的做到细粒度的权限控制</li>
-</ul>
-<h2 id="四大API"><a href="#四大API" class="headerlink" title="四大API"></a>四大API</h2><ul>
-<li>Authentication —— 认证，用户身份识别，常被称为用户“登录”，who are you?</li>
-<li>Authorization —— 授权，访问控制过程，决定“谁”访问“什么”，who can do what?</li>
-<li>Session Management —— 会话管理，用户session管理器，用户相关的时间敏感的状态</li>
-<li>Cryptography —— 密码加密，把JDK中复杂的密码加密方式进行封装，保护或隐藏数据防止被偷窥</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/03/java-List转换为树形结构数据/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/java-List转换为树形结构数据/" itemprop="url">java List转换为树形结构数据</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T14:20:47+08:00">
-                2018-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/java-List转换为树形结构数据/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/03/java-List转换为树形结构数据/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/java-List转换为树形结构数据/" class="leancloud_visitors" data-flag-title="java List转换为树形结构数据">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  138
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 转换为树形结构数据</div><div class="line"> *</div><div class="line"> * @param authMenuVOList 列表数据</div><div class="line"> * @return 树形列表数据</div><div class="line"> */</div><div class="line">private List&lt;AuthMenuVO&gt; transListToTreeList(List&lt;AuthMenuVO&gt; authMenuVOList) &#123;</div><div class="line">    List&lt;AuthMenuVO&gt; rootMenuList = Lists.newArrayList();</div><div class="line">    Map&lt;Long, AuthMenuVO&gt; menuNodeMap = Maps.newHashMap();</div><div class="line">    for (AuthMenuVO authMenuVO : authMenuVOList) &#123;</div><div class="line">        menuNodeMap.put(authMenuVO.getId(), authMenuVO);</div><div class="line">    &#125;</div><div class="line">    //遍历列表数据，添加到父节点下，如果是根节点存入根节点列表中，如果不是根节点添加到父节点下</div><div class="line">    for (AuthMenuVO authMenuVO : authMenuVOList) &#123;</div><div class="line">        Long pid = authMenuVO.getPid();</div><div class="line">        //判断是否是跟节点</div><div class="line">        if (pid == 0) &#123;</div><div class="line">            rootMenuList.add(authMenuVO);</div><div class="line">        &#125; else &#123;</div><div class="line">            AuthMenuVO parentMenu = menuNodeMap.get(pid);</div><div class="line">            List&lt;AuthMenuVO&gt; childrenList = parentMenu.getChildren();</div><div class="line">            if (childrenList == null) &#123;</div><div class="line">                childrenList = Lists.newArrayList();</div><div class="line">                parentMenu.setChildren(childrenList);</div><div class="line">            &#125;</div><div class="line">            childrenList.add(authMenuVO);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return rootMenuList;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/03/vscode使用笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/vscode使用笔记/" itemprop="url">vscode使用笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T11:31:51+08:00">
-                2018-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/vscode使用笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/03/vscode使用笔记/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/vscode使用笔记/" class="leancloud_visitors" data-flag-title="vscode使用笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  653
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="打开终端"><a href="#打开终端" class="headerlink" title="打开终端"></a>打开终端</h2><p>有三种方法可以唤出终端：</p>
-<ul>
-<li>通过菜单 View | Toggle Integrated Terminal；</li>
-<li>通过 Ctrl + Shift + P 从命令面板使用 View:Toggle Integrated Terminal；</li>
-<li>快捷键 Ctrl+`</li>
-</ul>
-<h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><h3 id="编辑器与窗口管理"><a href="#编辑器与窗口管理" class="headerlink" title="编辑器与窗口管理"></a>编辑器与窗口管理</h3><p>打开一个新窗口： Ctrl+Shift+N<br>关闭窗口： Ctrl+Shift+W</p>
-<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>新建文件 Ctrl+N<br>历史打开文件之间切换 Ctrl+Tab，Alt+Left，Alt+Right<br>切出一个新的编辑器（最多3个）Ctrl+\，也可以按住Ctrl鼠标点击Explorer里的文件名<br>左中右3个编辑器的快捷键Ctrl+1 Ctrl+2 Ctrl+3<br>3个编辑器之间循环切换 Ctrl+`<br>编辑器换位置，Ctrl+k然后按Left或Right</p>
-<h3 id="代码编辑"><a href="#代码编辑" class="headerlink" title="代码编辑"></a>代码编辑</h3><p>代码行缩进Ctrl+[， Ctrl+]<br>折叠打开代码块 Ctrl+Shift+[， Ctrl+Shift+]<br>Ctrl+C Ctrl+V如果不选中，默认复制或剪切一整行<br>代码格式化：Shift+Alt+F，或Ctrl+Shift+P后输入format code<br>修剪空格Ctrl+Shift+X<br>上下移动一行： Alt+Up 或 Alt+Down<br>向上向下复制一行： Shift+Alt+Up或Shift+Alt+Down<br>在当前行下边插入一行Ctrl+Enter<br>在当前行上方插入一行Ctrl+Shift+Enter</p>
-<h3 id="光标相关"><a href="#光标相关" class="headerlink" title="光标相关"></a>光标相关</h3><p>移动到行首：Home<br>移动到行尾：End<br>移动到文件结尾：Ctrl+End<br>移动到文件开头：Ctrl+Home<br>移动到后半个括号 Ctrl+Shift+]<br>选中当前行Ctrl+i（双击）<br>选择从光标到行尾Shift+End<br>选择从行首到光标处Shift+Home<br>删除光标右侧的所有字Ctrl+Delete<br>Shrink/expand selection： Shift+Alt+Left和Shift+Alt+Right<br>Multi-Cursor：可以连续选择多处，然后一起修改，Alt+Click添加cursor或者Ctrl+Alt+Down 或 Ctrl+Alt+Up<br>同时选中所有匹配的Ctrl+Shift+L<br>Ctrl+D下一个匹配的也被选中(被我自定义成删除当前行了，见下边Ctrl+Shift+K)<br>回退上一个光标操作Ctrl+U</p>
-<h3 id="重构代码"><a href="#重构代码" class="headerlink" title="重构代码"></a>重构代码</h3><p>跳转到定义处：F12<br>定义处缩略图：只看一眼而不跳转过去Alt+F12<br>列出所有的引用：Shift+F12<br>同时修改本文件中所有匹配的：Ctrl+F12<br>重命名：比如要修改一个方法名，可以选中后按F2，输入新的名字，回车，会发现所有的文件都修改过了。<br>跳转到下一个Error或Warning：当有多个错误时可以按F8逐个跳转<br>查看diff 在explorer里选择文件右键 Set file to compare，然后需要对比的文件上右键选择Compare with ‘file_name_you_chose’.</p>
-<h3 id="查找替换"><a href="#查找替换" class="headerlink" title="查找替换"></a>查找替换</h3><p>查找 Ctrl+F<br>查找替换 Ctrl+H<br>整个文件夹中查找 Ctrl+Shift+F</p>
-<h3 id="显示相关"><a href="#显示相关" class="headerlink" title="显示相关"></a>显示相关</h3><p>全屏：F11<br>zoomIn/zoomOut：Ctrl + =/Ctrl + -<br>侧边栏显/隐：Ctrl+B<br>预览markdown Ctrl+Shift+V</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/03/常用的JavaScript库CDN加速服务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/常用的JavaScript库CDN加速服务/" itemprop="url">常用的 JavaScript 库 CDN 加速服务</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T10:38:39+08:00">
-                2018-03-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/常用的JavaScript库CDN加速服务/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/03/常用的JavaScript库CDN加速服务/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/常用的JavaScript库CDN加速服务/" class="leancloud_visitors" data-flag-title="常用的 JavaScript 库 CDN 加速服务">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  129
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="国内的公共库"><a href="#国内的公共库" class="headerlink" title="国内的公共库"></a>国内的公共库</h2><ul>
-<li>百度CDN公共库：<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs" target="_blank" rel="external">http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs</a></li>
-<li>百度静态资源公共库：<a href="http://cdn.code.baidu.com/" target="_blank" rel="external">http://cdn.code.baidu.com/</a></li>
-<li>新浪云计算CDN公共库：<a href="http://lib.sinaapp.com" target="_blank" rel="external">http://lib.sinaapp.com</a></li>
-<li>BootCDN公共库：<a href="http://www.bootcdn.cn" target="_blank" rel="external">http://www.bootcdn.cn</a></li>
-<li>360公共库：<a href="http://libs.useso.com" target="_blank" rel="external">http://libs.useso.com</a></li>
-<li>七牛云存储 开放静态文件CDN：<a href="http://www.staticfile.org" target="_blank" rel="external">http://www.staticfile.org</a></li>
-<li>又拍云JS库CDN服务：<a href="http://jscdn.upai.com" target="_blank" rel="external">http://jscdn.upai.com</a></li>
-</ul>
-<h2 id="国外的公共库"><a href="#国外的公共库" class="headerlink" title="国外的公共库"></a>国外的公共库</h2><ul>
-<li>CDNJS：<a href="http://www.cdnjs.com" target="_blank" rel="external">http://www.cdnjs.com</a></li>
-<li>Google Hosted Libraries：<a href="https://developers.google.com/speed/libraries/" target="_blank" rel="external">https://developers.google.com/speed/libraries/</a></li>
-<li>Microsoft ASP.net CDN：<a href="http://www.asp.net/ajaxlibrary/cdn.ashx" target="_blank" rel="external">http://www.asp.net/ajaxlibrary/cdn.ashx</a></li>
-<li>jsDelivr：<a href="http://www.jsdelivr.com/" target="_blank" rel="external">http://www.jsdelivr.com/</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/12/joda-time工具类/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/joda-time工具类/" itemprop="url">joda-time工具类</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T09:38:00+08:00">
-                2017-12-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/12/joda-time工具类/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/joda-time工具类/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/12/joda-time工具类/" class="leancloud_visitors" data-flag-title="joda-time工具类">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  251
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <!-- MarkdownTOC -->
-<ul>
-<li><a href="#%E6%95%B0%E6%8D%AE%E5%88%9D%E5%A7%8B%E5%8C%96">数据初始化</a></li>
-<li><a href="#%E6%97%A5%E6%9C%9F%E5%B7%AE">日期差</a></li>
-<li><a href="#%E6%A0%BC%E5%BC%8F%E5%8C%96">格式化</a></li>
-<li><a href="#%E6%97%A5%E6%9C%9F%E8%AE%A1%E7%AE%97-plusminus">日期计算 plus/minus</a></li>
-<li><a href="#%E6%97%B6%E9%97%B4%E6%AF%94%E8%BE%83-isbeforeisafter">时间比较 isBefore/isAfter</a></li>
-<li><a href="#%E5%AE%98%E7%BD%91">官网</a></li>
-</ul>
-<!-- /MarkdownTOC -->
-<h2 id="数据初始化"><a href="#数据初始化" class="headerlink" title="数据初始化"></a>数据初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DateTime dateTimeNow = new DateTime();</div><div class="line">DateTime dateTimeNow = new DateTime(date);//java日期转DateTime</div><div class="line">DateTime recent = DateTime.parse(&quot;2017-05-18 17:40:00&quot;, DateTimeFormat.forPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;)); //字符串转日期</div><div class="line">DateTime dateTime2 = new DateTime(2017,2,14,0,0,0);//年月日时分秒</div><div class="line">DateTime dateTime = DateTimeFormat.forPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;).parseDateTime(&quot;2016-06-03 23:59:59&quot;);</div></pre></td></tr></table></figure>
-<h2 id="日期差"><a href="#日期差" class="headerlink" title="日期差"></a>日期差</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">DateTime dt1 = new DateTime();</div><div class="line">DateTime dt2 = new DateTime().plus();</div><div class="line">System.out.print(&quot;时间相差：&quot;);</div><div class="line">System.out.print(Days.daysBetween(dt1, dt2).getDays() + &quot; 天 &quot;);</div><div class="line">System.out.print(Hours.hoursBetween(dt1, dt2).getHours() % 24 + &quot; 小时 &quot;);</div><div class="line">System.out.print(Minutes.minutesBetween(dt1, dt2).getMinutes() % 60 + &quot; 分钟 &quot;);</div><div class="line">System.out.print(Seconds.secondsBetween(dt1, dt2).getSeconds() % 60+ &quot; 秒.&quot;);</div></pre></td></tr></table></figure>
-<h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String s = new DateTime().toString(DateTimeFormat.forPattern(&quot;yyyy-MM-dd&quot;));</div><div class="line">String s2 = new DateTime().toString(&quot;yyyy-MM-dd&quot;)</div></pre></td></tr></table></figure>
-<h2 id="日期计算-plus-minus"><a href="#日期计算-plus-minus" class="headerlink" title="日期计算 plus/minus"></a>日期计算 plus/minus</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DateTime now = new DateTime();//当前时间</div><div class="line">DateTime tomorrowDt = now.plusDays(1);//明天</div><div class="line"></div><div class="line">int days = Days.daysBetween(now, tomorrowDt).getDays();</div><div class="line">System.out.println(days);//1</div></pre></td></tr></table></figure>
-<h2 id="时间比较-isBefore-isAfter"><a href="#时间比较-isBefore-isAfter" class="headerlink" title="时间比较 isBefore/isAfter"></a>时间比较 isBefore/isAfter</h2><p>时间轴</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">现在 isbefore 明天 true</div><div class="line">boolean before = new DateTime().isBefore(new DateTime().plus(1));</div></pre></td></tr></table></figure>
-<p>##官网<br><a href="http://www.joda.org/joda-time/userguide.html" target="_blank" rel="external">http://www.joda.org/joda-time/userguide.html</a></p>
-
+            <p>CPU报警：很可能是 SQL 里面有较多的计算导致的<br>连接数超高：很可能是有慢查询，然后导致很多的查询在排队，排查问题的时候可以看到”事发现场“类似的 SQL 语句一大片，那么有可能是没有索引或者索引不好使，可以用：explain 分析一下 SQL 语句</p>
+<h2 id="查看事发现场"><a href="#查看事发现场" class="headerlink" title="查看事发现场"></a>查看事发现场</h2><ol>
+<li>show processlist 语句，查找负荷最重的 SQL 语句，优化该SQL</li>
+<li>开启慢查询，找到性能瓶颈点的SQL语句，然后使用explain，看看该语句是否可以优化；</li>
+</ol>
+<h3 id="show-full-processlist"><a href="#show-full-processlist" class="headerlink" title="show [full] processlist"></a>show [full] processlist</h3><p>show [full] processlist  可以看到所有链接的情况<br>观察有问题的链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-- 查询非 Sleep 状态的链接，按消耗时间倒序展示，自己加条件过滤</div><div class="line">select id, db, user, host, command, time, state, info</div><div class="line">from information_schema.processlist</div><div class="line">where command != &apos;Sleep&apos;</div><div class="line">order by time desc</div></pre></td></tr></table></figure></p>
+<h2 id="kill-使用"><a href="#kill-使用" class="headerlink" title="kill 使用"></a>kill 使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-- 查询执行时间超过2分钟的线程，然后拼接成 kill 语句</div><div class="line">select concat(&apos;kill &apos;, id, &apos;;&apos;)</div><div class="line">from information_schema.processlist</div><div class="line">where command != &apos;Sleep&apos;</div><div class="line">and time &gt; 2*60</div><div class="line">order by time desc</div></pre></td></tr></table></figure>
           
         
       
@@ -2394,7 +2342,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2440,7 +2388,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2451,7 +2399,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2462,7 +2410,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -316,6 +316,1298 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/03/springMVC-接收参数的几种方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/springMVC-接收参数的几种方式/" itemprop="url">springMVC 接收参数的几种方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T10:42:05+08:00">
+                2018-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/springMVC-接收参数的几种方式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/springMVC-接收参数的几种方式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/springMVC-接收参数的几种方式/" class="leancloud_visitors" data-flag-title="springMVC 接收参数的几种方式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,387
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">A、处理requet uri 部分（这里指uri template中variable，不含queryString部分）的注解： @PathVariable;</div><div class="line">B、处理request header部分的注解： @RequestHeader, @CookieValue;</div><div class="line">C、处理request body部分的注解：@RequestParam,  @RequestBody;</div><div class="line">D、处理attribute类型是注解： @SessionAttributes, @ModelAttribute;</div></pre></td></tr></table></figure>
+<ol>
+<li>接收Request uri中参数: @PathVariable </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(&quot;/books/&#123;bookId&#125;&quot;)  </div><div class="line"> public void findPet(@PathVariable String userId, @PathVariable String bookId) &#123;      </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>接收request header部分的注解: @RequestHeader,@CookieValue;</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(&quot;/displayHeaderInfo.do&quot;)  </div><div class="line">public void displayHeaderInfo(@RequestHeader(&quot;Accept-Encoding&quot;) String encoding,  </div><div class="line">                              @RequestHeader(&quot;Keep-Alive&quot;) long keepAlive)  &#123;  </div><div class="line">  </div><div class="line">  </div><div class="line">&#125;</div><div class="line"></div><div class="line">@RequestMapping(&quot;/displayHeaderInfo.do&quot;)  </div><div class="line">public void displayHeaderInfo(@CookieValue(&quot;JSESSIONID&quot;) String cookie)  &#123;  </div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>接收request body部分的注解：@RequestParam,@RequestBody;<br>@RequestParam使用场景：<br>A)常用来处理简单类型的绑定，通过Reqeust.getParameter()获取的String可以直接转化为简单类型的情况；因为使用request.getParameter()方式获取参数，所以可以处理get方式中queryString的值，也可以获取Post方式中body data的值；<br>B)用来处理Content-Type:为application/x-www-form-urlencoded编码的内容，提交方式GET、POST；<br>C)该注解有两个属性：value、required;value用来指定要传入值得id名称，required用来指示参数是否必须绑定；</li>
+</ol>
+<p>@RequestBody作用：<br>该注解常用来处理Content-Type:不是 application/x-www-form-urlencoded编码的内容，例如application/json,application/xml等； 它是通过HandlerAdapter配置的HttpMessageConverters来解析post data body，然后绑定到相应的bean上。 因为配置有FormHttpMessageConverter,所以也可以用来处理Application/x-www-form-urlencoded的内容，处理完的结果放在一个MultiValueMap<string,string>里，这种情况特殊需求下使用，详情查看FormHttpMessageConverter api;</string,string></p>
+<ol>
+<li>接收attribute类型的注解：@SessionAttributes,@ModelAttribute;<br>@SessionAttributes:<br>该注解用来绑定HttpSession中的attribute对象的值，便于在方法中的参数中使用。<br>该注解有value、types两个属性，可以通过名字和类型指定要使用的attribute对象；<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Controller  </div><div class="line">@RequestMapping(&quot;/editPet.do&quot;)  </div><div class="line">@SessionAttributes(&quot;pet&quot;)  </div><div class="line">public class EditPetForm &#123;  </div><div class="line">    // ...  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>@ModelAttribute<br>该注解有两个用法：通常用来处理@RequestMapping之前，为请求绑定需要从后台查询的model；<br>用于参数上时：用来通过名称对应，将相应名称的值绑定到注解的参数bean上；要绑定的值来源于：<br>A)@SessionAttribute启用的attribute对象上；<br>B)@ModelAttribute用于方法上时指定的model对象；<br>C)上述两种情况都没有时，new一个需要绑定的bean对象，然后将request中按名称对应的方式把值绑定到bean中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@ModelAttribute  </div><div class="line">public Account addAccount(@RequestParam String number) &#123;  </div><div class="line">    return accountManager.findAccount(number);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这种方式实际的效果就是在调用@RequestMapping的方法之前，为request对象的model里put(“account”,Account);</p>
+<p>用在参数上的@ModelAttribute示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(value=&quot;/owners/&#123;ownerId&#125;/pets/&#123;petId&#125;/edit&quot;, method = RequestMethod.POST)  </div><div class="line">public String processSubmit(@ModelAttribute Pet pet) &#123;  </div><div class="line">     </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>首先查询@SessionAttributes有无绑定的Pet对象，若没有则查询@ModelAttribute方法层面上是否绑定了Pet对象，若没有则URI template中的值按对应的名称绑定到Pet对象的各属性上。</p>
+<h2 id="form表单提交"><a href="#form表单提交" class="headerlink" title="form表单提交"></a>form表单提交</h2><ol>
+<li><p>直接参数名接收<br>直接通过参数名接收，添加注解@RequestParam, 不添加注解时，参数名要和表单name一致，否则接收不到。</p>
+</li>
+<li><p>实体bean接收<br>bean的属性要和表单name一致，可以不添加任何注解，也可以添加注解 @ModelAttribute,括号里的别名可以任意取，也可以不填 </p>
+</li>
+<li><p>相同参数名可以用数组接收</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(value=&quot;/array/form/post/or/get&quot;,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;)  </div><div class="line">public void formPost(String[] userName,String testParam)&#123;  </div><div class="line">    logger.info(&quot;form表单提交，用数组接收相同参数名&quot;);  </div><div class="line">    logger.info(&quot;userName:&quot;+Arrays.toString(userName));  </div><div class="line">    logger.info(&quot;testParam:&quot;+testParam);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="链接请求"><a href="#链接请求" class="headerlink" title="链接请求"></a>链接请求</h2><ol>
+<li>使用@PathVariable注解</li>
+<li>使用@RequestParam注解<br>这里和表单get请求一样 </li>
+<li>实体bean接收<br>同表单提交一样</li>
+</ol>
+<h2 id="ajax请求"><a href="#ajax请求" class="headerlink" title="ajax请求"></a>ajax请求</h2><ol>
+<li><p>ajax请求,参数为json字符串,get请求<br>用参数名获取json字符串，然后后台对json字符串做处理<code>JSON.parseObject(json,class)</code></p>
+</li>
+<li><p>ajax请求,参数为json字符串,post请求<br><code>必须添加</code>@RequestBody注解，利用spring框架将json串转成java bean,属性名称要和json字符串一致</p>
+</li>
+<li><p>ajax请求,post请求 json字符串直接用参数名获取<br>注解@RequestBody，然后用String接收到整个json字符串</p>
+</li>
+<li><p>ajax发送数组格式的字符串<br>数组格式的字符串，需要手动转换成数组对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/** </div><div class="line"> * ajax发送数组格式的字符串， </div><div class="line"> * 实际是数组格式的字符串，需要手动转换成数组对象 </div><div class="line"> * @param params </div><div class="line"> * @return </div><div class="line"> */  </div><div class="line">@RequestMapping(value=&quot;/ajax/post/arr&quot;,method=RequestMethod.POST)  </div><div class="line">public String ajaxPostArr(@RequestBody String params)&#123;  </div><div class="line">    logger.info(&quot;ajax传递数组格式的字符串&quot;);  </div><div class="line">    logger.info(&quot;params:&quot;+params);  </div><div class="line">    String[] arr = JSON.parseObject(params, String[].class);  </div><div class="line">    logger.info(Arrays.toString(arr));  </div><div class="line">    return &quot;success&quot;;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>ajax直接传递数组对象，同时还可以传递其他参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/** </div><div class="line"> * ajax直接传递数组对象，同时还可以传递其他参数， </div><div class="line"> * 类似表单提交，注意要设置： </div><div class="line"> * traditional：true </div><div class="line"> * contentType:默认 </div><div class="line"> *  </div><div class="line"> * @param params </div><div class="line"> * @return </div><div class="line"> */  </div><div class="line">@RequestMapping(value=&quot;/ajax/post/arr2&quot;,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;)  </div><div class="line">public String ajaxPostArr2(String[] params,String name)&#123;  </div><div class="line">    logger.info(&quot;ajax传递数组对象&quot;);  </div><div class="line">    logger.info(Arrays.toString(params));  </div><div class="line">    logger.info(&quot;name:&quot;+name);  </div><div class="line">    return &quot;success&quot;;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="后端POST方法接收参数"><a href="#后端POST方法接收参数" class="headerlink" title="后端POST方法接收参数"></a>后端POST方法接收参数</h2><h3 id="实体bean接收，不添加任何注解-地址参数"><a href="#实体bean接收，不添加任何注解-地址参数" class="headerlink" title="实体bean接收，不添加任何注解,地址参数"></a>实体bean接收，不添加任何注解,地址参数</h3><ol>
+<li>ajax 请求,Content type’application/x-www-form-urlencoded;charset=UTF-8’,POST</li>
+</ol>
+<h3 id="实体bean接收，不添加任何注解-body-x-www-form-urlencoded-传参"><a href="#实体bean接收，不添加任何注解-body-x-www-form-urlencoded-传参" class="headerlink" title="实体bean接收，不添加任何注解,body x-www-form-urlencoded 传参"></a>实体bean接收，不添加任何注解,body x-www-form-urlencoded 传参</h3><ol>
+<li>ajax 请求,Content type’application/x-www-form-urlencoded;charset=UTF-8’,POST</li>
+</ol>
+<h3 id="实体bean接收，使用-RequestBody注解"><a href="#实体bean接收，使用-RequestBody注解" class="headerlink" title="实体bean接收，使用@RequestBody注解"></a>实体bean接收，使用@RequestBody注解</h3><ol>
+<li>ajax 请求,Content type’application/json;charset=UTF-8’,POST</li>
+</ol>
+<h3 id="实体bean接收，使用-RequestBody注解-1"><a href="#实体bean接收，使用-RequestBody注解-1" class="headerlink" title="实体bean接收，使用@RequestBody注解"></a>实体bean接收，使用@RequestBody注解</h3><ol>
+<li>ajax 请求,Content type’application/json;charset=UTF-8’,POST, json.stringify</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.jianshu.com/p/b4b2c38d31ee" target="_blank" rel="external">https://www.jianshu.com/p/b4b2c38d31ee</a><br><a href="https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/" target="_blank" rel="external">https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/</a><br><a href="https://blog.csdn.net/MyNoteBlog/article/details/72519295" target="_blank" rel="external">https://blog.csdn.net/MyNoteBlog/article/details/72519295</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/03/shiro简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/shiro简介/" itemprop="url">shiro简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T17:07:13+08:00">
+                2018-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/shiro简介/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/shiro简介/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/shiro简介/" class="leancloud_visitors" data-flag-title="shiro简介">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  313
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是Apache-Shiro？"><a href="#什么是Apache-Shiro？" class="headerlink" title="什么是Apache Shiro？"></a>什么是Apache Shiro？</h2><p>Apache Shiro 是一个强大易用的Java安全框架，提供了认证、授权、加密和会话管理功能，可为任何应用提供安全保障 - 从命令行应用、移动应用到大型网络及企业应用。</p>
+<h2 id="Shiro能做的事情"><a href="#Shiro能做的事情" class="headerlink" title="Shiro能做的事情"></a>Shiro能做的事情</h2><ul>
+<li>登录验证</li>
+<li>访问控制，如： <ul>
+<li>判断用户是否拥有角色admin</li>
+<li>判断用户是否拥有访问的权限</li>
+</ul>
+</li>
+<li>在任何环境下使用 Session API</li>
+<li>可以使用多个用户数据源。例如一个是oracle用户库，另外一个是mysql用户库</li>
+<li>单点登录（SSO）功能</li>
+<li>“Remember Me”服务 ，类似购物车的功能，shiro官方建议开启</li>
+<li>可以直接使用annotation对所使用的方法做权限控制</li>
+<li>可以在jsp中通过shiro标签方便的做到细粒度的权限控制</li>
+</ul>
+<h2 id="四大API"><a href="#四大API" class="headerlink" title="四大API"></a>四大API</h2><ul>
+<li>Authentication —— 认证，用户身份识别，常被称为用户“登录”，who are you?</li>
+<li>Authorization —— 授权，访问控制过程，决定“谁”访问“什么”，who can do what?</li>
+<li>Session Management —— 会话管理，用户session管理器，用户相关的时间敏感的状态</li>
+<li>Cryptography —— 密码加密，把JDK中复杂的密码加密方式进行封装，保护或隐藏数据防止被偷窥</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/03/java-List转换为树形结构数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/java-List转换为树形结构数据/" itemprop="url">java List转换为树形结构数据</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T14:20:47+08:00">
+                2018-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/java-List转换为树形结构数据/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/java-List转换为树形结构数据/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/java-List转换为树形结构数据/" class="leancloud_visitors" data-flag-title="java List转换为树形结构数据">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  138
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 转换为树形结构数据</div><div class="line"> *</div><div class="line"> * @param authMenuVOList 列表数据</div><div class="line"> * @return 树形列表数据</div><div class="line"> */</div><div class="line">private List&lt;AuthMenuVO&gt; transListToTreeList(List&lt;AuthMenuVO&gt; authMenuVOList) &#123;</div><div class="line">    List&lt;AuthMenuVO&gt; rootMenuList = Lists.newArrayList();</div><div class="line">    Map&lt;Long, AuthMenuVO&gt; menuNodeMap = Maps.newHashMap();</div><div class="line">    for (AuthMenuVO authMenuVO : authMenuVOList) &#123;</div><div class="line">        menuNodeMap.put(authMenuVO.getId(), authMenuVO);</div><div class="line">    &#125;</div><div class="line">    //遍历列表数据，添加到父节点下，如果是根节点存入根节点列表中，如果不是根节点添加到父节点下</div><div class="line">    for (AuthMenuVO authMenuVO : authMenuVOList) &#123;</div><div class="line">        Long pid = authMenuVO.getPid();</div><div class="line">        //判断是否是跟节点</div><div class="line">        if (pid == 0) &#123;</div><div class="line">            rootMenuList.add(authMenuVO);</div><div class="line">        &#125; else &#123;</div><div class="line">            AuthMenuVO parentMenu = menuNodeMap.get(pid);</div><div class="line">            List&lt;AuthMenuVO&gt; childrenList = parentMenu.getChildren();</div><div class="line">            if (childrenList == null) &#123;</div><div class="line">                childrenList = Lists.newArrayList();</div><div class="line">                parentMenu.setChildren(childrenList);</div><div class="line">            &#125;</div><div class="line">            childrenList.add(authMenuVO);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return rootMenuList;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/03/vscode使用笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/vscode使用笔记/" itemprop="url">vscode使用笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T11:31:51+08:00">
+                2018-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/vscode使用笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/vscode使用笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/vscode使用笔记/" class="leancloud_visitors" data-flag-title="vscode使用笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  653
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="打开终端"><a href="#打开终端" class="headerlink" title="打开终端"></a>打开终端</h2><p>有三种方法可以唤出终端：</p>
+<ul>
+<li>通过菜单 View | Toggle Integrated Terminal；</li>
+<li>通过 Ctrl + Shift + P 从命令面板使用 View:Toggle Integrated Terminal；</li>
+<li>快捷键 Ctrl+`</li>
+</ul>
+<h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><h3 id="编辑器与窗口管理"><a href="#编辑器与窗口管理" class="headerlink" title="编辑器与窗口管理"></a>编辑器与窗口管理</h3><p>打开一个新窗口： Ctrl+Shift+N<br>关闭窗口： Ctrl+Shift+W</p>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>新建文件 Ctrl+N<br>历史打开文件之间切换 Ctrl+Tab，Alt+Left，Alt+Right<br>切出一个新的编辑器（最多3个）Ctrl+\，也可以按住Ctrl鼠标点击Explorer里的文件名<br>左中右3个编辑器的快捷键Ctrl+1 Ctrl+2 Ctrl+3<br>3个编辑器之间循环切换 Ctrl+`<br>编辑器换位置，Ctrl+k然后按Left或Right</p>
+<h3 id="代码编辑"><a href="#代码编辑" class="headerlink" title="代码编辑"></a>代码编辑</h3><p>代码行缩进Ctrl+[， Ctrl+]<br>折叠打开代码块 Ctrl+Shift+[， Ctrl+Shift+]<br>Ctrl+C Ctrl+V如果不选中，默认复制或剪切一整行<br>代码格式化：Shift+Alt+F，或Ctrl+Shift+P后输入format code<br>修剪空格Ctrl+Shift+X<br>上下移动一行： Alt+Up 或 Alt+Down<br>向上向下复制一行： Shift+Alt+Up或Shift+Alt+Down<br>在当前行下边插入一行Ctrl+Enter<br>在当前行上方插入一行Ctrl+Shift+Enter</p>
+<h3 id="光标相关"><a href="#光标相关" class="headerlink" title="光标相关"></a>光标相关</h3><p>移动到行首：Home<br>移动到行尾：End<br>移动到文件结尾：Ctrl+End<br>移动到文件开头：Ctrl+Home<br>移动到后半个括号 Ctrl+Shift+]<br>选中当前行Ctrl+i（双击）<br>选择从光标到行尾Shift+End<br>选择从行首到光标处Shift+Home<br>删除光标右侧的所有字Ctrl+Delete<br>Shrink/expand selection： Shift+Alt+Left和Shift+Alt+Right<br>Multi-Cursor：可以连续选择多处，然后一起修改，Alt+Click添加cursor或者Ctrl+Alt+Down 或 Ctrl+Alt+Up<br>同时选中所有匹配的Ctrl+Shift+L<br>Ctrl+D下一个匹配的也被选中(被我自定义成删除当前行了，见下边Ctrl+Shift+K)<br>回退上一个光标操作Ctrl+U</p>
+<h3 id="重构代码"><a href="#重构代码" class="headerlink" title="重构代码"></a>重构代码</h3><p>跳转到定义处：F12<br>定义处缩略图：只看一眼而不跳转过去Alt+F12<br>列出所有的引用：Shift+F12<br>同时修改本文件中所有匹配的：Ctrl+F12<br>重命名：比如要修改一个方法名，可以选中后按F2，输入新的名字，回车，会发现所有的文件都修改过了。<br>跳转到下一个Error或Warning：当有多个错误时可以按F8逐个跳转<br>查看diff 在explorer里选择文件右键 Set file to compare，然后需要对比的文件上右键选择Compare with ‘file_name_you_chose’.</p>
+<h3 id="查找替换"><a href="#查找替换" class="headerlink" title="查找替换"></a>查找替换</h3><p>查找 Ctrl+F<br>查找替换 Ctrl+H<br>整个文件夹中查找 Ctrl+Shift+F</p>
+<h3 id="显示相关"><a href="#显示相关" class="headerlink" title="显示相关"></a>显示相关</h3><p>全屏：F11<br>zoomIn/zoomOut：Ctrl + =/Ctrl + -<br>侧边栏显/隐：Ctrl+B<br>预览markdown Ctrl+Shift+V</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2018/03/常用的JavaScript库CDN加速服务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/常用的JavaScript库CDN加速服务/" itemprop="url">常用的 JavaScript 库 CDN 加速服务</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T10:38:39+08:00">
+                2018-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/常用的JavaScript库CDN加速服务/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/常用的JavaScript库CDN加速服务/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/常用的JavaScript库CDN加速服务/" class="leancloud_visitors" data-flag-title="常用的 JavaScript 库 CDN 加速服务">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  129
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="国内的公共库"><a href="#国内的公共库" class="headerlink" title="国内的公共库"></a>国内的公共库</h2><ul>
+<li>百度CDN公共库：<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs" target="_blank" rel="external">http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs</a></li>
+<li>百度静态资源公共库：<a href="http://cdn.code.baidu.com/" target="_blank" rel="external">http://cdn.code.baidu.com/</a></li>
+<li>新浪云计算CDN公共库：<a href="http://lib.sinaapp.com" target="_blank" rel="external">http://lib.sinaapp.com</a></li>
+<li>BootCDN公共库：<a href="http://www.bootcdn.cn" target="_blank" rel="external">http://www.bootcdn.cn</a></li>
+<li>360公共库：<a href="http://libs.useso.com" target="_blank" rel="external">http://libs.useso.com</a></li>
+<li>七牛云存储 开放静态文件CDN：<a href="http://www.staticfile.org" target="_blank" rel="external">http://www.staticfile.org</a></li>
+<li>又拍云JS库CDN服务：<a href="http://jscdn.upai.com" target="_blank" rel="external">http://jscdn.upai.com</a></li>
+</ul>
+<h2 id="国外的公共库"><a href="#国外的公共库" class="headerlink" title="国外的公共库"></a>国外的公共库</h2><ul>
+<li>CDNJS：<a href="http://www.cdnjs.com" target="_blank" rel="external">http://www.cdnjs.com</a></li>
+<li>Google Hosted Libraries：<a href="https://developers.google.com/speed/libraries/" target="_blank" rel="external">https://developers.google.com/speed/libraries/</a></li>
+<li>Microsoft ASP.net CDN：<a href="http://www.asp.net/ajaxlibrary/cdn.ashx" target="_blank" rel="external">http://www.asp.net/ajaxlibrary/cdn.ashx</a></li>
+<li>jsDelivr：<a href="http://www.jsdelivr.com/" target="_blank" rel="external">http://www.jsdelivr.com/</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/12/joda-time工具类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/joda-time工具类/" itemprop="url">joda-time工具类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T09:38:00+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/joda-time工具类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/joda-time工具类/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/12/joda-time工具类/" class="leancloud_visitors" data-flag-title="joda-time工具类">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  251
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!-- MarkdownTOC -->
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%88%9D%E5%A7%8B%E5%8C%96">数据初始化</a></li>
+<li><a href="#%E6%97%A5%E6%9C%9F%E5%B7%AE">日期差</a></li>
+<li><a href="#%E6%A0%BC%E5%BC%8F%E5%8C%96">格式化</a></li>
+<li><a href="#%E6%97%A5%E6%9C%9F%E8%AE%A1%E7%AE%97-plusminus">日期计算 plus/minus</a></li>
+<li><a href="#%E6%97%B6%E9%97%B4%E6%AF%94%E8%BE%83-isbeforeisafter">时间比较 isBefore/isAfter</a></li>
+<li><a href="#%E5%AE%98%E7%BD%91">官网</a></li>
+</ul>
+<!-- /MarkdownTOC -->
+<h2 id="数据初始化"><a href="#数据初始化" class="headerlink" title="数据初始化"></a>数据初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DateTime dateTimeNow = new DateTime();</div><div class="line">DateTime dateTimeNow = new DateTime(date);//java日期转DateTime</div><div class="line">DateTime recent = DateTime.parse(&quot;2017-05-18 17:40:00&quot;, DateTimeFormat.forPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;)); //字符串转日期</div><div class="line">DateTime dateTime2 = new DateTime(2017,2,14,0,0,0);//年月日时分秒</div><div class="line">DateTime dateTime = DateTimeFormat.forPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;).parseDateTime(&quot;2016-06-03 23:59:59&quot;);</div></pre></td></tr></table></figure>
+<h2 id="日期差"><a href="#日期差" class="headerlink" title="日期差"></a>日期差</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">DateTime dt1 = new DateTime();</div><div class="line">DateTime dt2 = new DateTime().plus();</div><div class="line">System.out.print(&quot;时间相差：&quot;);</div><div class="line">System.out.print(Days.daysBetween(dt1, dt2).getDays() + &quot; 天 &quot;);</div><div class="line">System.out.print(Hours.hoursBetween(dt1, dt2).getHours() % 24 + &quot; 小时 &quot;);</div><div class="line">System.out.print(Minutes.minutesBetween(dt1, dt2).getMinutes() % 60 + &quot; 分钟 &quot;);</div><div class="line">System.out.print(Seconds.secondsBetween(dt1, dt2).getSeconds() % 60+ &quot; 秒.&quot;);</div></pre></td></tr></table></figure>
+<h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String s = new DateTime().toString(DateTimeFormat.forPattern(&quot;yyyy-MM-dd&quot;));</div><div class="line">String s2 = new DateTime().toString(&quot;yyyy-MM-dd&quot;)</div></pre></td></tr></table></figure>
+<h2 id="日期计算-plus-minus"><a href="#日期计算-plus-minus" class="headerlink" title="日期计算 plus/minus"></a>日期计算 plus/minus</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DateTime now = new DateTime();//当前时间</div><div class="line">DateTime tomorrowDt = now.plusDays(1);//明天</div><div class="line"></div><div class="line">int days = Days.daysBetween(now, tomorrowDt).getDays();</div><div class="line">System.out.println(days);//1</div></pre></td></tr></table></figure>
+<h2 id="时间比较-isBefore-isAfter"><a href="#时间比较-isBefore-isAfter" class="headerlink" title="时间比较 isBefore/isAfter"></a>时间比较 isBefore/isAfter</h2><p>时间轴</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">现在 isbefore 明天 true</div><div class="line">boolean before = new DateTime().isBefore(new DateTime().plus(1));</div></pre></td></tr></table></figure>
+<p>##官网<br><a href="http://www.joda.org/joda-time/userguide.html" target="_blank" rel="external">http://www.joda.org/joda-time/userguide.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/11/git使用记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -423,7 +1715,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  808
+                  820
                 </span>
               
 
@@ -439,7 +1731,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -469,6 +1761,7 @@
 <h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>fast-forward 快速合并不产生合并节点，看不出来曾经做过合并<br>no-ff 合并生成合并节点</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git merge dev #git merge命令用于合并指定分支到当前分支</div><div class="line"></div><div class="line">git merge --no-ff -m &quot;merge with no-ff&quot; dev #合并生成合并节点</div></pre></td></tr></table></figure>
 <h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git log #查看日志</div><div class="line">git log --graph --pretty=oneline --abbrev-commit #图形查看日志</div></pre></td></tr></table></figure>
+<h2 id="查看具体某次提交"><a href="#查看具体某次提交" class="headerlink" title="查看具体某次提交"></a>查看具体某次提交</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git show 3ad960849d6f10c92356ecdf952d5e4bfd0df1cd</div></pre></td></tr></table></figure>
 <h2 id="版本回退和恢复"><a href="#版本回退和恢复" class="headerlink" title="版本回退和恢复"></a>版本回退和恢复</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">回退工作区修改文件</div><div class="line">git checkout -- &lt;file&gt; </div><div class="line"></div><div class="line">回退暂存区修改文件（add操作）</div><div class="line">git reset HEAD &lt;file&gt;</div><div class="line">git checkout -- &lt;file&gt; </div><div class="line"></div><div class="line">回退本地分支修改文件 （add commit操作）</div><div class="line">git reset --hard HEAD^ #git reset HEAD~2</div><div class="line"></div><div class="line">恢复git reflog </div><div class="line">git reflog </div><div class="line">git reset --hard 0a1f420</div></pre></td></tr></table></figure>
 <h2 id="暂时储藏修改"><a href="#暂时储藏修改" class="headerlink" title="暂时储藏修改"></a>暂时储藏修改</h2><p>当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash  #储藏代码</div><div class="line">git stash list #查看列表</div><div class="line">git stash pop #回到工作现场</div></pre></td></tr></table></figure></p>
 <h2 id="Reset、Checkout、Revert-的选择"><a href="#Reset、Checkout、Revert-的选择" class="headerlink" title="Reset、Checkout、Revert 的选择"></a>Reset、Checkout、Revert 的选择</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">reset 将一个分支的末端指向另一个提交。</div><div class="line">--soft – 缓存区和工作目录都不会被改变</div><div class="line">--mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响</div><div class="line">--hard – 缓存区和工作目录都同步到你指定的提交</div><div class="line"></div><div class="line">checkout 除了分支之外，你还可以传入提交的引用来 checkout 到任意的提交。</div><div class="line">git checkout HEAD~2</div><div class="line"></div><div class="line">Revert 撤销一个提交的同时会创建一个新的提交,相比 git reset，它不会改变现在的提交历史。因此，git revert 可以用在公共分支上，git reset 应该用在私有分支上。你也可以把 git revert 当作撤销已经提交的更改，而 git reset HEAD 用来撤销没有提交的更改。</div></pre></td></tr></table></figure>
@@ -1123,1238 +2416,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/" itemprop="url">升级jdk1.8报错：sun.security.validator.ValidatorException: Certificate signature algorithm disabled</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T14:09:20+08:00">
-                2017-10-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/" class="leancloud_visitors" data-flag-title="升级jdk1.8报错：sun.security.validator.ValidatorException: Certificate signature algorithm disabled">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  205
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="升级jdk1-8项目出错"><a href="#升级jdk1-8项目出错" class="headerlink" title="升级jdk1.8项目出错"></a>升级jdk1.8项目出错</h3><p>sun.security.validator.ValidatorException: Certificate signature algorithm disabled</p>
-<p>报错原因是JDK8对SSL证书的算法安全要求提高，可以对比下7和8的区别<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">less /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;</div><div class="line">jdk.certpath.disabledAlgorithms=MD2, RSA keySize &lt; 1024</div><div class="line">jdk.tls.disabledAlgorithms=SSLv3</div><div class="line"></div><div class="line">less /Library/Java/JavaVirtualMachines/jdk1.8.0_*/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;</div><div class="line">jdk.certpath.disabledAlgorithms=MD2, MD5, SHA1 jdkCA &amp; usage TLSServer, \</div><div class="line">jdk.jar.disabledAlgorithms=MD2, MD5, RSA keySize &lt; 1024</div><div class="line">jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize &lt; 768, \</div></pre></td></tr></table></figure></p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
-<li>简单做法是直接注释掉jdk.certpath.disabledAlgorithms</li>
-<li>继承新的抽象类：X509ExtendedTrustManager<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">In the Java SE 7 release, the X509ExtendedTrustManager class is an abstract implementation of the X509TrustManager interface. It adds methods for connection-sensitive trust management. In addition, it enables endpoint verification at the TLS layer.</div><div class="line">...</div><div class="line">Besides TLS 1.2 support, the X509ExtendedTrustManager class also support algorithm constraints and SSL layer hostname verification.</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.cnblogs.com/flyingeagle/articles/7508207.html" target="_blank" rel="external">http://www.cnblogs.com/flyingeagle/articles/7508207.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/EFK-从零搭建日志系统/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/EFK-从零搭建日志系统/" itemprop="url">EFK-从零搭建日志系统</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T18:57:32+08:00">
-                2017-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ELK/" itemprop="url" rel="index">
-                    <span itemprop="name">ELK</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/EFK-从零搭建日志系统/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/EFK-从零搭建日志系统/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/EFK-从零搭建日志系统/" class="leancloud_visitors" data-flag-title="EFK-从零搭建日志系统">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  625
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>日志需要包含字段：</p>
-<ol>
-<li>time</li>
-<li>level</li>
-<li>app_id</li>
-<li>instance_id<br>日志从产生到消费，主要经历以下几个阶段：采集-&gt;传输-&gt;切分-&gt;检索。</li>
-</ol>
-<h2 id="区分实例-instance-id"><a href="#区分实例-instance-id" class="headerlink" title="区分实例 instance_id"></a>区分实例 instance_id</h2><p>通过设置filebeat</p>
-<h2 id="系统搭建"><a href="#系统搭建" class="headerlink" title="系统搭建"></a>系统搭建</h2><h3 id="Filebeat-安装"><a href="#Filebeat-安装" class="headerlink" title="Filebeat 安装"></a>Filebeat 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.0.2-x86_64.rpm</div><div class="line">rpm -vi filebeat-5.0.2-x86_64.rpm</div><div class="line"></div><div class="line">vim /etc/filebeat/filebeat.yml</div><div class="line">修改 output.elasticsearch hosts </div><div class="line">添加模板</div><div class="line">output.elasticsearch:</div><div class="line">  hosts: [&quot;localhost:9200&quot;]</div><div class="line">  template.name: &quot;filebeat&quot;</div><div class="line">  template.path: &quot;filebeat.template.json&quot;</div><div class="line">  template.overwrite: false</div><div class="line">启动</div><div class="line">/etc/init.d/filebeat start</div><div class="line">service filebeat start</div></pre></td></tr></table></figure>
-<h3 id="elasticsearch-安装"><a href="#elasticsearch-安装" class="headerlink" title="elasticsearch 安装"></a>elasticsearch 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.rpm</div><div class="line">sha1sum elasticsearch-5.6.3.rpm </div><div class="line">sudo rpm --install elasticsearch-5.6.3.rpm</div><div class="line"></div><div class="line">### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using chkconfig</div><div class="line"> sudo chkconfig --add elasticsearch</div><div class="line">### You can start elasticsearch service by executing</div><div class="line"> sudo service elasticsearch start</div><div class="line"></div><div class="line">service elasticsearch start</div></pre></td></tr></table></figure>
-<p>启动异常：Starting elasticsearch: Elasticsearch requires at least Java 8 but your Java version from /usr/bin/java does not meet this requirement 原因是java8安装，java版本管理工具没有更改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ll /usr/bin/java</div><div class="line">/usr/bin/java -&gt; /etc/alternatives/java</div><div class="line"></div><div class="line">update-alternatives --config java</div><div class="line"></div><div class="line">update-alternatives --install /usr/bin/java java /usr/local/java/jdk/jdk1.8.0_112/bin/java 300</div><div class="line">update-alternatives --install /usr/bin/javac javac /usr/local/java/jdk/jdk1.8.0_112/bin/javac 300</div></pre></td></tr></table></figure></p>
-<p>验证是否成功 curl <a href="http://localhost:9200/" target="_blank" rel="external">http://localhost:9200/</a></p>
-<h3 id="安装Kibana"><a href="#安装Kibana" class="headerlink" title="安装Kibana"></a>安装Kibana</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">wget https://artifacts.elastic.co/downloads/kibana/kibana-5.6.3-i686.rpm</div><div class="line">sha1sum kibana-5.6.3-i686.rpm </div><div class="line">sudo rpm --install kibana-5.6.3-i686.rpm</div><div class="line"></div><div class="line">service kibana start</div><div class="line">service kibana stop</div><div class="line"></div><div class="line">访问 http://localhost:5601</div></pre></td></tr></table></figure>
-<h3 id="修改日志收集路径"><a href="#修改日志收集路径" class="headerlink" title="修改日志收集路径"></a>修改日志收集路径</h3><p>vim /etc/elasticsearch/elasticsearch.yml<br>设置<br>path.data: /mydata/elk/elasticsearch/data<br>path.logs: /mydata/elk/elasticsearch/logs<br>如果重启会报错<br>detected index data in default.path.data [/var/lib/elasticsearch/nodes/0/indices] where there should not be any<br>需要把/var/lib/elasticsearch/下的文件夹移动到/mydata/elk/elasticsearch/下，<em>删除</em>/var/lib/elasticsearch/</p>
-<h3 id="kibana使用"><a href="#kibana使用" class="headerlink" title="kibana使用"></a>kibana使用</h3><h4 id="Lucene-query-syntax"><a href="#Lucene-query-syntax" class="headerlink" title="Lucene query syntax"></a>Lucene query syntax</h4><ul>
-<li>简单的文本搜索，直接输入文本字符串。比如，如果你在搜索网站服务器日志，你可以输入 safari 来搜索各字段中的 safari 单词。</li>
-<li>要搜索特定字段中的值，则在值前加上字段名。比如，你可以输入 status:200 来限制搜索结果都是在 status 字段里有 200 内容。</li>
-<li>要搜索一个值的范围，你可以用范围查询语法，[START_VALUE TO END_VALUE]。比如，要查找 4xx 的状态码，你可以输入 status:[400 TO 499]。</li>
-<li>要指定更复杂的搜索标准，你可以用布尔操作符 AND, OR, 和 NOT。比如，要查找 4xx 的状态码，还是 php 或 html 结尾的数据，你可以输入 status:[400 TO 499] AND (extension:php OR extension:html)。</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEg" target="_blank" rel="external">https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEg</a><br>ELKstack 中文指南：<a href="https://kibana.logstash.es/content/kibana/v5/discover.html" target="_blank" rel="external">https://kibana.logstash.es/content/kibana/v5/discover.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Linux命令：统计命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/Linux命令：统计命令/" itemprop="url">Linux 命令：统计命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T19:58:23+08:00">
-                2017-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/Linux命令：统计命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/Linux命令：统计命令/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/Linux命令：统计命令/" class="leancloud_visitors" data-flag-title="Linux 命令：统计命令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,819
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一些实用的Linux文本操作命令，包括wc(统计)、cut(切分)、sort(排序)、uniq(去重)、grep(查找)、sed(替换、插入、删除)、awk(文本分析)。</p>
-<h2 id="wc-统计"><a href="#wc-统计" class="headerlink" title="wc(统计)"></a>wc(统计)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># wc [-lwm]</div><div class="line">选项与参数：</div><div class="line">-l  ：仅列出行；</div><div class="line">-w  ：仅列出多少字(英文单字)；</div><div class="line">-m  ：多少字符；</div></pre></td></tr></table></figure>
-<h2 id="cut-切分"><a href="#cut-切分" class="headerlink" title="cut(切分)"></a>cut(切分)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cut  [-bn] [file] 或 cut [-c] [file]  或  cut [-df] [file]</div><div class="line">　　使用说明</div><div class="line">　　cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</div><div class="line">　　如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。</div><div class="line"></div><div class="line">　　主要参数</div><div class="line">　　-b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</div><div class="line">　　-c ：以字符为单位进行分割。</div><div class="line">　　-d ：自定义分隔符，默认为制表符。</div><div class="line">　　-f ：与-d一起使用，指定显示哪个区域。</div><div class="line">　　-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的&lt;br /&gt;范围之内，该字符将被写出；否则，该字符将被排除。</div></pre></td></tr></table></figure>
-<h2 id="sort-排序"><a href="#sort-排序" class="headerlink" title="sort(排序)"></a>sort(排序)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">　　sort命令是帮我们依据不同的数据类型进行排序，其语法及常用参数格式：</div><div class="line"></div><div class="line">sort [-bcfMnrtk][源文件][-o 输出文件] </div><div class="line">　　补充说明：sort可针对文本文件的内容，以行为单位来排序。</div><div class="line"></div><div class="line">　　参数：</div><div class="line">　　-b   忽略每行前面开始出的空格字符。</div><div class="line">　　-c   检查文件是否已经按照顺序排序。</div><div class="line">　　-f   排序时，忽略大小写字母。</div><div class="line">　　-M   将前面3个字母依照月份的缩写进行排序。</div><div class="line">　　-n   依照数值的大小排序。</div><div class="line">　　-o&lt;输出文件&gt;   将排序后的结果存入指定的文件。</div><div class="line">　　-r   以相反的顺序来排序。</div><div class="line">　　-t&lt;分隔字符&gt;   指定排序时所用的栏位分隔字符。</div><div class="line">　　-k  选择以哪个区间进行排序。</div></pre></td></tr></table></figure>
-<h2 id="uniq-去重"><a href="#uniq-去重" class="headerlink" title="uniq(去重)"></a>uniq(去重)</h2><p>uniq命令可以去除排序过的文件中的重复行，因此uniq经常和sort合用。也就是说，为了使uniq起作用，所有的重复行必须是相邻的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># uniq [-icu]</div><div class="line">选项与参数：</div><div class="line">-i   ：忽略大小写字符的不同；</div><div class="line">-c  ：进行计数</div><div class="line">-u  ：只显示唯一的行</div></pre></td></tr></table></figure></p>
-<h2 id="grep-查找"><a href="#grep-查找" class="headerlink" title="grep(查找)"></a>grep(查找)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。</div><div class="line"></div><div class="line">grep [options]</div><div class="line">　　主要参数</div><div class="line">　　[options]主要参数：</div><div class="line">　　－c：只输出匹配行的计数。</div><div class="line">　　－I：不区分大 小写(只适用于单字符)。</div><div class="line">　　－h：查询多文件时不显示文件名。</div><div class="line">　　－l：查询多文件时只输出包含匹配字符的文件名。</div><div class="line">　　－n：显示匹配行及 行号。</div><div class="line">　　－s：不显示不存在或无匹配文本的错误信息。</div><div class="line">　　－v：显示不包含匹配文本的所有行。</div><div class="line">    -E：使用正则</div><div class="line">　　pattern正则表达式主要参数：</div><div class="line">　　\： 忽略正则表达式中特殊字符的原有含义。</div><div class="line">　　^：匹配正则表达式的开始行。</div><div class="line">　　$: 匹配正则表达式的结束行。</div><div class="line">　　\&lt;：从匹配正则表达 式的行开始。</div><div class="line">　　\&gt;：到匹配正则表达式的行结束。</div><div class="line">　　[ ]：单个字符，如[A]即A符合要求 。</div><div class="line">　　[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。</div><div class="line">　　。：所有的单个字符。</div><div class="line">　　* ：有字符，长度可以为0。</div></pre></td></tr></table></figure>
-<h2 id="sed-替换、插入、删除"><a href="#sed-替换、插入、删除" class="headerlink" title="sed(替换、插入、删除)"></a>sed(替换、插入、删除)</h2><p>sed是一个很好的文件处理工具，本身是一个管道命令，主要是以行为单位进行处理，可以将数据行进行替换、删除、新增、选取等特定工作，下面先了解一下sed的用法。sed命令行格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">sed [-nefri] ‘command’ 输入文本 </div><div class="line">　　常用选项：</div><div class="line">　　  -n∶使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。</div><div class="line">        -e∶直接在指令列模式上进行 sed 的动作编辑；</div><div class="line">        -f∶直接将 sed 的动作写在一个档案内， -f filename 则可以执行 filename 内的sed 动作；</div><div class="line">        -r∶sed 的动作支援的是延伸型正规表示法的语法。(预设是基础正规表示法语法)</div><div class="line">        -i∶直接修改读取的档案内容，而不是由萤幕输出。       </div><div class="line"></div><div class="line">　　常用命令：</div><div class="line">        a   ∶新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～</div><div class="line">        c   ∶取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！</div><div class="line">        d   ∶删除，因为是删除啊，所以 d 后面通常不接任何咚咚；</div><div class="line">　　   i   ∶插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；</div><div class="line">　　  p  ∶列印，亦即将某个选择的资料印出。通常 p 会与参数 sed -n 一起运作～</div><div class="line">　　  s  ∶取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！</div></pre></td></tr></table></figure></p>
-<h3 id="sed-提取匹配的字符串内容"><a href="#sed-提取匹配的字符串内容" class="headerlink" title="sed 提取匹配的字符串内容"></a>sed 提取匹配的字符串内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># STR=&quot;MAIL FROM(CCC) TO(DDD)&quot;</div><div class="line"># echo $STR | sed &apos;s/^.*FROM(\(.*\)).*TO(\(.*\)).*$/\1-\2/g&apos;</div><div class="line">CCC-DDD</div></pre></td></tr></table></figure>
-<p>s表示替换，组匹配信息(.*),第一个为\1,第二个\2以此类推</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&quot;09/Jan/2018:00:02:58 +0800&quot;,&quot;210.22.172.146&quot;,&quot;-&quot;,&quot;-&quot;,&quot;-&quot;,&quot;api.fastschool.cn&quot;,&quot;ded92c009aaa4582a6cf9b644fa62aa6&quot;,&quot;GET /clog/a.gif?action=FS_UploadLog&amp;clientIp=%28null%29&amp;clientVersion=3.8.7&amp;debugInfo=20180108__NumOfLine_117_&amp;logType=debug&amp;logVersion=1.0&amp;netType=wifi&amp;osName=iPad&amp;osVersion=10.3&amp;platform=iOS&amp;tag=FSUploadLog&amp;ts=2018-01-09%2000%3A02%3A56.784&amp;userLid=a91e0cffbe474635b8ec4861a58b1a97&amp;userToken=ded92c009aaa4582a6cf9b644fa62aa6&amp;wifiName=TP-LINK_BF2AF0 HTTP/1.1&quot;,&quot;-&quot;,&quot;-&quot;,&quot;prod:stu_cli, channel:AppStore, os:iOS, osVer:10.3.3, mobile:iPad, vName:3.8.7, env:RE&quot;,&quot;200&quot;,&quot;0.000&quot;,&quot;0&quot;,&quot;-&quot;,&quot;-&quot;,&quot;*/*&quot;,&quot;nginx-111&quot;,&quot;-&quot;</div><div class="line"></div><div class="line"># less loginfo.txt |awk -F&apos;&quot;,&quot;&apos; &apos;&#123;print $8&#125;&apos; |sed &apos;s/^.*\(action=[a-zA-Z_]*\).*\(platform=[a-zA-Z_]*\).*$/\1  \2/g&apos;</div><div class="line"></div><div class="line">action=FS_StartUploadLog_ToCOS  platform=iOS</div></pre></td></tr></table></figure>
-<h2 id="awk-文本分析"><a href="#awk-文本分析" class="headerlink" title="awk(文本分析)"></a>awk(文本分析)</h2><p>awk是一个强大的文本分析工具，相对于grep的查找，sed的编辑，awk在其对数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;&#123;pattern + action&#125;&apos; &#123;filenames&#125;</div></pre></td></tr></table></figure></p>
-<p>尽管操作可能会很复杂，但语法总是这样，其中 pattern 表示 AWK 在数据中查找的内容，而 action 是在找到匹配内容时所执行的一系列命令。花括号（{}）不需要在程序中始终出现，但它们用于根据特定的模式对一系列指令进行分组。 pattern就是要表示的正则表达式，用斜杠括起来。</p>
-<p>　　awk语言的最基本功能是在文件或者字符串中基于指定规则浏览和抽取信息，awk抽取信息后，才能进行其他文本操作。完整的awk脚本通常用来格式化文本文件中的信息。</p>
-<p>　　通常，awk是以文件的一行为处理单位的。awk每接收文件的一行，然后执行相应的命令，来处理文本。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>博客出处：<a href="http://www.cnblogs.com/maybe2030/" target="_blank" rel="external">http://www.cnblogs.com/maybe2030/</a> </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/iterm2使用技巧/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/iterm2使用技巧/" itemprop="url">iterm2使用技巧</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T10:50:50+08:00">
-                2017-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/iterm2使用技巧/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/iterm2使用技巧/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/iterm2使用技巧/" class="leancloud_visitors" data-flag-title="iterm2使用技巧">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  252
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">⌘ + 数字: 切换标签页。 </div><div class="line">⌘ + 方向键 按方向切换标签页。</div><div class="line">⌘ + enter: 切换全屏</div><div class="line">⌘ + f: 查找。支持正则。其中查找的内容会被自动复制。鼠标去选中的内容也会自动复制</div><div class="line">⌘ + d: 垂直分屏，⌘ + shift + d: 水平分屏。使用⌘ + ]和⌘ + [在最近使用的分屏直接切换.</div><div class="line">⌘ + t :新的标签页</div><div class="line">⌘ + w :关闭当前标签页</div><div class="line">⌘ + ；:自动补全历史命令</div><div class="line">⌘ + —/+/0: 调整字体大小</div><div class="line">⌘ + /: 找到当前光标位置</div></pre></td></tr></table></figure>
-<h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ctrl + u: 清空当前行。</div><div class="line">ctrl + a: 到行首</div><div class="line">ctrl + e: 行末</div><div class="line">ctrl + f/b: 前进后退，相当于左右方向键</div><div class="line">ctrl + p: 上一条命令，相当于方向键上</div><div class="line">ctrl + r: 搜索命令历史</div><div class="line">ctrl + d: 删除当前字符</div><div class="line">ctrl + h: 删除之前的字符</div><div class="line">ctrl + w: 删除光标前的单词</div><div class="line">ctrl + k: 删除到文本末尾</div><div class="line">ctrl + t: 交换光标处文本</div><div class="line">⌘ + r:清屏，其实是滚到新的一屏，并没有清空。ctrl + l 也可以做到。</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/nginx添加日志分割/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/nginx添加日志分割/" itemprop="url">nginx添加日志分割logrotate</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T09:45:11+08:00">
-                2017-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nginx/" itemprop="url" rel="index">
-                    <span itemprop="name">nginx</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/nginx添加日志分割/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/nginx添加日志分割/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/nginx添加日志分割/" class="leancloud_visitors" data-flag-title="nginx添加日志分割logrotate">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  912
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="logrotate简介"><a href="#logrotate简介" class="headerlink" title="logrotate简介"></a>logrotate简介</h2><p>logrotate 是Linux系统日志文件管理工具。用来把旧的日志文件删除，并创建新的日志文件，我们把它叫做“转储”。可以根据日志文件的大小，也可以根据其天数来转储，这个过程一般通过 cron 程序来执行。<br>logrotate 程序还可以用于压缩日志文件，以及发送日志到指定的E-mail。<br>默认的logrotate被加入cron的/etc/cron.daily中作为每日任务执行。<br>/etc/logrotate.d/* 为/etc/logrotate.conf默认包含目录其中文件也会被logrotate读取。指明每个日志文件的特定规则。<br>/var/lib/logrotate/status中默认记录logrotate上次轮换日志文件的时间。</p>
-<h2 id="logrotate安装"><a href="#logrotate安装" class="headerlink" title="logrotate安装"></a>logrotate安装</h2><p>centos是默认有安装<br>yum install logrotate<br>安装完成之后在，在/etc/logrotate.d/有以下脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ ll /etc/logrotate.d/</div><div class="line">total 24</div><div class="line">drwxr-xr-x. 2 root root 4096 Mar  3  2016 2016-03-03</div><div class="line">-rw-r--r--. 1 root root  103 Jul 14  2015 dracut</div><div class="line">-rw-r--r--  1 root root  217 Oct 31  2016 nginx</div><div class="line">-rw-r--r--. 1 root root  329 Jul 17  2012 psacct</div><div class="line">-rw-r--r--. 1 root root  265 Mar  3  2016 syslog</div><div class="line">-rw-r--r--. 1 root root  100 Feb 22  2013 yum</div></pre></td></tr></table></figure></p>
-<h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><p>crontab会每天定时执行/etc/cron.daily目录下的脚本，在这个目录有个logrotate脚本，脚本内容为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">/usr/sbin/logrotate /etc/logrotate.conf &gt;/dev/null 2&gt;&amp;1</div><div class="line">EXITVALUE=$?</div><div class="line">if [ $EXITVALUE != 0 ]; then</div><div class="line">    /usr/bin/logger -t logrotate &quot;ALERT exited abnormally with [$EXITVALUE]&quot;</div><div class="line">fi</div><div class="line">exit 0</div></pre></td></tr></table></figure></p>
-<p>每天执行一次/usr/sbin/logrotate /etc/logrotate.conf，logrotate.conf中<code>include /etc/logrotate.d</code> </p>
-<h2 id="nginx脚本"><a href="#nginx脚本" class="headerlink" title="nginx脚本"></a>nginx脚本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/var/log/nginx/*log &#123;</div><div class="line">    daily</div><div class="line">    rotate 10</div><div class="line">    missingok</div><div class="line">    notifempty</div><div class="line">    compress</div><div class="line">    sharedscripts</div><div class="line">    postrotate</div><div class="line">        /bin/kill -USR1 $(cat /var/run/nginx.pid 2&gt;/dev/null) 2&gt;/dev/null || :</div><div class="line">    endscript</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">compress                        通过gzip压缩转储以后的日志</div><div class="line">nocompress                      不压缩</div><div class="line">copytruncate                    用于还在打开中的日志文件，把当前日志备份并截断</div><div class="line">nocopytruncate                  备份日志文件但是不截断</div><div class="line">create mode owner group         转储文件，使用指定的文件模式创建新的日志文件</div><div class="line">nocreate                        不建立新的日志文件</div><div class="line">delaycompress 和 compress        一起使用时，转储的日志文件到下一次转储时才压缩</div><div class="line">nodelaycompress                 覆盖 delaycompress 选项，转储同时压缩。</div><div class="line">errors address                   专储时的错误信息发送到指定的Email 地址</div><div class="line">ifempty                         即使是空文件也转储，这个是 logrotate 的缺省选项。</div><div class="line">notifempty                      如果是空文件的话，不转储</div><div class="line">mail address                    把转储的日志文件发送到指定的E-mail 地址</div><div class="line">nomail                          转储时不发送日志文件</div><div class="line">olddir directory                转储后的日志文件放入指定的目录，必须和当前日志文件在同一个文件系统</div><div class="line">noolddir                        转储后的日志文件和当前日志文件放在同一个目录下</div><div class="line">prerotate/endscript             在转储以前需要执行的命令可以放入这个对，这两个关键字必须单独成行</div><div class="line">postrotate/endscript            在转储以后需要执行的命令可以放入这个对，这两个关键字必须单独成行</div><div class="line">daily                           指定转储周期为每天</div><div class="line">weekly                          指定转储周期为每周</div><div class="line">monthly                         指定转储周期为每月</div><div class="line">rotate count                    指定日志文件删除之前转储的次数，0 指没有备份，5 指保留5 个备份</div><div class="line">tabootext [+] list 让logrotate   不转储指定扩展名的文件，缺省的扩展名是：.rpm-orig, .rpmsave, v, 和 ~ </div><div class="line">size size                       当日志文件到达指定的大小时才转储，bytes(缺省)及KB(sizek)或MB(sizem)</div></pre></td></tr></table></figure>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>立刻执行分割：/usr/sbin/logrotate -vf  /etc/logrotate.d/nginx<br>查看执行状态 cat /var/lib/logrotate.status</p>
-<h2 id="添加定时任务"><a href="#添加定时任务" class="headerlink" title="添加定时任务"></a>添加定时任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">crontab -e </div><div class="line">#添加以下代码， #每天凌晨定时执行脚本</div><div class="line"># crond-id-02:nginx_logs logroate</div><div class="line">0 0 * * * /usr/sbin/logrotate -vf /etc/logrotate.d/nginx &gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Linux命令：压缩命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/Linux命令：压缩命令/" itemprop="url">Linux 命令：压缩命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T09:45:11+08:00">
-                2017-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/Linux命令：压缩命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/Linux命令：压缩命令/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/Linux命令：压缩命令/" class="leancloud_visitors" data-flag-title="Linux 命令：压缩命令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  111
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>tar命令<br>　　解包：tar zxvf FileName.tar<br> 解包到指定文件夹：tar zxvf FileName.tar -C dirname<br>　　打包：tar czvf FileName.tar DirName</p>
-</li>
-<li><p>gz命令<br>　　解压：gunzip FileName.gz<br>　　解压：gzip -d FileName.gz<br> 压缩：gzip FileName</p>
-</li>
-<li><p>tar.gz<br> 解压：tar zxvf FileName.tar.gz<br>　　 压缩：tar zcvf FileName.tar.gz DirName<br> 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3</p>
-</li>
-<li><p>zip命令<br>　　解压：unzip FileName.zip<br> 解压到指定目录：unzip -d /home/sunny myfile.zip<br>　　压缩：zip -r FileName.zip DirName</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2400,7 +2466,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2411,7 +2477,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2422,7 +2488,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

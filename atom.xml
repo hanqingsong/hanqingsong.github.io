@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codr.top/"/>
-  <updated>2018-05-04T00:11:51.000Z</updated>
+  <updated>2018-05-24T09:03:46.000Z</updated>
   <id>http://www.codr.top/</id>
   
   <author>
@@ -15,6 +15,134 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vim使用（2）编辑</title>
+    <link href="http://www.codr.top/2018/05/vim%E4%BD%BF%E7%94%A8%EF%BC%882%EF%BC%89%E7%BC%96%E8%BE%91/"/>
+    <id>http://www.codr.top/2018/05/vim使用（2）编辑/</id>
+    <published>2018-05-23T15:44:13.000Z</published>
+    <updated>2018-05-24T09:03:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h2><ol><li><p>创建窗口</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">水平分割窗口</div><div class="line">:split             当前窗口一分为二，两个窗口显示相同内容。  </div><div class="line">:10split           新窗口的高度10行</div><div class="line">:split otherfile   新窗口中打开otherfile   </div><div class="line">:new               功能和split一样  </div><div class="line">:sp                split的缩写形式  </div><div class="line">ctrl+w+s           分割窗口的快捷方式</div><div class="line"></div><div class="line">垂直分割窗口</div><div class="line">:vsplit 以上所有命令都适用于打开垂直分割窗口，只要在前面加v(vetical)</div></pre></td></tr></table></figure></li><li><p>关闭窗口</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">q  或 close   #关闭当前窗口</div><div class="line"> only      #保留当前窗口，关闭其它所有窗口</div><div class="line"> qall(qa)      #退出所有窗口</div><div class="line"> wall      #保存所有窗口</div></pre></td></tr></table></figure></li><li><p>窗口切换<br>:ctrl+w+j/k，通过j/k可以上下切换，或者:ctrl+w加上下左右键，还可以通过快速双击ctrl+w依次切换窗口。</p></li><li><p>窗口大小调整</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">纵向调整</div><div class="line">:ctrl+w + 纵向扩大（行数增加）</div><div class="line">:ctrl+w - 纵向缩小 （行数减少）</div><div class="line">:res(ize) num  例如：:res 5，显示行数调整为5行</div><div class="line">:res(ize)+num 把当前窗口高度增加num行</div><div class="line">:res(ize)-num 把当前窗口高度减少num行</div><div class="line">横向调整</div><div class="line">:vertical res(ize) num 指定当前窗口为num列</div><div class="line">:vertical res(ize)+num 把当前窗口增加num列</div><div class="line">:vertical res(ize)-num 把当前窗口减少num列</div></pre></td></tr></table></figure></li><li><p>窗口重命名<br>:f file</p></li><li><p>文件浏览</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">:Ex 开启目录浏览器，可以浏览当前目录下的所有文件，并可以选择</div><div class="line">:Sex 水平分割当前窗口，并在一个窗口中开启目录浏览器</div><div class="line">:ls 显示当前buffer情况</div></pre></td></tr></table></figure></li><li><p>vi与shell切换</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">:shell 可以在不关闭vi的情况下切换到shell命令行</div><div class="line">:exit 从shell回到vi</div></pre></td></tr></table></figure></li></ol><h2 id="页签"><a href="#页签" class="headerlink" title="页签"></a>页签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">:tabnew [++opt选项] ［＋cmd］ 文件            建立对指定文件新的tabta</div><div class="line">:tab &lt;文件&gt;  新页签打开指定文件</div><div class="line">:tabc       关闭当前的tab</div><div class="line">:tabo       关闭所有其他的tab</div><div class="line">:tabs       查看所有打开的tab</div><div class="line">:tabp      前一个</div><div class="line">:tabn      后一个</div><div class="line">标准模式下：</div><div class="line">gt , gT 可以直接在tab之间切换。</div><div class="line">ngt 切换到指定的窗口。</div><div class="line">更多可以查看帮助 :help table ， help -p</div></pre></td></tr></table></figure><h2 id="编译运行"><a href="#编译运行" class="headerlink" title="编译运行"></a>编译运行</h2><p>vim 环境下，在命令模式中输入下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:!python %</div></pre></td></tr></table></figure></p><h2 id="NERDTree命令"><a href="#NERDTree命令" class="headerlink" title="NERDTree命令"></a>NERDTree命令</h2><ol><li>窗口切换<br> ctrl + w + h    光标 focus 左侧树形目录<br> ctrl + w + l    光标 focus 右侧文件显示窗口<br> ctrl + w + w    光标自动在左右侧窗口切换<br> ctrl + w + r    移动当前窗口的布局位置</li><li>o 打开关闭文件或者目录，如果是文件的话，光标出现在打开的文件中<br>go 效果同上，不过光标保持在文件目录里，类似预览文件内容的功能<br>i和s可以水平分割或纵向分割窗口打开文件，前面加g类似go的功能</li><li>t 在标签页中打开</li><li>T 在后台标签页中打开</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">o       在已有窗口中打开文件、目录或书签，并跳到该窗口</div><div class="line">go      在已有窗口 中打开文件、目录或书签，但不跳到该窗口</div><div class="line">t       在新 Tab 中打开选中文件/书签，并跳到新 Tab</div><div class="line">T       在新 Tab 中打开选中文件/书签，但不跳到新 Tab</div><div class="line">i       split 一个新窗口打开选中文件，并跳到该窗口</div><div class="line">gi      split 一个新窗口打开选中文件，但不跳到该窗口</div><div class="line">s       vsplit 一个新窗口打开选中文件，并跳到该窗口</div><div class="line">gs      vsplit 一个新 窗口打开选中文件，但不跳到该窗口</div></pre></td></tr></table></figure><ol><li>p 到上层目录</li><li>P 到根目录</li><li>K 到同目录第一个节点</li><li>J 到同目录最后一个节点</li><li>m 显示文件系统菜单（添加、删除、移动操作）</li><li>? 帮助</li><li>q 关闭</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;窗口&quot;&gt;&lt;a href=&quot;#窗口&quot; class=&quot;headerlink&quot; title=&quot;窗口&quot;&gt;&lt;/a&gt;窗口&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建窗口&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
+    
+    
+      <category term="vim" scheme="http://www.codr.top/tags/vim/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别</title>
+    <link href="http://www.codr.top/2018/05/python%E4%B8%ADvenv%EF%BC%8Cpyvenv%EF%BC%8Cpyenv%EF%BC%8Cvirtualenv%EF%BC%8Cvirtualenvwrapper%EF%BC%8Cpipenv%E7%AD%89%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
+    <id>http://www.codr.top/2018/05/python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别/</id>
+    <published>2018-05-22T13:50:45.000Z</published>
+    <updated>2018-05-24T09:05:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="PyPI软件包不在标准库中："><a href="#PyPI软件包不在标准库中：" class="headerlink" title="PyPI软件包不在标准库中："></a>PyPI软件包不在标准库中：</h2><ul><li>virtualenv是一个非常受欢迎的工具，为Python库创建了孤立的Python环境。 如果您不熟悉此工具，我强烈建议您学习它，因为它是非常有用的工具，我将在此答案的其余部分进行比较。</li></ul><p>它通过在目录（例如： env/ ）中安装一堆文件，然后修改PATH环境变量以将其前缀到自定义bin目录（例如： env/bin/ ）。 python或python3二进制文件的完整副本放置在此目录中，但Python被编程为首先在环境目录中查找相对于其路径的库。 它不是Python标准库的一部分，但是由PyPA（Python Packaging Authority）正式获得祝福。 激活后，您可以使用pip在虚拟环境中安装软件包。</p><ul><li><p>pyenv用于隔离Python版本。 例如，您可能希望根据Python 2.6,2.7,3.3,3.4和3.5测试代码，因此您需要一种在它们之间切换的方法。 一旦被激活，它将在PATH环境变量~/.pyenv/shims加上~/.pyenv/shims ，其中有与Python命令（ python ， pip ）匹配的特殊文件。 这些不是Python发出的命令的副本; 它们是基于PYENV_VERSION环境变量或.python-version文件或~/.pyenv/version文件运行的Python版本的特殊脚本。 pyenv也使得使用命令pyenv install更容易地下载和安装多个Python版本的过程。</p></li><li><p>pyenv-virtualenv是与pyenv相同的作者pyenv的插件，可以方便地同时使用pyenv和virtualenv 。 但是，如果您使用的是Python 3.3或更高版本， pyenv-virtualenv将尝试运行python -m venv如果可用），而不是virtualenv 。 如果您不想要方便的功能，您可以在不使用pyenv-virtualenv情况下使用virtualenv和pyenv 。</p></li><li><p>virtualenvwrapper是一组对virtualenv的扩展（请参阅docs ）。 它给你的命令像mkvirtualenv ， lssitepackages ，特别是在不同的virtualenv目录之间切换的工作。 如果您想要多个virtualenv目录，此工具特别有用。</p></li><li><p>pyenv-virtualenvwrapper是与pyenv相同的作者的pyenv ，方便地将virtualenvwrapper集成到pyenv 。</p></li><li><p>pipenv ，Kenneth Reitz（ requests的作者），是一个全新的（可能是实验性的）项目，旨在将Pipfile，pip和virtualenv组合成一个命令行命令。</p></li></ul><h2 id="标准库："><a href="#标准库：" class="headerlink" title="标准库："></a>标准库：</h2><ul><li><p>pyvenv是Python 3附带的一个脚本，但是在Python 3.6中已经弃用，因为它有问题（更不用说混淆的名字）。 在Python 3.6+中，完全相同的是python3 -m venv 。</p></li><li><p>venv是Python 3附带的软件包，您可以使用python3 -m venv运行（尽管某些原因有些发行版将其分离成独立的发行版包，如Ubuntu / Debian中的python3-venv ）。 它为virtualenv提供了类似的目的，并以非常类似的方式工作，但它不需要复制Python二进制文件（Windows除外）。 如果您不需要支持Python 2，请使用此功能。在撰写本文时，Python社区似乎对virtualenv感到满意，我没有听说过venv 。</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;PyPI软件包不在标准库中：&quot;&gt;&lt;a href=&quot;#PyPI软件包不在标准库中：&quot; class=&quot;headerlink&quot; title=&quot;PyPI软件包不在标准库中：&quot;&gt;&lt;/a&gt;PyPI软件包不在标准库中：&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;virtualenv是一个非常受
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://www.codr.top/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://www.codr.top/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java中long型string型ip地址转换</title>
+    <link href="http://www.codr.top/2018/05/java%E4%B8%ADlong%E5%9E%8Bstring%E5%9E%8Bip%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2/"/>
+    <id>http://www.codr.top/2018/05/java中long型string型ip地址转换/</id>
+    <published>2018-05-17T01:52:23.000Z</published>
+    <updated>2018-05-24T09:08:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">public class IPConvertor &#123;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * long转ip地址，大端（高位字节放在低地址端）</div><div class="line">     * @param ip</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static String numToIPBigEndian(long ip) &#123;</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        for (int i = 0; i &lt;= 3; i++) &#123;</div><div class="line">            sb.append((ip &gt;&gt;&gt; (i * 8)) &amp; 0x000000ff);</div><div class="line">            if (i != 3) &#123;</div><div class="line">                sb.append(&apos;.&apos;);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return sb.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * long转ip地址，小端（低位字节放在低地址端）</div><div class="line">     * @param ip</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static String numToIPLittleEndian(long ip) &#123;</div><div class="line">        StringBuilder sb = new StringBuilder();</div><div class="line">        for (int i = 3; i &gt;= 0; i--) &#123;</div><div class="line">            sb.append((ip &gt;&gt;&gt; (i * 8)) &amp; 0x000000ff);</div><div class="line">            if (i != 0) &#123;</div><div class="line">                sb.append(&apos;.&apos;);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return sb.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public static long ipToNumLittle(String ip) &#123;</div><div class="line">        long num = 0;</div><div class="line">        String[] sections = ip.split(&quot;\\.&quot;);</div><div class="line">        int i = 3;</div><div class="line">        for (String str : sections) &#123;</div><div class="line">            num += (Long.parseLong(str) &lt;&lt; (i * 8));</div><div class="line">            i--;</div><div class="line">        &#125;</div><div class="line">        return num;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // public static void main(String[] args) &#123;</div><div class="line">    //     long ip =571108042;</div><div class="line">    //     String numToIPBigEndian = numToIPBigEndian(ip);</div><div class="line">    //     System.out.println(numToIPBigEndian);</div><div class="line">    //     System.out.println(numToIPBigEndian(1338832698));</div><div class="line">    //     System.out.println(numToIPBigEndian(1624045370));</div><div class="line">    //     System.out.println(numToIPBigEndian(1725232954));</div><div class="line">    // &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/di
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://www.codr.top/categories/java/"/>
+    
+    
+      <category term="string" scheme="http://www.codr.top/tags/string/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux：ssh登录后闲置时间过长而断开连接</title>
+    <link href="http://www.codr.top/2018/05/Linux%EF%BC%9Assh%E7%99%BB%E5%BD%95%E5%90%8E%E9%97%B2%E7%BD%AE%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E8%80%8C%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/"/>
+    <id>http://www.codr.top/2018/05/Linux：ssh登录后闲置时间过长而断开连接/</id>
+    <published>2018-05-04T06:19:47.000Z</published>
+    <updated>2018-05-24T09:12:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="ssh登录后闲置时间过长而断开连接"><a href="#ssh登录后闲置时间过长而断开连接" class="headerlink" title="ssh登录后闲置时间过长而断开连接"></a>ssh登录后闲置时间过长而断开连接</h2><p>终端ssh登录远程服务器长时间不操作服务器就会自动断开连接<br>解决此问题的方法：</p><p>方法一：</p><ol><li>#vi /etc/ssh/sshd_config配置文件，修改为ClientAliveInterval 60，每分钟发送一次检测客户端是否连接 ，ClientAliveCountMax 3 服务器发出请求后客户端没有响应的次数达到一定值, 就自动断开</li><li>修改完成并保存后，执行命令：#service sshd reload使配置立即生效！</li></ol><p>方法二：</p><p>修改/etc/profile配置文件：#vi /etc/profile 增加：TMOUT=1800 这样30分钟没操作才自动LOGOUT</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;ssh登录后闲置时间过长而断开连接&quot;&gt;&lt;a href=&quot;#ssh登录后闲置时间过长而断开连接&quot; class=&quot;headerlink&quot; title=&quot;ssh登录后闲置时间过长而断开连接&quot;&gt;&lt;/a&gt;ssh登录后闲置时间过长而断开连接&lt;/h2&gt;&lt;p&gt;终端ssh登录远程服
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
+    
+    
+      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux命令：pushd和popd</title>
+    <link href="http://www.codr.top/2018/05/Linux%E5%91%BD%E4%BB%A4%EF%BC%9Apushd%E5%92%8Cpopd/"/>
+    <id>http://www.codr.top/2018/05/Linux命令：pushd和popd/</id>
+    <published>2018-05-04T05:36:45.000Z</published>
+    <updated>2018-05-24T09:08:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="pushd和popd"><a href="#pushd和popd" class="headerlink" title="pushd和popd"></a>pushd和popd</h2><p>pushd 常用于将目录加入到栈中，加入记录到目录栈顶部，并切换到该目录<br>popd 用于删除目录栈中的记录</p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pushd /usr/local/xxxx &amp;&amp; git pull &amp;&amp; popd</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;pushd和popd&quot;&gt;&lt;a href=&quot;#pushd和popd&quot; class=&quot;headerlink&quot; title=&quot;pushd和popd&quot;&gt;&lt;/a&gt;pushd和popd&lt;/h2&gt;&lt;p&gt;pushd 常用于将目录加入到栈中，加入记录到目录栈顶部，并切换到该目录&lt;b
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
+    
+    
+      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux命令：密钥创建</title>
@@ -113,6 +241,32 @@
     
     
       <category term="java" scheme="http://www.codr.top/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql-cpu占用过高解决方法</title>
+    <link href="http://www.codr.top/2018/04/mysql-cpu%E5%8D%A0%E7%94%A8%E8%BF%87%E9%AB%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://www.codr.top/2018/04/mysql-cpu占用过高解决方法/</id>
+    <published>2018-04-03T03:01:09.000Z</published>
+    <updated>2018-05-24T09:05:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>CPU报警：很可能是 SQL 里面有较多的计算导致的<br>连接数超高：很可能是有慢查询，然后导致很多的查询在排队，排查问题的时候可以看到”事发现场“类似的 SQL 语句一大片，那么有可能是没有索引或者索引不好使，可以用：explain 分析一下 SQL 语句</p><h2 id="查看事发现场"><a href="#查看事发现场" class="headerlink" title="查看事发现场"></a>查看事发现场</h2><ol><li>show processlist 语句，查找负荷最重的 SQL 语句，优化该SQL</li><li>开启慢查询，找到性能瓶颈点的SQL语句，然后使用explain，看看该语句是否可以优化；</li></ol><h3 id="show-full-processlist"><a href="#show-full-processlist" class="headerlink" title="show [full] processlist"></a>show [full] processlist</h3><p>show [full] processlist  可以看到所有链接的情况<br>观察有问题的链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-- 查询非 Sleep 状态的链接，按消耗时间倒序展示，自己加条件过滤</div><div class="line">select id, db, user, host, command, time, state, info</div><div class="line">from information_schema.processlist</div><div class="line">where command != &apos;Sleep&apos;</div><div class="line">order by time desc</div></pre></td></tr></table></figure></p><h2 id="kill-使用"><a href="#kill-使用" class="headerlink" title="kill 使用"></a>kill 使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-- 查询执行时间超过2分钟的线程，然后拼接成 kill 语句</div><div class="line">select concat(&apos;kill &apos;, id, &apos;;&apos;)</div><div class="line">from information_schema.processlist</div><div class="line">where command != &apos;Sleep&apos;</div><div class="line">and time &gt; 2*60</div><div class="line">order by time desc</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;CPU报警：很可能是 SQL 里面有较多的计算导致的&lt;br&gt;连接数超高：很可能是有慢查询，然后导致很多的查询在排队，排查问题的时候可以看到”事发现场“类似的 SQL 语句一大片，那么有可能是没有索引或者索引不好使，可以用：explain 分析一下 SQL 语句&lt;/p&gt;
+&lt;h
+      
+    
+    </summary>
+    
+      <category term="mysql" scheme="http://www.codr.top/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="http://www.codr.top/tags/mysql/"/>
     
   </entry>
   
@@ -283,9 +437,9 @@
     <link href="http://www.codr.top/2017/11/git%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
     <id>http://www.codr.top/2017/11/git使用记录/</id>
     <published>2017-11-15T03:27:06.000Z</published>
-    <updated>2018-03-26T04:11:06.000Z</updated>
+    <updated>2018-05-05T13:37:05.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">工作区 ---&gt;  暂存区 ----&gt;  （历史）本地分支  ---&gt;   远程分支  </div><div class="line">      add         commit                  push</div></pre></td></tr></table></figure><h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">工作区：在电脑里能看到的目录</div><div class="line">版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</div><div class="line">版本库里最重要的就是称为stage（或者叫index）的暂存区，(add操作)，</div><div class="line">还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD，（commit操作）。</div></pre></td></tr></table></figure><h2 id="分支创建与切换"><a href="#分支创建与切换" class="headerlink" title="分支创建与切换"></a>分支创建与切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git checkout -b dev #git checkout命令加上-b参数表示创建并切换</div><div class="line">相当于</div><div class="line">git branch dev #创建分支</div><div class="line">git checkout dev #切换分支</div><div class="line"></div><div class="line">git branch #查看分支</div></pre></td></tr></table></figure><h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d dev</div></pre></td></tr></table></figure><h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>fast-forward 快速合并不产生合并节点，看不出来曾经做过合并<br>no-ff 合并生成合并节点</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git merge dev #git merge命令用于合并指定分支到当前分支</div><div class="line"></div><div class="line">git merge --no-ff -m &quot;merge with no-ff&quot; dev #合并生成合并节点</div></pre></td></tr></table></figure><h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git log #查看日志</div><div class="line">git log --graph --pretty=oneline --abbrev-commit #图形查看日志</div></pre></td></tr></table></figure><h2 id="版本回退和恢复"><a href="#版本回退和恢复" class="headerlink" title="版本回退和恢复"></a>版本回退和恢复</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">回退工作区修改文件</div><div class="line">git checkout -- &lt;file&gt; </div><div class="line"></div><div class="line">回退暂存区修改文件（add操作）</div><div class="line">git reset HEAD &lt;file&gt;</div><div class="line">git checkout -- &lt;file&gt; </div><div class="line"></div><div class="line">回退本地分支修改文件 （add commit操作）</div><div class="line">git reset --hard HEAD^ #git reset HEAD~2</div><div class="line"></div><div class="line">恢复git reflog </div><div class="line">git reflog </div><div class="line">git reset --hard 0a1f420</div></pre></td></tr></table></figure><h2 id="暂时储藏修改"><a href="#暂时储藏修改" class="headerlink" title="暂时储藏修改"></a>暂时储藏修改</h2><p>当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash  #储藏代码</div><div class="line">git stash list #查看列表</div><div class="line">git stash pop #回到工作现场</div></pre></td></tr></table></figure></p><h2 id="Reset、Checkout、Revert-的选择"><a href="#Reset、Checkout、Revert-的选择" class="headerlink" title="Reset、Checkout、Revert 的选择"></a>Reset、Checkout、Revert 的选择</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">reset 将一个分支的末端指向另一个提交。</div><div class="line">--soft – 缓存区和工作目录都不会被改变</div><div class="line">--mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响</div><div class="line">--hard – 缓存区和工作目录都同步到你指定的提交</div><div class="line"></div><div class="line">checkout 除了分支之外，你还可以传入提交的引用来 checkout 到任意的提交。</div><div class="line">git checkout HEAD~2</div><div class="line"></div><div class="line">Revert 撤销一个提交的同时会创建一个新的提交,相比 git reset，它不会改变现在的提交历史。因此，git revert 可以用在公共分支上，git reset 应该用在私有分支上。你也可以把 git revert 当作撤销已经提交的更改，而 git reset HEAD 用来撤销没有提交的更改。</div></pre></td></tr></table></figure><h2 id="git修改远程仓库地址方法有三种："><a href="#git修改远程仓库地址方法有三种：" class="headerlink" title="git修改远程仓库地址方法有三种："></a>git修改远程仓库地址方法有三种：</h2><p>查看远程地址git remote -v</p><ol><li>修改命令 </li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote set-url origin [url]</div></pre></td></tr></table></figure><ol><li>先删后加</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote rm origin</div><div class="line">git remote add origin [url]</div></pre></td></tr></table></figure><ol><li>直接修改config文件</li></ol><h2 id="git上新建项目之后"><a href="#git上新建项目之后" class="headerlink" title="git上新建项目之后"></a>git上新建项目之后</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">…or create a new repository on the command line</div><div class="line">    echo &quot;# hello&quot; &gt;&gt; README.md</div><div class="line">    git init</div><div class="line">    git add README.md</div><div class="line">    git commit -m &quot;first commit&quot;</div><div class="line">    git remote add origin git@github.com:hanqingsong/hello.git</div><div class="line">    git push -u origin master</div><div class="line">    </div><div class="line">…or push an existing repository from the command line</div><div class="line">    git remote add origin git@github.com:hanqingsong/hello.git</div><div class="line">    git push -u origin master</div></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a><br><a href="https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9" target="_blank" rel="external">https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9</a><br><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">https://github.com/geeeeeeeeek/git-recipes/wiki</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">工作区 ---&gt;  暂存区 ----&gt;  （历史）本地分支  ---&gt;   远程分支  </div><div class="line">      add         commit                  push</div></pre></td></tr></table></figure><h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">工作区：在电脑里能看到的目录</div><div class="line">版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</div><div class="line">版本库里最重要的就是称为stage（或者叫index）的暂存区，(add操作)，</div><div class="line">还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD，（commit操作）。</div></pre></td></tr></table></figure><h2 id="分支创建与切换"><a href="#分支创建与切换" class="headerlink" title="分支创建与切换"></a>分支创建与切换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git checkout -b dev #git checkout命令加上-b参数表示创建并切换</div><div class="line">相当于</div><div class="line">git branch dev #创建分支</div><div class="line">git checkout dev #切换分支</div><div class="line"></div><div class="line">git branch #查看分支</div></pre></td></tr></table></figure><h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d dev</div></pre></td></tr></table></figure><h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>fast-forward 快速合并不产生合并节点，看不出来曾经做过合并<br>no-ff 合并生成合并节点</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git merge dev #git merge命令用于合并指定分支到当前分支</div><div class="line"></div><div class="line">git merge --no-ff -m &quot;merge with no-ff&quot; dev #合并生成合并节点</div></pre></td></tr></table></figure><h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git log #查看日志</div><div class="line">git log --graph --pretty=oneline --abbrev-commit #图形查看日志</div></pre></td></tr></table></figure><h2 id="查看具体某次提交"><a href="#查看具体某次提交" class="headerlink" title="查看具体某次提交"></a>查看具体某次提交</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git show 3ad960849d6f10c92356ecdf952d5e4bfd0df1cd</div></pre></td></tr></table></figure><h2 id="版本回退和恢复"><a href="#版本回退和恢复" class="headerlink" title="版本回退和恢复"></a>版本回退和恢复</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">回退工作区修改文件</div><div class="line">git checkout -- &lt;file&gt; </div><div class="line"></div><div class="line">回退暂存区修改文件（add操作）</div><div class="line">git reset HEAD &lt;file&gt;</div><div class="line">git checkout -- &lt;file&gt; </div><div class="line"></div><div class="line">回退本地分支修改文件 （add commit操作）</div><div class="line">git reset --hard HEAD^ #git reset HEAD~2</div><div class="line"></div><div class="line">恢复git reflog </div><div class="line">git reflog </div><div class="line">git reset --hard 0a1f420</div></pre></td></tr></table></figure><h2 id="暂时储藏修改"><a href="#暂时储藏修改" class="headerlink" title="暂时储藏修改"></a>暂时储藏修改</h2><p>当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash  #储藏代码</div><div class="line">git stash list #查看列表</div><div class="line">git stash pop #回到工作现场</div></pre></td></tr></table></figure></p><h2 id="Reset、Checkout、Revert-的选择"><a href="#Reset、Checkout、Revert-的选择" class="headerlink" title="Reset、Checkout、Revert 的选择"></a>Reset、Checkout、Revert 的选择</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">reset 将一个分支的末端指向另一个提交。</div><div class="line">--soft – 缓存区和工作目录都不会被改变</div><div class="line">--mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响</div><div class="line">--hard – 缓存区和工作目录都同步到你指定的提交</div><div class="line"></div><div class="line">checkout 除了分支之外，你还可以传入提交的引用来 checkout 到任意的提交。</div><div class="line">git checkout HEAD~2</div><div class="line"></div><div class="line">Revert 撤销一个提交的同时会创建一个新的提交,相比 git reset，它不会改变现在的提交历史。因此，git revert 可以用在公共分支上，git reset 应该用在私有分支上。你也可以把 git revert 当作撤销已经提交的更改，而 git reset HEAD 用来撤销没有提交的更改。</div></pre></td></tr></table></figure><h2 id="git修改远程仓库地址方法有三种："><a href="#git修改远程仓库地址方法有三种：" class="headerlink" title="git修改远程仓库地址方法有三种："></a>git修改远程仓库地址方法有三种：</h2><p>查看远程地址git remote -v</p><ol><li>修改命令 </li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote set-url origin [url]</div></pre></td></tr></table></figure><ol><li>先删后加</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote rm origin</div><div class="line">git remote add origin [url]</div></pre></td></tr></table></figure><ol><li>直接修改config文件</li></ol><h2 id="git上新建项目之后"><a href="#git上新建项目之后" class="headerlink" title="git上新建项目之后"></a>git上新建项目之后</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">…or create a new repository on the command line</div><div class="line">    echo &quot;# hello&quot; &gt;&gt; README.md</div><div class="line">    git init</div><div class="line">    git add README.md</div><div class="line">    git commit -m &quot;first commit&quot;</div><div class="line">    git remote add origin git@github.com:hanqingsong/hello.git</div><div class="line">    git push -u origin master</div><div class="line">    </div><div class="line">…or push an existing repository from the command line</div><div class="line">    git remote add origin git@github.com:hanqingsong/hello.git</div><div class="line">    git push -u origin master</div></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a><br><a href="https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9" target="_blank" rel="external">https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9</a><br><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">https://github.com/geeeeeeeeek/git-recipes/wiki</a></p>]]></content>
     
     <summary type="html">
     
@@ -373,170 +527,6 @@
       
       
         &lt;h2 id=&quot;一、get请求：&quot;&gt;&lt;a href=&quot;#一、get请求：&quot; class=&quot;headerlink&quot; title=&quot;一、get请求：&quot;&gt;&lt;/a&gt;一、get请求：&lt;/h2&gt;&lt;p&gt;　　1、使用curl命令：&lt;br&gt;　　curl “&lt;a href=&quot;http://www.b
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
-    
-    
-      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>升级jdk1.8报错：sun.security.validator.ValidatorException: Certificate signature algorithm disabled</title>
-    <link href="http://www.codr.top/2017/10/%E5%8D%87%E7%BA%A7jdk1-8%E6%8A%A5%E9%94%99%EF%BC%9Asun-security-validator-ValidatorException-Certificate-signature/"/>
-    <id>http://www.codr.top/2017/10/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/</id>
-    <published>2017-10-24T06:09:20.000Z</published>
-    <updated>2018-03-07T06:48:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="升级jdk1-8项目出错"><a href="#升级jdk1-8项目出错" class="headerlink" title="升级jdk1.8项目出错"></a>升级jdk1.8项目出错</h3><p>sun.security.validator.ValidatorException: Certificate signature algorithm disabled</p><p>报错原因是JDK8对SSL证书的算法安全要求提高，可以对比下7和8的区别<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">less /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;</div><div class="line">jdk.certpath.disabledAlgorithms=MD2, RSA keySize &lt; 1024</div><div class="line">jdk.tls.disabledAlgorithms=SSLv3</div><div class="line"></div><div class="line">less /Library/Java/JavaVirtualMachines/jdk1.8.0_*/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;</div><div class="line">jdk.certpath.disabledAlgorithms=MD2, MD5, SHA1 jdkCA &amp; usage TLSServer, \</div><div class="line">jdk.jar.disabledAlgorithms=MD2, MD5, RSA keySize &lt; 1024</div><div class="line">jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize &lt; 768, \</div></pre></td></tr></table></figure></p><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol><li>简单做法是直接注释掉jdk.certpath.disabledAlgorithms</li><li>继承新的抽象类：X509ExtendedTrustManager<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">In the Java SE 7 release, the X509ExtendedTrustManager class is an abstract implementation of the X509TrustManager interface. It adds methods for connection-sensitive trust management. In addition, it enables endpoint verification at the TLS layer.</div><div class="line">...</div><div class="line">Besides TLS 1.2 support, the X509ExtendedTrustManager class also support algorithm constraints and SSL layer hostname verification.</div></pre></td></tr></table></figure></li></ol><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.cnblogs.com/flyingeagle/articles/7508207.html" target="_blank" rel="external">http://www.cnblogs.com/flyingeagle/articles/7508207.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;升级jdk1-8项目出错&quot;&gt;&lt;a href=&quot;#升级jdk1-8项目出错&quot; class=&quot;headerlink&quot; title=&quot;升级jdk1.8项目出错&quot;&gt;&lt;/a&gt;升级jdk1.8项目出错&lt;/h3&gt;&lt;p&gt;sun.security.validator.Validat
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://www.codr.top/categories/java/"/>
-    
-    
-      <category term="jdk" scheme="http://www.codr.top/tags/jdk/"/>
-    
-      <category term="问题" scheme="http://www.codr.top/tags/%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EFK-从零搭建日志系统</title>
-    <link href="http://www.codr.top/2017/10/EFK-%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://www.codr.top/2017/10/EFK-从零搭建日志系统/</id>
-    <published>2017-10-19T10:57:32.000Z</published>
-    <updated>2018-03-07T06:47:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>日志需要包含字段：</p><ol><li>time</li><li>level</li><li>app_id</li><li>instance_id<br>日志从产生到消费，主要经历以下几个阶段：采集-&gt;传输-&gt;切分-&gt;检索。</li></ol><h2 id="区分实例-instance-id"><a href="#区分实例-instance-id" class="headerlink" title="区分实例 instance_id"></a>区分实例 instance_id</h2><p>通过设置filebeat</p><h2 id="系统搭建"><a href="#系统搭建" class="headerlink" title="系统搭建"></a>系统搭建</h2><h3 id="Filebeat-安装"><a href="#Filebeat-安装" class="headerlink" title="Filebeat 安装"></a>Filebeat 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.0.2-x86_64.rpm</div><div class="line">rpm -vi filebeat-5.0.2-x86_64.rpm</div><div class="line"></div><div class="line">vim /etc/filebeat/filebeat.yml</div><div class="line">修改 output.elasticsearch hosts </div><div class="line">添加模板</div><div class="line">output.elasticsearch:</div><div class="line">  hosts: [&quot;localhost:9200&quot;]</div><div class="line">  template.name: &quot;filebeat&quot;</div><div class="line">  template.path: &quot;filebeat.template.json&quot;</div><div class="line">  template.overwrite: false</div><div class="line">启动</div><div class="line">/etc/init.d/filebeat start</div><div class="line">service filebeat start</div></pre></td></tr></table></figure><h3 id="elasticsearch-安装"><a href="#elasticsearch-安装" class="headerlink" title="elasticsearch 安装"></a>elasticsearch 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.rpm</div><div class="line">sha1sum elasticsearch-5.6.3.rpm </div><div class="line">sudo rpm --install elasticsearch-5.6.3.rpm</div><div class="line"></div><div class="line">### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using chkconfig</div><div class="line"> sudo chkconfig --add elasticsearch</div><div class="line">### You can start elasticsearch service by executing</div><div class="line"> sudo service elasticsearch start</div><div class="line"></div><div class="line">service elasticsearch start</div></pre></td></tr></table></figure><p>启动异常：Starting elasticsearch: Elasticsearch requires at least Java 8 but your Java version from /usr/bin/java does not meet this requirement 原因是java8安装，java版本管理工具没有更改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ll /usr/bin/java</div><div class="line">/usr/bin/java -&gt; /etc/alternatives/java</div><div class="line"></div><div class="line">update-alternatives --config java</div><div class="line"></div><div class="line">update-alternatives --install /usr/bin/java java /usr/local/java/jdk/jdk1.8.0_112/bin/java 300</div><div class="line">update-alternatives --install /usr/bin/javac javac /usr/local/java/jdk/jdk1.8.0_112/bin/javac 300</div></pre></td></tr></table></figure></p><p>验证是否成功 curl <a href="http://localhost:9200/" target="_blank" rel="external">http://localhost:9200/</a></p><h3 id="安装Kibana"><a href="#安装Kibana" class="headerlink" title="安装Kibana"></a>安装Kibana</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">wget https://artifacts.elastic.co/downloads/kibana/kibana-5.6.3-i686.rpm</div><div class="line">sha1sum kibana-5.6.3-i686.rpm </div><div class="line">sudo rpm --install kibana-5.6.3-i686.rpm</div><div class="line"></div><div class="line">service kibana start</div><div class="line">service kibana stop</div><div class="line"></div><div class="line">访问 http://localhost:5601</div></pre></td></tr></table></figure><h3 id="修改日志收集路径"><a href="#修改日志收集路径" class="headerlink" title="修改日志收集路径"></a>修改日志收集路径</h3><p>vim /etc/elasticsearch/elasticsearch.yml<br>设置<br>path.data: /mydata/elk/elasticsearch/data<br>path.logs: /mydata/elk/elasticsearch/logs<br>如果重启会报错<br>detected index data in default.path.data [/var/lib/elasticsearch/nodes/0/indices] where there should not be any<br>需要把/var/lib/elasticsearch/下的文件夹移动到/mydata/elk/elasticsearch/下，<em>删除</em>/var/lib/elasticsearch/</p><h3 id="kibana使用"><a href="#kibana使用" class="headerlink" title="kibana使用"></a>kibana使用</h3><h4 id="Lucene-query-syntax"><a href="#Lucene-query-syntax" class="headerlink" title="Lucene query syntax"></a>Lucene query syntax</h4><ul><li>简单的文本搜索，直接输入文本字符串。比如，如果你在搜索网站服务器日志，你可以输入 safari 来搜索各字段中的 safari 单词。</li><li>要搜索特定字段中的值，则在值前加上字段名。比如，你可以输入 status:200 来限制搜索结果都是在 status 字段里有 200 内容。</li><li>要搜索一个值的范围，你可以用范围查询语法，[START_VALUE TO END_VALUE]。比如，要查找 4xx 的状态码，你可以输入 status:[400 TO 499]。</li><li>要指定更复杂的搜索标准，你可以用布尔操作符 AND, OR, 和 NOT。比如，要查找 4xx 的状态码，还是 php 或 html 结尾的数据，你可以输入 status:[400 TO 499] AND (extension:php OR extension:html)。</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEg" target="_blank" rel="external">https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEg</a><br>ELKstack 中文指南：<a href="https://kibana.logstash.es/content/kibana/v5/discover.html" target="_blank" rel="external">https://kibana.logstash.es/content/kibana/v5/discover.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot; class=&quot;headerlink&quot; title=&quot;分析&quot;&gt;&lt;/a&gt;分析&lt;/h2&gt;&lt;p&gt;日志需要包含字段：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;time&lt;/li&gt;
-&lt;li&gt;level&lt;/li&gt;
-&lt;li&gt;app_id&lt;/li&gt;
-&lt;li&gt;in
-      
-    
-    </summary>
-    
-      <category term="ELK" scheme="http://www.codr.top/categories/ELK/"/>
-    
-    
-      <category term="日志系统" scheme="http://www.codr.top/tags/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/"/>
-    
-      <category term="ELK" scheme="http://www.codr.top/tags/ELK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 命令：统计命令</title>
-    <link href="http://www.codr.top/2017/10/Linux%E5%91%BD%E4%BB%A4%EF%BC%9A%E7%BB%9F%E8%AE%A1%E5%91%BD%E4%BB%A4/"/>
-    <id>http://www.codr.top/2017/10/Linux命令：统计命令/</id>
-    <published>2017-10-18T11:58:23.000Z</published>
-    <updated>2018-01-11T07:54:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>一些实用的Linux文本操作命令，包括wc(统计)、cut(切分)、sort(排序)、uniq(去重)、grep(查找)、sed(替换、插入、删除)、awk(文本分析)。</p><h2 id="wc-统计"><a href="#wc-统计" class="headerlink" title="wc(统计)"></a>wc(统计)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># wc [-lwm]</div><div class="line">选项与参数：</div><div class="line">-l  ：仅列出行；</div><div class="line">-w  ：仅列出多少字(英文单字)；</div><div class="line">-m  ：多少字符；</div></pre></td></tr></table></figure><h2 id="cut-切分"><a href="#cut-切分" class="headerlink" title="cut(切分)"></a>cut(切分)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cut  [-bn] [file] 或 cut [-c] [file]  或  cut [-df] [file]</div><div class="line">　　使用说明</div><div class="line">　　cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</div><div class="line">　　如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。</div><div class="line"></div><div class="line">　　主要参数</div><div class="line">　　-b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</div><div class="line">　　-c ：以字符为单位进行分割。</div><div class="line">　　-d ：自定义分隔符，默认为制表符。</div><div class="line">　　-f ：与-d一起使用，指定显示哪个区域。</div><div class="line">　　-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的&lt;br /&gt;范围之内，该字符将被写出；否则，该字符将被排除。</div></pre></td></tr></table></figure><h2 id="sort-排序"><a href="#sort-排序" class="headerlink" title="sort(排序)"></a>sort(排序)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">　　sort命令是帮我们依据不同的数据类型进行排序，其语法及常用参数格式：</div><div class="line"></div><div class="line">sort [-bcfMnrtk][源文件][-o 输出文件] </div><div class="line">　　补充说明：sort可针对文本文件的内容，以行为单位来排序。</div><div class="line"></div><div class="line">　　参数：</div><div class="line">　　-b   忽略每行前面开始出的空格字符。</div><div class="line">　　-c   检查文件是否已经按照顺序排序。</div><div class="line">　　-f   排序时，忽略大小写字母。</div><div class="line">　　-M   将前面3个字母依照月份的缩写进行排序。</div><div class="line">　　-n   依照数值的大小排序。</div><div class="line">　　-o&lt;输出文件&gt;   将排序后的结果存入指定的文件。</div><div class="line">　　-r   以相反的顺序来排序。</div><div class="line">　　-t&lt;分隔字符&gt;   指定排序时所用的栏位分隔字符。</div><div class="line">　　-k  选择以哪个区间进行排序。</div></pre></td></tr></table></figure><h2 id="uniq-去重"><a href="#uniq-去重" class="headerlink" title="uniq(去重)"></a>uniq(去重)</h2><p>uniq命令可以去除排序过的文件中的重复行，因此uniq经常和sort合用。也就是说，为了使uniq起作用，所有的重复行必须是相邻的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># uniq [-icu]</div><div class="line">选项与参数：</div><div class="line">-i   ：忽略大小写字符的不同；</div><div class="line">-c  ：进行计数</div><div class="line">-u  ：只显示唯一的行</div></pre></td></tr></table></figure></p><h2 id="grep-查找"><a href="#grep-查找" class="headerlink" title="grep(查找)"></a>grep(查找)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。</div><div class="line"></div><div class="line">grep [options]</div><div class="line">　　主要参数</div><div class="line">　　[options]主要参数：</div><div class="line">　　－c：只输出匹配行的计数。</div><div class="line">　　－I：不区分大 小写(只适用于单字符)。</div><div class="line">　　－h：查询多文件时不显示文件名。</div><div class="line">　　－l：查询多文件时只输出包含匹配字符的文件名。</div><div class="line">　　－n：显示匹配行及 行号。</div><div class="line">　　－s：不显示不存在或无匹配文本的错误信息。</div><div class="line">　　－v：显示不包含匹配文本的所有行。</div><div class="line">    -E：使用正则</div><div class="line">　　pattern正则表达式主要参数：</div><div class="line">　　\： 忽略正则表达式中特殊字符的原有含义。</div><div class="line">　　^：匹配正则表达式的开始行。</div><div class="line">　　$: 匹配正则表达式的结束行。</div><div class="line">　　\&lt;：从匹配正则表达 式的行开始。</div><div class="line">　　\&gt;：到匹配正则表达式的行结束。</div><div class="line">　　[ ]：单个字符，如[A]即A符合要求 。</div><div class="line">　　[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。</div><div class="line">　　。：所有的单个字符。</div><div class="line">　　* ：有字符，长度可以为0。</div></pre></td></tr></table></figure><h2 id="sed-替换、插入、删除"><a href="#sed-替换、插入、删除" class="headerlink" title="sed(替换、插入、删除)"></a>sed(替换、插入、删除)</h2><p>sed是一个很好的文件处理工具，本身是一个管道命令，主要是以行为单位进行处理，可以将数据行进行替换、删除、新增、选取等特定工作，下面先了解一下sed的用法。sed命令行格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">sed [-nefri] ‘command’ 输入文本 </div><div class="line">　　常用选项：</div><div class="line">　　  -n∶使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。</div><div class="line">        -e∶直接在指令列模式上进行 sed 的动作编辑；</div><div class="line">        -f∶直接将 sed 的动作写在一个档案内， -f filename 则可以执行 filename 内的sed 动作；</div><div class="line">        -r∶sed 的动作支援的是延伸型正规表示法的语法。(预设是基础正规表示法语法)</div><div class="line">        -i∶直接修改读取的档案内容，而不是由萤幕输出。       </div><div class="line"></div><div class="line">　　常用命令：</div><div class="line">        a   ∶新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～</div><div class="line">        c   ∶取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！</div><div class="line">        d   ∶删除，因为是删除啊，所以 d 后面通常不接任何咚咚；</div><div class="line">　　   i   ∶插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；</div><div class="line">　　  p  ∶列印，亦即将某个选择的资料印出。通常 p 会与参数 sed -n 一起运作～</div><div class="line">　　  s  ∶取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！</div></pre></td></tr></table></figure></p><h3 id="sed-提取匹配的字符串内容"><a href="#sed-提取匹配的字符串内容" class="headerlink" title="sed 提取匹配的字符串内容"></a>sed 提取匹配的字符串内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># STR=&quot;MAIL FROM(CCC) TO(DDD)&quot;</div><div class="line"># echo $STR | sed &apos;s/^.*FROM(\(.*\)).*TO(\(.*\)).*$/\1-\2/g&apos;</div><div class="line">CCC-DDD</div></pre></td></tr></table></figure><p>s表示替换，组匹配信息(.*),第一个为\1,第二个\2以此类推</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&quot;09/Jan/2018:00:02:58 +0800&quot;,&quot;210.22.172.146&quot;,&quot;-&quot;,&quot;-&quot;,&quot;-&quot;,&quot;api.fastschool.cn&quot;,&quot;ded92c009aaa4582a6cf9b644fa62aa6&quot;,&quot;GET /clog/a.gif?action=FS_UploadLog&amp;clientIp=%28null%29&amp;clientVersion=3.8.7&amp;debugInfo=20180108__NumOfLine_117_&amp;logType=debug&amp;logVersion=1.0&amp;netType=wifi&amp;osName=iPad&amp;osVersion=10.3&amp;platform=iOS&amp;tag=FSUploadLog&amp;ts=2018-01-09%2000%3A02%3A56.784&amp;userLid=a91e0cffbe474635b8ec4861a58b1a97&amp;userToken=ded92c009aaa4582a6cf9b644fa62aa6&amp;wifiName=TP-LINK_BF2AF0 HTTP/1.1&quot;,&quot;-&quot;,&quot;-&quot;,&quot;prod:stu_cli, channel:AppStore, os:iOS, osVer:10.3.3, mobile:iPad, vName:3.8.7, env:RE&quot;,&quot;200&quot;,&quot;0.000&quot;,&quot;0&quot;,&quot;-&quot;,&quot;-&quot;,&quot;*/*&quot;,&quot;nginx-111&quot;,&quot;-&quot;</div><div class="line"></div><div class="line"># less loginfo.txt |awk -F&apos;&quot;,&quot;&apos; &apos;&#123;print $8&#125;&apos; |sed &apos;s/^.*\(action=[a-zA-Z_]*\).*\(platform=[a-zA-Z_]*\).*$/\1  \2/g&apos;</div><div class="line"></div><div class="line">action=FS_StartUploadLog_ToCOS  platform=iOS</div></pre></td></tr></table></figure><h2 id="awk-文本分析"><a href="#awk-文本分析" class="headerlink" title="awk(文本分析)"></a>awk(文本分析)</h2><p>awk是一个强大的文本分析工具，相对于grep的查找，sed的编辑，awk在其对数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;&#123;pattern + action&#125;&apos; &#123;filenames&#125;</div></pre></td></tr></table></figure></p><p>尽管操作可能会很复杂，但语法总是这样，其中 pattern 表示 AWK 在数据中查找的内容，而 action 是在找到匹配内容时所执行的一系列命令。花括号（{}）不需要在程序中始终出现，但它们用于根据特定的模式对一系列指令进行分组。 pattern就是要表示的正则表达式，用斜杠括起来。</p><p>　　awk语言的最基本功能是在文件或者字符串中基于指定规则浏览和抽取信息，awk抽取信息后，才能进行其他文本操作。完整的awk脚本通常用来格式化文本文件中的信息。</p><p>　　通常，awk是以文件的一行为处理单位的。awk每接收文件的一行，然后执行相应的命令，来处理文本。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>博客出处：<a href="http://www.cnblogs.com/maybe2030/" target="_blank" rel="external">http://www.cnblogs.com/maybe2030/</a> </p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;一些实用的Linux文本操作命令，包括wc(统计)、cut(切分)、sort(排序)、uniq(去重)、grep(查找)、sed(替换、插入、删除)、awk(文本分析)。&lt;/p&gt;
-&lt;h2 id=&quot;wc-统计&quot;&gt;&lt;a href=&quot;#wc-统计&quot; class=&quot;headerli
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
-    
-    
-      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iterm2使用技巧</title>
-    <link href="http://www.codr.top/2017/10/iterm2%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
-    <id>http://www.codr.top/2017/10/iterm2使用技巧/</id>
-    <published>2017-10-17T02:50:50.000Z</published>
-    <updated>2017-10-18T11:38:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">⌘ + 数字: 切换标签页。 </div><div class="line">⌘ + 方向键 按方向切换标签页。</div><div class="line">⌘ + enter: 切换全屏</div><div class="line">⌘ + f: 查找。支持正则。其中查找的内容会被自动复制。鼠标去选中的内容也会自动复制</div><div class="line">⌘ + d: 垂直分屏，⌘ + shift + d: 水平分屏。使用⌘ + ]和⌘ + [在最近使用的分屏直接切换.</div><div class="line">⌘ + t :新的标签页</div><div class="line">⌘ + w :关闭当前标签页</div><div class="line">⌘ + ；:自动补全历史命令</div><div class="line">⌘ + —/+/0: 调整字体大小</div><div class="line">⌘ + /: 找到当前光标位置</div></pre></td></tr></table></figure><h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ctrl + u: 清空当前行。</div><div class="line">ctrl + a: 到行首</div><div class="line">ctrl + e: 行末</div><div class="line">ctrl + f/b: 前进后退，相当于左右方向键</div><div class="line">ctrl + p: 上一条命令，相当于方向键上</div><div class="line">ctrl + r: 搜索命令历史</div><div class="line">ctrl + d: 删除当前字符</div><div class="line">ctrl + h: 删除之前的字符</div><div class="line">ctrl + w: 删除光标前的单词</div><div class="line">ctrl + k: 删除到文本末尾</div><div class="line">ctrl + t: 交换光标处文本</div><div class="line">⌘ + r:清屏，其实是滚到新的一屏，并没有清空。ctrl + l 也可以做到。</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;使用快捷键&quot;&gt;&lt;a href=&quot;#使用快捷键&quot; class=&quot;headerlink&quot; title=&quot;使用快捷键&quot;&gt;&lt;/a&gt;使用快捷键&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="http://www.codr.top/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="iterm2" scheme="http://www.codr.top/tags/iterm2/"/>
-    
-      <category term="mac" scheme="http://www.codr.top/tags/mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nginx添加日志分割logrotate</title>
-    <link href="http://www.codr.top/2017/10/nginx%E6%B7%BB%E5%8A%A0%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2/"/>
-    <id>http://www.codr.top/2017/10/nginx添加日志分割/</id>
-    <published>2017-10-14T01:45:11.000Z</published>
-    <updated>2018-04-16T12:19:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="logrotate简介"><a href="#logrotate简介" class="headerlink" title="logrotate简介"></a>logrotate简介</h2><p>logrotate 是Linux系统日志文件管理工具。用来把旧的日志文件删除，并创建新的日志文件，我们把它叫做“转储”。可以根据日志文件的大小，也可以根据其天数来转储，这个过程一般通过 cron 程序来执行。<br>logrotate 程序还可以用于压缩日志文件，以及发送日志到指定的E-mail。<br>默认的logrotate被加入cron的/etc/cron.daily中作为每日任务执行。<br>/etc/logrotate.d/* 为/etc/logrotate.conf默认包含目录其中文件也会被logrotate读取。指明每个日志文件的特定规则。<br>/var/lib/logrotate/status中默认记录logrotate上次轮换日志文件的时间。</p><h2 id="logrotate安装"><a href="#logrotate安装" class="headerlink" title="logrotate安装"></a>logrotate安装</h2><p>centos是默认有安装<br>yum install logrotate<br>安装完成之后在，在/etc/logrotate.d/有以下脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ ll /etc/logrotate.d/</div><div class="line">total 24</div><div class="line">drwxr-xr-x. 2 root root 4096 Mar  3  2016 2016-03-03</div><div class="line">-rw-r--r--. 1 root root  103 Jul 14  2015 dracut</div><div class="line">-rw-r--r--  1 root root  217 Oct 31  2016 nginx</div><div class="line">-rw-r--r--. 1 root root  329 Jul 17  2012 psacct</div><div class="line">-rw-r--r--. 1 root root  265 Mar  3  2016 syslog</div><div class="line">-rw-r--r--. 1 root root  100 Feb 22  2013 yum</div></pre></td></tr></table></figure></p><h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><p>crontab会每天定时执行/etc/cron.daily目录下的脚本，在这个目录有个logrotate脚本，脚本内容为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">/usr/sbin/logrotate /etc/logrotate.conf &gt;/dev/null 2&gt;&amp;1</div><div class="line">EXITVALUE=$?</div><div class="line">if [ $EXITVALUE != 0 ]; then</div><div class="line">    /usr/bin/logger -t logrotate &quot;ALERT exited abnormally with [$EXITVALUE]&quot;</div><div class="line">fi</div><div class="line">exit 0</div></pre></td></tr></table></figure></p><p>每天执行一次/usr/sbin/logrotate /etc/logrotate.conf，logrotate.conf中<code>include /etc/logrotate.d</code> </p><h2 id="nginx脚本"><a href="#nginx脚本" class="headerlink" title="nginx脚本"></a>nginx脚本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/var/log/nginx/*log &#123;</div><div class="line">    daily</div><div class="line">    rotate 10</div><div class="line">    missingok</div><div class="line">    notifempty</div><div class="line">    compress</div><div class="line">    sharedscripts</div><div class="line">    postrotate</div><div class="line">        /bin/kill -USR1 $(cat /var/run/nginx.pid 2&gt;/dev/null) 2&gt;/dev/null || :</div><div class="line">    endscript</div><div class="line">&#125;</div></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">compress                        通过gzip压缩转储以后的日志</div><div class="line">nocompress                      不压缩</div><div class="line">copytruncate                    用于还在打开中的日志文件，把当前日志备份并截断</div><div class="line">nocopytruncate                  备份日志文件但是不截断</div><div class="line">create mode owner group         转储文件，使用指定的文件模式创建新的日志文件</div><div class="line">nocreate                        不建立新的日志文件</div><div class="line">delaycompress 和 compress        一起使用时，转储的日志文件到下一次转储时才压缩</div><div class="line">nodelaycompress                 覆盖 delaycompress 选项，转储同时压缩。</div><div class="line">errors address                   专储时的错误信息发送到指定的Email 地址</div><div class="line">ifempty                         即使是空文件也转储，这个是 logrotate 的缺省选项。</div><div class="line">notifempty                      如果是空文件的话，不转储</div><div class="line">mail address                    把转储的日志文件发送到指定的E-mail 地址</div><div class="line">nomail                          转储时不发送日志文件</div><div class="line">olddir directory                转储后的日志文件放入指定的目录，必须和当前日志文件在同一个文件系统</div><div class="line">noolddir                        转储后的日志文件和当前日志文件放在同一个目录下</div><div class="line">prerotate/endscript             在转储以前需要执行的命令可以放入这个对，这两个关键字必须单独成行</div><div class="line">postrotate/endscript            在转储以后需要执行的命令可以放入这个对，这两个关键字必须单独成行</div><div class="line">daily                           指定转储周期为每天</div><div class="line">weekly                          指定转储周期为每周</div><div class="line">monthly                         指定转储周期为每月</div><div class="line">rotate count                    指定日志文件删除之前转储的次数，0 指没有备份，5 指保留5 个备份</div><div class="line">tabootext [+] list 让logrotate   不转储指定扩展名的文件，缺省的扩展名是：.rpm-orig, .rpmsave, v, 和 ~ </div><div class="line">size size                       当日志文件到达指定的大小时才转储，bytes(缺省)及KB(sizek)或MB(sizem)</div></pre></td></tr></table></figure><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>立刻执行分割：/usr/sbin/logrotate -vf  /etc/logrotate.d/nginx<br>查看执行状态 cat /var/lib/logrotate.status</p><h2 id="添加定时任务"><a href="#添加定时任务" class="headerlink" title="添加定时任务"></a>添加定时任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">crontab -e </div><div class="line">#添加以下代码， #每天凌晨定时执行脚本</div><div class="line"># crond-id-02:nginx_logs logroate</div><div class="line">0 0 * * * /usr/sbin/logrotate -vf /etc/logrotate.d/nginx &gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;logrotate简介&quot;&gt;&lt;a href=&quot;#logrotate简介&quot; class=&quot;headerlink&quot; title=&quot;logrotate简介&quot;&gt;&lt;/a&gt;logrotate简介&lt;/h2&gt;&lt;p&gt;logrotate 是Linux系统日志文件管理工具。用来把旧的日志
-      
-    
-    </summary>
-    
-      <category term="nginx" scheme="http://www.codr.top/categories/nginx/"/>
-    
-    
-      <category term="nginx" scheme="http://www.codr.top/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 命令：压缩命令</title>
-    <link href="http://www.codr.top/2017/10/Linux%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4/"/>
-    <id>http://www.codr.top/2017/10/Linux命令：压缩命令/</id>
-    <published>2017-10-14T01:45:11.000Z</published>
-    <updated>2017-10-18T11:38:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li><p>tar命令<br>　　解包：tar zxvf FileName.tar<br> 解包到指定文件夹：tar zxvf FileName.tar -C dirname<br>　　打包：tar czvf FileName.tar DirName</p></li><li><p>gz命令<br>　　解压：gunzip FileName.gz<br>　　解压：gzip -d FileName.gz<br> 压缩：gzip FileName</p></li><li><p>tar.gz<br> 解压：tar zxvf FileName.tar.gz<br>　　 压缩：tar zcvf FileName.tar.gz DirName<br> 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3</p></li><li><p>zip命令<br>　　解压：unzip FileName.zip<br> 解压到指定目录：unzip -d /home/sunny myfile.zip<br>　　压缩：zip -r FileName.zip DirName</p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;tar命令&lt;br&gt;　　解包：tar zxvf FileName.tar&lt;br&gt; 解包到指定文件夹：tar zxvf FileName.tar -C dirname&lt;br&gt;　　打包：tar czvf FileName.tar DirName&lt;/p&gt;
-&lt;/li
       
     
     </summary>

@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vim使用（2）编辑]]></title>
+    <url>%2F2018%2F05%2Fvim%E4%BD%BF%E7%94%A8%EF%BC%882%EF%BC%89%E7%BC%96%E8%BE%91%2F</url>
+    <content type="text"><![CDATA[窗口 创建窗口 12345678910水平分割窗口:split 当前窗口一分为二，两个窗口显示相同内容。 :10split 新窗口的高度10行:split otherfile 新窗口中打开otherfile :new 功能和split一样 :sp split的缩写形式 ctrl+w+s 分割窗口的快捷方式垂直分割窗口:vsplit 以上所有命令都适用于打开垂直分割窗口，只要在前面加v(vetical) 关闭窗口 1234q 或 close #关闭当前窗口 only #保留当前窗口，关闭其它所有窗口 qall(qa) #退出所有窗口 wall #保存所有窗口 窗口切换:ctrl+w+j/k，通过j/k可以上下切换，或者:ctrl+w加上下左右键，还可以通过快速双击ctrl+w依次切换窗口。 窗口大小调整 12345678910纵向调整:ctrl+w + 纵向扩大（行数增加）:ctrl+w - 纵向缩小 （行数减少）:res(ize) num 例如：:res 5，显示行数调整为5行:res(ize)+num 把当前窗口高度增加num行:res(ize)-num 把当前窗口高度减少num行横向调整:vertical res(ize) num 指定当前窗口为num列:vertical res(ize)+num 把当前窗口增加num列:vertical res(ize)-num 把当前窗口减少num列 窗口重命名:f file 文件浏览 123:Ex 开启目录浏览器，可以浏览当前目录下的所有文件，并可以选择:Sex 水平分割当前窗口，并在一个窗口中开启目录浏览器:ls 显示当前buffer情况 vi与shell切换 12:shell 可以在不关闭vi的情况下切换到shell命令行:exit 从shell回到vi 页签1234567891011:tabnew [++opt选项] ［＋cmd］ 文件 建立对指定文件新的tabta:tab &lt;文件&gt; 新页签打开指定文件:tabc 关闭当前的tab:tabo 关闭所有其他的tab:tabs 查看所有打开的tab:tabp 前一个:tabn 后一个标准模式下：gt , gT 可以直接在tab之间切换。ngt 切换到指定的窗口。更多可以查看帮助 :help table ， help -p 编译运行vim 环境下，在命令模式中输入下命令：1:!python % NERDTree命令 窗口切换 ctrl + w + h 光标 focus 左侧树形目录 ctrl + w + l 光标 focus 右侧文件显示窗口 ctrl + w + w 光标自动在左右侧窗口切换 ctrl + w + r 移动当前窗口的布局位置 o 打开关闭文件或者目录，如果是文件的话，光标出现在打开的文件中go 效果同上，不过光标保持在文件目录里，类似预览文件内容的功能i和s可以水平分割或纵向分割窗口打开文件，前面加g类似go的功能 t 在标签页中打开 T 在后台标签页中打开 12345678o 在已有窗口中打开文件、目录或书签，并跳到该窗口go 在已有窗口 中打开文件、目录或书签，但不跳到该窗口t 在新 Tab 中打开选中文件/书签，并跳到新 TabT 在新 Tab 中打开选中文件/书签，但不跳到新 Tabi split 一个新窗口打开选中文件，并跳到该窗口gi split 一个新窗口打开选中文件，但不跳到该窗口s vsplit 一个新窗口打开选中文件，并跳到该窗口gs vsplit 一个新 窗口打开选中文件，但不跳到该窗口 p 到上层目录 P 到根目录 K 到同目录第一个节点 J 到同目录最后一个节点 m 显示文件系统菜单（添加、删除、移动操作） ? 帮助 q 关闭]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>vim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别]]></title>
+    <url>%2F2018%2F05%2Fpython%E4%B8%ADvenv%EF%BC%8Cpyvenv%EF%BC%8Cpyenv%EF%BC%8Cvirtualenv%EF%BC%8Cvirtualenvwrapper%EF%BC%8Cpipenv%E7%AD%89%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[PyPI软件包不在标准库中： virtualenv是一个非常受欢迎的工具，为Python库创建了孤立的Python环境。 如果您不熟悉此工具，我强烈建议您学习它，因为它是非常有用的工具，我将在此答案的其余部分进行比较。 它通过在目录（例如： env/ ）中安装一堆文件，然后修改PATH环境变量以将其前缀到自定义bin目录（例如： env/bin/ ）。 python或python3二进制文件的完整副本放置在此目录中，但Python被编程为首先在环境目录中查找相对于其路径的库。 它不是Python标准库的一部分，但是由PyPA（Python Packaging Authority）正式获得祝福。 激活后，您可以使用pip在虚拟环境中安装软件包。 pyenv用于隔离Python版本。 例如，您可能希望根据Python 2.6,2.7,3.3,3.4和3.5测试代码，因此您需要一种在它们之间切换的方法。 一旦被激活，它将在PATH环境变量~/.pyenv/shims加上~/.pyenv/shims ，其中有与Python命令（ python ， pip ）匹配的特殊文件。 这些不是Python发出的命令的副本; 它们是基于PYENV_VERSION环境变量或.python-version文件或~/.pyenv/version文件运行的Python版本的特殊脚本。 pyenv也使得使用命令pyenv install更容易地下载和安装多个Python版本的过程。 pyenv-virtualenv是与pyenv相同的作者pyenv的插件，可以方便地同时使用pyenv和virtualenv 。 但是，如果您使用的是Python 3.3或更高版本， pyenv-virtualenv将尝试运行python -m venv如果可用），而不是virtualenv 。 如果您不想要方便的功能，您可以在不使用pyenv-virtualenv情况下使用virtualenv和pyenv 。 virtualenvwrapper是一组对virtualenv的扩展（请参阅docs ）。 它给你的命令像mkvirtualenv ， lssitepackages ，特别是在不同的virtualenv目录之间切换的工作。 如果您想要多个virtualenv目录，此工具特别有用。 pyenv-virtualenvwrapper是与pyenv相同的作者的pyenv ，方便地将virtualenvwrapper集成到pyenv 。 pipenv ，Kenneth Reitz（ requests的作者），是一个全新的（可能是实验性的）项目，旨在将Pipfile，pip和virtualenv组合成一个命令行命令。 标准库： pyvenv是Python 3附带的一个脚本，但是在Python 3.6中已经弃用，因为它有问题（更不用说混淆的名字）。 在Python 3.6+中，完全相同的是python3 -m venv 。 venv是Python 3附带的软件包，您可以使用python3 -m venv运行（尽管某些原因有些发行版将其分离成独立的发行版包，如Ubuntu / Debian中的python3-venv ）。 它为virtualenv提供了类似的目的，并以非常类似的方式工作，但它不需要复制Python二进制文件（Windows除外）。 如果您不需要支持Python 2，请使用此功能。在撰写本文时，Python社区似乎对virtualenv感到满意，我没有听说过venv 。]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java中long型string型ip地址转换]]></title>
+    <url>%2F2018%2F05%2Fjava%E4%B8%ADlong%E5%9E%8Bstring%E5%9E%8Bip%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455public class IPConvertor &#123; /** * long转ip地址，大端（高位字节放在低地址端） * @param ip * @return */ public static String numToIPBigEndian(long ip) &#123; StringBuilder sb = new StringBuilder(); for (int i = 0; i &lt;= 3; i++) &#123; sb.append((ip &gt;&gt;&gt; (i * 8)) &amp; 0x000000ff); if (i != 3) &#123; sb.append(&apos;.&apos;); &#125; &#125; return sb.toString(); &#125; /** * long转ip地址，小端（低位字节放在低地址端） * @param ip * @return */ public static String numToIPLittleEndian(long ip) &#123; StringBuilder sb = new StringBuilder(); for (int i = 3; i &gt;= 0; i--) &#123; sb.append((ip &gt;&gt;&gt; (i * 8)) &amp; 0x000000ff); if (i != 0) &#123; sb.append(&apos;.&apos;); &#125; &#125; return sb.toString(); &#125; public static long ipToNumLittle(String ip) &#123; long num = 0; String[] sections = ip.split(&quot;\\.&quot;); int i = 3; for (String str : sections) &#123; num += (Long.parseLong(str) &lt;&lt; (i * 8)); i--; &#125; return num; &#125; // public static void main(String[] args) &#123; // long ip =571108042; // String numToIPBigEndian = numToIPBigEndian(ip); // System.out.println(numToIPBigEndian); // System.out.println(numToIPBigEndian(1338832698)); // System.out.println(numToIPBigEndian(1624045370)); // System.out.println(numToIPBigEndian(1725232954)); // &#125;&#125;]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>string</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux：ssh登录后闲置时间过长而断开连接]]></title>
+    <url>%2F2018%2F05%2FLinux%EF%BC%9Assh%E7%99%BB%E5%BD%95%E5%90%8E%E9%97%B2%E7%BD%AE%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E8%80%8C%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%2F</url>
+    <content type="text"><![CDATA[ssh登录后闲置时间过长而断开连接终端ssh登录远程服务器长时间不操作服务器就会自动断开连接解决此问题的方法： 方法一： #vi /etc/ssh/sshd_config配置文件，修改为ClientAliveInterval 60，每分钟发送一次检测客户端是否连接 ，ClientAliveCountMax 3 服务器发出请求后客户端没有响应的次数达到一定值, 就自动断开 修改完成并保存后，执行命令：#service sshd reload使配置立即生效！ 方法二： 修改/etc/profile配置文件：#vi /etc/profile 增加：TMOUT=1800 这样30分钟没操作才自动LOGOUT]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux命令：pushd和popd]]></title>
+    <url>%2F2018%2F05%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9Apushd%E5%92%8Cpopd%2F</url>
+    <content type="text"><![CDATA[pushd和popdpushd 常用于将目录加入到栈中，加入记录到目录栈顶部，并切换到该目录popd 用于删除目录栈中的记录 使用1pushd /usr/local/xxxx &amp;&amp; git pull &amp;&amp; popd]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux命令：密钥创建]]></title>
     <url>%2F2018%2F05%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%AF%86%E9%92%A5%E5%88%9B%E5%BB%BA%2F</url>
     <content type="text"><![CDATA[ssh-keygenssh-keygen命令用于为“ssh”生成、管理和转换认证密钥，它支持RSA和DSA两种认证密钥。 12345678910111213语法ssh-keygen选项-b：指定密钥长度；-e：读取openssh的私钥或者公钥文件；-C：添加注释；-f：指定用来保存密钥的文件名；-i：读取未加密的ssh-v2兼容的私钥/公钥文件，然后在标准输出设备上显示openssh兼容的私钥/公钥；-l：显示公钥文件的指纹数据；-N：提供一个新密语；-P：提供（旧）密语；-q：静默模式；-t：指定要创建的密钥类型。 使用1ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;]]></content>
@@ -42,6 +97,17 @@
       </categories>
       <tags>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mysql-cpu占用过高解决方法]]></title>
+    <url>%2F2018%2F04%2Fmysql-cpu%E5%8D%A0%E7%94%A8%E8%BF%87%E9%AB%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[CPU报警：很可能是 SQL 里面有较多的计算导致的连接数超高：很可能是有慢查询，然后导致很多的查询在排队，排查问题的时候可以看到”事发现场“类似的 SQL 语句一大片，那么有可能是没有索引或者索引不好使，可以用：explain 分析一下 SQL 语句 查看事发现场 show processlist 语句，查找负荷最重的 SQL 语句，优化该SQL 开启慢查询，找到性能瓶颈点的SQL语句，然后使用explain，看看该语句是否可以优化； show [full] processlistshow [full] processlist 可以看到所有链接的情况观察有问题的链接12345-- 查询非 Sleep 状态的链接，按消耗时间倒序展示，自己加条件过滤select id, db, user, host, command, time, state, infofrom information_schema.processlistwhere command != &apos;Sleep&apos;order by time desc kill 使用123456-- 查询执行时间超过2分钟的线程，然后拼接成 kill 语句select concat(&apos;kill &apos;, id, &apos;;&apos;)from information_schema.processlistwhere command != &apos;Sleep&apos;and time &gt; 2*60order by time desc]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -116,7 +182,7 @@
   <entry>
     <title><![CDATA[git使用记录]]></title>
     <url>%2F2017%2F11%2Fgit%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%2F</url>
-    <content type="text"><![CDATA[流程12工作区 ---&gt; 暂存区 ----&gt; （历史）本地分支 ---&gt; 远程分支 add commit push 工作区和暂存区1234工作区：在电脑里能看到的目录版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。版本库里最重要的就是称为stage（或者叫index）的暂存区，(add操作)，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD，（commit操作）。 分支创建与切换123456git checkout -b dev #git checkout命令加上-b参数表示创建并切换相当于git branch dev #创建分支git checkout dev #切换分支git branch #查看分支 删除分支1git branch -d dev 合并分支fast-forward 快速合并不产生合并节点，看不出来曾经做过合并no-ff 合并生成合并节点 123git merge dev #git merge命令用于合并指定分支到当前分支git merge --no-ff -m &quot;merge with no-ff&quot; dev #合并生成合并节点 查看日志12git log #查看日志git log --graph --pretty=oneline --abbrev-commit #图形查看日志 版本回退和恢复12345678910111213回退工作区修改文件git checkout -- &lt;file&gt; 回退暂存区修改文件（add操作）git reset HEAD &lt;file&gt;git checkout -- &lt;file&gt; 回退本地分支修改文件 （add commit操作）git reset --hard HEAD^ #git reset HEAD~2恢复git reflog git reflog git reset --hard 0a1f420 暂时储藏修改当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场123git stash #储藏代码git stash list #查看列表git stash pop #回到工作现场 Reset、Checkout、Revert 的选择123456789reset 将一个分支的末端指向另一个提交。--soft – 缓存区和工作目录都不会被改变--mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响--hard – 缓存区和工作目录都同步到你指定的提交checkout 除了分支之外，你还可以传入提交的引用来 checkout 到任意的提交。git checkout HEAD~2Revert 撤销一个提交的同时会创建一个新的提交,相比 git reset，它不会改变现在的提交历史。因此，git revert 可以用在公共分支上，git reset 应该用在私有分支上。你也可以把 git revert 当作撤销已经提交的更改，而 git reset HEAD 用来撤销没有提交的更改。 git修改远程仓库地址方法有三种：查看远程地址git remote -v 修改命令 1git remote set-url origin [url] 先删后加 12git remote rm origingit remote add origin [url] 直接修改config文件 git上新建项目之后1234567891011…or create a new repository on the command line echo &quot;# hello&quot; &gt;&gt; README.md git init git add README.md git commit -m &quot;first commit&quot; git remote add origin git@github.com:hanqingsong/hello.git git push -u origin master …or push an existing repository from the command line git remote add origin git@github.com:hanqingsong/hello.git git push -u origin master 参考https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9https://github.com/geeeeeeeeek/git-recipes/wiki]]></content>
+    <content type="text"><![CDATA[流程12工作区 ---&gt; 暂存区 ----&gt; （历史）本地分支 ---&gt; 远程分支 add commit push 工作区和暂存区1234工作区：在电脑里能看到的目录版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。版本库里最重要的就是称为stage（或者叫index）的暂存区，(add操作)，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD，（commit操作）。 分支创建与切换123456git checkout -b dev #git checkout命令加上-b参数表示创建并切换相当于git branch dev #创建分支git checkout dev #切换分支git branch #查看分支 删除分支1git branch -d dev 合并分支fast-forward 快速合并不产生合并节点，看不出来曾经做过合并no-ff 合并生成合并节点 123git merge dev #git merge命令用于合并指定分支到当前分支git merge --no-ff -m &quot;merge with no-ff&quot; dev #合并生成合并节点 查看日志12git log #查看日志git log --graph --pretty=oneline --abbrev-commit #图形查看日志 查看具体某次提交1git show 3ad960849d6f10c92356ecdf952d5e4bfd0df1cd 版本回退和恢复12345678910111213回退工作区修改文件git checkout -- &lt;file&gt; 回退暂存区修改文件（add操作）git reset HEAD &lt;file&gt;git checkout -- &lt;file&gt; 回退本地分支修改文件 （add commit操作）git reset --hard HEAD^ #git reset HEAD~2恢复git reflog git reflog git reset --hard 0a1f420 暂时储藏修改当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场123git stash #储藏代码git stash list #查看列表git stash pop #回到工作现场 Reset、Checkout、Revert 的选择123456789reset 将一个分支的末端指向另一个提交。--soft – 缓存区和工作目录都不会被改变--mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响--hard – 缓存区和工作目录都同步到你指定的提交checkout 除了分支之外，你还可以传入提交的引用来 checkout 到任意的提交。git checkout HEAD~2Revert 撤销一个提交的同时会创建一个新的提交,相比 git reset，它不会改变现在的提交历史。因此，git revert 可以用在公共分支上，git reset 应该用在私有分支上。你也可以把 git revert 当作撤销已经提交的更改，而 git reset HEAD 用来撤销没有提交的更改。 git修改远程仓库地址方法有三种：查看远程地址git remote -v 修改命令 1git remote set-url origin [url] 先删后加 12git remote rm origingit remote add origin [url] 直接修改config文件 git上新建项目之后1234567891011…or create a new repository on the command line echo &quot;# hello&quot; &gt;&gt; README.md git init git add README.md git commit -m &quot;first commit&quot; git remote add origin git@github.com:hanqingsong/hello.git git push -u origin master …or push an existing repository from the command line git remote add origin git@github.com:hanqingsong/hello.git git push -u origin master 参考https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9https://github.com/geeeeeeeeek/git-recipes/wiki]]></content>
       <categories>
         <category>工具</category>
       </categories>
@@ -206,17 +272,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[nginx添加日志分割logrotate]]></title>
-    <url>%2F2017%2F10%2Fnginx%E6%B7%BB%E5%8A%A0%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2%2F</url>
-    <content type="text"><![CDATA[logrotate简介logrotate 是Linux系统日志文件管理工具。用来把旧的日志文件删除，并创建新的日志文件，我们把它叫做“转储”。可以根据日志文件的大小，也可以根据其天数来转储，这个过程一般通过 cron 程序来执行。logrotate 程序还可以用于压缩日志文件，以及发送日志到指定的E-mail。默认的logrotate被加入cron的/etc/cron.daily中作为每日任务执行。/etc/logrotate.d/* 为/etc/logrotate.conf默认包含目录其中文件也会被logrotate读取。指明每个日志文件的特定规则。/var/lib/logrotate/status中默认记录logrotate上次轮换日志文件的时间。 logrotate安装centos是默认有安装yum install logrotate安装完成之后在，在/etc/logrotate.d/有以下脚本12345678$ ll /etc/logrotate.d/total 24drwxr-xr-x. 2 root root 4096 Mar 3 2016 2016-03-03-rw-r--r--. 1 root root 103 Jul 14 2015 dracut-rw-r--r-- 1 root root 217 Oct 31 2016 nginx-rw-r--r--. 1 root root 329 Jul 17 2012 psacct-rw-r--r--. 1 root root 265 Mar 3 2016 syslog-rw-r--r--. 1 root root 100 Feb 22 2013 yum 运行机制crontab会每天定时执行/etc/cron.daily目录下的脚本，在这个目录有个logrotate脚本，脚本内容为12345678#!/bin/sh/usr/sbin/logrotate /etc/logrotate.conf &gt;/dev/null 2&gt;&amp;1EXITVALUE=$?if [ $EXITVALUE != 0 ]; then /usr/bin/logger -t logrotate &quot;ALERT exited abnormally with [$EXITVALUE]&quot;fiexit 0 每天执行一次/usr/sbin/logrotate /etc/logrotate.conf，logrotate.conf中include /etc/logrotate.d nginx脚本1234567891011/var/log/nginx/*log &#123; daily rotate 10 missingok notifempty compress sharedscripts postrotate /bin/kill -USR1 $(cat /var/run/nginx.pid 2&gt;/dev/null) 2&gt;/dev/null || : endscript&#125; 1234567891011121314151617181920212223compress 通过gzip压缩转储以后的日志nocompress 不压缩copytruncate 用于还在打开中的日志文件，把当前日志备份并截断nocopytruncate 备份日志文件但是不截断create mode owner group 转储文件，使用指定的文件模式创建新的日志文件nocreate 不建立新的日志文件delaycompress 和 compress 一起使用时，转储的日志文件到下一次转储时才压缩nodelaycompress 覆盖 delaycompress 选项，转储同时压缩。errors address 专储时的错误信息发送到指定的Email 地址ifempty 即使是空文件也转储，这个是 logrotate 的缺省选项。notifempty 如果是空文件的话，不转储mail address 把转储的日志文件发送到指定的E-mail 地址nomail 转储时不发送日志文件olddir directory 转储后的日志文件放入指定的目录，必须和当前日志文件在同一个文件系统noolddir 转储后的日志文件和当前日志文件放在同一个目录下prerotate/endscript 在转储以前需要执行的命令可以放入这个对，这两个关键字必须单独成行postrotate/endscript 在转储以后需要执行的命令可以放入这个对，这两个关键字必须单独成行daily 指定转储周期为每天weekly 指定转储周期为每周monthly 指定转储周期为每月rotate count 指定日志文件删除之前转储的次数，0 指没有备份，5 指保留5 个备份tabootext [+] list 让logrotate 不转储指定扩展名的文件，缺省的扩展名是：.rpm-orig, .rpmsave, v, 和 ~ size size 当日志文件到达指定的大小时才转储，bytes(缺省)及KB(sizek)或MB(sizem) 命令立刻执行分割：/usr/sbin/logrotate -vf /etc/logrotate.d/nginx查看执行状态 cat /var/lib/logrotate.status 添加定时任务1234crontab -e #添加以下代码， #每天凌晨定时执行脚本# crond-id-02:nginx_logs logroate0 0 * * * /usr/sbin/logrotate -vf /etc/logrotate.d/nginx &gt;/dev/null 2&gt;&amp;1]]></content>
-      <categories>
-        <category>nginx</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Linux 命令：压缩命令]]></title>
     <url>%2F2017%2F10%2FLinux%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[tar命令 解包：tar zxvf FileName.tar 解包到指定文件夹：tar zxvf FileName.tar -C dirname 打包：tar czvf FileName.tar DirName gz命令 解压：gunzip FileName.gz 解压：gzip -d FileName.gz 压缩：gzip FileName tar.gz 解压：tar zxvf FileName.tar.gz 压缩：tar zcvf FileName.tar.gz DirName 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3 zip命令 解压：unzip FileName.zip 解压到指定目录：unzip -d /home/sunny myfile.zip 压缩：zip -r FileName.zip DirName]]></content>
@@ -236,6 +291,17 @@
       </categories>
       <tags>
         <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[nginx添加日志分割logrotate]]></title>
+    <url>%2F2017%2F10%2Fnginx%E6%B7%BB%E5%8A%A0%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2%2F</url>
+    <content type="text"><![CDATA[logrotate简介logrotate 是Linux系统日志文件管理工具。用来把旧的日志文件删除，并创建新的日志文件，我们把它叫做“转储”。可以根据日志文件的大小，也可以根据其天数来转储，这个过程一般通过 cron 程序来执行。logrotate 程序还可以用于压缩日志文件，以及发送日志到指定的E-mail。默认的logrotate被加入cron的/etc/cron.daily中作为每日任务执行。/etc/logrotate.d/* 为/etc/logrotate.conf默认包含目录其中文件也会被logrotate读取。指明每个日志文件的特定规则。/var/lib/logrotate/status中默认记录logrotate上次轮换日志文件的时间。 logrotate安装centos是默认有安装yum install logrotate安装完成之后在，在/etc/logrotate.d/有以下脚本12345678$ ll /etc/logrotate.d/total 24drwxr-xr-x. 2 root root 4096 Mar 3 2016 2016-03-03-rw-r--r--. 1 root root 103 Jul 14 2015 dracut-rw-r--r-- 1 root root 217 Oct 31 2016 nginx-rw-r--r--. 1 root root 329 Jul 17 2012 psacct-rw-r--r--. 1 root root 265 Mar 3 2016 syslog-rw-r--r--. 1 root root 100 Feb 22 2013 yum 运行机制crontab会每天定时执行/etc/cron.daily目录下的脚本，在这个目录有个logrotate脚本，脚本内容为12345678#!/bin/sh/usr/sbin/logrotate /etc/logrotate.conf &gt;/dev/null 2&gt;&amp;1EXITVALUE=$?if [ $EXITVALUE != 0 ]; then /usr/bin/logger -t logrotate &quot;ALERT exited abnormally with [$EXITVALUE]&quot;fiexit 0 每天执行一次/usr/sbin/logrotate /etc/logrotate.conf，logrotate.conf中include /etc/logrotate.d nginx脚本1234567891011/var/log/nginx/*log &#123; daily rotate 10 missingok notifempty compress sharedscripts postrotate /bin/kill -USR1 $(cat /var/run/nginx.pid 2&gt;/dev/null) 2&gt;/dev/null || : endscript&#125; 1234567891011121314151617181920212223compress 通过gzip压缩转储以后的日志nocompress 不压缩copytruncate 用于还在打开中的日志文件，把当前日志备份并截断nocopytruncate 备份日志文件但是不截断create mode owner group 转储文件，使用指定的文件模式创建新的日志文件nocreate 不建立新的日志文件delaycompress 和 compress 一起使用时，转储的日志文件到下一次转储时才压缩nodelaycompress 覆盖 delaycompress 选项，转储同时压缩。errors address 专储时的错误信息发送到指定的Email 地址ifempty 即使是空文件也转储，这个是 logrotate 的缺省选项。notifempty 如果是空文件的话，不转储mail address 把转储的日志文件发送到指定的E-mail 地址nomail 转储时不发送日志文件olddir directory 转储后的日志文件放入指定的目录，必须和当前日志文件在同一个文件系统noolddir 转储后的日志文件和当前日志文件放在同一个目录下prerotate/endscript 在转储以前需要执行的命令可以放入这个对，这两个关键字必须单独成行postrotate/endscript 在转储以后需要执行的命令可以放入这个对，这两个关键字必须单独成行daily 指定转储周期为每天weekly 指定转储周期为每周monthly 指定转储周期为每月rotate count 指定日志文件删除之前转储的次数，0 指没有备份，5 指保留5 个备份tabootext [+] list 让logrotate 不转储指定扩展名的文件，缺省的扩展名是：.rpm-orig, .rpmsave, v, 和 ~ size size 当日志文件到达指定的大小时才转储，bytes(缺省)及KB(sizek)或MB(sizem) 命令立刻执行分割：/usr/sbin/logrotate -vf /etc/logrotate.d/nginx查看执行状态 cat /var/lib/logrotate.status 添加定时任务1234crontab -e #添加以下代码， #每天凌晨定时执行脚本# crond-id-02:nginx_logs logroate0 0 * * * /usr/sbin/logrotate -vf /etc/logrotate.d/nginx &gt;/dev/null 2&gt;&amp;1]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
