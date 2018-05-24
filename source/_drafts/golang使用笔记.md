@@ -1,10 +1,10 @@
----
+lang---
 title: go使用笔记
 date: 2018-03-20 09:41:01
 categories: 
-    - go
+    - golang
 tags: 
-    - go
+    - golang
 ---
 ## 安装Golang
 

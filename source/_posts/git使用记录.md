@@ -52,6 +52,11 @@ git log #查看日志
 git log --graph --pretty=oneline --abbrev-commit #图形查看日志
 ```
 
+## 查看具体某次提交
+```
+git show 3ad960849d6f10c92356ecdf952d5e4bfd0df1cd
+```
+
 ## 版本回退和恢复 
 ```   
     回退工作区修改文件
