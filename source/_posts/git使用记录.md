@@ -1,7 +1,7 @@
 ---
 title: git使用记录
 categories:
-  - 工具
+  - git
 tags:
   - git
 date: 2017-11-15 11:27:06

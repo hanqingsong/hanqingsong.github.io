@@ -1,7 +1,9 @@
 ---
 title: vscode使用笔记
-categories: 工具
-tags: vscode
+categories: 
+    - 工具
+tags: 
+    - vscode
 date: 2018-03-26 11:31:51
 ---
 

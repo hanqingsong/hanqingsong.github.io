@@ -1,7 +1,7 @@
 ---
 title: git命令设置不提交更改文件
 categories:
-  - 工具
+  - git
 tags:
   - git
 date: 2018-04-21 09:32:54

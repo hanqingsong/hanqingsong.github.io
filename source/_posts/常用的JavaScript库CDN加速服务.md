@@ -1,7 +1,10 @@
 ---
 title: 常用的 JavaScript 库 CDN 加速服务
-categories: 前端
-tags: JavaScript
+categories: 
+    - JavaScript
+tags: 
+    - JavaScript
+    - 前端
 date: 2018-03-24 10:38:39
 ---
 

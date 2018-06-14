@@ -1,8 +1,11 @@
+---
 title: shiro简介
-categories: 后端
+categories: 
+    - shiro
 tags:
-  - shiro
-  - java
+    - 后端
+    - shiro
+    - java
 date: 2018-03-27 17:07:13
 ---
 

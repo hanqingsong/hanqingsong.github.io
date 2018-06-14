@@ -10,11 +10,8 @@ tags:
 
 ## python之蝉
 解释器中输入import this
-
 Now is better than never.
 
-## 变量
-    
 ## String
 大写name.upper()
 小写name.lower()
@@ -46,6 +43,8 @@ Now is better than never.
 ```
 squares = [value** 2 for value in range( 1,11)]
 ```
+遍历
+for  item in  list:
 
 ## 切片
 列表的部分元素
@@ -59,9 +58,11 @@ friend_foods = my_foods[:]
 Python将不能修改的值称为不可变的，而不可变的列表被称为元组。元组不可以改变元素，但是可以重新定义元组。
 定义元组使用圆括号
 
-## 遍历
+## for 遍历
 ```
 for  item in  list:
+    
+for k, v in map.items():
 ```
 
 ## if
@@ -76,15 +77,135 @@ else:
 检查多个条件使用and，or
 检测元素是否在列表中 if item in list: ,if item not in list:
 
+## while
+在列表之间移动元素 while list:
+判断列表包含某个元素 while 'aa' in list:
+
+## 获取输入
+python2 raw_input()
+python3 input()
+
 ## 字典
 字典是一系列键值对，用放在花括号{}中的一系列键—值对表示
 删除元素 del userMap['name']
-
-
+遍历字典键值 for k, v in map.items():
+遍历字典中所有建 for name in favorite_languages.keys():
+遍历字典中所有的值 for language in favorite_languages.values():
 
 ## 函数
-    
+定义函数使用 def
+实参和形参
+位置实参，关键字实参，默认值
+在函数中对这个列表所做的任何修改都是永久性的
+禁止函数修改列表，将列表的副本传递给函数 list[:]，用切片创建副本
+传递任意数量的实参，形参名*toppings中的星号让python创建一个名为toppings的空元组，将收到的值都封装到这个元组中。形参**user_info中的两个星号让Python创建一个名为user_info的空字典，并将收到的所有名称—值对都封装到这个字典中。
+
+## 导入函数
+导入整个模块 import module_name
+导入模块特定函数 from module_name import function_name1,function_name2
+使用as给函数指定别名 from module_name import function_name1 as name1
+使用as给模块指定别名 import module_name as m1
+导入模块全部函数 from module_name import *
+
+## 类
+关键字 class 定义类
+创建类dog.py 
+```
+class Dog(): 
+    """ 一 次 模 拟 小 狗 的 简 单 尝 试""" 
+    def __init__( self, name, age): 
+        """ 初 始 化 属 性 name 和 age""" 
+        self.name = name self.age = age
+
+    def sit( self): 
+        """ 模 拟 小 狗 被 命 令 时 蹲 下""" 
+        print( self.name.title() + " is now sitting.") 
+
+    def roll_over( self): 
+        """ 模 拟 小 狗 被 命 令 时 打 滚""" 
+        print( self.name.title() + " rolled over!")
+```
+方法__init__()，创建实例时会自动运行，这个方法的定义中，形参self必不可少，还必须位于其他形参的前面。创建实例时，将自动传入实参self。每个与类相关联的方法调用都自动传递实参self，它是一个指向实例本身的引用，让实例能够访问类中的属性和方法。以self为前缀的变量都可供类中的所有方法使用
+
+创建类实例
+```
+my_dog=Dog('wille',6)
+```
+
+## 类的继承
+一个类继承另外一个类时，它将自动获得另一个类的所有属性和方法。
+创建子类时，父类必须包含在当前文件中，且位于子类前面。定义子类时，必须在括号内指定父类的名称。
+
+## 文件
+
+```
+with open('pi_digits.txt') as file_obj:
+    contents=file_obj.read()
+```
+with可以妥善管理打开和关闭
+
+## 异常
+```
+try:
+<语句>        #运行别的代码
+except <名字>：
+<语句>        #如果在try部份引发了'name'异常
+except <名字>，<数据>:
+<语句>        #如果引发了'name'异常，获得附加的数据
+else:
+<语句>        #如果没有异常发生
+```
+
+## 存储数据
+json.dump(),json.load()
+```
+numbers =[2,3,5,7]
+filename='jsondump.txt'
+with open(filename,'w') as file_obj:
+    json.dump(numbers,file_obj)
+
+filename='jsondump.txt'
+with open(filename,'r') as file_obj:
+    numbers=json.load(numbers,file_obj)
+print(numbers)
+
+```
+
+## 测试代码
+```
+import unittest
+class TestDict(unittest.TestCase):
+    def test_init(self):
+        d = Dict(a=1, b='test')
+        self.assertEqual(d.a, 1)
+        self.assertEqual(d.b, 'test')
+        self.assertTrue(isinstance(d, dict))
+```
+
+## pygame
+linux安装
+```
+安装 pygame
+pip install pygame
+hg clone https://bitbucket.org/pygame/pygame
+python3 setup.py build
+sudo python3 setup.py install
+
+```
+
+mac安装
+```
+brew install hd sdl sdl_image sdl_ttf
+brew install sdl_mixer  portmidi  # 声音
+# pip3 install hg+http://bitbucket.org/pygame/pygame
+pip3 install pygame
+```
+
 ## 帮助文档
+使用pydoc查看
+pydoc keyword
+pydoc3 keyword
+
 查询模块的使用方法
 1. 命令模式输入help()，然后输入关键字
 2. 命令模式输入help(str),help(str.split)

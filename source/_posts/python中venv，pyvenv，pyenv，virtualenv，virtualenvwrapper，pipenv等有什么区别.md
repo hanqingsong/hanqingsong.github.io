@@ -1,9 +1,10 @@
 ---
 title: python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别
 categories:
-  - python
+    - python
 tags:
-  - python
+    - 后端
+    - python
 date: 2018-05-22 21:50:45
 ---
 

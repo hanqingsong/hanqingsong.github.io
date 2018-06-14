@@ -1,9 +1,11 @@
 ---
 title: shiro使用记录
 date: 2018-04-06 18:49:39
-categories: 后端
+categories: 
+    - shiro
 tags: 
-- shiro
+    - shiro
+    - 后端
 ---
 ## shiro服务器重启之后获取subject getPrincipal为空 getSession不为空问题
 

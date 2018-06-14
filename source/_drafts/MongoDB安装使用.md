@@ -16,6 +16,8 @@ gpgcheck=1
 enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 ```
+修改数据文件存储位置
+vim /etc/mongod.conf 中的dbPath
 
 ```
 yum install -y mongodb-org

@@ -2,7 +2,11 @@
 title: oh-my-zsh使用
 date: 2017-09-22 15:15:46
 categories:
+    - 工具
 tags:
+    - Linux
+    - zsh
+    - mac
 ---
 
 ## shell

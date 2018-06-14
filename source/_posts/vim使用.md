@@ -2,9 +2,10 @@
 title: vim使用
 date: 2017-09-21 12:32:30
 categories:
-    - Linux
+    - vim
 tags:
     - vim
+    - Linux
 ---
 
 ## vim编辑粘贴代码格式化
@@ -76,4 +77,41 @@ y$     复制到行末
 ```
 
 ## vim 分屏
+```
+分屏启动
+使用大写的O参数来垂直分屏。
+vim -On file1 file2 ...
+使用小写的o参数来水平分屏。
+vim -on file1 file2 ...
+n是数字，表示分成几个屏
 
+关闭分屏
+关闭当前窗口。
+Ctrl+W c
+关闭当前窗口，如果只剩最后一个了，则退出Vim。
+Ctrl+W q
+
+分屏
+上下分割当前打开的文件。
+Ctrl+W s
+上下分割，并打开一个新的文件。
+:sp filename
+左右分割当前打开的文件。
+Ctrl+W v
+左右分割，并打开一个新的文件。
+:vsp filename
+
+屏幕尺寸
+让所有的屏都有一样的高度。
+Ctrl+W =
+增加高度。
+Ctrl+W +
+减少高度。
+Ctrl+W -
+:res(ize) num  例如：:res 5，显示行数调整为5行
+:res(ize)+num 把当前窗口高度增加num行
+:res(ize)-num 把当前窗口高度减少num行
+
+给窗口重命名
+:f file
+```

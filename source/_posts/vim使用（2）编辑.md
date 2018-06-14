@@ -1,9 +1,10 @@
 ---
 title: vim使用（2）编辑
 categories:
-  - Linux
+    - vim
 tags:
-  - vim
+    - vim
+    - Linux
 date: 2018-05-23 23:44:13
 ---
 
@@ -87,32 +88,119 @@ vim 环境下，在命令模式中输入下命令：
 ```
 
 ## NERDTree命令
-1. 窗口切换
-    ctrl + w + h    光标 focus 左侧树形目录
-    ctrl + w + l    光标 focus 右侧文件显示窗口
-    ctrl + w + w    光标自动在左右侧窗口切换
-    ctrl + w + r    移动当前窗口的布局位置
-2. o 打开关闭文件或者目录，如果是文件的话，光标出现在打开的文件中 
-go 效果同上，不过光标保持在文件目录里，类似预览文件内容的功能 
-i和s可以水平分割或纵向分割窗口打开文件，前面加g类似go的功能
-3. t 在标签页中打开
-4. T 在后台标签页中打开
+安装
+git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle
+
+:h NERDTree 查看帮助文档
 
 ```
-o       在已有窗口中打开文件、目录或书签，并跳到该窗口
-go      在已有窗口 中打开文件、目录或书签，但不跳到该窗口
-t       在新 Tab 中打开选中文件/书签，并跳到新 Tab
-T       在新 Tab 中打开选中文件/书签，但不跳到新 Tab
-i       split 一个新窗口打开选中文件，并跳到该窗口
-gi      split 一个新窗口打开选中文件，但不跳到该窗口
-s       vsplit 一个新窗口打开选中文件，并跳到该窗口
-gs      vsplit 一个新 窗口打开选中文件，但不跳到该窗口
+?                         查看所有命令
+
+窗口切换
+ctrl + w + h              光标移动到左侧树形目录
+ctrl + w + l              光标移动到右侧文件显示窗口
+ctrl + w + w              光标自动在左右侧窗口切换
+ctrl + w + r              移动当前窗口的布局位置
+
+打开文件
+o                         在已有窗口中打开文件、目录或书签，并跳到该窗口
+go                        在已有窗口 中打开文件、目录或书签，但不跳到该窗口
+t                         在新 Tab 中打开选中文件/书签，并跳到新 Tab
+T                         在新 Tab 中打开选中文件/书签，但不跳到新 Tab
+i                         split 一个新窗口打开选中文件，并跳到该窗口
+gi                        split 一个新窗口打开选中文件，但不跳到该窗口
+s                         vsplit 一个新窗口打开选中文件，并跳到该窗口
+gs                        vsplit 一个新 窗口打开选中文件，但不跳到该窗口
+!                         执行当前文件
+O                         递归打开选中 结点下的所有目录
+x                         合拢选中结点的父目录
+
+D                         删除当前书签
+
+P                         跳到根结点
+p                         跳到父结点
+K                         跳到当前目录下同级的第一个结点
+J                         跳到当前目录下同级的最后一个结点
+k                         跳到当前目录下同级的前一个结点
+j                         跳到当前目录下同级的后一个结点
+
+C                         将选中目录或选中文件的父目录设为根结点
+u                         将当前根结点的父目录设为根目录，并变成合拢原根结点
+U                         将当前根结点的父目录设为根目录，但保持展开原根结点
+r                         递归刷新选中目录
+R                         递归刷新根结点
+m                         显示文件系统菜单
+cd                        将 CWD 设为选中目录
+
+I                         切换是否显示隐藏文件
+f                         切换是否使用文件过滤器
+F                         切换是否显示文件
+B                         切换是否显示书签
+
+A                         全屏显示开关
+q                         关闭 NerdTree 窗口
+:NERDTreeToggle           打开 NerdTree 窗口
 ```
 
-5. p 到上层目录
-6. P 到根目录
-7. K 到同目录第一个节点
-8. J 到同目录最后一个节点
-9. m 显示文件系统菜单（添加、删除、移动操作）
-10. ? 帮助
-11. q 关闭
+## vimrc
+```
+" *********************************************
+" Vbundle插件管理
+" *********************************************
+set nocompatible              " required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/indentpython.vim'
+
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" *********************************************
+" 分割布局相关
+" *********************************************
+set splitbelow
+set splitright
+"快捷键，ctrl+l切换到左边布局，ctrl+h切换到右边布局
+"ctrl+k切换到上面布局，ctrl+j切换到下面布局
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" 开启代码折叠功能
+" 根据当前代码行的缩进来进行代码折叠
+set foldmethod=indent
+set foldlevel=99
+
+" *********************************************
+" NERD插件属性
+" *********************************************
+au vimenter * NERDTree      " 开启vim的时候默认开启NERDTree
+map <F2> :NERDTreeToggle<CR>    " 设置F2为开启NERDTree的快捷键
+
+
+" tagbar  启动时自动focus
+let g:tagbar_auto_faocus =1
+" 启动指定文件时自动开启tagbar
+autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
+
+" *********************************************
+" python代码风格PEP8
+" *********************************************
+au BufNewFile,BufRead *.py set tabstop=4 |set softtabstop=4|set shiftwidth=4|set textwidth=79|set expandtab|set autoindent|set fileformat=unix
+au BufNewFile,BufRead *.js, *.html, *.css set tabstop=2|set softtabstop=2|set shiftwidth=2
+```

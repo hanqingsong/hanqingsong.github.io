@@ -26,8 +26,12 @@ $ command -v pip3
 
 安装方法
 ```
+curl安装
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py
+
+yum 安装
+yum -y install python-pip
 ```
 
 
