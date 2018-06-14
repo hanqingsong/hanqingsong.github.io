@@ -3,11 +3,12 @@
   <entry>
     <title><![CDATA[vim使用（2）编辑]]></title>
     <url>%2F2018%2F05%2Fvim%E4%BD%BF%E7%94%A8%EF%BC%882%EF%BC%89%E7%BC%96%E8%BE%91%2F</url>
-    <content type="text"><![CDATA[窗口 创建窗口 12345678910水平分割窗口:split 当前窗口一分为二，两个窗口显示相同内容。 :10split 新窗口的高度10行:split otherfile 新窗口中打开otherfile :new 功能和split一样 :sp split的缩写形式 ctrl+w+s 分割窗口的快捷方式垂直分割窗口:vsplit 以上所有命令都适用于打开垂直分割窗口，只要在前面加v(vetical) 关闭窗口 1234q 或 close #关闭当前窗口 only #保留当前窗口，关闭其它所有窗口 qall(qa) #退出所有窗口 wall #保存所有窗口 窗口切换:ctrl+w+j/k，通过j/k可以上下切换，或者:ctrl+w加上下左右键，还可以通过快速双击ctrl+w依次切换窗口。 窗口大小调整 12345678910纵向调整:ctrl+w + 纵向扩大（行数增加）:ctrl+w - 纵向缩小 （行数减少）:res(ize) num 例如：:res 5，显示行数调整为5行:res(ize)+num 把当前窗口高度增加num行:res(ize)-num 把当前窗口高度减少num行横向调整:vertical res(ize) num 指定当前窗口为num列:vertical res(ize)+num 把当前窗口增加num列:vertical res(ize)-num 把当前窗口减少num列 窗口重命名:f file 文件浏览 123:Ex 开启目录浏览器，可以浏览当前目录下的所有文件，并可以选择:Sex 水平分割当前窗口，并在一个窗口中开启目录浏览器:ls 显示当前buffer情况 vi与shell切换 12:shell 可以在不关闭vi的情况下切换到shell命令行:exit 从shell回到vi 页签1234567891011:tabnew [++opt选项] ［＋cmd］ 文件 建立对指定文件新的tabta:tab &lt;文件&gt; 新页签打开指定文件:tabc 关闭当前的tab:tabo 关闭所有其他的tab:tabs 查看所有打开的tab:tabp 前一个:tabn 后一个标准模式下：gt , gT 可以直接在tab之间切换。ngt 切换到指定的窗口。更多可以查看帮助 :help table ， help -p 编译运行vim 环境下，在命令模式中输入下命令：1:!python % NERDTree命令 窗口切换 ctrl + w + h 光标 focus 左侧树形目录 ctrl + w + l 光标 focus 右侧文件显示窗口 ctrl + w + w 光标自动在左右侧窗口切换 ctrl + w + r 移动当前窗口的布局位置 o 打开关闭文件或者目录，如果是文件的话，光标出现在打开的文件中go 效果同上，不过光标保持在文件目录里，类似预览文件内容的功能i和s可以水平分割或纵向分割窗口打开文件，前面加g类似go的功能 t 在标签页中打开 T 在后台标签页中打开 12345678o 在已有窗口中打开文件、目录或书签，并跳到该窗口go 在已有窗口 中打开文件、目录或书签，但不跳到该窗口t 在新 Tab 中打开选中文件/书签，并跳到新 TabT 在新 Tab 中打开选中文件/书签，但不跳到新 Tabi split 一个新窗口打开选中文件，并跳到该窗口gi split 一个新窗口打开选中文件，但不跳到该窗口s vsplit 一个新窗口打开选中文件，并跳到该窗口gs vsplit 一个新 窗口打开选中文件，但不跳到该窗口 p 到上层目录 P 到根目录 K 到同目录第一个节点 J 到同目录最后一个节点 m 显示文件系统菜单（添加、删除、移动操作） ? 帮助 q 关闭]]></content>
+    <content type="text"><![CDATA[窗口 创建窗口 12345678910水平分割窗口:split 当前窗口一分为二，两个窗口显示相同内容。 :10split 新窗口的高度10行:split otherfile 新窗口中打开otherfile :new 功能和split一样 :sp split的缩写形式 ctrl+w+s 分割窗口的快捷方式垂直分割窗口:vsplit 以上所有命令都适用于打开垂直分割窗口，只要在前面加v(vetical) 关闭窗口 1234q 或 close #关闭当前窗口 only #保留当前窗口，关闭其它所有窗口 qall(qa) #退出所有窗口 wall #保存所有窗口 窗口切换:ctrl+w+j/k，通过j/k可以上下切换，或者:ctrl+w加上下左右键，还可以通过快速双击ctrl+w依次切换窗口。 窗口大小调整 12345678910纵向调整:ctrl+w + 纵向扩大（行数增加）:ctrl+w - 纵向缩小 （行数减少）:res(ize) num 例如：:res 5，显示行数调整为5行:res(ize)+num 把当前窗口高度增加num行:res(ize)-num 把当前窗口高度减少num行横向调整:vertical res(ize) num 指定当前窗口为num列:vertical res(ize)+num 把当前窗口增加num列:vertical res(ize)-num 把当前窗口减少num列 窗口重命名:f file 文件浏览 123:Ex 开启目录浏览器，可以浏览当前目录下的所有文件，并可以选择:Sex 水平分割当前窗口，并在一个窗口中开启目录浏览器:ls 显示当前buffer情况 vi与shell切换 12:shell 可以在不关闭vi的情况下切换到shell命令行:exit 从shell回到vi 页签1234567891011:tabnew [++opt选项] ［＋cmd］ 文件 建立对指定文件新的tabta:tab &lt;文件&gt; 新页签打开指定文件:tabc 关闭当前的tab:tabo 关闭所有其他的tab:tabs 查看所有打开的tab:tabp 前一个:tabn 后一个标准模式下：gt , gT 可以直接在tab之间切换。ngt 切换到指定的窗口。更多可以查看帮助 :help table ， help -p 编译运行vim 环境下，在命令模式中输入下命令：1:!python % NERDTree命令安装git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle :h NERDTree 查看帮助文档 12345678910111213141516171819202122232425262728293031323334353637383940414243444546? 查看所有命令窗口切换ctrl + w + h 光标移动到左侧树形目录ctrl + w + l 光标移动到右侧文件显示窗口ctrl + w + w 光标自动在左右侧窗口切换ctrl + w + r 移动当前窗口的布局位置打开文件o 在已有窗口中打开文件、目录或书签，并跳到该窗口go 在已有窗口 中打开文件、目录或书签，但不跳到该窗口t 在新 Tab 中打开选中文件/书签，并跳到新 TabT 在新 Tab 中打开选中文件/书签，但不跳到新 Tabi split 一个新窗口打开选中文件，并跳到该窗口gi split 一个新窗口打开选中文件，但不跳到该窗口s vsplit 一个新窗口打开选中文件，并跳到该窗口gs vsplit 一个新 窗口打开选中文件，但不跳到该窗口! 执行当前文件O 递归打开选中 结点下的所有目录x 合拢选中结点的父目录D 删除当前书签P 跳到根结点p 跳到父结点K 跳到当前目录下同级的第一个结点J 跳到当前目录下同级的最后一个结点k 跳到当前目录下同级的前一个结点j 跳到当前目录下同级的后一个结点C 将选中目录或选中文件的父目录设为根结点u 将当前根结点的父目录设为根目录，并变成合拢原根结点U 将当前根结点的父目录设为根目录，但保持展开原根结点r 递归刷新选中目录R 递归刷新根结点m 显示文件系统菜单cd 将 CWD 设为选中目录I 切换是否显示隐藏文件f 切换是否使用文件过滤器F 切换是否显示文件B 切换是否显示书签A 全屏显示开关q 关闭 NerdTree 窗口:NERDTreeToggle 打开 NerdTree 窗口 vimrc1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859&quot; *********************************************&quot; Vbundle插件管理&quot; *********************************************set nocompatible &quot; requiredfiletype off &quot; required&quot; set the runtime path to include Vundle and initializeset rtp+=~/.vim/bundle/Vundle.vimcall vundle#begin()&quot; alternatively, pass a path where Vundle should install plugins&quot;call vundle#begin(&apos;~/some/path/here&apos;)&quot; let Vundle manage Vundle, requiredPlugin &apos;gmarik/Vundle.vim&apos;Plugin &apos;scrooloose/nerdtree&apos;Plugin &apos;majutsushi/tagbar&apos;Plugin &apos;vim-scripts/indentpython.vim&apos;&quot; Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)&quot; All of your Plugins must be added before the following linecall vundle#end() &quot; requiredfiletype plugin indent on &quot; required&quot; *********************************************&quot; 分割布局相关&quot; *********************************************set splitbelowset splitright&quot;快捷键，ctrl+l切换到左边布局，ctrl+h切换到右边布局&quot;ctrl+k切换到上面布局，ctrl+j切换到下面布局nnoremap &lt;C-J&gt; &lt;C-W&gt;&lt;C-J&gt;nnoremap &lt;C-K&gt; &lt;C-W&gt;&lt;C-K&gt;nnoremap &lt;C-L&gt; &lt;C-W&gt;&lt;C-L&gt;nnoremap &lt;C-H&gt; &lt;C-W&gt;&lt;C-H&gt;&quot; 开启代码折叠功能&quot; 根据当前代码行的缩进来进行代码折叠set foldmethod=indentset foldlevel=99&quot; *********************************************&quot; NERD插件属性&quot; *********************************************au vimenter * NERDTree &quot; 开启vim的时候默认开启NERDTreemap &lt;F2&gt; :NERDTreeToggle&lt;CR&gt; &quot; 设置F2为开启NERDTree的快捷键&quot; tagbar 启动时自动focuslet g:tagbar_auto_faocus =1&quot; 启动指定文件时自动开启tagbarautocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()&quot; *********************************************&quot; python代码风格PEP8&quot; *********************************************au BufNewFile,BufRead *.py set tabstop=4 |set softtabstop=4|set shiftwidth=4|set textwidth=79|set expandtab|set autoindent|set fileformat=unixau BufNewFile,BufRead *.js, *.html, *.css set tabstop=2|set softtabstop=2|set shiftwidth=2]]></content>
       <categories>
-        <category>Linux</category>
+        <category>vim</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
         <tag>vim</tag>
       </tags>
   </entry>
@@ -20,6 +21,7 @@
       </categories>
       <tags>
         <tag>python</tag>
+        <tag>后端</tag>
       </tags>
   </entry>
   <entry>
@@ -71,7 +73,7 @@
     <url>%2F2018%2F04%2Fgit%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%92%8C%E8%AE%BE%E7%BD%AE%E4%B8%8D%E6%8F%90%E4%BA%A4%E5%B7%B2%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[git rm需要删除暂存区或分支上的文件, 同时工作区也不需要这个文件了1git rm file_path git rm –cache需要删除暂存区或分支上的文件, 但本地又需要使用, 只是不希望这个文件被版本控制,1git rm --cached file_path 删除之后加入.gitignoreps：.gitignore 只会对未加入版本控制的文件有效，如果已经加入过，需要从版本控制中移出 git update-index已经将这个文件提交到git库中,希望之后修改不再提交。 12345执行命令将file_path加入不提交队列git update-index --assume-unchanged file_path执行命令将xxx/xxx取消加入不提交队列git update-index --no-assume-unchanged file_path]]></content>
       <categories>
-        <category>工具</category>
+        <category>git</category>
       </categories>
       <tags>
         <tag>git</tag>
@@ -115,10 +117,11 @@
     <url>%2F2018%2F03%2FspringMVC-%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%2F</url>
     <content type="text"><![CDATA[注解1234A、处理requet uri 部分（这里指uri template中variable，不含queryString部分）的注解： @PathVariable;B、处理request header部分的注解： @RequestHeader, @CookieValue;C、处理request body部分的注解：@RequestParam, @RequestBody;D、处理attribute类型是注解： @SessionAttributes, @ModelAttribute; 接收Request uri中参数: @PathVariable 123@RequestMapping(&quot;/books/&#123;bookId&#125;&quot;) public void findPet(@PathVariable String userId, @PathVariable String bookId) &#123; &#125; 接收request header部分的注解: @RequestHeader,@CookieValue; 1234567891011@RequestMapping(&quot;/displayHeaderInfo.do&quot;) public void displayHeaderInfo(@RequestHeader(&quot;Accept-Encoding&quot;) String encoding, @RequestHeader(&quot;Keep-Alive&quot;) long keepAlive) &#123; &#125;@RequestMapping(&quot;/displayHeaderInfo.do&quot;) public void displayHeaderInfo(@CookieValue(&quot;JSESSIONID&quot;) String cookie) &#123; &#125; 接收request body部分的注解：@RequestParam,@RequestBody;@RequestParam使用场景：A)常用来处理简单类型的绑定，通过Reqeust.getParameter()获取的String可以直接转化为简单类型的情况；因为使用request.getParameter()方式获取参数，所以可以处理get方式中queryString的值，也可以获取Post方式中body data的值；B)用来处理Content-Type:为application/x-www-form-urlencoded编码的内容，提交方式GET、POST；C)该注解有两个属性：value、required;value用来指定要传入值得id名称，required用来指示参数是否必须绑定； @RequestBody作用：该注解常用来处理Content-Type:不是 application/x-www-form-urlencoded编码的内容，例如application/json,application/xml等； 它是通过HandlerAdapter配置的HttpMessageConverters来解析post data body，然后绑定到相应的bean上。 因为配置有FormHttpMessageConverter,所以也可以用来处理Application/x-www-form-urlencoded的内容，处理完的结果放在一个MultiValueMap里，这种情况特殊需求下使用，详情查看FormHttpMessageConverter api; 接收attribute类型的注解：@SessionAttributes,@ModelAttribute;@SessionAttributes:该注解用来绑定HttpSession中的attribute对象的值，便于在方法中的参数中使用。该注解有value、types两个属性，可以通过名字和类型指定要使用的attribute对象；123456@Controller @RequestMapping(&quot;/editPet.do&quot;) @SessionAttributes(&quot;pet&quot;) public class EditPetForm &#123; // ... &#125; @ModelAttribute该注解有两个用法：通常用来处理@RequestMapping之前，为请求绑定需要从后台查询的model；用于参数上时：用来通过名称对应，将相应名称的值绑定到注解的参数bean上；要绑定的值来源于：A)@SessionAttribute启用的attribute对象上；B)@ModelAttribute用于方法上时指定的model对象；C)上述两种情况都没有时，new一个需要绑定的bean对象，然后将request中按名称对应的方式把值绑定到bean中1234@ModelAttribute public Account addAccount(@RequestParam String number) &#123; return accountManager.findAccount(number); &#125; 这种方式实际的效果就是在调用@RequestMapping的方法之前，为request对象的model里put(“account”,Account); 用在参数上的@ModelAttribute示例代码：1234@RequestMapping(value=&quot;/owners/&#123;ownerId&#125;/pets/&#123;petId&#125;/edit&quot;, method = RequestMethod.POST) public String processSubmit(@ModelAttribute Pet pet) &#123; &#125; 首先查询@SessionAttributes有无绑定的Pet对象，若没有则查询@ModelAttribute方法层面上是否绑定了Pet对象，若没有则URI template中的值按对应的名称绑定到Pet对象的各属性上。 form表单提交 直接参数名接收直接通过参数名接收，添加注解@RequestParam, 不添加注解时，参数名要和表单name一致，否则接收不到。 实体bean接收bean的属性要和表单name一致，可以不添加任何注解，也可以添加注解 @ModelAttribute,括号里的别名可以任意取，也可以不填 相同参数名可以用数组接收 123456@RequestMapping(value=&quot;/array/form/post/or/get&quot;,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;) public void formPost(String[] userName,String testParam)&#123; logger.info(&quot;form表单提交，用数组接收相同参数名&quot;); logger.info(&quot;userName:&quot;+Arrays.toString(userName)); logger.info(&quot;testParam:&quot;+testParam); &#125; 链接请求 使用@PathVariable注解 使用@RequestParam注解这里和表单get请求一样 实体bean接收同表单提交一样 ajax请求 ajax请求,参数为json字符串,get请求用参数名获取json字符串，然后后台对json字符串做处理JSON.parseObject(json,class) ajax请求,参数为json字符串,post请求必须添加@RequestBody注解，利用spring框架将json串转成java bean,属性名称要和json字符串一致 ajax请求,post请求 json字符串直接用参数名获取注解@RequestBody，然后用String接收到整个json字符串 ajax发送数组格式的字符串数组格式的字符串，需要手动转换成数组对象 1234567891011121314/** * ajax发送数组格式的字符串， * 实际是数组格式的字符串，需要手动转换成数组对象 * @param params * @return */ @RequestMapping(value=&quot;/ajax/post/arr&quot;,method=RequestMethod.POST) public String ajaxPostArr(@RequestBody String params)&#123; logger.info(&quot;ajax传递数组格式的字符串&quot;); logger.info(&quot;params:&quot;+params); String[] arr = JSON.parseObject(params, String[].class); logger.info(Arrays.toString(arr)); return &quot;success&quot;; &#125; ajax直接传递数组对象，同时还可以传递其他参数 1234567891011121314151617/** * ajax直接传递数组对象，同时还可以传递其他参数， * 类似表单提交，注意要设置： * traditional：true * contentType:默认 * * @param params * @return */ @RequestMapping(value=&quot;/ajax/post/arr2&quot;,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;) public String ajaxPostArr2(String[] params,String name)&#123; logger.info(&quot;ajax传递数组对象&quot;); logger.info(Arrays.toString(params)); logger.info(&quot;name:&quot;+name); return &quot;success&quot;; &#125; 后端POST方法接收参数实体bean接收，不添加任何注解,地址参数 ajax 请求,Content type’application/x-www-form-urlencoded;charset=UTF-8’,POST 实体bean接收，不添加任何注解,body x-www-form-urlencoded 传参 ajax 请求,Content type’application/x-www-form-urlencoded;charset=UTF-8’,POST 实体bean接收，使用@RequestBody注解 ajax 请求,Content type’application/json;charset=UTF-8’,POST 实体bean接收，使用@RequestBody注解 ajax 请求,Content type’application/json;charset=UTF-8’,POST, json.stringify 参考资料https://www.jianshu.com/p/b4b2c38d31eehttps://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/https://blog.csdn.net/MyNoteBlog/article/details/72519295]]></content>
       <categories>
-        <category>后端</category>
+        <category>springMVC</category>
       </categories>
       <tags>
         <tag>spring</tag>
+        <tag>后端</tag>
         <tag>springMVC</tag>
       </tags>
   </entry>
@@ -127,11 +130,12 @@
     <url>%2F2018%2F03%2Fshiro%E7%AE%80%E4%BB%8B%2F</url>
     <content type="text"><![CDATA[什么是Apache Shiro？Apache Shiro 是一个强大易用的Java安全框架，提供了认证、授权、加密和会话管理功能，可为任何应用提供安全保障 - 从命令行应用、移动应用到大型网络及企业应用。 Shiro能做的事情 登录验证 访问控制，如： 判断用户是否拥有角色admin 判断用户是否拥有访问的权限 在任何环境下使用 Session API 可以使用多个用户数据源。例如一个是oracle用户库，另外一个是mysql用户库 单点登录（SSO）功能 “Remember Me”服务 ，类似购物车的功能，shiro官方建议开启 可以直接使用annotation对所使用的方法做权限控制 可以在jsp中通过shiro标签方便的做到细粒度的权限控制 四大API Authentication —— 认证，用户身份识别，常被称为用户“登录”，who are you? Authorization —— 授权，访问控制过程，决定“谁”访问“什么”，who can do what? Session Management —— 会话管理，用户session管理器，用户相关的时间敏感的状态 Cryptography —— 密码加密，把JDK中复杂的密码加密方式进行封装，保护或隐藏数据防止被偷窥]]></content>
       <categories>
-        <category>后端</category>
+        <category>shiro</category>
       </categories>
       <tags>
-        <tag>shiro</tag>
         <tag>java</tag>
+        <tag>后端</tag>
+        <tag>shiro</tag>
       </tags>
   </entry>
   <entry>
@@ -161,10 +165,11 @@
     <url>%2F2018%2F03%2F%E5%B8%B8%E7%94%A8%E7%9A%84JavaScript%E5%BA%93CDN%E5%8A%A0%E9%80%9F%E6%9C%8D%E5%8A%A1%2F</url>
     <content type="text"><![CDATA[国内的公共库 百度CDN公共库：http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs 百度静态资源公共库：http://cdn.code.baidu.com/ 新浪云计算CDN公共库：http://lib.sinaapp.com BootCDN公共库：http://www.bootcdn.cn 360公共库：http://libs.useso.com 七牛云存储 开放静态文件CDN：http://www.staticfile.org 又拍云JS库CDN服务：http://jscdn.upai.com 国外的公共库 CDNJS：http://www.cdnjs.com Google Hosted Libraries：https://developers.google.com/speed/libraries/ Microsoft ASP.net CDN：http://www.asp.net/ajaxlibrary/cdn.ashx jsDelivr：http://www.jsdelivr.com/]]></content>
       <categories>
-        <category>前端</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
         <tag>JavaScript</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -184,7 +189,7 @@
     <url>%2F2017%2F11%2Fgit%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[流程12工作区 ---&gt; 暂存区 ----&gt; （历史）本地分支 ---&gt; 远程分支 add commit push 工作区和暂存区1234工作区：在电脑里能看到的目录版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。版本库里最重要的就是称为stage（或者叫index）的暂存区，(add操作)，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD，（commit操作）。 分支创建与切换123456git checkout -b dev #git checkout命令加上-b参数表示创建并切换相当于git branch dev #创建分支git checkout dev #切换分支git branch #查看分支 删除分支1git branch -d dev 合并分支fast-forward 快速合并不产生合并节点，看不出来曾经做过合并no-ff 合并生成合并节点 123git merge dev #git merge命令用于合并指定分支到当前分支git merge --no-ff -m &quot;merge with no-ff&quot; dev #合并生成合并节点 查看日志12git log #查看日志git log --graph --pretty=oneline --abbrev-commit #图形查看日志 查看具体某次提交1git show 3ad960849d6f10c92356ecdf952d5e4bfd0df1cd 版本回退和恢复12345678910111213回退工作区修改文件git checkout -- &lt;file&gt; 回退暂存区修改文件（add操作）git reset HEAD &lt;file&gt;git checkout -- &lt;file&gt; 回退本地分支修改文件 （add commit操作）git reset --hard HEAD^ #git reset HEAD~2恢复git reflog git reflog git reset --hard 0a1f420 暂时储藏修改当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场123git stash #储藏代码git stash list #查看列表git stash pop #回到工作现场 Reset、Checkout、Revert 的选择123456789reset 将一个分支的末端指向另一个提交。--soft – 缓存区和工作目录都不会被改变--mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响--hard – 缓存区和工作目录都同步到你指定的提交checkout 除了分支之外，你还可以传入提交的引用来 checkout 到任意的提交。git checkout HEAD~2Revert 撤销一个提交的同时会创建一个新的提交,相比 git reset，它不会改变现在的提交历史。因此，git revert 可以用在公共分支上，git reset 应该用在私有分支上。你也可以把 git revert 当作撤销已经提交的更改，而 git reset HEAD 用来撤销没有提交的更改。 git修改远程仓库地址方法有三种：查看远程地址git remote -v 修改命令 1git remote set-url origin [url] 先删后加 12git remote rm origingit remote add origin [url] 直接修改config文件 git上新建项目之后1234567891011…or create a new repository on the command line echo &quot;# hello&quot; &gt;&gt; README.md git init git add README.md git commit -m &quot;first commit&quot; git remote add origin git@github.com:hanqingsong/hello.git git push -u origin master …or push an existing repository from the command line git remote add origin git@github.com:hanqingsong/hello.git git push -u origin master 参考https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9https://github.com/geeeeeeeeek/git-recipes/wiki]]></content>
       <categories>
-        <category>工具</category>
+        <category>git</category>
       </categories>
       <tags>
         <tag>git</tag>
@@ -404,11 +409,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Netty 学习]]></title>
-    <url>%2F2017%2F10%2FNetty-%E5%AD%A6%E4%B9%A0%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[idea初始化设置]]></title>
     <url>%2F2017%2F09%2Fidea%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[编程字体设置根据个人喜好选择喜欢的编程字体editor–&gt;font–&gt;font选用 Monospace 14字体，行距1.1（个人喜欢）或选用 Courier new 15字体，行距1. 去除大小写敏感 Editor –&gt; Code Completion，设置Case sensitive completion为none。 显示行号Editor -&gt; General -&gt; Appearance，勾选show line numbers。 设置编辑器和控制台的字体Appearence–&gt;override default fonts by设置为consolasCourier 修改文件默认签名Editor-&gt;File and Code Templates-&gt;Includes-&gt;File Header 123/** * Created by $&#123;USER&#125; on $&#123;DATE&#125;. */ 添加自定义代码补全Live TemplatesEditor -&gt; Live Templates 设置护眼色Editor-&gt; Color Schemebackground 设置为 C7EDCC 插件Save Actions保存代码格式化 Alibaba Java Coding Guidelines代码规范检查 CamelCase单词格式切换，Switch easily between CamelCase, camelCase, snake_case and SNAKE_CASE. See Edit menu or use SHIFT + ALT + U. String Manipulation类似CamelCase]]></content>
@@ -470,6 +470,14 @@
     <title><![CDATA[oh-my-zsh使用]]></title>
     <url>%2F2017%2F09%2Foh-my-zsh%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[shell查看当前的shell cat /etc/shells 123456789# List of acceptable shells for chpass(1).# Ftpd will not allow users to connect who are not using# one of these shells./bin/bash/bin/csh/bin/ksh/bin/sh/bin/tcsh zsh 安装12CentOS 安装：sudo yum install -y zshmac 安装：brew install zsh zsh设置成系统默认shell，以代替bash chsh -s /bin/zsh oh-my-zshoh-my-zsh 是 zsh 的一个配置工具。安装 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 安装插件 vim .zshrc 修改 plugins=(git) 为 plugins=(git autojump)使配置生效 source ~/.zshrc 修改主题.zshrc 中修改ZSH_THEME=’’ 打开sublime配置 alias st=’open -a “Sublime Text”‘]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>mac</tag>
+        <tag>Linux</tag>
+        <tag>zsh</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[PlainTasks使用-sublime待办插件]]></title>
@@ -497,11 +505,12 @@
   <entry>
     <title><![CDATA[vim使用]]></title>
     <url>%2F2017%2F09%2Fvim%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[vim编辑粘贴代码格式化vim粘贴代码会有代码代码错乱的问题 在粘贴前先设置进入粘贴插入模式，即不会自动缩进和连续注释set paste然后再进入插入模式粘贴在粘贴插入模式下代码是不会自动按格式缩进的，需要使用nopaste设置回来set nopaste也可以在.vimrc中设置切换的快捷键，比如设置F9，则可以在.vimrc中加入：set pastetoggle=这样直接在插入模式按F9就会在“– 插入 –”模式和“– 插入（粘贴） –”模式中切换 移动1234^ 移到当前行的第一个非空字符$ 移到当前行的最后一个字符G 移到文件的最后一行gg 移到文件的第一行 文本操作1234567891011:r file 读入文件 file 内容，并插在当前行后:nr file 读入文件 file 内容，并插在第 n 行后:r !pwd 插入当前路径yy 复制一行，此命令前可跟数字，标识复制多行，如6yy，表示从当前行开始复制6行yw 复制一个字y$ 复制到行末]p 有缩进的粘贴，vim会自动调节代码的缩进格式化全文： gg=G 替换与操作123:g/text1/s/text2/text3 查找包含 text1 的行，用 text3 替换 text2:g/text/command 在所有包含 text 的行运行 command 所表示的命令:v/text/command 在所有不包含 text 的行运行 command 所表示的命令 保存文本和退出12345:w 保存文件但不退出 vi:w file 将修改保存在 file 中但不退出 vi:wq 或 ZZ 或 :x 保存文件并退出 vi:q! 不保存文件，退出 vi:e! 放弃所有修改，从上次保存文件开始再编辑 vi 中的选项12:set number 显示行数:set nonumber 取消显示行数 vi 中的 shell 转义命令1234567:!command 执行 shell 的 command 命令，如 :!ls:!! 执行前一个 shell 命令:r!command 读取 command 命令的输入并插入，如 :r!ls 会先执行 ls，然后读入内容:w!command 将当前已编辑文件作为 command 命令的标准输入并执行 command 命令，如 :w!grep all:cd directory 将当前工作目录更改为 directory 所表示的目录:sh 将启动一个子 shell，使用 ^d(ctrl+d) 返回 vi:so file 在 shell 程序 file 中读入和执行命令 vim 分屏]]></content>
+    <content type="text"><![CDATA[vim编辑粘贴代码格式化vim粘贴代码会有代码代码错乱的问题 在粘贴前先设置进入粘贴插入模式，即不会自动缩进和连续注释set paste然后再进入插入模式粘贴在粘贴插入模式下代码是不会自动按格式缩进的，需要使用nopaste设置回来set nopaste也可以在.vimrc中设置切换的快捷键，比如设置F9，则可以在.vimrc中加入：set pastetoggle=这样直接在插入模式按F9就会在“– 插入 –”模式和“– 插入（粘贴） –”模式中切换 移动1234^ 移到当前行的第一个非空字符$ 移到当前行的最后一个字符G 移到文件的最后一行gg 移到文件的第一行 文本操作1234567891011:r file 读入文件 file 内容，并插在当前行后:nr file 读入文件 file 内容，并插在第 n 行后:r !pwd 插入当前路径yy 复制一行，此命令前可跟数字，标识复制多行，如6yy，表示从当前行开始复制6行yw 复制一个字y$ 复制到行末]p 有缩进的粘贴，vim会自动调节代码的缩进格式化全文： gg=G 替换与操作123:g/text1/s/text2/text3 查找包含 text1 的行，用 text3 替换 text2:g/text/command 在所有包含 text 的行运行 command 所表示的命令:v/text/command 在所有不包含 text 的行运行 command 所表示的命令 保存文本和退出12345:w 保存文件但不退出 vi:w file 将修改保存在 file 中但不退出 vi:wq 或 ZZ 或 :x 保存文件并退出 vi:q! 不保存文件，退出 vi:e! 放弃所有修改，从上次保存文件开始再编辑 vi 中的选项12:set number 显示行数:set nonumber 取消显示行数 vi 中的 shell 转义命令1234567:!command 执行 shell 的 command 命令，如 :!ls:!! 执行前一个 shell 命令:r!command 读取 command 命令的输入并插入，如 :r!ls 会先执行 ls，然后读入内容:w!command 将当前已编辑文件作为 command 命令的标准输入并执行 command 命令，如 :w!grep all:cd directory 将当前工作目录更改为 directory 所表示的目录:sh 将启动一个子 shell，使用 ^d(ctrl+d) 返回 vi:so file 在 shell 程序 file 中读入和执行命令 vim 分屏123456789101112131415161718192021222324252627282930313233343536分屏启动使用大写的O参数来垂直分屏。vim -On file1 file2 ...使用小写的o参数来水平分屏。vim -on file1 file2 ...n是数字，表示分成几个屏关闭分屏关闭当前窗口。Ctrl+W c关闭当前窗口，如果只剩最后一个了，则退出Vim。Ctrl+W q分屏上下分割当前打开的文件。Ctrl+W s上下分割，并打开一个新的文件。:sp filename左右分割当前打开的文件。Ctrl+W v左右分割，并打开一个新的文件。:vsp filename屏幕尺寸让所有的屏都有一样的高度。Ctrl+W =增加高度。Ctrl+W +减少高度。Ctrl+W -:res(ize) num 例如：:res 5，显示行数调整为5行:res(ize)+num 把当前窗口高度增加num行:res(ize)-num 把当前窗口高度减少num行给窗口重命名:f file]]></content>
       <categories>
-        <category>Linux</category>
+        <category>vim</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
         <tag>vim</tag>
       </tags>
   </entry>

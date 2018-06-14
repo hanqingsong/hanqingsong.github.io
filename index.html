@@ -370,8 +370,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/vim/" itemprop="url" rel="index">
+                    <span itemprop="name">vim</span>
                   </a>
                 </span>
 
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  934
+                  1,386
                 </span>
               
 
@@ -439,7 +439,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4
+                  6
                 </span>
               
             </div>
@@ -485,22 +485,10 @@
 </ol>
 <h2 id="页签"><a href="#页签" class="headerlink" title="页签"></a>页签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">:tabnew [++opt选项] ［＋cmd］ 文件            建立对指定文件新的tabta</div><div class="line">:tab &lt;文件&gt;  新页签打开指定文件</div><div class="line">:tabc       关闭当前的tab</div><div class="line">:tabo       关闭所有其他的tab</div><div class="line">:tabs       查看所有打开的tab</div><div class="line">:tabp      前一个</div><div class="line">:tabn      后一个</div><div class="line">标准模式下：</div><div class="line">gt , gT 可以直接在tab之间切换。</div><div class="line">ngt 切换到指定的窗口。</div><div class="line">更多可以查看帮助 :help table ， help -p</div></pre></td></tr></table></figure>
 <h2 id="编译运行"><a href="#编译运行" class="headerlink" title="编译运行"></a>编译运行</h2><p>vim 环境下，在命令模式中输入下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:!python %</div></pre></td></tr></table></figure></p>
-<h2 id="NERDTree命令"><a href="#NERDTree命令" class="headerlink" title="NERDTree命令"></a>NERDTree命令</h2><ol>
-<li>窗口切换<br> ctrl + w + h    光标 focus 左侧树形目录<br> ctrl + w + l    光标 focus 右侧文件显示窗口<br> ctrl + w + w    光标自动在左右侧窗口切换<br> ctrl + w + r    移动当前窗口的布局位置</li>
-<li>o 打开关闭文件或者目录，如果是文件的话，光标出现在打开的文件中<br>go 效果同上，不过光标保持在文件目录里，类似预览文件内容的功能<br>i和s可以水平分割或纵向分割窗口打开文件，前面加g类似go的功能</li>
-<li>t 在标签页中打开</li>
-<li>T 在后台标签页中打开</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">o       在已有窗口中打开文件、目录或书签，并跳到该窗口</div><div class="line">go      在已有窗口 中打开文件、目录或书签，但不跳到该窗口</div><div class="line">t       在新 Tab 中打开选中文件/书签，并跳到新 Tab</div><div class="line">T       在新 Tab 中打开选中文件/书签，但不跳到新 Tab</div><div class="line">i       split 一个新窗口打开选中文件，并跳到该窗口</div><div class="line">gi      split 一个新窗口打开选中文件，但不跳到该窗口</div><div class="line">s       vsplit 一个新窗口打开选中文件，并跳到该窗口</div><div class="line">gs      vsplit 一个新 窗口打开选中文件，但不跳到该窗口</div></pre></td></tr></table></figure>
-<ol>
-<li>p 到上层目录</li>
-<li>P 到根目录</li>
-<li>K 到同目录第一个节点</li>
-<li>J 到同目录最后一个节点</li>
-<li>m 显示文件系统菜单（添加、删除、移动操作）</li>
-<li>? 帮助</li>
-<li>q 关闭</li>
-</ol>
+<h2 id="NERDTree命令"><a href="#NERDTree命令" class="headerlink" title="NERDTree命令"></a>NERDTree命令</h2><p>安装<br>git clone <a href="https://github.com/scrooloose/nerdtree.git" target="_blank" rel="external">https://github.com/scrooloose/nerdtree.git</a> ~/.vim/bundle</p>
+<p>:h NERDTree 查看帮助文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">?                         查看所有命令</div><div class="line"></div><div class="line">窗口切换</div><div class="line">ctrl + w + h              光标移动到左侧树形目录</div><div class="line">ctrl + w + l              光标移动到右侧文件显示窗口</div><div class="line">ctrl + w + w              光标自动在左右侧窗口切换</div><div class="line">ctrl + w + r              移动当前窗口的布局位置</div><div class="line"></div><div class="line">打开文件</div><div class="line">o                         在已有窗口中打开文件、目录或书签，并跳到该窗口</div><div class="line">go                        在已有窗口 中打开文件、目录或书签，但不跳到该窗口</div><div class="line">t                         在新 Tab 中打开选中文件/书签，并跳到新 Tab</div><div class="line">T                         在新 Tab 中打开选中文件/书签，但不跳到新 Tab</div><div class="line">i                         split 一个新窗口打开选中文件，并跳到该窗口</div><div class="line">gi                        split 一个新窗口打开选中文件，但不跳到该窗口</div><div class="line">s                         vsplit 一个新窗口打开选中文件，并跳到该窗口</div><div class="line">gs                        vsplit 一个新 窗口打开选中文件，但不跳到该窗口</div><div class="line">!                         执行当前文件</div><div class="line">O                         递归打开选中 结点下的所有目录</div><div class="line">x                         合拢选中结点的父目录</div><div class="line"></div><div class="line">D                         删除当前书签</div><div class="line"></div><div class="line">P                         跳到根结点</div><div class="line">p                         跳到父结点</div><div class="line">K                         跳到当前目录下同级的第一个结点</div><div class="line">J                         跳到当前目录下同级的最后一个结点</div><div class="line">k                         跳到当前目录下同级的前一个结点</div><div class="line">j                         跳到当前目录下同级的后一个结点</div><div class="line"></div><div class="line">C                         将选中目录或选中文件的父目录设为根结点</div><div class="line">u                         将当前根结点的父目录设为根目录，并变成合拢原根结点</div><div class="line">U                         将当前根结点的父目录设为根目录，但保持展开原根结点</div><div class="line">r                         递归刷新选中目录</div><div class="line">R                         递归刷新根结点</div><div class="line">m                         显示文件系统菜单</div><div class="line">cd                        将 CWD 设为选中目录</div><div class="line"></div><div class="line">I                         切换是否显示隐藏文件</div><div class="line">f                         切换是否使用文件过滤器</div><div class="line">F                         切换是否显示文件</div><div class="line">B                         切换是否显示书签</div><div class="line"></div><div class="line">A                         全屏显示开关</div><div class="line">q                         关闭 NerdTree 窗口</div><div class="line">:NERDTreeToggle           打开 NerdTree 窗口</div></pre></td></tr></table></figure>
+<h2 id="vimrc"><a href="#vimrc" class="headerlink" title="vimrc"></a>vimrc</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">&quot; *********************************************</div><div class="line">&quot; Vbundle插件管理</div><div class="line">&quot; *********************************************</div><div class="line">set nocompatible              &quot; required</div><div class="line">filetype off                  &quot; required</div><div class="line"></div><div class="line">&quot; set the runtime path to include Vundle and initialize</div><div class="line">set rtp+=~/.vim/bundle/Vundle.vim</div><div class="line">call vundle#begin()</div><div class="line"></div><div class="line">&quot; alternatively, pass a path where Vundle should install plugins</div><div class="line">&quot;call vundle#begin(&apos;~/some/path/here&apos;)</div><div class="line"></div><div class="line">&quot; let Vundle manage Vundle, required</div><div class="line">Plugin &apos;gmarik/Vundle.vim&apos;</div><div class="line">Plugin &apos;scrooloose/nerdtree&apos;</div><div class="line">Plugin &apos;majutsushi/tagbar&apos;</div><div class="line">Plugin &apos;vim-scripts/indentpython.vim&apos;</div><div class="line"></div><div class="line"></div><div class="line">&quot; Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)</div><div class="line">&quot; All of your Plugins must be added before the following line</div><div class="line">call vundle#end()            &quot; required</div><div class="line">filetype plugin indent on    &quot; required</div><div class="line"></div><div class="line">&quot; *********************************************</div><div class="line">&quot; 分割布局相关</div><div class="line">&quot; *********************************************</div><div class="line">set splitbelow</div><div class="line">set splitright</div><div class="line">&quot;快捷键，ctrl+l切换到左边布局，ctrl+h切换到右边布局</div><div class="line">&quot;ctrl+k切换到上面布局，ctrl+j切换到下面布局</div><div class="line">nnoremap &lt;C-J&gt; &lt;C-W&gt;&lt;C-J&gt;</div><div class="line">nnoremap &lt;C-K&gt; &lt;C-W&gt;&lt;C-K&gt;</div><div class="line">nnoremap &lt;C-L&gt; &lt;C-W&gt;&lt;C-L&gt;</div><div class="line">nnoremap &lt;C-H&gt; &lt;C-W&gt;&lt;C-H&gt;</div><div class="line"></div><div class="line">&quot; 开启代码折叠功能</div><div class="line">&quot; 根据当前代码行的缩进来进行代码折叠</div><div class="line">set foldmethod=indent</div><div class="line">set foldlevel=99</div><div class="line"></div><div class="line">&quot; *********************************************</div><div class="line">&quot; NERD插件属性</div><div class="line">&quot; *********************************************</div><div class="line">au vimenter * NERDTree      &quot; 开启vim的时候默认开启NERDTree</div><div class="line">map &lt;F2&gt; :NERDTreeToggle&lt;CR&gt;    &quot; 设置F2为开启NERDTree的快捷键</div><div class="line"></div><div class="line"></div><div class="line">&quot; tagbar  启动时自动focus</div><div class="line">let g:tagbar_auto_faocus =1</div><div class="line">&quot; 启动指定文件时自动开启tagbar</div><div class="line">autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()</div><div class="line"></div><div class="line">&quot; *********************************************</div><div class="line">&quot; python代码风格PEP8</div><div class="line">&quot; *********************************************</div><div class="line">au BufNewFile,BufRead *.py set tabstop=4 |set softtabstop=4|set shiftwidth=4|set textwidth=79|set expandtab|set autoindent|set fileformat=unix</div><div class="line">au BufNewFile,BufRead *.js, *.html, *.css set tabstop=2|set softtabstop=2|set shiftwidth=2</div></pre></td></tr></table></figure>
 
           
         
@@ -1606,8 +1594,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
                   </a>
                 </span>
 
@@ -2342,7 +2330,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2388,7 +2376,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2399,7 +2387,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2410,7 +2398,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
