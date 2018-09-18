@@ -1,5 +1,5 @@
 ---
-layout: post/mongodb
+layout: post
 title: MongoDB安装使用
 tags:
   - MongoDB
