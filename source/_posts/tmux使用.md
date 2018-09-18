@@ -116,6 +116,20 @@ set-option -g mouse on
 
 配置之后进入命令行，输入 tmux source  ~/.tmux.conf，使配置生效。
 
+## 进入vi copy模式
+```
+#vi
+setw -g mode-keys vi
+bind -t vi-copy v begin-selection
+bind -t vi-copy y copy-selection
+```
+或者使用鼠标选中，按y复制
+
+复制到系统剪贴板中
+Mac 下如果用 iterm2 可以在 preference 下选择 Applications in terminal may access clipboard。
+
+
+
 ## 参考
 http://cenalulu.github.io/linux/tmux/
 http://guoqiao.me/post/2016/tmux

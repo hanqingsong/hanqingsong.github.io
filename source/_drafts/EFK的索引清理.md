@@ -17,7 +17,7 @@ rm -rf *2016-07-*
 二、api删除
 
 ```
-curl -XDELETE 'http://127.0.0.1:9200/logstash-2016-07-*'
+curl -XDELETE 'http://127.0.0.1:9200/logstash-2017-10-*'
 ```
 
 清理掉了所有 7月份的索引文件，我发现curl 删除比rm删除要快出很多

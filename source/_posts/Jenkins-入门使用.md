@@ -29,10 +29,17 @@ sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist
 sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist
 ```
 
+## 设置为中文
+1. 安装Locale Plugin， 重启生效。
+2. 配置【Manage Jenkins】>【Configure System】> 【Locale】
+3. 语言填zh_CN，勾选强制设置语言
+
 ## 运行远程脚本
-安装Jenkins SSH plugin插件
-在系统配置里配置Publish over SSH
-增加构建步骤send files or ececute commands over SSH
+1. 安装Jenkins SSH plugin插件
+2. 在系统配置里配置Publish over SSH
+复制jenkins所在服务器密钥
+配置远程ssh server
+3. 增加构建步骤send files or ececute commands over SSH
 ```
 SSH  Server Name：选个一个你在系统设置里配置的名字
 Transfer Set Source files：需要上传的文件（注意：相对于工作区的路径。看后面的配置可以填写多个，默认用,分隔）

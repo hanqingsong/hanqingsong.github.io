@@ -95,6 +95,12 @@ detected index data in default.path.data [/var/lib/elasticsearch/nodes/0/indices
 * 要搜索一个值的范围，你可以用范围查询语法，[START_VALUE TO END_VALUE]。比如，要查找 4xx 的状态码，你可以输入 status:[400 TO 499]。
 * 要指定更复杂的搜索标准，你可以用布尔操作符 AND, OR, 和 NOT。比如，要查找 4xx 的状态码，还是 php 或 html 结尾的数据，你可以输入 status:[400 TO 499] AND (extension:php OR extension:html)。
 
+## 检查健康状况
+curl localhost:9200/_cat/health
+## 查看索引
+curl -XGET 'http://localhost:9200/_cat/indices?v'
+## 删除索引
+curl -XDELETE 'http://10.1.1.92:9200/filebeat-2017.10.*'
 
 ## 参考
 https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEg

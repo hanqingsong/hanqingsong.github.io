@@ -67,6 +67,9 @@ Options:
   -q, --quiet           Only display numeric IDs
   -s, --size            Display total file sizes
 ```
+查看正在运行的容器
+docker ps
+docker container ls
 
 ### docker run
 如果我们需要一个保持运行的容器呢，最简单的方法就是给这个容器一个可以保持的应用，比如bash，运行 ubuntu 容器并进入容器的 bash
@@ -84,12 +87,30 @@ ubuntu：运行的镜像名称，默认为latest 标签
 ```
 docker run 命令实际上是 docker create 和 docker start 的组合。
 
+```
+docker run --name nginx001 -idt -P -v /mnt/hgfs/common_dir:/usr/Downloads daocloud.io/library/nginx
+1
+下面来解释一下这一行命令:
+run 根据指定的镜像文件启动一个容器
+--name nginx001 启动后这个容器的名字
+-d: 后台运行，并返回ID
+-i: 互模式运行容器
+-t: 为容器分配一个伪输入终端
+-P: 随机映射一个端口至容器内部开放的网络端口
+-v /mnt/hgfs/common_dir:/usr/Downloads：指定共享文件目录，进入容器后，容器的/usr/Downloads实际上就是ubuntu的/mnt/hgfs/common_dir目录了，这样传文件方便
+daocloud.io/library/nginx：镜像文件名称，就是刚才下载的那个
+```
+
 ### docker attach
 进入正在运行的容器
 可通过 Ctrl+p 然后 Ctrl+q 组合键退出 attach 终端。
 
 ### docker exec
 docker exec 进入相同的容器
+```
+执行 exit 退出容器，回到 docker host。
+docker exec -it <container> bash|sh 是执行 exec 最常用的方式
+```
 
 ### attach VS exec
 attach 与 exec 主要区别如下:
@@ -97,8 +118,12 @@ attach 与 exec 主要区别如下:
 2. exec 则是在容器中打开新的终端，并且可以启动新的进程。
 3. 如果想直接在终端中查看启动命令的输出，用 attach；其他情况使用 exec。
 
+如果只是为了查看启动命令的输出，可以使用 docker logs 命令，-f 的作用与 tail -f 类似，能够持续打印输出。
 ### docker start
 启动容器
+
+## docker stop
+暂停一个或多个运行的容器
 
 ### docker inspect
 查看 Docker 容器或镜像的一些内部信息
@@ -125,6 +150,11 @@ docker rm -v $(docker ps -aq -f status=exited)
 给镜像打 tag
 
 ### Dockerfile 创建镜像
+制作镜像的方式主要有两种：
+通过docker commit 制作镜像
+docker commit 是往版本控制系统里提交一次变更。使用这种方式制作镜像，本质上是运行一个基础镜像，然后在基础镜像上进行软件安装和修改。最后再将改动提交到版本系统中。
+通过docker build 制作镜像
+使用docker build创建镜像需要编写Dockerfile.
 ```
 1. 创建Dockerfile文件
 from ubuntu:latest
@@ -219,5 +249,6 @@ docker run --rm --volumes-from shiyanloudb -v /tmp/backup:/backup ubuntu tar cvf
 执行完上述命令，在宿主机的/tmp/backup/shiyanloudb.tar下将会有shiyanloudb.tar文件
 
 ## 资料
+Docker常见命令---简易教程：http://www.youruncloud.com/docker/1_37.html
 https://docs.docker.com/install/linux/docker-ce/centos/#os-requirements
 https://docs.docker.com/get-started/

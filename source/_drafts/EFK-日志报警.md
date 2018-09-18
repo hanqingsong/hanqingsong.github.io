@@ -137,9 +137,12 @@ cardinality：在相同 query_key条件下，timeframe范围内cardinality_field
 ## 启动
 启动elastalert服务，监听elasticsearch
 ```
+python -m elastalert.elastalert --verbose
 python -m elastalert.elastalert --verbose --rule example_rules/example_test.yaml
 
 后台运行
+nohup python -m elastalert.elastalert --verbose  >/dev/null 2>&1 &
+指定配置文件
 nohup python -m elastalert.elastalert --verbose --rule example_rules/example_test.yaml >/dev/null 2>&1 &
 ```
 
