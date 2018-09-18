@@ -1,11 +1,12 @@
 ---
-title: mongodMongoDB数据库角色
-date: 2018-05-11 18:41:46
+title: MongoDB数据库角色
 categories:
-    - MongoDB
+  - MongoDB
 tags:
-    - MongoDB
+  - MongoDB
+date: 2018-05-11 18:41:46
 ---
+
 ## 内建的角色
 数据库用户角色：read、readWrite;
 数据库管理角色：dbAdmin、dbOwner、userAdmin；
