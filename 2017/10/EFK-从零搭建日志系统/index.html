@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="青松的博客">
 <meta property="og:description" content="分析日志需要包含字段：  time level app_id instance_id日志从产生到消费，主要经历以下几个阶段：采集-&amp;gt;传输-&amp;gt;切分-&amp;gt;检索。  区分实例 instance_id通过设置filebeat 系统搭建Filebeat 安装1234567891011121314curl -L -O https://artifacts.elastic.co/downloads">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-07T06:47:40.000Z">
+<meta property="og:updated_time" content="2018-07-17T12:04:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EFK-从零搭建日志系统">
 <meta name="twitter:description" content="分析日志需要包含字段：  time level app_id instance_id日志从产生到消费，主要经历以下几个阶段：采集-&amp;gt;传输-&amp;gt;切分-&amp;gt;检索。  区分实例 instance_id通过设置filebeat 系统搭建Filebeat 安装1234567891011121314curl -L -O https://artifacts.elastic.co/downloads">
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  625
+                  663
                 </span>
               
 
@@ -481,6 +481,9 @@
 <li>要搜索一个值的范围，你可以用范围查询语法，[START_VALUE TO END_VALUE]。比如，要查找 4xx 的状态码，你可以输入 status:[400 TO 499]。</li>
 <li>要指定更复杂的搜索标准，你可以用布尔操作符 AND, OR, 和 NOT。比如，要查找 4xx 的状态码，还是 php 或 html 结尾的数据，你可以输入 status:[400 TO 499] AND (extension:php OR extension:html)。</li>
 </ul>
+<h2 id="检查健康状况"><a href="#检查健康状况" class="headerlink" title="检查健康状况"></a>检查健康状况</h2><p>curl localhost:9200/_cat/health</p>
+<h2 id="查看索引"><a href="#查看索引" class="headerlink" title="查看索引"></a>查看索引</h2><p>curl -XGET ‘<a href="http://localhost:9200/_cat/indices?v" target="_blank" rel="external">http://localhost:9200/_cat/indices?v</a>‘</p>
+<h2 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h2><p>curl -XDELETE ‘<a href="http://10.1.1.92:9200/filebeat-2017.10.*" target="_blank" rel="external">http://10.1.1.92:9200/filebeat-2017.10.*</a>‘</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEg" target="_blank" rel="external">https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEg</a><br>ELKstack 中文指南：<a href="https://kibana.logstash.es/content/kibana/v5/discover.html" target="_blank" rel="external">https://kibana.logstash.es/content/kibana/v5/discover.html</a></p>
 
       
@@ -633,7 +636,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -644,7 +647,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -655,7 +658,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -732,7 +735,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区分实例-instance-id"><span class="nav-number">2.</span> <span class="nav-text">区分实例 instance_id</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统搭建"><span class="nav-number">3.</span> <span class="nav-text">系统搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Filebeat-安装"><span class="nav-number">3.1.</span> <span class="nav-text">Filebeat 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elasticsearch-安装"><span class="nav-number">3.2.</span> <span class="nav-text">elasticsearch 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Kibana"><span class="nav-number">3.3.</span> <span class="nav-text">安装Kibana</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改日志收集路径"><span class="nav-number">3.4.</span> <span class="nav-text">修改日志收集路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kibana使用"><span class="nav-number">3.5.</span> <span class="nav-text">kibana使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Lucene-query-syntax"><span class="nav-number">3.5.1.</span> <span class="nav-text">Lucene query syntax</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区分实例-instance-id"><span class="nav-number">2.</span> <span class="nav-text">区分实例 instance_id</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统搭建"><span class="nav-number">3.</span> <span class="nav-text">系统搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Filebeat-安装"><span class="nav-number">3.1.</span> <span class="nav-text">Filebeat 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elasticsearch-安装"><span class="nav-number">3.2.</span> <span class="nav-text">elasticsearch 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Kibana"><span class="nav-number">3.3.</span> <span class="nav-text">安装Kibana</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改日志收集路径"><span class="nav-number">3.4.</span> <span class="nav-text">修改日志收集路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kibana使用"><span class="nav-number">3.5.</span> <span class="nav-text">kibana使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Lucene-query-syntax"><span class="nav-number">3.5.1.</span> <span class="nav-text">Lucene query syntax</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查健康状况"><span class="nav-number">4.</span> <span class="nav-text">检查健康状况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看索引"><span class="nav-number">5.</span> <span class="nav-text">查看索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除索引"><span class="nav-number">6.</span> <span class="nav-text">删除索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
