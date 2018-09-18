@@ -18,8 +18,8 @@
   
   <entry>
     <title>vim使用（2）编辑</title>
-    <link href="http://www.codr.top/2018/05/vim%E4%BD%BF%E7%94%A8%EF%BC%882%EF%BC%89%E7%BC%96%E8%BE%91/"/>
-    <id>http://www.codr.top/2018/05/vim使用（2）编辑/</id>
+    <link href="http://www.codr.top/2018/05/vim/vim%E4%BD%BF%E7%94%A8%EF%BC%882%EF%BC%89%E7%BC%96%E8%BE%91/"/>
+    <id>http://www.codr.top/2018/05/vim/vim使用（2）编辑/</id>
     <published>2018-05-23T15:44:13.000Z</published>
     <updated>2018-05-31T04:22:33.000Z</updated>
     
@@ -47,8 +47,8 @@
   
   <entry>
     <title>python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别</title>
-    <link href="http://www.codr.top/2018/05/python%E4%B8%ADvenv%EF%BC%8Cpyvenv%EF%BC%8Cpyenv%EF%BC%8Cvirtualenv%EF%BC%8Cvirtualenvwrapper%EF%BC%8Cpipenv%E7%AD%89%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
-    <id>http://www.codr.top/2018/05/python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别/</id>
+    <link href="http://www.codr.top/2018/05/python/python%E4%B8%ADvenv%EF%BC%8Cpyvenv%EF%BC%8Cpyenv%EF%BC%8Cvirtualenv%EF%BC%8Cvirtualenvwrapper%EF%BC%8Cpipenv%E7%AD%89%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
+    <id>http://www.codr.top/2018/05/python/python中venv，pyvenv，pyenv，virtualenv，virtualenvwrapper，pipenv等有什么区别/</id>
     <published>2018-05-22T13:50:45.000Z</published>
     <updated>2018-05-31T04:24:11.000Z</updated>
     
@@ -75,8 +75,8 @@
   
   <entry>
     <title>java中long型string型ip地址转换</title>
-    <link href="http://www.codr.top/2018/05/java%E4%B8%ADlong%E5%9E%8Bstring%E5%9E%8Bip%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2/"/>
-    <id>http://www.codr.top/2018/05/java中long型string型ip地址转换/</id>
+    <link href="http://www.codr.top/2018/05/Java/java%E4%B8%ADlong%E5%9E%8Bstring%E5%9E%8Bip%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2/"/>
+    <id>http://www.codr.top/2018/05/Java/java中long型string型ip地址转换/</id>
     <published>2018-05-17T01:52:23.000Z</published>
     <updated>2018-05-24T09:08:09.000Z</updated>
     
@@ -95,6 +95,31 @@
     
     
       <category term="string" scheme="http://www.codr.top/tags/string/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB数据库角色</title>
+    <link href="http://www.codr.top/2018/05/MongoDB/MongoDB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%92%E8%89%B2/"/>
+    <id>http://www.codr.top/2018/05/MongoDB/MongoDB数据库角色/</id>
+    <published>2018-05-11T10:41:46.000Z</published>
+    <updated>2018-09-18T01:54:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="内建的角色"><a href="#内建的角色" class="headerlink" title="内建的角色"></a>内建的角色</h2><p>数据库用户角色：read、readWrite;<br>数据库管理角色：dbAdmin、dbOwner、userAdmin；<br>集群管理角色：clusterAdmin、clusterManager、clusterMonitor、hostManager；<br>备份恢复角色：backup、restore；<br>所有数据库角色：readAnyDatabase、readWriteAnyDatabase、userAdminAnyDatabase、dbAdminAnyDatabase<br>超级用户角色：root // 这里还有几个角色间接或直接提供了系统超级用户的访问（dbOwner 、userAdmin、userAdminAnyDatabase）<br>内部角色：__system</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">角色说明：</div><div class="line">Read：允许用户读取指定数据库</div><div class="line">readWrite：允许用户读写指定数据库</div><div class="line">dbAdmin：允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile</div><div class="line">userAdmin：允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户</div><div class="line">clusterAdmin：只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限。</div><div class="line">readAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读权限</div><div class="line">readWriteAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读写权限</div><div class="line">userAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的userAdmin权限</div><div class="line">dbAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限。</div><div class="line">root：只在admin数据库中可用。超级账号，超级权限</div></pre></td></tr></table></figure><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="https://www.jianshu.com/p/a4e94bb8a052" target="_blank" rel="external">https://www.jianshu.com/p/a4e94bb8a052</a><br><a href="https://docs.mongodb.com/manual/reference/built-in-roles/#built-in-roles" target="_blank" rel="external">https://docs.mongodb.com/manual/reference/built-in-roles/#built-in-roles</a><br><a href="https://link.jianshu.com/?t=https://docs.mongodb.com/manual/reference/configuration-options/" target="_blank" rel="external">https://link.jianshu.com/?t=https://docs.mongodb.com/manual/reference/configuration-options/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;内建的角色&quot;&gt;&lt;a href=&quot;#内建的角色&quot; class=&quot;headerlink&quot; title=&quot;内建的角色&quot;&gt;&lt;/a&gt;内建的角色&lt;/h2&gt;&lt;p&gt;数据库用户角色：read、readWrite;&lt;br&gt;数据库管理角色：dbAdmin、dbOwner、userAdm
+      
+    
+    </summary>
+    
+      <category term="MongoDB" scheme="http://www.codr.top/categories/MongoDB/"/>
+    
+    
+      <category term="MongoDB" scheme="http://www.codr.top/tags/MongoDB/"/>
     
   </entry>
   
@@ -125,8 +150,8 @@
   
   <entry>
     <title>Linux：ssh登录后闲置时间过长而断开连接</title>
-    <link href="http://www.codr.top/2018/05/Linux%EF%BC%9Assh%E7%99%BB%E5%BD%95%E5%90%8E%E9%97%B2%E7%BD%AE%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E8%80%8C%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/"/>
-    <id>http://www.codr.top/2018/05/Linux：ssh登录后闲置时间过长而断开连接/</id>
+    <link href="http://www.codr.top/2018/05/Linux/Linux%EF%BC%9Assh%E7%99%BB%E5%BD%95%E5%90%8E%E9%97%B2%E7%BD%AE%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E8%80%8C%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/"/>
+    <id>http://www.codr.top/2018/05/Linux/Linux：ssh登录后闲置时间过长而断开连接/</id>
     <published>2018-05-04T06:19:47.000Z</published>
     <updated>2018-05-24T09:12:14.000Z</updated>
     
@@ -150,8 +175,8 @@
   
   <entry>
     <title>Linux命令：pushd和popd</title>
-    <link href="http://www.codr.top/2018/05/Linux%E5%91%BD%E4%BB%A4%EF%BC%9Apushd%E5%92%8Cpopd/"/>
-    <id>http://www.codr.top/2018/05/Linux命令：pushd和popd/</id>
+    <link href="http://www.codr.top/2018/05/Linux/Linux%E5%91%BD%E4%BB%A4%EF%BC%9Apushd%E5%92%8Cpopd/"/>
+    <id>http://www.codr.top/2018/05/Linux/Linux命令：pushd和popd/</id>
     <published>2018-05-04T05:36:45.000Z</published>
     <updated>2018-05-24T09:08:57.000Z</updated>
     
@@ -175,8 +200,8 @@
   
   <entry>
     <title>Linux命令：密钥创建</title>
-    <link href="http://www.codr.top/2018/05/Linux%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%AF%86%E9%92%A5%E5%88%9B%E5%BB%BA/"/>
-    <id>http://www.codr.top/2018/05/Linux命令：密钥创建/</id>
+    <link href="http://www.codr.top/2018/05/Linux/Linux%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%AF%86%E9%92%A5%E5%88%9B%E5%BB%BA/"/>
+    <id>http://www.codr.top/2018/05/Linux/Linux命令：密钥创建/</id>
     <published>2018-05-03T23:50:29.000Z</published>
     <updated>2018-05-04T00:11:51.000Z</updated>
     
@@ -200,8 +225,8 @@
   
   <entry>
     <title>git命令设置不提交更改文件</title>
-    <link href="http://www.codr.top/2018/04/git%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%92%8C%E8%AE%BE%E7%BD%AE%E4%B8%8D%E6%8F%90%E4%BA%A4%E5%B7%B2%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6/"/>
-    <id>http://www.codr.top/2018/04/git命令删除文件和设置不提交已更改文件/</id>
+    <link href="http://www.codr.top/2018/04/%E5%B7%A5%E5%85%B7/git%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%92%8C%E8%AE%BE%E7%BD%AE%E4%B8%8D%E6%8F%90%E4%BA%A4%E5%B7%B2%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6/"/>
+    <id>http://www.codr.top/2018/04/工具/git命令删除文件和设置不提交已更改文件/</id>
     <published>2018-04-21T01:32:54.000Z</published>
     <updated>2018-05-31T04:27:51.000Z</updated>
     
@@ -225,8 +250,8 @@
   
   <entry>
     <title>Linux命令：crontab定时任务</title>
-    <link href="http://www.codr.top/2018/04/Linux%E5%91%BD%E4%BB%A4%EF%BC%9Acrontab%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
-    <id>http://www.codr.top/2018/04/Linux命令：crontab定时任务/</id>
+    <link href="http://www.codr.top/2018/04/Linux/Linux%E5%91%BD%E4%BB%A4%EF%BC%9Acrontab%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+    <id>http://www.codr.top/2018/04/Linux/Linux命令：crontab定时任务/</id>
     <published>2018-04-16T01:45:18.000Z</published>
     <updated>2018-04-16T01:47:12.000Z</updated>
     
@@ -250,8 +275,8 @@
   
   <entry>
     <title>Java生成缩略图之Thumbnailator</title>
-    <link href="http://www.codr.top/2018/04/Java%E7%94%9F%E6%88%90%E7%BC%A9%E7%95%A5%E5%9B%BE%E4%B9%8BThumbnailator/"/>
-    <id>http://www.codr.top/2018/04/Java生成缩略图之Thumbnailator/</id>
+    <link href="http://www.codr.top/2018/04/Java/Java%E7%94%9F%E6%88%90%E7%BC%A9%E7%95%A5%E5%9B%BE%E4%B9%8BThumbnailator/"/>
+    <id>http://www.codr.top/2018/04/Java/Java生成缩略图之Thumbnailator/</id>
     <published>2018-04-08T10:47:22.000Z</published>
     <updated>2018-05-04T00:18:37.000Z</updated>
     
@@ -275,8 +300,8 @@
   
   <entry>
     <title>mysql-cpu占用过高解决方法</title>
-    <link href="http://www.codr.top/2018/04/mysql-cpu%E5%8D%A0%E7%94%A8%E8%BF%87%E9%AB%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>http://www.codr.top/2018/04/mysql-cpu占用过高解决方法/</id>
+    <link href="http://www.codr.top/2018/04/MySql/mysql-cpu%E5%8D%A0%E7%94%A8%E8%BF%87%E9%AB%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://www.codr.top/2018/04/MySql/mysql-cpu占用过高解决方法/</id>
     <published>2018-04-03T03:01:09.000Z</published>
     <updated>2018-05-24T09:05:28.000Z</updated>
     
@@ -301,8 +326,8 @@
   
   <entry>
     <title>springMVC 接收参数的几种方式</title>
-    <link href="http://www.codr.top/2018/03/springMVC-%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
-    <id>http://www.codr.top/2018/03/springMVC-接收参数的几种方式/</id>
+    <link href="http://www.codr.top/2018/03/spring%E5%AE%B6%E6%97%8F/springMVC-%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>http://www.codr.top/2018/03/spring家族/springMVC-接收参数的几种方式/</id>
     <published>2018-03-28T02:42:05.000Z</published>
     <updated>2018-05-31T04:21:18.000Z</updated>
     
@@ -322,16 +347,16 @@
     
       <category term="spring" scheme="http://www.codr.top/tags/spring/"/>
     
-      <category term="springMVC" scheme="http://www.codr.top/tags/springMVC/"/>
-    
       <category term="后端" scheme="http://www.codr.top/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+      <category term="springMVC" scheme="http://www.codr.top/tags/springMVC/"/>
     
   </entry>
   
   <entry>
     <title>shiro简介</title>
-    <link href="http://www.codr.top/2018/03/shiro%E7%AE%80%E4%BB%8B/"/>
-    <id>http://www.codr.top/2018/03/shiro简介/</id>
+    <link href="http://www.codr.top/2018/03/shiro/shiro%E7%AE%80%E4%BB%8B/"/>
+    <id>http://www.codr.top/2018/03/shiro/shiro简介/</id>
     <published>2018-03-27T09:07:13.000Z</published>
     <updated>2018-05-31T04:23:46.000Z</updated>
     
@@ -359,8 +384,8 @@
   
   <entry>
     <title>java List转换为树形结构数据</title>
-    <link href="http://www.codr.top/2018/03/java-List%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE/"/>
-    <id>http://www.codr.top/2018/03/java-List转换为树形结构数据/</id>
+    <link href="http://www.codr.top/2018/03/Java/java-List%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE/"/>
+    <id>http://www.codr.top/2018/03/Java/java-List转换为树形结构数据/</id>
     <published>2018-03-27T06:20:47.000Z</published>
     <updated>2018-05-04T00:19:08.000Z</updated>
     
@@ -384,8 +409,8 @@
   
   <entry>
     <title>vscode使用笔记</title>
-    <link href="http://www.codr.top/2018/03/vscode%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
-    <id>http://www.codr.top/2018/03/vscode使用笔记/</id>
+    <link href="http://www.codr.top/2018/03/%E5%B7%A5%E5%85%B7/vscode%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
+    <id>http://www.codr.top/2018/03/工具/vscode使用笔记/</id>
     <published>2018-03-26T03:31:51.000Z</published>
     <updated>2018-05-31T04:21:49.000Z</updated>
     
@@ -411,8 +436,8 @@
   
   <entry>
     <title>常用的 JavaScript 库 CDN 加速服务</title>
-    <link href="http://www.codr.top/2018/03/%E5%B8%B8%E7%94%A8%E7%9A%84JavaScript%E5%BA%93CDN%E5%8A%A0%E9%80%9F%E6%9C%8D%E5%8A%A1/"/>
-    <id>http://www.codr.top/2018/03/常用的JavaScript库CDN加速服务/</id>
+    <link href="http://www.codr.top/2018/03/%E5%89%8D%E7%AB%AF/%E5%B8%B8%E7%94%A8%E7%9A%84JavaScript%E5%BA%93CDN%E5%8A%A0%E9%80%9F%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://www.codr.top/2018/03/前端/常用的JavaScript库CDN加速服务/</id>
     <published>2018-03-24T02:38:39.000Z</published>
     <updated>2018-05-31T04:28:36.000Z</updated>
     
@@ -439,8 +464,8 @@
   
   <entry>
     <title>joda-time工具类</title>
-    <link href="http://www.codr.top/2017/12/joda-time%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-    <id>http://www.codr.top/2017/12/joda-time工具类/</id>
+    <link href="http://www.codr.top/2017/12/Java/joda-time%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    <id>http://www.codr.top/2017/12/Java/joda-time工具类/</id>
     <published>2017-12-04T01:38:00.000Z</published>
     <updated>2018-03-07T06:45:48.000Z</updated>
     
@@ -469,8 +494,8 @@
   
   <entry>
     <title>git使用记录</title>
-    <link href="http://www.codr.top/2017/11/git%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
-    <id>http://www.codr.top/2017/11/git使用记录/</id>
+    <link href="http://www.codr.top/2017/11/%E5%B7%A5%E5%85%B7/git%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+    <id>http://www.codr.top/2017/11/工具/git使用记录/</id>
     <published>2017-11-15T03:27:06.000Z</published>
     <updated>2018-09-17T23:49:43.000Z</updated>
     
@@ -494,8 +519,8 @@
   
   <entry>
     <title>idea常用快捷键mac版</title>
-    <link href="http://www.codr.top/2017/11/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AEmac%E7%89%88/"/>
-    <id>http://www.codr.top/2017/11/idea常用快捷键mac版/</id>
+    <link href="http://www.codr.top/2017/11/%E5%B7%A5%E5%85%B7/idea%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AEmac%E7%89%88/"/>
+    <id>http://www.codr.top/2017/11/工具/idea常用快捷键mac版/</id>
     <published>2017-11-13T07:45:18.000Z</published>
     <updated>2018-05-04T00:18:17.000Z</updated>
     
@@ -516,35 +541,6 @@
       <category term="idea" scheme="http://www.codr.top/tags/idea/"/>
     
       <category term="工具" scheme="http://www.codr.top/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux命令常用记录</title>
-    <link href="http://www.codr.top/2017/10/Linux%E5%91%BD%E4%BB%A4%E5%B8%B8%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
-    <id>http://www.codr.top/2017/10/Linux命令常用记录/</id>
-    <published>2017-10-25T06:40:06.000Z</published>
-    <updated>2018-03-07T06:48:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>创建多级文件夹 mkdir -p test1/test2/test3</li><li>修改权限包含子目录 chown -R </li><li>创建软连接 ln [参数][源文件或目录][目标文件或目录] ln -s xx.log xxf.log</li><li>递归拷贝这些及其子文件夹下的文件 cp -ri</li><li>查看文件夹下文件大小 du -h –max-depth=1 /mydata/ </li><li>清屏 clear</li><li>查看shell cat /etc/shells</li><li>查看使用的shell echo $SHELL</li><li>查看本地端口 netstat -ntlp</li><li></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;创建多级文件夹 mkdir -p test1/test2/test3&lt;/li&gt;
-&lt;li&gt;修改权限包含子目录 chown -R &lt;/li&gt;
-&lt;li&gt;创建软连接 ln [参数][源文件或目录][目标文件或目录] ln -s xx.log xxf.log&lt;/li&gt;
-&lt;
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.codr.top/categories/Linux/"/>
-    
-    
-      <category term="命令" scheme="http://www.codr.top/tags/%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   

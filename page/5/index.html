@@ -316,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/mysql-备份mysqldump/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/工具/Jenkins-入门使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -335,7 +335,216 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/mysql-备份mysqldump/" itemprop="url">mysql 备份mysqldump</a></h1>
+                <a class="post-title-link" href="/2017/09/工具/Jenkins-入门使用/" itemprop="url">Jenkins 入门使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-26T15:19:13+08:00">
+                2017-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/工具/Jenkins-入门使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/工具/Jenkins-入门使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/09/工具/Jenkins-入门使用/" class="leancloud_visitors" data-flag-title="Jenkins 入门使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  439
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>官网下载 jenkins.war<br>或者 brew install jenkins</p>
+<h2 id="启动和停止"><a href="#启动和停止" class="headerlink" title="启动和停止"></a>启动和停止</h2><p>启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">设置开机自启动：sudo launchctl load -w /Library/LaunchDaemons/org.jenkins-ci.plist</div><div class="line">取消开机自启动：sudo launchctl unload -w /Library/LaunchDaemons/org.jenkins-ci.plist</div><div class="line">手动启动：Java -jar jenkins.war</div><div class="line">后台启动(默认端口)：nohup java -jar jenkins.war &amp;</div><div class="line">后台启动(指定端口)：nohup java -jar jenkins.war -httpPort=88 &amp;</div><div class="line">后台启动(HTTPS)：nohup java -jar jenkins.war -httpsPort=88 &amp;</div><div class="line"></div><div class="line">sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist</div></pre></td></tr></table></figure></p>
+<p>停止<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist</div></pre></td></tr></table></figure></p>
+<h2 id="设置为中文"><a href="#设置为中文" class="headerlink" title="设置为中文"></a>设置为中文</h2><ol>
+<li>安装Locale Plugin， 重启生效。</li>
+<li>配置【Manage Jenkins】&gt;【Configure System】&gt; 【Locale】</li>
+<li>语言填zh_CN，勾选强制设置语言</li>
+</ol>
+<h2 id="运行远程脚本"><a href="#运行远程脚本" class="headerlink" title="运行远程脚本"></a>运行远程脚本</h2><ol>
+<li>安装Jenkins SSH plugin插件</li>
+<li>在系统配置里配置Publish over SSH<br>复制jenkins所在服务器密钥<br>配置远程ssh server</li>
+<li>增加构建步骤send files or ececute commands over SSH<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SSH  Server Name：选个一个你在系统设置里配置的名字</div><div class="line">Transfer Set Source files：需要上传的文件（注意：相对于工作区的路径。看后面的配置可以填写多个，默认用,分隔）</div><div class="line">Remove prefix：移除目录（只能指定Transfer Set Source files中的目录，这里移除了target目录表示只将FinServer.war传到目标服务器，否则会在目标服务器创建target目录）</div><div class="line">Remote directory：远程目录（根据你的需求填写，这里没有填写默认会继承系统配置，即/mnt）</div><div class="line">Exec command：把你要执行的命令写在里面(这里的命令是在目标服务器上执行的)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>只需要配置Exec command就可以<br>这种远程执行脚本的方式，属于非交互式Shell，不会触发诸如~/.bash_profile之类文件的载入,需要 export设置环境变量或者source <profile></profile></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/MySql/mysql-备份mysqldump/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/MySql/mysql-备份mysqldump/" itemprop="url">mysql 备份mysqldump</a></h1>
         
 
         <div class="post-meta">
@@ -388,9 +597,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/mysql-备份mysqldump/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/MySql/mysql-备份mysqldump/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/mysql-备份mysqldump/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/MySql/mysql-备份mysqldump/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -398,7 +607,7 @@
 
           
           
-             <span id="/2017/09/mysql-备份mysqldump/" class="leancloud_visitors" data-flag-title="mysql 备份mysqldump">
+             <span id="/2017/09/MySql/mysql-备份mysqldump/" class="leancloud_visitors" data-flag-title="mysql 备份mysqldump">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -512,7 +721,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/mysql-流程控制语句if-case/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/MySql/mysql-流程控制语句if-case/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -531,7 +740,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/mysql-流程控制语句if-case/" itemprop="url">mysql 流程控制语句if/case</a></h1>
+                <a class="post-title-link" href="/2017/09/MySql/mysql-流程控制语句if-case/" itemprop="url">mysql 流程控制语句if/case</a></h1>
         
 
         <div class="post-meta">
@@ -584,9 +793,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/mysql-流程控制语句if-case/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/MySql/mysql-流程控制语句if-case/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/mysql-流程控制语句if-case/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/MySql/mysql-流程控制语句if-case/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -594,7 +803,7 @@
 
           
           
-             <span id="/2017/09/mysql-流程控制语句if-case/" class="leancloud_visitors" data-flag-title="mysql 流程控制语句if/case">
+             <span id="/2017/09/MySql/mysql-流程控制语句if-case/" class="leancloud_visitors" data-flag-title="mysql 流程控制语句if/case">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -715,7 +924,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/oh-my-zsh使用/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/Linux/oh-my-zsh使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -734,7 +943,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/oh-my-zsh使用/" itemprop="url">oh-my-zsh使用</a></h1>
+                <a class="post-title-link" href="/2017/09/Linux/oh-my-zsh使用/" itemprop="url">oh-my-zsh使用</a></h1>
         
 
         <div class="post-meta">
@@ -787,9 +996,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/oh-my-zsh使用/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/Linux/oh-my-zsh使用/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/oh-my-zsh使用/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/Linux/oh-my-zsh使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -797,7 +1006,7 @@
 
           
           
-             <span id="/2017/09/oh-my-zsh使用/" class="leancloud_visitors" data-flag-title="oh-my-zsh使用">
+             <span id="/2017/09/Linux/oh-my-zsh使用/" class="leancloud_visitors" data-flag-title="oh-my-zsh使用">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -931,7 +1140,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/PlainTasks使用-sublime待办插件/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/工具/PlainTasks使用-sublime待办插件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -950,7 +1159,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/PlainTasks使用-sublime待办插件/" itemprop="url">PlainTasks使用-sublime待办插件</a></h1>
+                <a class="post-title-link" href="/2017/09/工具/PlainTasks使用-sublime待办插件/" itemprop="url">PlainTasks使用-sublime待办插件</a></h1>
         
 
         <div class="post-meta">
@@ -1003,9 +1212,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/PlainTasks使用-sublime待办插件/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/工具/PlainTasks使用-sublime待办插件/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/PlainTasks使用-sublime待办插件/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/工具/PlainTasks使用-sublime待办插件/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1013,7 +1222,7 @@
 
           
           
-             <span id="/2017/09/PlainTasks使用-sublime待办插件/" class="leancloud_visitors" data-flag-title="PlainTasks使用-sublime待办插件">
+             <span id="/2017/09/工具/PlainTasks使用-sublime待办插件/" class="leancloud_visitors" data-flag-title="PlainTasks使用-sublime待办插件">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1157,7 +1366,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/SSH-连接中断Write-failed-Broken-pipe/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/Linux/SSH-连接中断Write-failed-Broken-pipe/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -1176,7 +1385,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/SSH-连接中断Write-failed-Broken-pipe/" itemprop="url">SSH 连接中断Write failed: Broken pipe</a></h1>
+                <a class="post-title-link" href="/2017/09/Linux/SSH-连接中断Write-failed-Broken-pipe/" itemprop="url">SSH 连接中断Write failed: Broken pipe</a></h1>
         
 
         <div class="post-meta">
@@ -1229,9 +1438,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/SSH-连接中断Write-failed-Broken-pipe/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/Linux/SSH-连接中断Write-failed-Broken-pipe/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/SSH-连接中断Write-failed-Broken-pipe/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/Linux/SSH-连接中断Write-failed-Broken-pipe/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1239,7 +1448,7 @@
 
           
           
-             <span id="/2017/09/SSH-连接中断Write-failed-Broken-pipe/" class="leancloud_visitors" data-flag-title="SSH 连接中断Write failed: Broken pipe">
+             <span id="/2017/09/Linux/SSH-连接中断Write-failed-Broken-pipe/" class="leancloud_visitors" data-flag-title="SSH 连接中断Write failed: Broken pipe">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1353,7 +1562,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/vim使用/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/vim/vim使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -1372,7 +1581,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/vim使用/" itemprop="url">vim使用</a></h1>
+                <a class="post-title-link" href="/2017/09/vim/vim使用/" itemprop="url">vim使用</a></h1>
         
 
         <div class="post-meta">
@@ -1425,9 +1634,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/vim使用/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/vim/vim使用/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/vim使用/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/vim/vim使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1435,7 +1644,7 @@
 
           
           
-             <span id="/2017/09/vim使用/" class="leancloud_visitors" data-flag-title="vim使用">
+             <span id="/2017/09/vim/vim使用/" class="leancloud_visitors" data-flag-title="vim使用">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1558,7 +1767,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/tmux使用/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/工具/tmux使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -1577,7 +1786,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/tmux使用/" itemprop="url">tmux使用</a></h1>
+                <a class="post-title-link" href="/2017/09/工具/tmux使用/" itemprop="url">tmux使用</a></h1>
         
 
         <div class="post-meta">
@@ -1630,9 +1839,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/tmux使用/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/工具/tmux使用/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/tmux使用/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/工具/tmux使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1640,7 +1849,7 @@
 
           
           
-             <span id="/2017/09/tmux使用/" class="leancloud_visitors" data-flag-title="tmux使用">
+             <span id="/2017/09/工具/tmux使用/" class="leancloud_visitors" data-flag-title="tmux使用">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1807,7 +2016,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/记一次npm-i-运行错误/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/前端/记一次npm-i-运行错误/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -1826,7 +2035,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/记一次npm-i-运行错误/" itemprop="url">记一次npm i 运行错误</a></h1>
+                <a class="post-title-link" href="/2017/09/前端/记一次npm-i-运行错误/" itemprop="url">记一次npm i 运行错误</a></h1>
         
 
         <div class="post-meta">
@@ -1879,9 +2088,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/记一次npm-i-运行错误/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/前端/记一次npm-i-运行错误/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/记一次npm-i-运行错误/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/前端/记一次npm-i-运行错误/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1889,7 +2098,7 @@
 
           
           
-             <span id="/2017/09/记一次npm-i-运行错误/" class="leancloud_visitors" data-flag-title="记一次npm i 运行错误">
+             <span id="/2017/09/前端/记一次npm-i-运行错误/" class="leancloud_visitors" data-flag-title="记一次npm i 运行错误">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2004,7 +2213,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/linux-安装node-npm/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/Linux/Linux-安装node-npm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -2023,7 +2232,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/linux-安装node-npm/" itemprop="url">linux 安装node&npm</a></h1>
+                <a class="post-title-link" href="/2017/09/Linux/Linux-安装node-npm/" itemprop="url">linux 安装node&npm</a></h1>
         
 
         <div class="post-meta">
@@ -2076,9 +2285,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/linux-安装node-npm/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/Linux/Linux-安装node-npm/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/linux-安装node-npm/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/Linux/Linux-安装node-npm/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2086,7 +2295,7 @@
 
           
           
-             <span id="/2017/09/linux-安装node-npm/" class="leancloud_visitors" data-flag-title="linux 安装node&npm">
+             <span id="/2017/09/Linux/Linux-安装node-npm/" class="leancloud_visitors" data-flag-title="linux 安装node&npm">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2189,209 +2398,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-18T11:36:52+08:00">
-                2017-09-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  78
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2442,7 +2448,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
