@@ -1,10 +1,10 @@
 ---
-title: springMVC 接收参数的几种方式
+title: SpringMVC 接收参数的几种方式
 categories:
-  - springMVC
+  - Spring
 tags:
-  - springMVC
-  - spring
+  - SpringMVC
+  - Spring
   - 后端
 date: 2018-03-28 10:42:05
 ---
@@ -169,7 +169,7 @@ bean的属性要和表单name一致，可以不添加任何注解，也可以添
 ### 实体bean接收，不添加任何注解,地址参数
  1. ajax 请求,Content type'application/x-www-form-urlencoded;charset=UTF-8',POST
 
-### 实体bean接收，不添加任何注解,body x-www-form-urlencoded 传参
+### 实体bean接收，不添加任何注解,body传参 ContentType:x-www-form-urlencoded 
  1. ajax 请求,Content type'application/x-www-form-urlencoded;charset=UTF-8',POST
 
 ### 实体bean接收，使用@RequestBody注解

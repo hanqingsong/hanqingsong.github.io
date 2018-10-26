@@ -3,10 +3,10 @@ title: >-
   升级jdk1.8报错：sun.security.validator.ValidatorException: Certificate signature
   algorithm disabled
 categories:
-  - java
+  - 问题记录
 tags:
   - jdk
-  - 问题
+  - java
 date: 2017-10-24 14:09:20
 ---
 

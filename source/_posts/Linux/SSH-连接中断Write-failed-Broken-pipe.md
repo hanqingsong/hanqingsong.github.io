@@ -2,9 +2,10 @@
 title: 'SSH 连接中断Write failed: Broken pipe'
 date: 2017-09-21 13:47:37
 categories:
-    - 问题
+    - 问题记录
 tags:
     - SSH
+    - 问题记录
 ---
 
 ssh连接服务器后,一段时间不操作，再次操作时会出现Write failed: Broken pipe。

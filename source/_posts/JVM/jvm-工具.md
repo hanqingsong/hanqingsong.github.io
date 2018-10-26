@@ -2,9 +2,9 @@
 title: jvm 工具
 date: 2017-10-09 10:34:46
 categories:
-    - java
+    - JVM
 tags:
-    - jvm
+    - JVM
 ---
 
 ## 常用工具
