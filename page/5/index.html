@@ -316,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/工具/Jenkins-入门使用/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/问题记录/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -335,7 +335,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/工具/Jenkins-入门使用/" itemprop="url">Jenkins 入门使用</a></h1>
+                <a class="post-title-link" href="/2017/10/问题记录/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/" itemprop="url">升级jdk1.8报错：sun.security.validator.ValidatorException: Certificate signature algorithm disabled</a></h1>
         
 
         <div class="post-meta">
@@ -347,8 +347,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-26T15:19:13+08:00">
-                2017-09-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T14:09:20+08:00">
+                2017-10-24
               </time>
             
 
@@ -370,8 +370,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/问题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">问题记录</span>
                   </a>
                 </span>
 
@@ -388,9 +388,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/工具/Jenkins-入门使用/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/问题记录/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/工具/Jenkins-入门使用/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/问题记录/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -398,7 +398,7 @@
 
           
           
-             <span id="/2017/09/工具/Jenkins-入门使用/" class="leancloud_visitors" data-flag-title="Jenkins 入门使用">
+             <span id="/2017/10/问题记录/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/" class="leancloud_visitors" data-flag-title="升级jdk1.8报错：sun.security.validator.ValidatorException: Certificate signature algorithm disabled">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  439
+                  205
                 </span>
               
 
@@ -439,7 +439,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -462,21 +462,14 @@
       
         
           
-            <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>官网下载 jenkins.war<br>或者 brew install jenkins</p>
-<h2 id="启动和停止"><a href="#启动和停止" class="headerlink" title="启动和停止"></a>启动和停止</h2><p>启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">设置开机自启动：sudo launchctl load -w /Library/LaunchDaemons/org.jenkins-ci.plist</div><div class="line">取消开机自启动：sudo launchctl unload -w /Library/LaunchDaemons/org.jenkins-ci.plist</div><div class="line">手动启动：Java -jar jenkins.war</div><div class="line">后台启动(默认端口)：nohup java -jar jenkins.war &amp;</div><div class="line">后台启动(指定端口)：nohup java -jar jenkins.war -httpPort=88 &amp;</div><div class="line">后台启动(HTTPS)：nohup java -jar jenkins.war -httpsPort=88 &amp;</div><div class="line"></div><div class="line">sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist</div></pre></td></tr></table></figure></p>
-<p>停止<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist</div></pre></td></tr></table></figure></p>
-<h2 id="设置为中文"><a href="#设置为中文" class="headerlink" title="设置为中文"></a>设置为中文</h2><ol>
-<li>安装Locale Plugin， 重启生效。</li>
-<li>配置【Manage Jenkins】&gt;【Configure System】&gt; 【Locale】</li>
-<li>语言填zh_CN，勾选强制设置语言</li>
-</ol>
-<h2 id="运行远程脚本"><a href="#运行远程脚本" class="headerlink" title="运行远程脚本"></a>运行远程脚本</h2><ol>
-<li>安装Jenkins SSH plugin插件</li>
-<li>在系统配置里配置Publish over SSH<br>复制jenkins所在服务器密钥<br>配置远程ssh server</li>
-<li>增加构建步骤send files or ececute commands over SSH<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SSH  Server Name：选个一个你在系统设置里配置的名字</div><div class="line">Transfer Set Source files：需要上传的文件（注意：相对于工作区的路径。看后面的配置可以填写多个，默认用,分隔）</div><div class="line">Remove prefix：移除目录（只能指定Transfer Set Source files中的目录，这里移除了target目录表示只将FinServer.war传到目标服务器，否则会在目标服务器创建target目录）</div><div class="line">Remote directory：远程目录（根据你的需求填写，这里没有填写默认会继承系统配置，即/mnt）</div><div class="line">Exec command：把你要执行的命令写在里面(这里的命令是在目标服务器上执行的)</div></pre></td></tr></table></figure>
+            <h3 id="升级jdk1-8项目出错"><a href="#升级jdk1-8项目出错" class="headerlink" title="升级jdk1.8项目出错"></a>升级jdk1.8项目出错</h3><p>sun.security.validator.ValidatorException: Certificate signature algorithm disabled</p>
+<p>报错原因是JDK8对SSL证书的算法安全要求提高，可以对比下7和8的区别<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">less /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;</div><div class="line">jdk.certpath.disabledAlgorithms=MD2, RSA keySize &lt; 1024</div><div class="line">jdk.tls.disabledAlgorithms=SSLv3</div><div class="line"></div><div class="line">less /Library/Java/JavaVirtualMachines/jdk1.8.0_*/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;</div><div class="line">jdk.certpath.disabledAlgorithms=MD2, MD5, SHA1 jdkCA &amp; usage TLSServer, \</div><div class="line">jdk.jar.disabledAlgorithms=MD2, MD5, RSA keySize &lt; 1024</div><div class="line">jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize &lt; 768, \</div></pre></td></tr></table></figure></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<li>简单做法是直接注释掉jdk.certpath.disabledAlgorithms</li>
+<li>继承新的抽象类：X509ExtendedTrustManager<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">In the Java SE 7 release, the X509ExtendedTrustManager class is an abstract implementation of the X509TrustManager interface. It adds methods for connection-sensitive trust management. In addition, it enables endpoint verification at the TLS layer.</div><div class="line">...</div><div class="line">Besides TLS 1.2 support, the X509ExtendedTrustManager class also support algorithm constraints and SSL layer hostname verification.</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>只需要配置Exec command就可以<br>这种远程执行脚本的方式，属于非交互式Shell，不会触发诸如~/.bash_profile之类文件的载入,需要 export设置环境变量或者source <profile></profile></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.cnblogs.com/flyingeagle/articles/7508207.html" target="_blank" rel="external">http://www.cnblogs.com/flyingeagle/articles/7508207.html</a></p>
 
           
         
@@ -525,7 +518,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/MySql/mysql-备份mysqldump/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Java/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -544,7 +537,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/MySql/mysql-备份mysqldump/" itemprop="url">mysql 备份mysqldump</a></h1>
+                <a class="post-title-link" href="/2017/10/Java/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/" itemprop="url">升级jdk1.8报错：sun.security.validator.ValidatorException: Certificate signature algorithm disabled</a></h1>
         
 
         <div class="post-meta">
@@ -556,8 +549,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-25T12:08:35+08:00">
-                2017-09-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T14:09:20+08:00">
+                2017-10-24
               </time>
             
 
@@ -579,8 +572,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">mysql</span>
+                  <a href="/categories/问题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">问题记录</span>
                   </a>
                 </span>
 
@@ -597,9 +590,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/MySql/mysql-备份mysqldump/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/Java/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/MySql/mysql-备份mysqldump/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/Java/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -607,7 +600,7 @@
 
           
           
-             <span id="/2017/09/MySql/mysql-备份mysqldump/" class="leancloud_visitors" data-flag-title="mysql 备份mysqldump">
+             <span id="/2017/10/Java/升级jdk1-8报错：sun-security-validator-ValidatorException-Certificate-signature/" class="leancloud_visitors" data-flag-title="升级jdk1.8报错：sun.security.validator.ValidatorException: Certificate signature algorithm disabled">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -632,7 +625,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  54
+                  205
                 </span>
               
 
@@ -671,653 +664,14 @@
       
         
           
-            <h2 id="备份数据库的某表数据"><a href="#备份数据库的某表数据" class="headerlink" title="备份数据库的某表数据"></a>备份数据库的某表数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p database_name  table_name table_name2 &gt; database_dump.txt</div></pre></td></tr></table></figure>
-<h2 id="备份整个数据库的数据"><a href="#备份整个数据库的数据" class="headerlink" title="备份整个数据库的数据"></a>备份整个数据库的数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p database_name &gt; database_dump.txt</div></pre></td></tr></table></figure>
-<h2 id="备份所有数据库"><a href="#备份所有数据库" class="headerlink" title="备份所有数据库"></a>备份所有数据库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root -p --all-databases &gt; database_dump.txt</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/MySql/mysql-流程控制语句if-case/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/MySql/mysql-流程控制语句if-case/" itemprop="url">mysql 流程控制语句if/case</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-25T11:50:43+08:00">
-                2017-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">mysql</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/MySql/mysql-流程控制语句if-case/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/MySql/mysql-流程控制语句if-case/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/MySql/mysql-流程控制语句if-case/" class="leancloud_visitors" data-flag-title="mysql 流程控制语句if/case">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  146
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="if表达式"><a href="#if表达式" class="headerlink" title="if表达式"></a>if表达式</h2><blockquote>
-<p>IF(expr1,expr2,expr3)</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select if(v=1,&apos;男&apos;,&apos;女&apos;) from t1 ;</div></pre></td></tr></table></figure>
-<p>如果条件判断多可以使用case when then。</p>
-<h2 id="case"><a href="#case" class="headerlink" title="case"></a>case</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CASE   &lt;单值表达式&gt;</div><div class="line">        WHEN &lt;表达式值&gt; THEN &lt;SQL语句或者返回值&gt;</div><div class="line">        WHEN &lt;表达式值&gt; THEN &lt;SQL语句或者返回值&gt;</div><div class="line">        WHEN &lt;表达式值&gt; THEN &lt;SQL语句或者返回值&gt;</div><div class="line">        ELSE &lt;SQL语句或者返回值&gt;</div><div class="line"> END</div></pre></td></tr></table></figure>
-<h3 id="简单Case函数写法"><a href="#简单Case函数写法" class="headerlink" title="简单Case函数写法"></a>简单Case函数写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">select case v </div><div class="line">    when 1 then &apos;男&apos;</div><div class="line">    when 0 then &apos;女&apos;</div><div class="line">    end</div><div class="line"> from t1 ;</div></pre></td></tr></table></figure>
-<h3 id="Case搜索函数写法"><a href="#Case搜索函数写法" class="headerlink" title="Case搜索函数写法"></a>Case搜索函数写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">select case  </div><div class="line">    when v=1 then &apos;男&apos;</div><div class="line">    when v=0 then &apos;女&apos;</div><div class="line">    end</div><div class="line"> from t1 ;</div></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.cnblogs.com/martinzhang/p/3220595.html" target="_blank" rel="external">http://www.cnblogs.com/martinzhang/p/3220595.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/Linux/oh-my-zsh使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/Linux/oh-my-zsh使用/" itemprop="url">oh-my-zsh使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-22T15:15:46+08:00">
-                2017-09-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/Linux/oh-my-zsh使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/Linux/oh-my-zsh使用/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/Linux/oh-my-zsh使用/" class="leancloud_visitors" data-flag-title="oh-my-zsh使用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  149
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><p>查看当前的shell</p>
-<blockquote>
-<p>cat /etc/shells</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># List of acceptable shells for chpass(1).</div><div class="line"># Ftpd will not allow users to connect who are not using</div><div class="line"># one of these shells.</div><div class="line"></div><div class="line">/bin/bash</div><div class="line">/bin/csh</div><div class="line">/bin/ksh</div><div class="line">/bin/sh</div><div class="line">/bin/tcsh</div></pre></td></tr></table></figure>
-<h2 id="zsh-安装"><a href="#zsh-安装" class="headerlink" title="zsh 安装"></a>zsh 安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CentOS 安装：sudo yum install -y zsh</div><div class="line">mac 安装：brew install zsh</div></pre></td></tr></table></figure>
-<p>zsh设置成系统默认shell，以代替bash</p>
-<blockquote>
-<p>chsh -s /bin/zsh</p>
-</blockquote>
-<h2 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h2><p>oh-my-zsh 是 zsh 的一个配置工具。<br>安装</p>
-<blockquote>
-<p>wget <a href="https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh</a> -O - | sh</p>
-</blockquote>
-<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><blockquote>
-<p>vim .zshrc</p>
-</blockquote>
-<p>修改 plugins=(git) 为 plugins=(git autojump)<br>使配置生效 source ~/.zshrc</p>
-<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>.zshrc 中修改ZSH_THEME=’’</p>
-<h2 id="打开sublime配置"><a href="#打开sublime配置" class="headerlink" title="打开sublime配置"></a>打开sublime配置</h2><blockquote>
-<p>alias st=’open -a “Sublime Text”‘</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/工具/PlainTasks使用-sublime待办插件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/工具/PlainTasks使用-sublime待办插件/" itemprop="url">PlainTasks使用-sublime待办插件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-21T16:54:51+08:00">
-                2017-09-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/工具/PlainTasks使用-sublime待办插件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/工具/PlainTasks使用-sublime待办插件/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/工具/PlainTasks使用-sublime待办插件/" class="leancloud_visitors" data-flag-title="PlainTasks使用-sublime待办插件">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  445
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="PlainTasks"><a href="#PlainTasks" class="headerlink" title="PlainTasks"></a>PlainTasks</h2><p>PlainTasks插件可以在我们的sublime编辑器里记录待办事，很方便，页面也很简单美观。</p>
-<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="http://ww1.sinaimg.cn/mw690/99c92116ly1fpqg9a1l24j20p00ml0wh.jpg" alt=""></p>
-<h2 id="安装package-control组件"><a href="#安装package-control组件" class="headerlink" title="安装package control组件"></a>安装package control组件</h2><p>没有安装过插件的需要先安装package control组件才能安装插件<br>Ctrl+ ` 调出console<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &apos;wb&apos;).write(urllib.request.urlopen( &apos;http://sublime.wbond.net/&apos; + pf.replace(&apos; &apos;,&apos;%20&apos;)).read())</div></pre></td></tr></table></figure></p>
-<h2 id="创建todo文件"><a href="#创建todo文件" class="headerlink" title="创建todo文件"></a>创建todo文件</h2><p>以下类型文件会被识别为todo文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">TODO</div><div class="line">*.todo</div><div class="line">*.todolist</div><div class="line">*.taskpaper</div><div class="line">*.tasks</div></pre></td></tr></table></figure>
-<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><ol>
-<li>创建project：输入一行文字在后方加上英文冒号就可以被识别为project，project是可以被折叠的，比如在任何地方输入<code>Projects:</code></li>
-<li>创建task：⌘+enter或者⌘+i, ⌘+shift+enter自动加上创建时间</li>
-<li>完成task：⌘+d，两次⌘+d取消</li>
-<li>打标签：在行尾添加@ ，<em>前边有空格</em></li>
-<li>上下行互换位置：⌘+control+up/down</li>
-<li>归档:归档文件所有完成的任务⌘+shift+A,已完成的任务移动至文档结尾;</li>
-<li>分割线：— ✄ ——，输入–，按tab键</li>
-<li>设置优先级：行尾加@critical、@high、@low、@today （严重、高、低、今天）</li>
-<li>时间标记：<ul>
-<li>开始时间：输入s,两次tab键 @started(13-10-25 15:20)</li>
-<li>开关：状态切换输入tg,两次tab键 @toggle(13-10-25 15:20)</li>
-<li>创建：创建输入cr,两次tab键 @created(13-10-25 15:20)</li>
-<li>预期：输入d,两次tab键 @due()<ul>
-<li>@due(17.1.1 1:1) 指定时间</li>
-<li>@due(+w) = @due( +7) 当前时间加1周</li>
-<li>@due(1) 1下月的第一天 ，2下月第二天</li>
-<li>@due(+1) = @due(+) 当前时间加1天</li>
-<li>@due(+2:) = @due(+2.) 当前时间加2h</li>
-<li>@due(+.2) = @due(+0.2) 当前时间加2m</li>
-<li>@due(+2.2) 当前时间加2h2m</li>
-<li>@due(+2 2.2) 当前时间加2d2h2m</li>
-</ul>
-</li>
-</ul>
+            <h3 id="升级jdk1-8项目出错"><a href="#升级jdk1-8项目出错" class="headerlink" title="升级jdk1.8项目出错"></a>升级jdk1.8项目出错</h3><p>sun.security.validator.ValidatorException: Certificate signature algorithm disabled</p>
+<p>报错原因是JDK8对SSL证书的算法安全要求提高，可以对比下7和8的区别<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">less /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;</div><div class="line">jdk.certpath.disabledAlgorithms=MD2, RSA keySize &lt; 1024</div><div class="line">jdk.tls.disabledAlgorithms=SSLv3</div><div class="line"></div><div class="line">less /Library/Java/JavaVirtualMachines/jdk1.8.0_*/Contents/Home/jre/lib/security/java.security|grep disabledAlgorithms |grep -v &quot;#&quot;</div><div class="line">jdk.certpath.disabledAlgorithms=MD2, MD5, SHA1 jdkCA &amp; usage TLSServer, \</div><div class="line">jdk.jar.disabledAlgorithms=MD2, MD5, RSA keySize &lt; 1024</div><div class="line">jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize &lt; 768, \</div></pre></td></tr></table></figure></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<li>简单做法是直接注释掉jdk.certpath.disabledAlgorithms</li>
+<li>继承新的抽象类：X509ExtendedTrustManager<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">In the Java SE 7 release, the X509ExtendedTrustManager class is an abstract implementation of the X509TrustManager interface. It adds methods for connection-sensitive trust management. In addition, it enables endpoint verification at the TLS layer.</div><div class="line">...</div><div class="line">Besides TLS 1.2 support, the X509ExtendedTrustManager class also support algorithm constraints and SSL layer hostname verification.</div></pre></td></tr></table></figure>
 </li>
 </ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.cnblogs.com/flyingeagle/articles/7508207.html" target="_blank" rel="external">http://www.cnblogs.com/flyingeagle/articles/7508207.html</a></p>
 
           
         
@@ -1366,7 +720,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/Linux/SSH-连接中断Write-failed-Broken-pipe/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/ELK/EFK-从零搭建日志系统/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -1385,7 +739,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/Linux/SSH-连接中断Write-failed-Broken-pipe/" itemprop="url">SSH 连接中断Write failed: Broken pipe</a></h1>
+                <a class="post-title-link" href="/2017/10/ELK/EFK-从零搭建日志系统/" itemprop="url">EFK-从零搭建日志系统</a></h1>
         
 
         <div class="post-meta">
@@ -1397,8 +751,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-21T13:47:37+08:00">
-                2017-09-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T18:57:32+08:00">
+                2017-10-19
               </time>
             
 
@@ -1420,8 +774,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/问题/" itemprop="url" rel="index">
-                    <span itemprop="name">问题</span>
+                  <a href="/categories/ELK/" itemprop="url" rel="index">
+                    <span itemprop="name">ELK</span>
                   </a>
                 </span>
 
@@ -1438,9 +792,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/Linux/SSH-连接中断Write-failed-Broken-pipe/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/ELK/EFK-从零搭建日志系统/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/Linux/SSH-连接中断Write-failed-Broken-pipe/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/ELK/EFK-从零搭建日志系统/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1448,7 +802,7 @@
 
           
           
-             <span id="/2017/09/Linux/SSH-连接中断Write-failed-Broken-pipe/" class="leancloud_visitors" data-flag-title="SSH 连接中断Write failed: Broken pipe">
+             <span id="/2017/10/ELK/EFK-从零搭建日志系统/" class="leancloud_visitors" data-flag-title="EFK-从零搭建日志系统">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1473,203 +827,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  101
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ssh连接服务器后,一段时间不操作，再次操作时会出现Write failed: Broken pipe。<br>解决方法：<br>1、客户端设置：~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置：ServerAliveInterval 60<br>2、在服务器的 /etc/ssh/sshd_config 中添加如下的配置：ClientAliveInterval 60<br>3、在登录命令添加参数：ssh -o ServerAliveInterval=60 user@sshserver</p>
-<p>参考：<br><a href="http://blog.csdn.net/bbirdsky/article/details/21703555" target="_blank" rel="external">http://blog.csdn.net/bbirdsky/article/details/21703555</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/vim/vim使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qingsong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="青松的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/vim/vim使用/" itemprop="url">vim使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-21T12:32:30+08:00">
-                2017-09-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vim/" itemprop="url" rel="index">
-                    <span itemprop="name">vim</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/vim/vim使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/vim/vim使用/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/vim/vim使用/" class="leancloud_visitors" data-flag-title="vim使用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  838
+                  663
                 </span>
               
 
@@ -1708,17 +866,30 @@
       
         
           
-            <h2 id="vim编辑粘贴代码格式化"><a href="#vim编辑粘贴代码格式化" class="headerlink" title="vim编辑粘贴代码格式化"></a>vim编辑粘贴代码格式化</h2><p>vim粘贴代码会有代码代码错乱的问题</p>
-<blockquote>
-<p>在粘贴前先设置进入粘贴插入模式，即不会自动缩进和连续注释<br>set paste<br>然后再进入插入模式粘贴<br>在粘贴插入模式下代码是不会自动按格式缩进的，需要使用nopaste设置回来<br>set nopaste<br>也可以在.vimrc中设置切换的快捷键，比如设置F9，则可以在.vimrc中加入：<br>set pastetoggle=<f9><br>这样直接在插入模式按F9就会在“– 插入 –”模式和“– 插入（粘贴） –”模式中切换</f9></p>
-</blockquote>
-<h2 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">^                       移到当前行的第一个非空字符</div><div class="line">$                       移到当前行的最后一个字符</div><div class="line">G                       移到文件的最后一行</div><div class="line">gg                      移到文件的第一行</div></pre></td></tr></table></figure>
-<h2 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a>文本操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">:r file             读入文件 file 内容，并插在当前行后</div><div class="line">:nr file            读入文件 file 内容，并插在第 n 行后</div><div class="line">:r !pwd             插入当前路径</div><div class="line"></div><div class="line">yy     复制一行，此命令前可跟数字，标识复制多行，如6yy，表示从当前行开始复制6行</div><div class="line">yw     复制一个字</div><div class="line">y$     复制到行末</div><div class="line"></div><div class="line">]p     有缩进的粘贴，vim会自动调节代码的缩进</div><div class="line"></div><div class="line">格式化全文： gg=G</div></pre></td></tr></table></figure>
-<h2 id="替换与操作"><a href="#替换与操作" class="headerlink" title="替换与操作"></a>替换与操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">:g/text1/s/text2/text3        查找包含 text1 的行，用 text3 替换 text2</div><div class="line">:g/text/command               在所有包含 text 的行运行 command 所表示的命令</div><div class="line">:v/text/command               在所有不包含 text 的行运行 command 所表示的命令</div></pre></td></tr></table></figure>
-<h2 id="保存文本和退出"><a href="#保存文本和退出" class="headerlink" title="保存文本和退出"></a>保存文本和退出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">:w                    保存文件但不退出 vi</div><div class="line">:w file               将修改保存在 file 中但不退出 vi</div><div class="line">:wq 或 ZZ 或 :x        保存文件并退出 vi</div><div class="line">:q!                   不保存文件，退出 vi</div><div class="line">:e!                   放弃所有修改，从上次保存文件开始再编辑</div></pre></td></tr></table></figure>
-<h2 id="vi-中的选项"><a href="#vi-中的选项" class="headerlink" title="vi 中的选项"></a>vi 中的选项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">:set number           显示行数</div><div class="line">:set nonumber         取消显示行数</div></pre></td></tr></table></figure>
-<h2 id="vi-中的-shell-转义命令"><a href="#vi-中的-shell-转义命令" class="headerlink" title="vi 中的 shell 转义命令"></a>vi 中的 shell 转义命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">:!command             执行 shell 的 command 命令，如 :!ls</div><div class="line">:!!                         执行前一个 shell 命令</div><div class="line">:r!command            读取 command 命令的输入并插入，如 :r!ls 会先执行 ls，然后读入内容</div><div class="line">:w!command            将当前已编辑文件作为 command 命令的标准输入并执行 command 命令，如 :w!grep all</div><div class="line">:cd directory         将当前工作目录更改为 directory 所表示的目录</div><div class="line">:sh                   将启动一个子 shell，使用 ^d(ctrl+d) 返回 vi</div><div class="line">:so file              在 shell 程序 file 中读入和执行命令</div></pre></td></tr></table></figure>
-<h2 id="vim-分屏"><a href="#vim-分屏" class="headerlink" title="vim 分屏"></a>vim 分屏</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">分屏启动</div><div class="line">使用大写的O参数来垂直分屏。</div><div class="line">vim -On file1 file2 ...</div><div class="line">使用小写的o参数来水平分屏。</div><div class="line">vim -on file1 file2 ...</div><div class="line">n是数字，表示分成几个屏</div><div class="line"></div><div class="line">关闭分屏</div><div class="line">关闭当前窗口。</div><div class="line">Ctrl+W c</div><div class="line">关闭当前窗口，如果只剩最后一个了，则退出Vim。</div><div class="line">Ctrl+W q</div><div class="line"></div><div class="line">分屏</div><div class="line">上下分割当前打开的文件。</div><div class="line">Ctrl+W s</div><div class="line">上下分割，并打开一个新的文件。</div><div class="line">:sp filename</div><div class="line">左右分割当前打开的文件。</div><div class="line">Ctrl+W v</div><div class="line">左右分割，并打开一个新的文件。</div><div class="line">:vsp filename</div><div class="line"></div><div class="line">屏幕尺寸</div><div class="line">让所有的屏都有一样的高度。</div><div class="line">Ctrl+W =</div><div class="line">增加高度。</div><div class="line">Ctrl+W +</div><div class="line">减少高度。</div><div class="line">Ctrl+W -</div><div class="line">:res(ize) num  例如：:res 5，显示行数调整为5行</div><div class="line">:res(ize)+num 把当前窗口高度增加num行</div><div class="line">:res(ize)-num 把当前窗口高度减少num行</div><div class="line"></div><div class="line">给窗口重命名</div><div class="line">:f file</div></pre></td></tr></table></figure>
+            <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>日志需要包含字段：</p>
+<ol>
+<li>time</li>
+<li>level</li>
+<li>app_id</li>
+<li>instance_id<br>日志从产生到消费，主要经历以下几个阶段：采集-&gt;传输-&gt;切分-&gt;检索。</li>
+</ol>
+<h2 id="区分实例-instance-id"><a href="#区分实例-instance-id" class="headerlink" title="区分实例 instance_id"></a>区分实例 instance_id</h2><p>通过设置filebeat</p>
+<h2 id="系统搭建"><a href="#系统搭建" class="headerlink" title="系统搭建"></a>系统搭建</h2><h3 id="Filebeat-安装"><a href="#Filebeat-安装" class="headerlink" title="Filebeat 安装"></a>Filebeat 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.0.2-x86_64.rpm</div><div class="line">rpm -vi filebeat-5.0.2-x86_64.rpm</div><div class="line"></div><div class="line">vim /etc/filebeat/filebeat.yml</div><div class="line">修改 output.elasticsearch hosts </div><div class="line">添加模板</div><div class="line">output.elasticsearch:</div><div class="line">  hosts: [&quot;localhost:9200&quot;]</div><div class="line">  template.name: &quot;filebeat&quot;</div><div class="line">  template.path: &quot;filebeat.template.json&quot;</div><div class="line">  template.overwrite: false</div><div class="line">启动</div><div class="line">/etc/init.d/filebeat start</div><div class="line">service filebeat start</div></pre></td></tr></table></figure>
+<h3 id="elasticsearch-安装"><a href="#elasticsearch-安装" class="headerlink" title="elasticsearch 安装"></a>elasticsearch 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.rpm</div><div class="line">sha1sum elasticsearch-5.6.3.rpm </div><div class="line">sudo rpm --install elasticsearch-5.6.3.rpm</div><div class="line"></div><div class="line">### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using chkconfig</div><div class="line"> sudo chkconfig --add elasticsearch</div><div class="line">### You can start elasticsearch service by executing</div><div class="line"> sudo service elasticsearch start</div><div class="line"></div><div class="line">service elasticsearch start</div></pre></td></tr></table></figure>
+<p>启动异常：Starting elasticsearch: Elasticsearch requires at least Java 8 but your Java version from /usr/bin/java does not meet this requirement 原因是java8安装，java版本管理工具没有更改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ll /usr/bin/java</div><div class="line">/usr/bin/java -&gt; /etc/alternatives/java</div><div class="line"></div><div class="line">update-alternatives --config java</div><div class="line"></div><div class="line">update-alternatives --install /usr/bin/java java /usr/local/java/jdk/jdk1.8.0_112/bin/java 300</div><div class="line">update-alternatives --install /usr/bin/javac javac /usr/local/java/jdk/jdk1.8.0_112/bin/javac 300</div></pre></td></tr></table></figure></p>
+<p>验证是否成功 curl <a href="http://localhost:9200/" target="_blank" rel="external">http://localhost:9200/</a></p>
+<h3 id="安装Kibana"><a href="#安装Kibana" class="headerlink" title="安装Kibana"></a>安装Kibana</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">wget https://artifacts.elastic.co/downloads/kibana/kibana-5.6.3-i686.rpm</div><div class="line">sha1sum kibana-5.6.3-i686.rpm </div><div class="line">sudo rpm --install kibana-5.6.3-i686.rpm</div><div class="line"></div><div class="line">service kibana start</div><div class="line">service kibana stop</div><div class="line"></div><div class="line">访问 http://localhost:5601</div></pre></td></tr></table></figure>
+<h3 id="修改日志收集路径"><a href="#修改日志收集路径" class="headerlink" title="修改日志收集路径"></a>修改日志收集路径</h3><p>vim /etc/elasticsearch/elasticsearch.yml<br>设置<br>path.data: /mydata/elk/elasticsearch/data<br>path.logs: /mydata/elk/elasticsearch/logs<br>如果重启会报错<br>detected index data in default.path.data [/var/lib/elasticsearch/nodes/0/indices] where there should not be any<br>需要把/var/lib/elasticsearch/下的文件夹移动到/mydata/elk/elasticsearch/下，<em>删除</em>/var/lib/elasticsearch/</p>
+<h3 id="kibana使用"><a href="#kibana使用" class="headerlink" title="kibana使用"></a>kibana使用</h3><h4 id="Lucene-query-syntax"><a href="#Lucene-query-syntax" class="headerlink" title="Lucene query syntax"></a>Lucene query syntax</h4><ul>
+<li>简单的文本搜索，直接输入文本字符串。比如，如果你在搜索网站服务器日志，你可以输入 safari 来搜索各字段中的 safari 单词。</li>
+<li>要搜索特定字段中的值，则在值前加上字段名。比如，你可以输入 status:200 来限制搜索结果都是在 status 字段里有 200 内容。</li>
+<li>要搜索一个值的范围，你可以用范围查询语法，[START_VALUE TO END_VALUE]。比如，要查找 4xx 的状态码，你可以输入 status:[400 TO 499]。</li>
+<li>要指定更复杂的搜索标准，你可以用布尔操作符 AND, OR, 和 NOT。比如，要查找 4xx 的状态码，还是 php 或 html 结尾的数据，你可以输入 status:[400 TO 499] AND (extension:php OR extension:html)。</li>
+</ul>
+<h2 id="检查健康状况"><a href="#检查健康状况" class="headerlink" title="检查健康状况"></a>检查健康状况</h2><p>curl localhost:9200/_cat/health</p>
+<h2 id="查看索引"><a href="#查看索引" class="headerlink" title="查看索引"></a>查看索引</h2><p>curl -XGET ‘<a href="http://localhost:9200/_cat/indices?v" target="_blank" rel="external">http://localhost:9200/_cat/indices?v</a>‘</p>
+<h2 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h2><p>curl -XDELETE ‘<a href="http://10.1.1.92:9200/filebeat-2017.10.*" target="_blank" rel="external">http://10.1.1.92:9200/filebeat-2017.10.*</a>‘</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEg" target="_blank" rel="external">https://mp.weixin.qq.com/s/onrBwQ0vyLJYWD_FRnNjEg</a><br>ELKstack 中文指南：<a href="https://kibana.logstash.es/content/kibana/v5/discover.html" target="_blank" rel="external">https://kibana.logstash.es/content/kibana/v5/discover.html</a></p>
 
           
         
@@ -1767,7 +938,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/工具/tmux使用/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Linux/Linux命令：统计命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -1786,7 +957,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/工具/tmux使用/" itemprop="url">tmux使用</a></h1>
+                <a class="post-title-link" href="/2017/10/Linux/Linux命令：统计命令/" itemprop="url">Linux 命令：统计命令</a></h1>
         
 
         <div class="post-meta">
@@ -1798,8 +969,217 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-21T12:08:03+08:00">
-                2017-09-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T19:58:23+08:00">
+                2017-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/Linux/Linux命令：统计命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/Linux/Linux命令：统计命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/Linux/Linux命令：统计命令/" class="leancloud_visitors" data-flag-title="Linux 命令：统计命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,819
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一些实用的Linux文本操作命令，包括wc(统计)、cut(切分)、sort(排序)、uniq(去重)、grep(查找)、sed(替换、插入、删除)、awk(文本分析)。</p>
+<h2 id="wc-统计"><a href="#wc-统计" class="headerlink" title="wc(统计)"></a>wc(统计)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># wc [-lwm]</div><div class="line">选项与参数：</div><div class="line">-l  ：仅列出行；</div><div class="line">-w  ：仅列出多少字(英文单字)；</div><div class="line">-m  ：多少字符；</div></pre></td></tr></table></figure>
+<h2 id="cut-切分"><a href="#cut-切分" class="headerlink" title="cut(切分)"></a>cut(切分)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cut  [-bn] [file] 或 cut [-c] [file]  或  cut [-df] [file]</div><div class="line">　　使用说明</div><div class="line">　　cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</div><div class="line">　　如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。</div><div class="line"></div><div class="line">　　主要参数</div><div class="line">　　-b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</div><div class="line">　　-c ：以字符为单位进行分割。</div><div class="line">　　-d ：自定义分隔符，默认为制表符。</div><div class="line">　　-f ：与-d一起使用，指定显示哪个区域。</div><div class="line">　　-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的&lt;br /&gt;范围之内，该字符将被写出；否则，该字符将被排除。</div></pre></td></tr></table></figure>
+<h2 id="sort-排序"><a href="#sort-排序" class="headerlink" title="sort(排序)"></a>sort(排序)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">　　sort命令是帮我们依据不同的数据类型进行排序，其语法及常用参数格式：</div><div class="line"></div><div class="line">sort [-bcfMnrtk][源文件][-o 输出文件] </div><div class="line">　　补充说明：sort可针对文本文件的内容，以行为单位来排序。</div><div class="line"></div><div class="line">　　参数：</div><div class="line">　　-b   忽略每行前面开始出的空格字符。</div><div class="line">　　-c   检查文件是否已经按照顺序排序。</div><div class="line">　　-f   排序时，忽略大小写字母。</div><div class="line">　　-M   将前面3个字母依照月份的缩写进行排序。</div><div class="line">　　-n   依照数值的大小排序。</div><div class="line">　　-o&lt;输出文件&gt;   将排序后的结果存入指定的文件。</div><div class="line">　　-r   以相反的顺序来排序。</div><div class="line">　　-t&lt;分隔字符&gt;   指定排序时所用的栏位分隔字符。</div><div class="line">　　-k  选择以哪个区间进行排序。</div></pre></td></tr></table></figure>
+<h2 id="uniq-去重"><a href="#uniq-去重" class="headerlink" title="uniq(去重)"></a>uniq(去重)</h2><p>uniq命令可以去除排序过的文件中的重复行，因此uniq经常和sort合用。也就是说，为了使uniq起作用，所有的重复行必须是相邻的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># uniq [-icu]</div><div class="line">选项与参数：</div><div class="line">-i   ：忽略大小写字符的不同；</div><div class="line">-c  ：进行计数</div><div class="line">-u  ：只显示唯一的行</div></pre></td></tr></table></figure></p>
+<h2 id="grep-查找"><a href="#grep-查找" class="headerlink" title="grep(查找)"></a>grep(查找)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。</div><div class="line"></div><div class="line">grep [options]</div><div class="line">　　主要参数</div><div class="line">　　[options]主要参数：</div><div class="line">　　－c：只输出匹配行的计数。</div><div class="line">　　－I：不区分大 小写(只适用于单字符)。</div><div class="line">　　－h：查询多文件时不显示文件名。</div><div class="line">　　－l：查询多文件时只输出包含匹配字符的文件名。</div><div class="line">　　－n：显示匹配行及 行号。</div><div class="line">　　－s：不显示不存在或无匹配文本的错误信息。</div><div class="line">　　－v：显示不包含匹配文本的所有行。</div><div class="line">    -E：使用正则</div><div class="line">　　pattern正则表达式主要参数：</div><div class="line">　　\： 忽略正则表达式中特殊字符的原有含义。</div><div class="line">　　^：匹配正则表达式的开始行。</div><div class="line">　　$: 匹配正则表达式的结束行。</div><div class="line">　　\&lt;：从匹配正则表达 式的行开始。</div><div class="line">　　\&gt;：到匹配正则表达式的行结束。</div><div class="line">　　[ ]：单个字符，如[A]即A符合要求 。</div><div class="line">　　[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。</div><div class="line">　　。：所有的单个字符。</div><div class="line">　　* ：有字符，长度可以为0。</div></pre></td></tr></table></figure>
+<h2 id="sed-替换、插入、删除"><a href="#sed-替换、插入、删除" class="headerlink" title="sed(替换、插入、删除)"></a>sed(替换、插入、删除)</h2><p>sed是一个很好的文件处理工具，本身是一个管道命令，主要是以行为单位进行处理，可以将数据行进行替换、删除、新增、选取等特定工作，下面先了解一下sed的用法。sed命令行格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">sed [-nefri] ‘command’ 输入文本 </div><div class="line">　　常用选项：</div><div class="line">　　  -n∶使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。</div><div class="line">        -e∶直接在指令列模式上进行 sed 的动作编辑；</div><div class="line">        -f∶直接将 sed 的动作写在一个档案内， -f filename 则可以执行 filename 内的sed 动作；</div><div class="line">        -r∶sed 的动作支援的是延伸型正规表示法的语法。(预设是基础正规表示法语法)</div><div class="line">        -i∶直接修改读取的档案内容，而不是由萤幕输出。       </div><div class="line"></div><div class="line">　　常用命令：</div><div class="line">        a   ∶新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～</div><div class="line">        c   ∶取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！</div><div class="line">        d   ∶删除，因为是删除啊，所以 d 后面通常不接任何咚咚；</div><div class="line">　　   i   ∶插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；</div><div class="line">　　  p  ∶列印，亦即将某个选择的资料印出。通常 p 会与参数 sed -n 一起运作～</div><div class="line">　　  s  ∶取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！</div></pre></td></tr></table></figure></p>
+<h3 id="sed-提取匹配的字符串内容"><a href="#sed-提取匹配的字符串内容" class="headerlink" title="sed 提取匹配的字符串内容"></a>sed 提取匹配的字符串内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># STR=&quot;MAIL FROM(CCC) TO(DDD)&quot;</div><div class="line"># echo $STR | sed &apos;s/^.*FROM(\(.*\)).*TO(\(.*\)).*$/\1-\2/g&apos;</div><div class="line">CCC-DDD</div></pre></td></tr></table></figure>
+<p>s表示替换，组匹配信息(.*),第一个为\1,第二个\2以此类推</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&quot;09/Jan/2018:00:02:58 +0800&quot;,&quot;210.22.172.146&quot;,&quot;-&quot;,&quot;-&quot;,&quot;-&quot;,&quot;api.fastschool.cn&quot;,&quot;ded92c009aaa4582a6cf9b644fa62aa6&quot;,&quot;GET /clog/a.gif?action=FS_UploadLog&amp;clientIp=%28null%29&amp;clientVersion=3.8.7&amp;debugInfo=20180108__NumOfLine_117_&amp;logType=debug&amp;logVersion=1.0&amp;netType=wifi&amp;osName=iPad&amp;osVersion=10.3&amp;platform=iOS&amp;tag=FSUploadLog&amp;ts=2018-01-09%2000%3A02%3A56.784&amp;userLid=a91e0cffbe474635b8ec4861a58b1a97&amp;userToken=ded92c009aaa4582a6cf9b644fa62aa6&amp;wifiName=TP-LINK_BF2AF0 HTTP/1.1&quot;,&quot;-&quot;,&quot;-&quot;,&quot;prod:stu_cli, channel:AppStore, os:iOS, osVer:10.3.3, mobile:iPad, vName:3.8.7, env:RE&quot;,&quot;200&quot;,&quot;0.000&quot;,&quot;0&quot;,&quot;-&quot;,&quot;-&quot;,&quot;*/*&quot;,&quot;nginx-111&quot;,&quot;-&quot;</div><div class="line"></div><div class="line"># less loginfo.txt |awk -F&apos;&quot;,&quot;&apos; &apos;&#123;print $8&#125;&apos; |sed &apos;s/^.*\(action=[a-zA-Z_]*\).*\(platform=[a-zA-Z_]*\).*$/\1  \2/g&apos;</div><div class="line"></div><div class="line">action=FS_StartUploadLog_ToCOS  platform=iOS</div></pre></td></tr></table></figure>
+<h2 id="awk-文本分析"><a href="#awk-文本分析" class="headerlink" title="awk(文本分析)"></a>awk(文本分析)</h2><p>awk是一个强大的文本分析工具，相对于grep的查找，sed的编辑，awk在其对数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;&#123;pattern + action&#125;&apos; &#123;filenames&#125;</div></pre></td></tr></table></figure></p>
+<p>尽管操作可能会很复杂，但语法总是这样，其中 pattern 表示 AWK 在数据中查找的内容，而 action 是在找到匹配内容时所执行的一系列命令。花括号（{}）不需要在程序中始终出现，但它们用于根据特定的模式对一系列指令进行分组。 pattern就是要表示的正则表达式，用斜杠括起来。</p>
+<p>　　awk语言的最基本功能是在文件或者字符串中基于指定规则浏览和抽取信息，awk抽取信息后，才能进行其他文本操作。完整的awk脚本通常用来格式化文本文件中的信息。</p>
+<p>　　通常，awk是以文件的一行为处理单位的。awk每接收文件的一行，然后执行相应的命令，来处理文本。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>博客出处：<a href="http://www.cnblogs.com/maybe2030/" target="_blank" rel="external">http://www.cnblogs.com/maybe2030/</a> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/工具/iterm2使用技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/工具/iterm2使用技巧/" itemprop="url">iterm2使用技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T10:50:50+08:00">
+                2017-10-17
               </time>
             
 
@@ -1839,9 +1219,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/工具/tmux使用/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/工具/iterm2使用技巧/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/工具/tmux使用/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/工具/iterm2使用技巧/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1849,7 +1229,7 @@
 
           
           
-             <span id="/2017/09/工具/tmux使用/" class="leancloud_visitors" data-flag-title="tmux使用">
+             <span id="/2017/10/工具/iterm2使用技巧/" class="leancloud_visitors" data-flag-title="iterm2使用技巧">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1874,7 +1254,202 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  961
+                  252
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">⌘ + 数字: 切换标签页。 </div><div class="line">⌘ + 方向键 按方向切换标签页。</div><div class="line">⌘ + enter: 切换全屏</div><div class="line">⌘ + f: 查找。支持正则。其中查找的内容会被自动复制。鼠标去选中的内容也会自动复制</div><div class="line">⌘ + d: 垂直分屏，⌘ + shift + d: 水平分屏。使用⌘ + ]和⌘ + [在最近使用的分屏直接切换.</div><div class="line">⌘ + t :新的标签页</div><div class="line">⌘ + w :关闭当前标签页</div><div class="line">⌘ + ；:自动补全历史命令</div><div class="line">⌘ + —/+/0: 调整字体大小</div><div class="line">⌘ + /: 找到当前光标位置</div></pre></td></tr></table></figure>
+<h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ctrl + u: 清空当前行。</div><div class="line">ctrl + a: 到行首</div><div class="line">ctrl + e: 行末</div><div class="line">ctrl + f/b: 前进后退，相当于左右方向键</div><div class="line">ctrl + p: 上一条命令，相当于方向键上</div><div class="line">ctrl + r: 搜索命令历史</div><div class="line">ctrl + d: 删除当前字符</div><div class="line">ctrl + h: 删除之前的字符</div><div class="line">ctrl + w: 删除光标前的单词</div><div class="line">ctrl + k: 删除到文本末尾</div><div class="line">ctrl + t: 交换光标处文本</div><div class="line">⌘ + r:清屏，其实是滚到新的一屏，并没有清空。ctrl + l 也可以做到。</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Nginx/nginx添加日志分割/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/Nginx/nginx添加日志分割/" itemprop="url">nginx添加日志分割logrotate</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T09:45:11+08:00">
+                2017-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/Nginx/nginx添加日志分割/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/Nginx/nginx添加日志分割/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/Nginx/nginx添加日志分割/" class="leancloud_visitors" data-flag-title="nginx添加日志分割logrotate">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  912
                 </span>
               
 
@@ -1913,61 +1488,14 @@
       
         
           
-            <h2 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h2><p>tmux是linux中一种管理窗口的程序。tmux提供了一个窗体组随时存储和恢复的功能。</p>
-<h2 id="tmux的基本概念"><a href="#tmux的基本概念" class="headerlink" title="tmux的基本概念"></a>tmux的基本概念</h2><p>tmux是一个终端复用器(terminal multiplexer).<br>tmux有三个概念：会话(Session)，窗口(Window)，面板(Pane)。<br>当你输入tmux后, tmux实际做的事是首先创建一个会话(Session), 然后在这个会话中创建一个窗口, 你可以继续创建多个窗口(Window), 每个窗口初始只包含一个面板, 继续分屏后, 会出现多个面板(Pane) 你在其中看到的终端实际上都属于tmux的某个面板。</p>
-<h2 id="tmux安装"><a href="#tmux安装" class="headerlink" title="tmux安装"></a>tmux安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@VM_1_49_centos ~]# yum install tmux</div></pre></td></tr></table></figure>
-<h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><ul>
-<li>tmux new[-session] -s name -d   新建会话(-d 是否在后台)</li>
-<li>tmux new -s name -n windowname  新建会话及窗口</li>
-<li>tmux at[tach] -t session    重新连接(-t 后接会话名称)</li>
-<li>tmux ls 显示保存的会话</li>
-<li>tmux kill-session -t session    删除会话</li>
-</ul>
-<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><p>所有快捷键执行方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">control+b 告诉Tmux我要用Tmux的快捷键。</div></pre></td></tr></table></figure></p>
-<ul>
-<li>C-b ? 列出所有快捷键, 按q或Esc返回</li>
-<li>C-b d detach当前会话,可暂时返回Shell界面，输入tmux attach能够重新进入之前会话</li>
-<li>C-b s 选择并切换会话；在同时开启了多个会话时使用</li>
-</ul>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="sesson"><a href="#sesson" class="headerlink" title="sesson"></a>sesson</h3><ul>
-<li>tmux new -s session_name<br>  creates a new tmux session named session_name</li>
-<li>tmux attach -t session_name<br>  attaches to an existing tmux session named session_name</li>
-<li>tmux switch -t session_name<br>  switches to an existing session named session_name</li>
-<li>tmux list-sessions<br>  lists existing tmux sessions</li>
-<li>tmux detach (prefix + d)<br>  detach the currently attached session</li>
-<li>C-b $ 改变会话的名字</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 创建一个新的session</div><div class="line">$ tmux new -s &lt;name-of-my-session&gt;</div><div class="line"># 在当前session中创建一个新的Session, 并保证之前session依然存在</div><div class="line"># C-b : 然后输入下面命令</div><div class="line">new -s &lt;name-of-my-new-session&gt;</div><div class="line"># 进入名为test的session</div><div class="line">$ tmux attach -t test</div></pre></td></tr></table></figure>
-<h3 id="window"><a href="#window" class="headerlink" title="window"></a>window</h3><ul>
-<li>C-b c 创建一个新窗口</li>
-<li>C-b &amp; 关闭当前窗口</li>
-<li>C-b w 列出所有的窗口选择</li>
-<li>C-b p 切换到上一个窗口</li>
-<li>C-b n 切换到下一个窗口</li>
-<li>C-b 窗口号 使用窗口号切换窗口(例如窗口号为1的, 则C-b 1)</li>
-<li>C-b , 重命名当前窗口，便于识别各个窗口</li>
-<li>C-b . 修改当前编号</li>
-</ul>
-<h3 id="pane"><a href="#pane" class="headerlink" title="pane"></a>pane</h3><ul>
-<li>C-b % 横向分Terminal</li>
-<li>C-b “ 纵向分Terminal</li>
-<li>C-b 方向键 则会在自由选择各面板</li>
-<li>C-b x 关闭当前pane</li>
-<li>C-b q 显示面板编号</li>
-<li>C-b o 选择当前窗口中下一个面板</li>
-<li>C-b 数字 选择指定窗口</li>
-<li>C-b z  暂时把一个窗体放到最大</li>
-</ul>
-<h2 id="开启批量执行（同步输入）"><a href="#开启批量执行（同步输入）" class="headerlink" title="开启批量执行（同步输入）"></a>开启批量执行（同步输入）</h2><p>C-b后输入:set synchronize-panes ，输入:set sync [TAB]键可自动补齐</p>
-<h2 id="设置鼠标"><a href="#设置鼠标" class="headerlink" title="设置鼠标"></a>设置鼠标</h2><p>C-b : 进入命令行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setw mode-mouse on #单个窗口启用鼠标滚轮来卷动窗口内容</div><div class="line"></div><div class="line">setw -g mode-mouse on #所有窗口启用鼠标滚轮来卷动窗口内容</div></pre></td></tr></table></figure>
-<p>或者在配置文件里设置~/.tmux.conf：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">setw -g mouse-resize-pane on #开启用鼠标拖动调节pane的大小</div><div class="line">setw -g mouse-select-pane on #开启用鼠标点击pane来激活该pane</div><div class="line">setw -g mouse-select-window on #开启用鼠标点击来切换活动window 状态栏的窗口名称</div><div class="line">setw -g mode-mouse on #开启所有窗口启用鼠标滚轮来卷动窗口内容</div></pre></td></tr></table></figure></p>
-<p>新版本设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set-option -g mouse on</div><div class="line"># 将window的起始设置为1</div><div class="line"> set -g base-index 1</div><div class="line"># 将pane的起始下标设为1</div><div class="line"> set -g pane-base-index 1</div></pre></td></tr></table></figure></p>
-<p>配置之后进入命令行，输入 tmux source  ~/.tmux.conf，使配置生效。</p>
-<h2 id="进入vi-copy模式"><a href="#进入vi-copy模式" class="headerlink" title="进入vi copy模式"></a>进入vi copy模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#vi</div><div class="line">setw -g mode-keys vi</div><div class="line">bind -t vi-copy v begin-selection</div><div class="line">bind -t vi-copy y copy-selection</div></pre></td></tr></table></figure>
-<p>或者使用鼠标选中，按y复制</p>
-<p>复制到系统剪贴板中<br>Mac 下如果用 iterm2 可以在 preference 下选择 Applications in terminal may access clipboard。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://cenalulu.github.io/linux/tmux/" target="_blank" rel="external">http://cenalulu.github.io/linux/tmux/</a><br><a href="http://guoqiao.me/post/2016/tmux" target="_blank" rel="external">http://guoqiao.me/post/2016/tmux</a></p>
+            <h2 id="logrotate简介"><a href="#logrotate简介" class="headerlink" title="logrotate简介"></a>logrotate简介</h2><p>logrotate 是Linux系统日志文件管理工具。用来把旧的日志文件删除，并创建新的日志文件，我们把它叫做“转储”。可以根据日志文件的大小，也可以根据其天数来转储，这个过程一般通过 cron 程序来执行。<br>logrotate 程序还可以用于压缩日志文件，以及发送日志到指定的E-mail。<br>默认的logrotate被加入cron的/etc/cron.daily中作为每日任务执行。<br>/etc/logrotate.d/* 为/etc/logrotate.conf默认包含目录其中文件也会被logrotate读取。指明每个日志文件的特定规则。<br>/var/lib/logrotate/status中默认记录logrotate上次轮换日志文件的时间。</p>
+<h2 id="logrotate安装"><a href="#logrotate安装" class="headerlink" title="logrotate安装"></a>logrotate安装</h2><p>centos是默认有安装<br>yum install logrotate<br>安装完成之后在，在/etc/logrotate.d/有以下脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ ll /etc/logrotate.d/</div><div class="line">total 24</div><div class="line">drwxr-xr-x. 2 root root 4096 Mar  3  2016 2016-03-03</div><div class="line">-rw-r--r--. 1 root root  103 Jul 14  2015 dracut</div><div class="line">-rw-r--r--  1 root root  217 Oct 31  2016 nginx</div><div class="line">-rw-r--r--. 1 root root  329 Jul 17  2012 psacct</div><div class="line">-rw-r--r--. 1 root root  265 Mar  3  2016 syslog</div><div class="line">-rw-r--r--. 1 root root  100 Feb 22  2013 yum</div></pre></td></tr></table></figure></p>
+<h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><p>crontab会每天定时执行/etc/cron.daily目录下的脚本，在这个目录有个logrotate脚本，脚本内容为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">/usr/sbin/logrotate /etc/logrotate.conf &gt;/dev/null 2&gt;&amp;1</div><div class="line">EXITVALUE=$?</div><div class="line">if [ $EXITVALUE != 0 ]; then</div><div class="line">    /usr/bin/logger -t logrotate &quot;ALERT exited abnormally with [$EXITVALUE]&quot;</div><div class="line">fi</div><div class="line">exit 0</div></pre></td></tr></table></figure></p>
+<p>每天执行一次/usr/sbin/logrotate /etc/logrotate.conf，logrotate.conf中<code>include /etc/logrotate.d</code> </p>
+<h2 id="nginx脚本"><a href="#nginx脚本" class="headerlink" title="nginx脚本"></a>nginx脚本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/var/log/nginx/*log &#123;</div><div class="line">    daily</div><div class="line">    rotate 10</div><div class="line">    missingok</div><div class="line">    notifempty</div><div class="line">    compress</div><div class="line">    sharedscripts</div><div class="line">    postrotate</div><div class="line">        /bin/kill -USR1 $(cat /var/run/nginx.pid 2&gt;/dev/null) 2&gt;/dev/null || :</div><div class="line">    endscript</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">compress                        通过gzip压缩转储以后的日志</div><div class="line">nocompress                      不压缩</div><div class="line">copytruncate                    用于还在打开中的日志文件，把当前日志备份并截断</div><div class="line">nocopytruncate                  备份日志文件但是不截断</div><div class="line">create mode owner group         转储文件，使用指定的文件模式创建新的日志文件</div><div class="line">nocreate                        不建立新的日志文件</div><div class="line">delaycompress 和 compress        一起使用时，转储的日志文件到下一次转储时才压缩</div><div class="line">nodelaycompress                 覆盖 delaycompress 选项，转储同时压缩。</div><div class="line">errors address                   专储时的错误信息发送到指定的Email 地址</div><div class="line">ifempty                         即使是空文件也转储，这个是 logrotate 的缺省选项。</div><div class="line">notifempty                      如果是空文件的话，不转储</div><div class="line">mail address                    把转储的日志文件发送到指定的E-mail 地址</div><div class="line">nomail                          转储时不发送日志文件</div><div class="line">olddir directory                转储后的日志文件放入指定的目录，必须和当前日志文件在同一个文件系统</div><div class="line">noolddir                        转储后的日志文件和当前日志文件放在同一个目录下</div><div class="line">prerotate/endscript             在转储以前需要执行的命令可以放入这个对，这两个关键字必须单独成行</div><div class="line">postrotate/endscript            在转储以后需要执行的命令可以放入这个对，这两个关键字必须单独成行</div><div class="line">daily                           指定转储周期为每天</div><div class="line">weekly                          指定转储周期为每周</div><div class="line">monthly                         指定转储周期为每月</div><div class="line">rotate count                    指定日志文件删除之前转储的次数，0 指没有备份，5 指保留5 个备份</div><div class="line">tabootext [+] list 让logrotate   不转储指定扩展名的文件，缺省的扩展名是：.rpm-orig, .rpmsave, v, 和 ~ </div><div class="line">size size                       当日志文件到达指定的大小时才转储，bytes(缺省)及KB(sizek)或MB(sizem)</div></pre></td></tr></table></figure>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>立刻执行分割：/usr/sbin/logrotate -vf  /etc/logrotate.d/nginx<br>查看执行状态 cat /var/lib/logrotate.status</p>
+<h2 id="添加定时任务"><a href="#添加定时任务" class="headerlink" title="添加定时任务"></a>添加定时任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">crontab -e </div><div class="line">#添加以下代码， #每天凌晨定时执行脚本</div><div class="line"># crond-id-02:nginx_logs logroate</div><div class="line">0 0 * * * /usr/sbin/logrotate -vf /etc/logrotate.d/nginx &gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
 
           
         
@@ -2016,7 +1544,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/前端/记一次npm-i-运行错误/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Linux/Linux命令：统计分析日志/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -2035,7 +1563,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/前端/记一次npm-i-运行错误/" itemprop="url">记一次npm i 运行错误</a></h1>
+                <a class="post-title-link" href="/2017/10/Linux/Linux命令：统计分析日志/" itemprop="url">Linux 命令：统计分析日志</a></h1>
         
 
         <div class="post-meta">
@@ -2047,8 +1575,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T15:24:46+08:00">
-                2017-09-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T09:45:11+08:00">
+                2017-10-14
               </time>
             
 
@@ -2070,8 +1598,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -2088,9 +1616,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/前端/记一次npm-i-运行错误/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/Linux/Linux命令：统计分析日志/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/前端/记一次npm-i-运行错误/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/Linux/Linux命令：统计分析日志/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2098,7 +1626,7 @@
 
           
           
-             <span id="/2017/09/前端/记一次npm-i-运行错误/" class="leancloud_visitors" data-flag-title="记一次npm i 运行错误">
+             <span id="/2017/10/Linux/Linux命令：统计分析日志/" class="leancloud_visitors" data-flag-title="Linux 命令：统计分析日志">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2123,7 +1651,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  64
+                  570
                 </span>
               
 
@@ -2139,7 +1667,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -2162,9 +1690,26 @@
       
         
           
-            <p>执行npm i出错:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm ERR! code EINTEGRITY</div><div class="line">npm ERR! sha1-eCA6TRwyiuHYbcpkYONptX9AVa4= integrity checksum failed when using sha1: wanted sha1-eCA6TRwyiuHYbcpkYONptX9AVa4= but got sha1-tURkGu3SzDOsTOBkGT5fXZCH7as=. (26893 bytes)</div><div class="line"></div><div class="line">npm ERR! A complete log of this run can be found in:</div></pre></td></tr></table></figure>
-<p>解决方法：npm cache clean –force  强制清除npm 的 cache<br>或者重新执行 npm i</p>
+            <p>liunx服务器上生成的日志文件进行分析，文件格式如下：<br>id               time<br>1001,2011-08-19 00:00:00<br>1002,2011-08-19 01:00:00<br>1001,2011-08-19 02:00:00<br>1003,2011-08-19 03:00:00</p>
+<h2 id="linux命令如下："><a href="#linux命令如下：" class="headerlink" title="linux命令如下："></a>linux命令如下：</h2><p>排重后id个数</p>
+<pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | wc -l
+</code></pre><p>按id出现次数排序</p>
+<pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | sort -k 1 -n -r | wc -l
+</code></pre><p>将结果导入文件</p>
+<pre><code>cat ****.txt  | awk &apos;{print $1}&apos;  |  sort | uniq -c | sort -k 1 -n -r | wc -l &gt; result.txt
+</code></pre><h2 id="命令解析："><a href="#命令解析：" class="headerlink" title="命令解析："></a>命令解析：</h2><p>sort：表示前面输入的结果文件中的内容进行排序。sort命令是对于每一行的内容根据字典序（ASCII码）进行排序，这样可以保证重复的记录时相邻的。</p>
+<p>awk ‘{print $1}’ ：日志记录中的第一个字段。</p>
+<p>uniq –c：表示合并相邻的重复记录，并统计重复数。因为uniq -c 只会合并相邻的记录，所以在使用该命令之前需要先排序。</p>
+<p>sort –k 1 -n -r|wc –l：经过uniq -c 处理之后的数据格式形如”2 data”，第一个字段是数字，表示重复的记录数；第二个字段为记录的内容。我们将对此内容进行排序。<br>sort -k 1表示对于每行的第一个字段进行排序，这里即指代表重复记录数的那个字段。因为sort命令的默认排序是按照ASCII，这就会导致按从大到小进行排序时，数值2会排在数值11的前面，所以需要使用-n 参数指定sort命令按照数值大小进行排序。-r 表示逆序，即按照从大到小的顺序进行排序。</p>
+<p>wc命令</p>
+<p>wc命令的功能为统计指定文件中的字节数、字数、行数, 并将统计结果显示输出。</p>
+<p>语法：wc [选项] 文件…</p>
+<p>说明：该命令统计给定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所有指定文件的总统计数。字是由空格字符区分开的最大字符串。</p>
+<p>该命令各选项含义如下：</p>
+<p>　　- c 统计字节数。</p>
+<p>　　- l 统计行数。</p>
+<p>　　- w 统计字数</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/" target="_blank" rel="external">http://wuzhangshu927.blog.163.com/blog/static/114224687201171941937445/</a></p>
 
           
         
@@ -2213,7 +1758,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/09/Linux/Linux-安装node-npm/">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Linux/Linux命令：压缩命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qingsong">
@@ -2232,7 +1777,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/Linux/Linux-安装node-npm/" itemprop="url">linux 安装node&npm</a></h1>
+                <a class="post-title-link" href="/2017/10/Linux/Linux命令：压缩命令/" itemprop="url">Linux 命令：压缩命令</a></h1>
         
 
         <div class="post-meta">
@@ -2244,8 +1789,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T14:40:26+08:00">
-                2017-09-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T09:45:11+08:00">
+                2017-10-14
               </time>
             
 
@@ -2267,8 +1812,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -2285,9 +1830,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/Linux/Linux-安装node-npm/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/Linux/Linux命令：压缩命令/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/Linux/Linux-安装node-npm/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/Linux/Linux命令：压缩命令/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2295,7 +1840,7 @@
 
           
           
-             <span id="/2017/09/Linux/Linux-安装node-npm/" class="leancloud_visitors" data-flag-title="linux 安装node&npm">
+             <span id="/2017/10/Linux/Linux命令：压缩命令/" class="leancloud_visitors" data-flag-title="Linux 命令：压缩命令">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2320,7 +1865,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  54
+                  111
                 </span>
               
 
@@ -2359,11 +1904,407 @@
       
         
           
-            <h2 id="官网地址"><a href="#官网地址" class="headerlink" title="官网地址"></a>官网地址</h2><p><a href="https://nodejs.org/zh-cn/download/" target="_blank" rel="external">node官网</a></p>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo yum install gcc-c++ make</div><div class="line"></div><div class="line">curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -</div><div class="line"></div><div class="line">sudo yum -y install nodejs</div></pre></td></tr></table></figure>
-<p>说明：sudo bash 作为超级用户运行”bash”</p>
-<h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">node -v</div><div class="line"></div><div class="line">npm -v</div></pre></td></tr></table></figure>
+            <ol>
+<li><p>tar命令<br>　　解包：tar zxvf FileName.tar<br> 解包到指定文件夹：tar zxvf FileName.tar -C dirname<br>　　打包：tar czvf FileName.tar DirName</p>
+</li>
+<li><p>gz命令<br>　　解压：gunzip FileName.gz<br>　　解压：gzip -d FileName.gz<br> 压缩：gzip FileName</p>
+</li>
+<li><p>tar.gz<br> 解压：tar zxvf FileName.tar.gz<br>　　 压缩：tar zcvf FileName.tar.gz DirName<br> 压缩多个文件：tar zcvf FileName.tar.gz DirName1 DirName2 DirName3</p>
+</li>
+<li><p>zip命令<br>　　解压：unzip FileName.zip<br> 解压到指定目录：unzip -d /home/sunny myfile.zip<br>　　压缩：zip -r FileName.zip DirName</p>
+</li>
+</ol>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Linux/Linux命令：运行远程命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/Linux/Linux命令：运行远程命令/" itemprop="url">Linux 命令: 运行远程命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T17:58:34+08:00">
+                2017-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/Linux/Linux命令：运行远程命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/Linux/Linux命令：运行远程命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/Linux/Linux命令：运行远程命令/" class="leancloud_visitors" data-flag-title="Linux 命令: 运行远程命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  13
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="运行远程命令"><a href="#运行远程命令" class="headerlink" title="运行远程命令"></a>运行远程命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">➜ ~ ssh root@dev &quot;ls /mydata&quot;</div><div class="line">apps</div><div class="line">develop</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codr.top/2017/10/Linux/Linux命令：查看文件夹下文件大小/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qingsong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="青松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/Linux/Linux命令：查看文件夹下文件大小/" itemprop="url">Linux 命令：查看文件夹下文件大小</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T15:48:34+08:00">
+                2017-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/Linux/Linux命令：查看文件夹下文件大小/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/Linux/Linux命令：查看文件夹下文件大小/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/Linux/Linux命令：查看文件夹下文件大小/" class="leancloud_visitors" data-flag-title="Linux 命令：查看文件夹下文件大小">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  48
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="查看文件夹下文件大小"><a href="#查看文件夹下文件大小" class="headerlink" title="查看文件夹下文件大小"></a>查看文件夹下文件大小</h2><p>du [-abcDhHklmsSx] [-L &lt;符号连接&gt;][-X &lt;文件&gt;][–block-size][–exclude=&lt;目录或文件&gt;] [–max-depth=&lt;目录层数&gt;][–help][–version][目录或文件]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -h --max-depth=1 /mydata/</div></pre></td></tr></table></figure>
           
         
       
@@ -2402,7 +2343,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2448,7 +2389,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2459,7 +2400,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2470,7 +2411,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2556,7 +2497,7 @@
 <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

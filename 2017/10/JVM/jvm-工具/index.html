@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="jvm," />
+  <meta name="keywords" content="JVM," />
 
 
 
@@ -97,14 +97,14 @@
 
 
 <meta name="description" content="常用工具jps：主要用来输出JVM中运行的进程状态信息 (Java Virtual Machine Process Status Tool)、jstack：主要用来查看某个Java进程内的线程堆栈信息jmap：生成堆快照jstat: 显示进程中的类装载、内存、垃圾收集、JIT编译等运行数据jhat：html形式显示对象占用内存大小以及引用情况jconsole（图形工具）jvisualvm（图形工具">
-<meta name="keywords" content="jvm">
+<meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jvm 工具">
 <meta property="og:url" content="http://www.codr.top/2017/10/JVM/jvm-工具/index.html">
 <meta property="og:site_name" content="青松的博客">
 <meta property="og:description" content="常用工具jps：主要用来输出JVM中运行的进程状态信息 (Java Virtual Machine Process Status Tool)、jstack：主要用来查看某个Java进程内的线程堆栈信息jmap：生成堆快照jstat: 显示进程中的类装载、内存、垃圾收集、JIT编译等运行数据jhat：html形式显示对象占用内存大小以及引用情况jconsole（图形工具）jvisualvm（图形工具">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-25T02:01:18.000Z">
+<meta property="og:updated_time" content="2019-01-07T01:29:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jvm 工具">
 <meta name="twitter:description" content="常用工具jps：主要用来输出JVM中运行的进程状态信息 (Java Virtual Machine Process Status Tool)、jstack：主要用来查看某个Java进程内的线程堆栈信息jmap：生成堆快照jstat: 显示进程中的类装载、内存、垃圾收集、JIT编译等运行数据jhat：html形式显示对象占用内存大小以及引用情况jconsole（图形工具）jvisualvm（图形工具">
@@ -371,8 +371,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
                   </a>
                 </span>
 
@@ -475,7 +475,7 @@
 </blockquote>
 <h2 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h2><p>显示进程中的类装载、内存、垃圾收集、JIT编译等运行数据<br>目前感觉用上的都是gc记录查看，实际还没太用过</p>
 <blockquote>
-<p>jstat -gc 3331 250 20: 查询进程2764的垃圾收集情况，每250毫秒查询一次，一共查询20次。<br>jstat- gcause</p>
+<p>jstat -gc 3331 250 20: 查询进程2764的垃圾收集情况，每250毫秒查询一次，一共查询20次。<br>jstat -gcause</p>
 <p>S0C : survivor0区的总容量<br>S1C : survivor1区的总容量<br>S0U : survivor0区已使用的容量<br>S1U : survivor1区已使用的容量<br>EC : Eden区的总容量<br>EU : Eden区已使用的容量<br>OC : Old区的总容量<br>OU : Old区已使用的容量<br>PC  当前perm的容量 (KB)<br>PU  perm的使用 (KB)<br>YGC : 新生代垃圾回收次数<br>YGCT : 新生代垃圾回收时间<br>FGC : 老年代垃圾回收次数<br>FGCT : 老年代垃圾回收时间<br>GCT : 垃圾回收总消耗时间</p>
 </blockquote>
 <h2 id="jhat"><a href="#jhat" class="headerlink" title="jhat"></a>jhat</h2><p>可用来分析 jmap dump生成的堆信息二进制文件。html形式显示对象占用内存大小以及引用情况，但显示得并不友好。感觉比较鸡肋。</p>
@@ -503,7 +503,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/jvm/" rel="tag"># jvm</a>
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
           
         </div>
       
@@ -635,7 +635,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -646,7 +646,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -657,7 +657,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -759,7 +759,7 @@
 <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
