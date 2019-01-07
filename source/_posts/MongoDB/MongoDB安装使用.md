@@ -162,5 +162,7 @@ db.COLLECTION_NAME.ensureIndex({KEY:1})
 1为指定按升序创建索引，如果你想按降序来创建索引指定为-1即可
 8. aggregate()  用于处理数据(诸如统计平均值,求和等)
 db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)
+9. MongoDB时间少8小时
+自带的Date，时间是UTC的时间，和咱们中国时区少8个小时。使用Robomongo，可以通过"Options" - "Display Dates in..." - "Local Timezone"来设置显示本地时间。
 
 

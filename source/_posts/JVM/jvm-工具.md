@@ -45,7 +45,7 @@ jmap -dump:format=b,file=heapDump: 导出堆详细使用信息，b表示二进�
 显示进程中的类装载、内存、垃圾收集、JIT编译等运行数据
 目前感觉用上的都是gc记录查看，实际还没太用过
 >jstat -gc 3331 250 20: 查询进程2764的垃圾收集情况，每250毫秒查询一次，一共查询20次。
-jstat- gcause
+jstat -gcause
 
 >S0C : survivor0区的总容量
 S1C : survivor1区的总容量
